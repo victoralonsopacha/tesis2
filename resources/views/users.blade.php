@@ -7,9 +7,9 @@
 
     <ul>
         @forelse ($usersl as $userItem)
-            <li>{{ $userItem->name }} <br><small>{{ $userItem->last_name }}</small> </li>
+            <li><a href="{{ route('users.show', $userItem) }}">{{ $userItem->name }} <br><small>{{ $userItem->last_name }}</small></a></li>
         @empty
-        <li>No hay mas usuarios</li>
+            <li>No hay mas usuarios</li>
         @endforelse
     </ul>
 @endsection
