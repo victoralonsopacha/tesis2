@@ -42,7 +42,7 @@ class UserController extends Controller
     {
         //FORMA DIFERENTE PARA IMMPEDIR LA ASIGNACION MASIVA
         User::create($request->validated());
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('status', 'El usuario fue creado con exito');
             
         //return request();
 
@@ -86,7 +86,7 @@ class UserController extends Controller
     {
         $user->update( $request->validated() );
 
-        return redirect()->route('users.show', $user);
+        return redirect()->route('users.show', $user)->with('status', 'El usuario ha sido actualizado con exito');
     }
 
     /**
@@ -99,6 +99,6 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('status', 'El usuario ha sido eliminado');
     }
 }

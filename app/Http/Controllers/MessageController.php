@@ -19,6 +19,6 @@ class MessageController extends Controller
 
         Mail::to('vpacha@outlook.es')->queue(new MessageReceived($message));
 
-        return 'Mensaje Enviado';
+        return back()->with('status', 'Recibimos tu solicitud, espera aprobación');
     }
 }

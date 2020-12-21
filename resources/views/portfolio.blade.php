@@ -1,9 +1,9 @@
 @extends('layout')
 
-@section('title', 'portfolio')
+@section('title', 'vacaciones')
 
 @section('content')
-    <h1>Portfolio</h1>
+    <h1>Vacaciones</h1>
 
     <ul>
         @forelse ($portfolio as $portfolioItem)

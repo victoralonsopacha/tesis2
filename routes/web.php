@@ -3,7 +3,7 @@
 //use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
-Route::view('/quienes somos', 'about')->name('about');
+Route::view('/justificaciones', 'about')->name('about');
 
 //ORDEN DE LAS RUTAS SI ES IMPORTANTE
 Route::get('/portfolio', 'PortfolioController@index')->name('portfolio');
@@ -19,6 +19,6 @@ Route::get('/users/{user}','UserController@show')->name('users.show');
 //BORRAR
 Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
 
-Route::view('/contacto', 'contact')->name('contact');
-Route::post('contact', 'MessageController@store')->name('messages.store');
+Route::view('/permisos', 'permisos')->name('permisos');
+Route::post('permisos', 'MessageController@store')->name('messages.store');
 

@@ -1,9 +1,9 @@
 @extends('layout')
 
-@section('title', 'Contact')
+@section('title', 'Permisos')
 
 @section('content')
-    <h1>Contact</h1>
+    <h1>Permisos</h1>
 
 
     <form method="POST" action="{{route('messages.store')}}">
