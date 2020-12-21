@@ -10,6 +10,8 @@ Route::get('/portfolio', 'PortfolioController@index')->name('portfolio');
 
 Route::get('/users/index','UserController@index')->name('users.index');
 Route::get('/users/crear','UserController@create')->name('users.create');
+Route::get('/users/{user}/editar','UserController@edit')->name('users.edit');
+Route::patch('/users/{user}','UserController@update')->name('users.update');
 
 Route::post('/users', 'UserController@store')->name('users.store');
 

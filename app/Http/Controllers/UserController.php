@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Requests\SaveUserRequest;
 //use DB;
 
 class UserController extends Controller
@@ -34,21 +35,11 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
-    public function store()
+     */ 
+    public function store(SaveUserRequest $request)
     {
-        
-        User::create([
-            'name' => request('name'),
-            'last_name' => request('last_name'),
-            'email' => request('email'),
-            'password' => request('password'),
-            'cedula' => request('cedula'),
-            'tipo_relacion_laboral' => request('tipo_relacion_laboral'),
-            'cargo' => request ('cargo'),
-            'fecha_ingreso' => request('fecha_ingreso')
-        ]);
-
+        //FORMA DIFERENTE PARA IMMPEDIR LA ASIGNACION MASIVA
+        User::create($request->validated());
         return redirect()->route('users.index');
             
         //return request();
@@ -70,14 +61,16 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * LLENA LOS CAMPOS DEL FORMULARIO PARA EMPEZAR A EDITARLO.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', [
+            'user' => $user 
+        ]);
     }
 
     /**
@@ -87,9 +80,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user, SaveUserRequest $request)
     {
-        //
+        $user->update( $request->validated() );
+
+        return redirect()->route('users.show', $user);
     }
 
     /**

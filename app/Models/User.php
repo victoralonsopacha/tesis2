@@ -16,7 +16,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
+
+     //SOLO ESTOS CAMPOS SE VAN A ACTALIZAR O CREAR EN LA BASE
+    /*
+     protected $fillable = [
         'name',
         'last_name',
         'email',
@@ -26,7 +29,10 @@ class User extends Authenticatable
         'cargo',
         'fecha_ingreso'
 
-    ];
+    ];*/
+
+    //DESAHABILITAR ASIGNACION MASIVA
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
