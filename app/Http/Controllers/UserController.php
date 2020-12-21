@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 //use DB;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         $usersl= User::get();
-        return view('users', compact('usersl'));
+        return view('users.index', compact('usersl'));
     }
 
     /**
@@ -26,7 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -35,9 +35,24 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        
+        User::create([
+            'name' => request('name'),
+            'last_name' => request('last_name'),
+            'email' => request('email'),
+            'password' => request('password'),
+            'cedula' => request('cedula'),
+            'tipo_relacion_laboral' => request('tipo_relacion_laboral'),
+            'cargo' => request ('cargo'),
+            'fecha_ingreso' => request('fecha_ingreso')
+        ]);
+
+        return redirect()->route('users.index');
+            
+        //return request();
+
     }
 
     /**
@@ -46,10 +61,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         return view('users.show', [
-            'user' => User::find($id)
+            'user' => $user 
+            //'user' => User::findOrFail($id)
         ]);
     }
 
