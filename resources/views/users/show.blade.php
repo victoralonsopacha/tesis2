@@ -7,6 +7,11 @@
 
     <a href="{{ route('users.edit', $user) }}">Editar</a>
 
+    <form action="{{route('users.destroy', $user)}}" method="POST">
+        @csrf @method('DELETE')
+        <button>Eliminar</button>
+    </form>
+
     <p>{{$user->cargo}}</p>
     <p>{{$user->fecha_ingreso}}</p>
 @endsection

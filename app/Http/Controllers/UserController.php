@@ -27,7 +27,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('users.create',[
+            'user' => new User
+        ]);
     }
 
     /**
@@ -93,8 +95,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 }
