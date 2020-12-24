@@ -3,22 +3,26 @@
 //use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
-Route::view('/justificaciones', 'about')->name('about');
+Route::view('/justificaciones', 'about')->name('about')->middleware('auth');
 
 //ORDEN DE LAS RUTAS SI ES IMPORTANTE
-Route::get('/portfolio', 'PortfolioController@index')->name('portfolio');
+Route::get('/portfolio', 'PortfolioController@index')->name('portfolio')->middleware('auth');
 //MOSTRAR INICIO, EDITAR, ACTUALIZAR
-Route::get('/users/index','UserController@index')->name('users.index');
-Route::get('/users/crear','UserController@create')->name('users.create');
-Route::get('/users/{user}/editar','UserController@edit')->name('users.edit');
-Route::patch('/users/{user}','UserController@update')->name('users.update');
+Route::get('/users/index','UserController@index')->name('users.index')->middleware('auth');
+Route::get('/users/crear','UserController@create')->name('users.create')->middleware('auth');
+Route::get('/users/{user}/editar','UserController@edit')->name('users.edit')->middleware('auth');
+Route::patch('/users/{user}','UserController@update')->name('users.update')->middleware('auth');
 //GUARDAR
-Route::post('/users', 'UserController@store')->name('users.store');
+Route::post('/users', 'UserController@store')->name('users.store')->middleware('auth');
 //MOSTRAR
-Route::get('/users/{user}','UserController@show')->name('users.show');
+Route::get('/users/{user}','UserController@show')->name('users.show')->middleware('auth');
 //BORRAR
-Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy')->middleware('auth');
 
-Route::view('/permisos', 'permisos')->name('permisos');
-Route::post('permisos', 'MessageController@store')->name('messages.store');
+Route::view('/permisos', 'permisos')->name('permisos')->middleware('auth');
+Route::post('permisos', 'MessageController@store')->name('messages.store')->middleware('auth');
 
+
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

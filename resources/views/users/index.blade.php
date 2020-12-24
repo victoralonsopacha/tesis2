@@ -4,7 +4,10 @@
     
 @section('content')
     <h1>Users</h1>
-    <a href="{{ route('users.create') }}">Crear Usuario</a>
+    {{--@auth--}}
+        <a href="{{ route('users.create') }}">Crear Usuario</a>
+    {{--@endauth--}}
+    
     <ul>
         @forelse ($usersl as $userItem)
             <li><a href="{{ route('users.show', $userItem) }}">{{ $userItem->name }} <br><small>{{ $userItem->last_name }}</small></a></li>
