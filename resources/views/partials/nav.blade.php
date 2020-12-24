@@ -8,8 +8,9 @@
         <li class=" nav-item {{setActive('home')}}"><a href="{{ route('home') }}">Home</a></li>
         <li class="{{setActive('about')}}"><a class="nav-link" href="{{ route('about') }}">Justificiones</a></li>
         <li class="{{setActive('portfolio') }}"><a href="/portfolio">Vacaciones</a></li>
-        <li class="{{setActive('permisos')}}"><a href="{{ route('permisos') }}">Permisos</a></li>  
+        {{-- <li class="{{setActive('permisos.*')}}"><a href="{{ route('permisos.index') }}">Permisos</a></li>  --}}
         <li class="{{setActive('users.*')}}"><a href="{{ route('users.index') }}">Usuarios</a></li>
+        <li class="{{setActive('permisos.*')}}"><a href="{{ route('permisos.index') }}">Permisos</a></li>
         
         @guest
             <li><a href="{{route('login')}}">Login</a></li>

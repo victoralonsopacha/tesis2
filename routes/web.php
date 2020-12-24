@@ -26,3 +26,18 @@ Route::post('permisos', 'MessageController@store')->name('messages.store')->midd
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//CRUD PERMISOS
+
+//MOSTRAR INICIO, EDITAR, ACTUALIZAR
+Route::get('/permisos/index','PermisoController@index')->name('permisos.index')->middleware('auth');
+Route::get('/permisos/crear','PermisoController@create')->name('permisos.create')->middleware('auth');
+Route::get('/permisos/{permiso}/editar','PermisoController@edit')->name('permisos.edit')->middleware('auth');
+Route::patch('/permisos/{permiso}','PermisoController@update')->name('permisos.update')->middleware('auth');
+//GUARDAR
+Route::post('/permisos', 'PermisoController@store')->name('permisos.store')->middleware('auth');
+//MOSTRAR
+Route::get('/permisos/{permiso}','PermisoController@show')->name('permisos.show')->middleware('auth');
+//BORRAR
+Route::delete('/permisos/{permiso}', 'PermisoController@destroy')->name('permisos.destroy')->middleware('auth');

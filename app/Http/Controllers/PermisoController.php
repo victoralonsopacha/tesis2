@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permiso;
+
 use Illuminate\Http\Request;
 
-class PortfolioController extends Controller
+use App\Http\Requests\SavePermisoRequet;
+
+class PermisoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,13 +17,8 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolio = [
-            ['title' => 'Proyecto 1'],
-            ['title' => 'Proyecto 2'],
-            ['title' => 'Proyecto 3'],
-            ['title' => 'Proyecto 4'], 
-        ];
-        return view('portfolio', compact('portfolio'));
+        $permisosl= Permiso::get();
+        return view('permisos.index', compact('permisosl'));
     }
 
     /**
@@ -40,9 +39,10 @@ class PortfolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SavePermisoRequet $request)
     {
-        //
+        Permiso::create($request->validated());
+        return redirect()->route('permisos.index')->with('status', 'El permiso fue creado con exito');
     }
 
     /**
@@ -51,9 +51,12 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($permiso)
     {
-        //
+        return view('permisos.show', [
+            'permiso' => $permiso 
+            //'user' => User::findOrFail($id)
+        ]);
     }
 
     /**
@@ -62,9 +65,11 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($permiso)
     {
-        //
+        return view('permisos.edit', [
+            'permiso' => $permiso 
+        ]);
     }
 
     /**
@@ -74,9 +79,12 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Permiso $permiso, SavePermisoRequet $request)
     {
-        //
+        $permiso->update( $request->validated() );
+
+        return redirect()->route('permisos.show', $permiso)->with('status', 'El permiso ha sido actualizado con exito');
+
     }
 
     /**
@@ -85,8 +93,11 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permiso $permiso)
     {
-        //
+        $permiso->delete();
+
+        return redirect()->route('permisos.index')->with('status', 'El permiso ha sido eliminado');
+
     }
 }

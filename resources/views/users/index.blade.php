@@ -3,7 +3,7 @@
 @section('title', 'users')
     
 @section('content')
-    <h1>Users</h1>
+    <h1>Usuarios</h1>
     {{--@auth--}}
         <a href="{{ route('users.create') }}">Crear Usuario</a>
     {{--@endauth--}}
