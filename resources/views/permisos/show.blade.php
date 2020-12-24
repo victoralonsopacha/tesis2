@@ -7,7 +7,7 @@
 
     <a href="{{ route('permisos.edit', $permiso) }}">Editar</a>
 
-    <form action="{{route('permisos.destroy', $user)}}" method="POST">
+    <form action="{{route('permisos.destroy', $permiso)}}" method="POST">
         @csrf @method('DELETE')
         <button>Eliminar</button>
     </form>

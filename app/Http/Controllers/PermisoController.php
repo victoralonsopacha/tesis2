@@ -51,7 +51,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($permiso)
+    public function show(Permiso $permiso)
     {
         return view('permisos.show', [
             'permiso' => $permiso 
@@ -65,7 +65,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($permiso)
+    public function edit(Permiso $permiso)
     {
         return view('permisos.edit', [
             'permiso' => $permiso 
