@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermisoTable extends Migration
+class CreatePermisosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePermisoTable extends Migration
      */
     public function up()
     {
-        Schema::create('permiso', function (Blueprint $table) {
+        Schema::create('permisos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_empleado');
+            $table->integer('cedula');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->time('hora_inicio');
@@ -33,6 +33,6 @@ class CreatePermisoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permiso');
+        Schema::dropIfExists('permisos');
     }
 }
