@@ -3,24 +3,24 @@
 //use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
-Route::view('/justificaciones', 'about')->name('about')->middleware('auth');
+Route::view('/justificaciones', 'about')->name('about');
 
 //ORDEN DE LAS RUTAS SI ES IMPORTANTE
-Route::get('/portfolio', 'PortfolioController@index')->name('portfolio')->middleware('auth');
+Route::get('/portfolio', 'PortfolioController@index')->name('portfolio');
 //MOSTRAR INICIO, EDITAR, ACTUALIZAR
-Route::get('/users/index','UserController@index')->name('users.index')->middleware('auth');
-Route::get('/users/crear','UserController@create')->name('users.create')->middleware('auth');
-Route::get('/users/{user}/editar','UserController@edit')->name('users.edit')->middleware('auth');
-Route::patch('/users/{user}','UserController@update')->name('users.update')->middleware('auth');
+Route::get('/users/index','UserController@index')->name('users.index');
+Route::get('/users/crear','UserController@create')->name('users.create');
+Route::get('/users/{user}/editar','UserController@edit')->name('users.edit');
+Route::patch('/users/{user}','UserController@update')->name('users.update');
 //GUARDAR
-Route::post('/users', 'UserController@store')->name('users.store')->middleware('auth');
+Route::post('/users', 'UserController@store')->name('users.store');
 //MOSTRAR
-Route::get('/users/{user}','UserController@show')->name('users.show')->middleware('auth');
+Route::get('/users/{user}','UserController@show')->name('users.show');
 //BORRAR
-Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy')->middleware('auth');
+Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
 
-Route::view('/permisos', 'permisos')->name('permisos')->middleware('auth');
-Route::post('permisos', 'MessageController@store')->name('messages.store')->middleware('auth');
+Route::view('/permisos', 'permisos')->name('permisos');
+Route::post('permisos', 'MessageController@store')->name('messages.store');
 
 
 Auth::routes();
