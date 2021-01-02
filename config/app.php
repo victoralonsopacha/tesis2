@@ -162,6 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        App\Providers\RouteServiceProvider::class,
+        //Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
+
         /*
          * Package Service Providers...
          */

@@ -1,22 +1,50 @@
-@extends('layout')
+@extends('adminlte::layouts.app')
 
-@section('title', 'Permisos | '.$permiso->cedula)
+@section('htmlheader_title')
+    {{ trans('adminlte_lang::message.home') }}
+@endsection
 
-@section('content')
-    <h1>{{ $permiso->cedula }}</h1>
 
-    <a href="{{ route('permisos.edit', $permiso) }}">Editar</a>
+@section('main-content')
+    <h1>PERMISO </h1>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="cedula" value="{{ $permiso->cedula }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Inicio</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="cedula" value="{{$permiso->fecha_inicio}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Fin</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="cedula" value="{{$permiso->fecha_fin}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Inicio</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="cedula" value="{{$permiso->hora_inicio}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Fin</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="cedula" value="{{$permiso->hora_fin}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Descripcion</label>
+        <div class="col-sm-6">
+            <input type="textarea" class="form-control" name="cedula" value="{{$permiso->descripcion}}">
+        </div>
+    </div>
 
-    <form action="{{route('permisos.destroy', $permiso)}}" method="POST">
-        @csrf @method('DELETE')
-        <button>Eliminar</button>
-    </form>
 
-    <p>{{$permiso->fecha_inicio}}</p>
-    <p>{{$permiso->fecha_fin}}</p>
-    <p>{{$permiso->hora_inicio}}</p>
-    <p>{{$permiso->hora_fin}}</p>
-    <textarea name="descripcion" id="" cols="30" rows="10">{{$permiso->descripcion}}</textarea>
-    
+
 @endsection
 

@@ -1,26 +1,38 @@
-@extends('layout')
+@extends('adminlte::layouts.app')
 
-@section('title', 'Permisos')
+@section('htmlheader_title')
+    {{ trans('adminlte_lang::message.home') }}
+@endsection
 
-@section('content')
-    <h1>Permisos</h1>
+
+@section('main-content')
+    <div class="container-fluid spark-screen">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+                <!-- Default box -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Home</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                <i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                            <h1>Permisos</h1>
 
 
-    <form method="POST" action="{{route('messages.store')}}">
-        @csrf
-    <input name="name" placeholder="Nombre.." value="{{ old('name') }}"><br>
-        {!!$errors->first('name', '<small>:message</small>')!!}<br>
 
-    <input name="email" placeholder="Email.." value="{{ old('email') }}"><br>
-        {!!$errors->first('email')!!}<br>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
 
-    <input name="subject" placeholder="Asunto.." value="{{ old('subject') }}"><br>
-        {!!$errors->first('subject')!!}<br>
-
-    <textarea name="content" placeholder="Menssaje">{{ old('content') }}</textarea><br>
-        {!!$errors->first('content')!!}<br>
-        <button>Enviar</button><br>
-        
-    </form>
-
+            </div>
+        </div>
+    </div>
 @endsection

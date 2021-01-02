@@ -1,34 +1,44 @@
-<label for="">
-    Cedula del usuario
-    <input type="text" name="cedula" value="{{ old('cedula', $permiso->cedula) }}">
-</label>
-<br>
-<label for="">
-    Fecha de Inicio
-    <input type="date" name="fecha_inicio" value="{{old('fecha_inicio', $permiso->fecha_inicio)}}">
-</label>
-<br>
-<label for="">
-    Fecha Fin
-    <input type="date" name="fecha_fin" value="{{old('fecha_fin', $permiso->fecha_fin)}}">
-</label>
-<br>
-<label for="">
-    Hora Inicio
-    <input type="time" name="hora_inicio" value="{{old('hora_inicio', $permiso->hora_inicio)}}">
-</label>
-<br>
-<label for="">
-    Hora Fin
-    <input type="time" name="hora_fin" value="{{old('hora_fin', $permiso->hora_fin)}}">
-</label>
-<br>
-<label for="">
-    Descripcion
-    <input type="text" name="descripcion" value="{{old('descripcion', $permiso->descripcion)}}">
-</label>
-<br>
-<label for="">
-    Tipo de permiso
-    <input type="text" name="tipo_permiso" value="{{old('tipo_permiso', $permiso->tipo_permiso)}}">
-</label>
+
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="cedula" value="{{ old('cedula', $permiso->cedula) }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de inicio</label>
+        <div class="col-sm-6">
+            <input type="date" class="form-control" name="fecha_inicio" value="{{old('fecha_inicio', $permiso->fecha_inicio)}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Fin</label>
+        <div class="col-sm-6">
+            <input type="date" class="form-control" name="fecha_fin" value="{{old('fecha_fin', $permiso->fecha_fin)}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Inicio</label>
+        <div class="col-sm-6">
+            <input type="time" class="form-control" name="hora_inicio" value="{{old('hora_inicio', $permiso->hora_inicio)}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Fin</label>
+        <div class="col-sm-6">
+            <input type="time" class="form-control" name="hora_fin" value="{{old('hora_fin', $permiso->hora_fin)}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="descripcion" value="{{old('descripcion', $permiso->descripcion)}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="tipo_permiso" value="{{old('tipo_permiso', $permiso->tipo_permiso)}}">
+        </div>
+    </div>
+

@@ -1,23 +1,61 @@
-@extends('layout')
+@extends('adminlte::layouts.app')
 
-@section('title', 'permisos')
-    
-@section('content')
-    <h1>Permisos</h1>
+@section('htmlheader_title')
+    {{ trans('adminlte_lang::message.home') }}
+@endsection
+
+
+@section('main-content')
+    <h1>GESTIONAR PERMISOS</h1>
     {{--@auth--}}
-        <a href="{{ route('permisos.create') }}">Crear Permiso</a>
+    <a href="{{ route('permisos.create') }}">Crear Permiso</a>
     {{--@endauth--}}
-    
-    <ul>
-        @forelse ($permisosl as $permisoItem)
-            <li><a href="{{ route('permisos.show', $permisoItem) }}">{{ $permisoItem->cedula }} <br><small>{{ $permisoItem->hora_inicio }}</small>
-                <br><small>{{ $permisoItem->hora_fin }}</small>
-                <br><small>{{ $permisoItem->fecha_inicio }}</small>
-                <br><small>{{ $permisoItem->fecha_fin }}</small>
-                
-            </a></li>
-        @empty
-            <li>No hay mas permisos</li>
-        @endforelse
-    </ul>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Permisos</div>
+        <!-- Table -->
+        @if($permisosl->isEmpty())
+            <p>No existen registros</p>
+        @else
+            <table class="table table-responsive-md text-center">
+                <thead class="thead-tomate">
+                <tr>
+                    <th>Cedula</th>
+                    <th>Hora Inicio</th>
+                    <th>Hora Fin</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($permisosl as $permisoItem)
+                    <tr>
+                        <td>{!! $permisoItem->cedula !!}</td>
+                        <td>{!! $permisoItem->hora_inicio !!}</td>
+                        <td>{!! $permisoItem->hora_fin !!}</td>
+                        <td>{!! $permisoItem->fecha_inicio!!}</td>
+                        <td>{!! $permisoItem->fecha_fin!!}</td>
+                        <td>
+                            <a href="{{ route('permisos.edit', $permisoItem) }}">Editar</a>
+                        </td>
+                        <td>
+                            <a href="#">Justificación</a>
+                        </td>
+                        <td>
+                            <form action="{{route('permisos.destroy', $permisoItem)}}" method="POST">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="btn btn-xs btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @endif
+
+    </div>
+
 @endsection

@@ -15,10 +15,15 @@ class PermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $permisosl= Permiso::get();
-        return view('permisos.index', compact('permisosl'));
+        return view('permisos.index',compact('permisosl'));
     }
 
     /**
@@ -28,9 +33,8 @@ class PermisoController extends Controller
      */
     public function create()
     {
-        return view('permisos.create',[
-            'permiso' => new Permiso
-        ]);
+        return view('permisos.create',
+            ['permiso' => new Permiso]);
     }
 
     /**
@@ -54,7 +58,7 @@ class PermisoController extends Controller
     public function show(Permiso $permiso)
     {
         return view('permisos.show', [
-            'permiso' => $permiso 
+            'permiso' => $permiso
             //'user' => User::findOrFail($id)
         ]);
     }
@@ -67,9 +71,8 @@ class PermisoController extends Controller
      */
     public function edit(Permiso $permiso)
     {
-        return view('permisos.edit', [
-            'permiso' => $permiso 
-        ]);
+        return view('permisos.edit',
+            ['permiso' => $permiso ]);
     }
 
     /**
