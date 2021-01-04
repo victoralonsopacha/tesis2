@@ -1,4 +1,7 @@
 
+        <input type="text" class="form-control" name="cedula" value="{{ old('cedula', $permiso->cedula) }}">
+    </div>
+</div>
     <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
         <div class="col-sm-6">
