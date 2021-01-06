@@ -60,3 +60,10 @@ Route::group(['middleware' => 'auth'], function () {
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
 });
+
+
+//RUTAS PARA CARBAR EXCEL
+
+Route::get('import-form', 'TimbradaController@importForm')->name('import-form');
+
+Route::post('import-form', 'TimbradaController@import')->name('import');
