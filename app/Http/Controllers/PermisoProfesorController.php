@@ -16,12 +16,23 @@ class PermisoProfesorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $permisosl= PermisoProfesor::where('cedula','=',$request->cedula)->get();
+        return view('permiso_profesors.index',compact('permisosl'));
+
+        /*
         $permisosl= PermisoProfesor::get();
         return view('permiso_profesors.index',compact('permisosl'));
+        */
     }
 
+    public function inicio(){
+        $permisosl= PermisoProfesor::get();
+        return view('permiso_profesors.principal',compact('permisosl'));
+    }
+  
     /**
      * Show the form for creating a new resource.
      *
@@ -52,7 +63,7 @@ class PermisoProfesorController extends Controller
 
         PermisoProfesor::create($entrada);
 
-        return redirect()->route('permiso_profesors.index')->with('status', 'El permiso fue creado con exito');
+        return redirect()->route('permiso_profesors.index',$request->cedula)->with('status', 'El permiso fue creado con exito');
 
         //PermisoProfesor::create($request->validated());
         //return redirect()->route('permiso_profesors.index')->with('status', 'El permiso fue creado con exito');
@@ -70,6 +81,7 @@ class PermisoProfesorController extends Controller
             'permiso_profesor' => $permiso_profesor
             //'user' => User::findOrFail($id)
         ]);
+        
     }
 
     /**

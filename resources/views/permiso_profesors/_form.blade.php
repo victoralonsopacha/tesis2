@@ -1,19 +1,8 @@
-
-@auth
-<h1>{{auth()->user()->cedula}}</h1>
-
-@endauth
-<div class="form-group row">
-<label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
-<div class="col-sm-6">
-    @auth
-{{auth()->user()->cedula}}
-@endauth
-
     <div class="form-group row">
+
         <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="cedula" value="{{ old('cedula', $permiso_profesor->cedula) }}">
+            <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}">
         </div>
     </div>
     <div class="form-group row">

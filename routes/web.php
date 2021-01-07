@@ -34,7 +34,8 @@ Route::get('/permisos/{permiso}','PermisoController@show')->name('permisos.show'
 //----------------------------------------------
 //CRUD PERMISOS PROFESORES
 //MOSTRAR INICIO, EDITAR, ACTUALIZAR
-Route::get('/permiso_profesors/index','PermisoProfesorController@index')->name('permiso_profesors.index')->middleware('auth');
+Route::get('/permiso_profesors/principal','PermisoProfesorController@inicio')->name('permiso_profesors.principal')->middleware('auth');
+Route::get('/permiso_profesors/{permiso_profesor}/index','PermisoProfesorController@index')->name('permiso_profesors.index')->middleware('auth');
 Route::get('/permiso_profesors/crear','PermisoProfesorController@create')->name('permiso_profesors.create')->middleware('auth');
 Route::get('/permiso_profesors/{permiso_profesor}/editar','PermisoProfesorController@edit')->name('permiso_profesors.edit')->middleware('auth');
 Route::get('/permiso_profesors/{permiso_profesor}/eliminar','PermisoProfesorController@destroy')->name('permiso_profesors.destroy')->middleware('auth');
@@ -46,7 +47,7 @@ Route::get('/permiso_profesors/{permiso_profesor}','PermisoProfesorController@sh
 //BORRAR
 Route::delete('/permiso_profesors/{permiso_profesor}', 'PermisoProfesorController@destroy')->name('permiso_profesors.destroy')->middleware('auth');
 
-
+ 
 //CRUD JUSTIFICACION
 Route::get('/justificacion/index','JustificacionController@index')->name('justificacion.index');
 

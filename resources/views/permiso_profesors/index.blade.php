@@ -12,13 +12,13 @@
     {{--@endauth--}}
 
     @auth
-    <h1>Cedula Usuario: {{auth()->user()->cedula}}</h1>        
+    <h1>Cedula Usuario: {{$cedula=auth()->user()->cedula}}</h1>        
     @endauth
 
     <div class="panel panel-default">
-        <!-- Default panel contents -->
+         
         <div class="panel-heading">Permisos</div>
-        <!-- Table -->
+         
         @if($permisosl->isEmpty())
             <p>No existen registros</p>
         @else
@@ -64,5 +64,7 @@
         @endif
 
     </div>
+
+
 
 @endsection
