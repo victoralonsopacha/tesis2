@@ -19,7 +19,8 @@ class PermisoProfesorController extends Controller
     public function index(Request $request)
     {
 
-        $permisosl= PermisoProfesor::where('cedula','=',$request->cedula)->get();
+        $cedula = auth()->user()->cedula;
+        $permisosl= PermisoProfesor::where('cedula','=',$cedula)->get();
         return view('permiso_profesors.index',compact('permisosl'));
 
         /*

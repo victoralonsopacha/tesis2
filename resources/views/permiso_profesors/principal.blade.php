@@ -9,12 +9,12 @@
     <h1>GESTIONAR PERMISOS</h1>
 
     @auth
-    <h1>Cedula Usuario: {{$cedula=auth()->user()->cedula}}</h1>        
+    <h1>Cedula Usuario: {{auth()->user()->cedula}}</h1>        
     @endauth
     
     <a href="{{ route('permiso_profesors.create') }}">Crear Permiso</a>
     <br>
-    <a href="/permiso_profesors/{{$cedula=auth()->user()->cedula}}/index">Ver permisos</a>
+    <a href="{{ route('permiso_profesors.index', ['permiso_profesor' => $permiso_profesor=auth()->user()->cedula]) }}">Ver permisos</a>
 
 
 
