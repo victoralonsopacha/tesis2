@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Permiso;
 
+use App\Models\PermisoProfesor;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\SavePermisoRequet;
@@ -22,7 +23,7 @@ class PermisoController extends Controller
 
     public function index()
     {
-        $permisosl= Permiso::get();
+        $permisosl= PermisoProfesor::get();
         return view('permisos.index',compact('permisosl'));
     }
 
@@ -34,7 +35,7 @@ class PermisoController extends Controller
     public function create()
     {
         return view('permisos.create',
-            ['permiso' => new Permiso]);
+            ['permiso' => new PermisoProfesor]);
     }
 
     /**
@@ -45,8 +46,15 @@ class PermisoController extends Controller
      */
     public function store(SavePermisoRequet $request)
     {
-        Permiso::create($request->validated());
-        return redirect()->route('permisos.index')->with('status', 'El permiso fue creado con exito');
+        $request->validated();
+        $entrada=$request->all();
+        if($archivo=$request->file('file')){
+            $nombre_imagen=$archivo->getClientOriginalName();
+            $archivo->move('public',$nombre_imagen);
+            $entrada['file']=$nombre_imagen;
+        }
+        PermisoProfesor::create($entrada);
+        return redirect()->route('permisos.index',$request->cedula)->with('status', 'El permiso fue creado con exito');
     }
 
     /**
@@ -55,12 +63,23 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Permiso $permiso)
+    public function show(PermisoProfesor $permiso)
     {
         return view('permisos.show', [
             'permiso' => $permiso
             //'user' => User::findOrFail($id)
         ]);
+    }
+    public function edit(PermisoProfesor $permiso)
+    {
+        return view('permisos.edit',
+            ['permiso' => $permiso ]);
+    }
+
+    public function justificar(PermisoProfesor $permiso)
+    {
+        return view('permisos.justificar',
+            ['permiso' => $permiso ]);
     }
 
     /**
@@ -69,11 +88,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permiso $permiso)
-    {
-        return view('permisos.edit',
-            ['permiso' => $permiso ]);
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -82,21 +97,23 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Permiso $permiso, SavePermisoRequet $request)
+    public function update(SavePermisoRequet $request, $permiso)
     {
-        $permiso->update( $request->validated() );
+        if($permiso->estado == null){
+            return redirect()->route('permisos.index');
+        }
 
-        return redirect()->route('permisos.show', $permiso)->with('status', 'El permiso ha sido actualizado con exito');
+        //$permiso->update($request->all());
+        //return redirect()->route('permisos.index', $request)->with('status', 'El permiso ha sido actualizado con exito');
 
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permiso $permiso)
+    public function destroy(PermisoProfesor $permiso)
     {
         $permiso->delete();
 

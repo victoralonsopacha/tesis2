@@ -1,7 +1,3 @@
-
-        <input type="text" class="form-control" name="cedula" value="{{ old('cedula', $permiso->cedula) }}">
-    </div>
-</div>
     <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
         <div class="col-sm-6">
@@ -44,4 +40,12 @@
             <input type="text" class="form-control" name="tipo_permiso" value="{{old('tipo_permiso', $permiso->tipo_permiso)}}">
         </div>
     </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Archivo Adjunto</label>
+        <div class="col-sm-6">
+            <input type="file" class="form-control" name="file" value="{{old('file', $permiso->file)}}">
+        </div>
+    </div>
+
+
 

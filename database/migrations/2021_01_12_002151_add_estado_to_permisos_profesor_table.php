@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleToUsersTable extends Migration
+class AddEstadoToPermisosProfesorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddRoleToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->after('email')->nullable();
+        Schema::table('permiso_profesors', function (Blueprint $table) {
+            //
+            $table->boolean('estado')->nullable()->after('tipo_permiso');
         });
     }
 
@@ -25,8 +26,9 @@ class AddRoleToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
+
+        Schema::table('permiso_profesors', function (Blueprint $table) {
+            $table->dropColumn('estado');
         });
     }
 }

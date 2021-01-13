@@ -37,13 +37,13 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function store(SaveUserRequest $request)
     {
         //FORMA DIFERENTE PARA IMMPEDIR LA ASIGNACION MASIVA
         User::create($request->validated());
         return redirect()->route('users.index')->with('status', 'El usuario fue creado con exito');
-            
+
         //return request();
 
     }
@@ -57,7 +57,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         return view('users.show', [
-            'user' => $user 
+            'user' => $user
             //'user' => User::findOrFail($id)
         ]);
     }
@@ -71,7 +71,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         return view('users.edit', [
-            'user' => $user 
+            'user' => $user
         ]);
     }
 

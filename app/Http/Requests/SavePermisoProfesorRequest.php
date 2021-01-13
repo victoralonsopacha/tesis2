@@ -30,7 +30,7 @@ class SavePermisoProfesorRequest extends FormRequest
             'hora_inicio' => 'required',
             'hora_fin' => 'required',
             'descripcion' => 'required',
-            'tipo_permiso' => 'required'
+            'tipo_permiso' => 'required',
         ];
     }
 

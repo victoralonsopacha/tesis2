@@ -1,13 +1,16 @@
-@extends('layout')
+@extends('adminlte::layouts.app')
 
-@section('title', 'users')
-    
-@section('content')
+@section('htmlheader_title')
+    {{ trans('adminlte_lang::message.home') }}
+@endsection
+
+@section('main-content')
+
     <h1>Usuarios</h1>
     {{--@auth--}}
-        <a href="{{ route('users.create') }}">Crear Usuario</a>
+        <!--a href="{{ route('users.create') }}">Crear Usuario</a-->
     {{--@endauth--}}
-    
+
     <ul>
         @forelse ($usersl as $userItem)
             <li><a href="{{ route('users.show', $userItem) }}">{{ $userItem->name }} <br><small>{{ $userItem->last_name }}</small></a></li>

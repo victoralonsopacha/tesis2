@@ -37,19 +37,13 @@
                         <td>{!! $permisoItem->hora_fin !!}</td>
                         <td>{!! $permisoItem->fecha_inicio!!}</td>
                         <td>{!! $permisoItem->fecha_fin!!}</td>
+
                         <td>
                             <a href="{{ route('permisos.edit', $permisoItem) }}">Editar</a>
                         </td>
                         <td>
-                            <a href="#">Justificación</a>
+                            <a href="{{ route('permisos.justificar', $permisoItem) }}">Justificar</a>
                         </td>
-                        <td>
-                            <form action="{{route('permisos.destroy', $permisoItem)}}" method="POST">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="btn btn-xs btn-danger">Eliminar</button>
-                            </form>
-                        </td>
-
                     </tr>
                 @endforeach
                 </tbody>

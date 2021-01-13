@@ -14,12 +14,12 @@ class AddCedulaToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('cedula');
-            $table->integer('tipo_relacion_laboral');
-            $table->string('cargo');
-            $table->date('fecha_ingreso');
-            $table->date('fecha_salida');
-            $table->string('last_name')->after('name');
+            $table->integer('cedula')->nullable();
+            $table->integer('tipo_relacion_laboral')->nullable();
+            $table->string('cargo')->nullable();
+            $table->date('fecha_ingreso')->nullable();
+            $table->date('fecha_salida')->nullable();
+            $table->string('last_name')->after('name')->nullable();
         });
     }
 

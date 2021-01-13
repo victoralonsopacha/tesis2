@@ -16,6 +16,11 @@ class PermisoProfesorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
 
@@ -33,7 +38,7 @@ class PermisoProfesorController extends Controller
         $permisosl= PermisoProfesor::get();
         return view('permiso_profesors.principal',compact('permisosl'));
     }
-  
+
     /**
      * Show the form for creating a new resource.
      *
@@ -82,7 +87,7 @@ class PermisoProfesorController extends Controller
             'permiso_profesor' => $permiso_profesor
             //'user' => User::findOrFail($id)
         ]);
-        
+
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreataPermisoProfesorsTable extends Migration
+class CreatePermisosProfesorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,6 +22,7 @@ class CreataPermisoProfesorsTable extends Migration
             $table->time('hora_fin');
             $table->text('descripcion');
             $table->string('tipo_permiso');
+            $table->string('file');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreataPermisoProfesorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permisos_profesors');
+        Schema::dropIfExists('permiso_profesors');
     }
 }

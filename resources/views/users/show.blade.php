@@ -1,8 +1,10 @@
-@extends('layout')
+@extends('adminlte::layouts.app')
 
-@section('title', 'Usuarios | '.$user->name)
+@section('htmlheader_title')
+    {{ trans('adminlte_lang::message.home') }}
+@endsection
 
-@section('content')
+@section('main-content')
     <h1>{{ $user->name }} {{$user->last_name}}</h1>
 
     <a href="{{ route('users.edit', $user) }}">Editar</a>

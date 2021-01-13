@@ -9,9 +9,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-<<<<<<< HEAD
+
             <div class="collapse navbar-collapse" id="navbarText">
-=======
+
     <ul class="nav nav-pills">
         <li class=" nav-item {{setActive('home')}}"><a href="{{ route('home') }}">Home</a></li>
         <li class="{{setActive('about')}}"><a class="nav-link" href="{{ route('about') }}">Justificiones</a></li>
@@ -19,15 +19,15 @@
         {{-- <li class="{{setActive('permisos.*')}}"><a href="{{ route('permisos.index') }}">Permisos</a></li>  --}}
         <li class="{{setActive('users.*')}}"><a href="{{ route('users.index') }}">Usuarios</a></li>
         <li class="{{setActive('permisos.*')}}"><a href="{{ route('permisos.index') }}">Permisos</a></li>
-        
+
         @guest
             <li><a href="{{route('login')}}">Login</a></li>
             @else
             <li><a href="#"onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">Cerrar Sesion</a></li>      
-        @endguest   
-        
->>>>>>> fb54b45b2dcd80737f544b723ee9aaa9906e1b46
+                document.getElementById('logout-form').submit();">Cerrar Sesion</a></li>
+        @endguest
+
+
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class=" nav-item {{setActive('home')}}">

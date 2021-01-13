@@ -33,25 +33,19 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('home2') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            @if(auth()->check())
-                @if(auth()->user()->role =='admin')
-                    <li><a href="#"><i class='fa fa-link'></i> <span>Atrasos</span></a></li>
-                    <li><a href="{{ route('justificacion.index') }}"><i class='fa fa-link'></i> <span>Justificaciones</span></a></li>
-                    @endif
-                    @if(auth()->user()->role =='inspector')
-                        <li><a href="{{ route('permisos.index') }}"><i class='fa fa-link'></i> <span>Permisos</span></a></li>
-                        <li><a href="#"><i class='fa fa-link'></i> <span>Atrasos</span></a></li>
-                        <li><a href="{{ route('justificacion.index') }}"><i class='fa fa-link'></i> <span>Justificaciones</span></a></li>
-                        <li class="treeview">
-                            <a href="#"><i class='fa fa-link'></i> <span>Atrasos</span> <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                                <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                            </ul>
-                        </li>
-                    @endif
-            @endif
+            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
+            @hasrole('Inspector')
+            <li><a href="{{ route('users.index') }}"><i class='fa fa-link'></i> <span>Usuarios</span></a></li>
+            <li><a href="{{ route('permisos.index') }}"><i class='fa fa-link'></i> <span>Permisos</span></a></li>
+            <li><a href="#"><i class='fa fa-link'></i> <span>Atrasos</span></a></li>
+            <li><a href="{{ route('justificacion.index') }}"><i class='fa fa-link'></i> <span>Justificaciones</span></a></li>
+            @else
+
+            @endhasrole
+            @hasrole('Profesor')
+            <li><a href="{{ route('permiso_profesors.principal') }}"><i class='fa fa-link'></i> <span>Mis Permisos</span></a></li>
+            @endhasrole
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
