@@ -12,8 +12,8 @@
 */
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
-
-//CRUD PERMISOS
+//ROL INSPECTOR
+//*CRUD PERMISOS*//
 //MOSTRAR INICIO, EDITAR, ACTUALIZAR
 Route::group(['middleware' => ['role:Inspector']], function () {
     Route::get('/permisos/index','PermisoController@index')->name('permisos.index');
@@ -45,12 +45,6 @@ Route::post('/permiso_profesors', 'PermisoProfesorController@store')->name('perm
 Route::get('/permiso_profesors/{permiso_profesor}','PermisoProfesorController@show')->name('permiso_profesors.show');
 //BORRAR
 Route::delete('/permiso_profesors/{permiso_profesor}', 'PermisoProfesorController@destroy')->name('permiso_profesors.destroy');
-
-
-//CRUD JUSTIFICACION
-Route::get('/justificacion/index','JustificacionController@index')->name('justificacion.index');
-
-
 
 
 //RUTAS PARA CARGAR EXCEL

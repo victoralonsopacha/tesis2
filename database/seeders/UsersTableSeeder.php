@@ -20,12 +20,19 @@ class UsersTableSeeder extends Seeder
             'email'     => 'inspector1@gmail.com',
             'password'     => bcrypt('12345'),
 
+
         ]);
         User::create([
             'name'      => 'Profesor1',
             'email'     => 'profesor1@gmail.com',
             'password'     => bcrypt('12345'),
+            'cedula' => '1721089645',
 
+        ]);
+        User::create([
+            'name'      => 'Admin',
+            'email'     => 'admin@gmail.com',
+            'password'     => bcrypt('admin'),
         ]);
 
         //User::factory()->count(7)->make();

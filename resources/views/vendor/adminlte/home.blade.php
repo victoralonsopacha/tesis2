@@ -25,11 +25,7 @@
 					<div class="box-body">
 						{{ trans('adminlte_lang::message.logged') }}
 
-                        @hasrole('Inspector')
-                        Soy un inspector
-                        @else
-                        Yo soy un profesor
-                        @endhasrole
+
                     </div>
 					<!-- /.box-body -->
 				</div>

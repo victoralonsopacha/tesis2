@@ -17,35 +17,29 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         //Permission list
-        Permission::create(['name' => 'permisos.index']);
-        Permission::create(['name' => 'permisos.create']);
-        Permission::create(['name' => 'permisos.edit']);
-        Permission::create(['name' => 'permisos.destroy']);
-        Permission::create(['name' => 'permisos.update']);
-        Permission::create(['name' => 'permisos.store']);
-        Permission::create(['name' => 'permisos.show']);
-
+        Permission::create(['name' => 'permisos.*']);
+        Permission::create(['name' => 'permiso_profesors.*']);
+        Permission::create(['name' => 'import-form']);
+        Permission::create(['name' => 'import']);
 
 
         //Inspector
         $inspector = Role::create(['name' => 'Inspector']);
         $profesor = Role::create(['name' => 'Profesor']);
+        $admin = Role::create(['name' => 'Admin']);
 
         $inspector->givePermissionTo([
-            'permisos.index',
-            'permisos.create',
-            'permisos.edit',
-            'permisos.destroy',
-            'permisos.update',
-            'permisos.store',
-            'permisos.show'
+            'permisos.*',
         ]);
 
         $profesor->givePermissionTo([
+            'permiso_profesors.*',
         ]);
-        //$admin->givePermissionTo('products.index');
-        //$admin->givePermissionTo(Permission::all());
 
+        $admin->givePermissionTo([
+            'import-form',
+            'import',
+        ]);
         //Guest
         $guest = Role::create(['name' => 'Guest']);
 
@@ -59,5 +53,8 @@ class PermissionsTableSeeder extends Seeder
 
         $user = User::find(2); //Profesor1
         $user->assignRole('Profesor');
+
+        $user = User::find(3); //Admin
+        $user->assignRole('Admin');
     }
 }

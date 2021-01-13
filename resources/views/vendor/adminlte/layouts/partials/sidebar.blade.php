@@ -34,13 +34,16 @@
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
+            @hasrole('Admin')
+            <li><a href="{{ route('users.index') }}"><i class='fa fa-link'></i> <span>Usuarios</span></a></li>
+            <li><a href="{{ route('import-form') }}"><i class='fa fa-link'></i> <span>Importar Archivo</span></a></li>
+
+            @endhasrole
             @hasrole('Inspector')
             <li><a href="{{ route('users.index') }}"><i class='fa fa-link'></i> <span>Usuarios</span></a></li>
             <li><a href="{{ route('permisos.index') }}"><i class='fa fa-link'></i> <span>Permisos</span></a></li>
             <li><a href="#"><i class='fa fa-link'></i> <span>Atrasos</span></a></li>
             <li><a href="{{ route('justificacion.index') }}"><i class='fa fa-link'></i> <span>Justificaciones</span></a></li>
-            @else
-
             @endhasrole
             @hasrole('Profesor')
             <li><a href="{{ route('permiso_profesors.principal') }}"><i class='fa fa-link'></i> <span>Mis Permisos</span></a></li>
