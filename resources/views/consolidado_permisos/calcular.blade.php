@@ -44,20 +44,20 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="'fecha_inicio'">
+                            <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
+                            <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="">
                             <input type="hidden" class="form-control" id='formato' name="formato" value=""  >
                         </div>
                     </div>
                     <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
                     <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">Ver Timbradas excel</a></button>
                 </form>
-  
+
             </li>
 
           </ul>
@@ -70,26 +70,27 @@
 
         <script>
           document.addEventListener("DOMContentLoaded", function() {
-          document.getElementById("formulariofecha").addEventListener('submit', validarFechas);     
+          document.getElementById("formulariofecha").addEventListener('submit', validarFechas);
            });
-
-
-
-          
-
-
 
         function validarFechas(evento) {
             evento.preventDefault();
-
-            
             var fecha_inicio = document.getElementById("fecha_inicio").value;
-            //$("#fecha_inicio").val();
-            var fecha_fin =  document.getElementById("fecha_fin").value;
-            //$("#fecha_fin").val();
+            var fecha_fin = document.getElementById("fecha_fin").value;
             var inicio = new Date(fecha_inicio);
-            var fin = new Date(fecha_fin); 
-            var fecha_actual = new Date();
+            var fin = new Date(fecha_fin);
+            var array_fechafin = fecha_fin.split("-");
+
+
+            var objFecha = new Date();
+            let DIA_EN_MILISEGUNDOS = 24 * 60 * 60 * 1000;
+            let manana = new Date(objFecha.getTime() + DIA_EN_MILISEGUNDOS);
+            var dia  = manana.getDate();
+            var mes  = manana.getMonth()+1;
+            var anio = manana.getFullYear();
+
+            var transfor_fechafin =new Date(array_fechafin[0],array_fechafin[1],array_fechafin[2]);
+            var transfor_fechamanana =new Date(anio,mes,dia);
 
 
             if(fecha_inicio.length == 0){
@@ -103,14 +104,13 @@
             if(inicio > fin){
                 alert("La fecha fin no puede ser menor");
                 return;
-            }     
-            if(fecha_actual<fin)
-            {
-                alert("No puede ingresar una fecha superior a la actual")
-            return;
             }
-          
-                this.submit();
+            if(transfor_fechamanana <= transfor_fechafin){
+                alert("La fecha fin no puede ser superior a la actual");
+                return;
+            }
+
+            this.submit();
         }
 
         function pfd() {
@@ -121,7 +121,7 @@
             var inputFormato = document.getElementById("formato");
             inputFormato.value = "EXCEL";
         }
-       
+
         </script>
 
 @endsection
