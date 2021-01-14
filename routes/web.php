@@ -78,3 +78,11 @@ $this->post('register', 'Auth\RegisterController@register');
 //Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email'); /*password.email*/
 //Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset'); /*password.reset*/
 //Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+ 
+
+
+//RUTAS PARA CALCULAR TIEMPOS
+
+Route::get('/calculo_tiempos/index','ControlTiempoController@index')->name('calculo_tiempos.index')->middleware('auth');
+Route::get('/calculo_tiempos/{user}/calcular','ControlTiempoController@show')->name('calculo_tiempos.calcular')->middleware('auth');
+Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@show')->name('calculo_tiempos.total')->middleware('auth');

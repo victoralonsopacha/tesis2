@@ -43,7 +43,7 @@
             <li><a href="{{ route('users.index') }}"><i class='fa fa-link'></i> <span>Usuarios</span></a></li>
             <li><a href="{{ route('permisos.index') }}"><i class='fa fa-link'></i> <span>Permisos</span></a></li>
             <li><a href="#"><i class='fa fa-link'></i> <span>Atrasos</span></a></li>
-            <li><a href="{{ route('justificacion.index') }}"><i class='fa fa-link'></i> <span>Justificaciones</span></a></li>
+            <!-- <li><a href=""><i class='fa fa-link'></i> <span>Justificaciones</span></a></li> -->
             @endhasrole
             @hasrole('Profesor')
             <li><a href="{{ route('permiso_profesors.principal') }}"><i class='fa fa-link'></i> <span>Mis Permisos</span></a></li>

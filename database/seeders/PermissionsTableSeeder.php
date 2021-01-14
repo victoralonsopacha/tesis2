@@ -29,7 +29,7 @@ class PermissionsTableSeeder extends Seeder
         $admin = Role::create(['name' => 'Admin']);
 
         $inspector->givePermissionTo([
-            'permisos.*',
+            'permiso_profesors.*',
         ]);
 
         $profesor->givePermissionTo([

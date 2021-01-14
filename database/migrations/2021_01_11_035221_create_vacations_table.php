@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHorarioTable extends Migration
+class CreateVacationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateHorarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('horario', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('id_usuario');
-            $table->time('hora_entrada');
-            $table->time('hora_salida');
-            $table->string('tipo');
+        Schema::create('vacations', function (Blueprint $table) {
+            $table->id();
+            $table->integer('id_empleado');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->text('descripcion');
+            $table->integer('num_dias');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateHorarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('horario');
+        Schema::dropIfExists('vacations');
     }
 }
