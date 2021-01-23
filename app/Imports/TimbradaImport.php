@@ -21,6 +21,7 @@ class TimbradaImport implements ToModel,WithHeadingRow
             'nombre' => $row['nombre'],
             'tiempo' => $row['tiempo'],
             'fecha' => $row['fecha'],
+            'estado'=> $row['estado']
             
         ]);
     }

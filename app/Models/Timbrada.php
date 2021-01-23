@@ -15,6 +15,7 @@ class Timbrada extends Model
         'cedula',
         'nombre',
         'tiempo',
-        'fecha'
+        'fecha',
+        'estado'
     ];
 }

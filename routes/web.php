@@ -26,6 +26,7 @@ Route::group(['middleware' => ['role:Inspector']], function () {
     //MOSTRAR
     Route::get('/permisos/{permiso}','PermisoController@show')->name('permisos.show');
 
+
 });
 //JUSTIFICAR
 Route::get('/permisos/{permiso}/justificar','PermisoController@justificar')->name('permisos.justificar');
@@ -48,20 +49,27 @@ Route::delete('/permiso_profesors/{permiso_profesor}', 'PermisoProfesorControlle
 
 
 //RUTAS PARA CARGAR EXCEL
-
 Route::get('import-form', 'TimbradaController@importForm')->name('import-form');
 Route::post('import-form', 'TimbradaController@import')->name('import');
+
+//RUTAS PARA CREAR HORARIOS
+Route::get('/horarios/index', 'HorarioController@index')->name('horarios.index')->middleware('auth');
+Route::get('/horarios/{user}/crear', 'HorarioController@create')->name('horarios.create')->middleware('auth');
+Route::get('/horarios/{user}/editar', 'HorarioController@edit')->name('horarios.edit')->middleware('auth');
+Route::get('/horarios/{user}','HorarioController@show')->name('horarios.show')->middleware('auth');
+Route::post('/horarios', 'HorarioController@store')->name('horarios.store')->middleware('auth');
+Route::patch('/horarios/{user}','HorarioController@update')->name('horarios.update')->middleware('auth');
 
 
 //RUTAS CRUD USUARIOS
 //Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::get('user', 'UserController@index')->name('users.index')->middleware('auth');;
-Route::get('user/crear', 'UserController@create')->name('users.create');
-Route::get('/user/{user}/editar','UserController@edit')->name('users.edit');
-Route::get('/user/{user}/eliminar','UserController@destroy')->name('users.destroy');
-Route::get('/user/{user}','UserController@show')->name('users.show');
-Route::post('/user', 'UserController@store')->name('users.store');
-Route::patch('/user/{user}','UserController@update')->name('users.update');
+Route::get('/users/index', 'UserController@index')->name('users.index')->middleware('auth');;
+Route::get('/users/crear', 'UserController@create')->name('users.create');
+Route::get('/users/{user}/editar','UserController@edit')->name('users.edit');
+Route::get('/users/{user}/eliminar','UserController@destroy')->name('users.destroy');
+Route::get('/users/{user}','UserController@show')->name('users.show');
+Route::post('/users', 'UserController@store')->name('users.store');
+Route::patch('/users/{user}','UserController@update')->name('users.update');
 
 
 //RUTAS AUTENTICACION
@@ -85,4 +93,13 @@ $this->post('register', 'Auth\RegisterController@register');
 
 Route::get('/calculo_tiempos/index','ControlTiempoController@index')->name('calculo_tiempos.index')->middleware('auth');
 Route::get('/calculo_tiempos/{user}/calcular','ControlTiempoController@show')->name('calculo_tiempos.calcular')->middleware('auth');
-Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@show')->name('calculo_tiempos.total')->middleware('auth');
+Route::get('/calculo_tiempos/total','ControlTiempoController@total')->name('calculo_tiempos.total')->middleware('auth');
+
+
+
+
+
+
+
+
+
