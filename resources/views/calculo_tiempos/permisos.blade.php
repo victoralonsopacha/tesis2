@@ -6,7 +6,7 @@
 
 
 @section('main-content')
-    <h1>HORAS TOTALES</h1>
+    <h1>PERMISOS TOTALES</h1>
 
 
     <div class="card text-center">
@@ -17,20 +17,16 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $user->cedula }}</label>
+                        @foreach ($consulta as $itemconsulta)
+                            <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta->cedula }}</label>
+                        
+                        
                     </div>
                 </div>      
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Nombre</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $user->name }}</label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-5 col-form-label">Cargo</label>
-                    <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $user->cargo }}</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta->name }}</label>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -46,15 +42,11 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-5 col-form-label">ATRASOS</label>
-                    <div class="col-sm-6">
-                        <input type="input" class="form-control" name="date" value="3">
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS APROBADOS</label>
                     <div class="col-sm-6">
-                        <input type="input" class="form-control" name="date" value=" ">
+                        <input type="input" class="form-control" name="date" value="{{$itemconsulta->permisos}}">
+
+                        @endforeach
                     </div>
                 </div>
             </li>

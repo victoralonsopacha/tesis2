@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 class ControlTiempoController extends Controller
 {
@@ -54,15 +56,14 @@ class ControlTiempoController extends Controller
      */
     public function show(User $user)
     {
-        return view('calculo_tiempos.calcular', [
-            'user' => $user 
-            //'user' => User::findOrFail($id)
-        ]);
+        return view('calculo_tiempos.calcular',
+           ['user' => $user]
+        );
     }
 
-    public function total(User $user)
+    public function total(Request $request, User $user)
     {
-        return view('calculo_tiempos.total');
+        return view('calculo_tiempos.total',['user' => $request]);
     }
 
     /**
@@ -103,4 +104,22 @@ class ControlTiempoController extends Controller
         $categorias = User::sum('tiempo')->groupBy('cedula')->get();
 
     }
+
+
+
+
+    public function suma_permisos(User $user){
+        
+        //$user->cedula; 
+        $ced_usuario = $user->cedula;
+        
+        $consulta= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' GROUP BY u.name, u.last_name');
+        return view('calculo_tiempos.permisos', 
+        ['consulta' => $consulta]
+        
+    );
+
+
+    }
+
 }

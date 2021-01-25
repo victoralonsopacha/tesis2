@@ -93,8 +93,8 @@ $this->post('register', 'Auth\RegisterController@register');
 
 Route::get('/calculo_tiempos/index','ControlTiempoController@index')->name('calculo_tiempos.index')->middleware('auth');
 Route::get('/calculo_tiempos/{user}/calcular','ControlTiempoController@show')->name('calculo_tiempos.calcular')->middleware('auth');
-Route::get('/calculo_tiempos/total','ControlTiempoController@total')->name('calculo_tiempos.total')->middleware('auth');
-
+Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@total')->name('calculo_tiempos.total')->middleware('auth');
+Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_permisos')->name('calculo_tiempos.permisos')->middleware('auth');
 
 
 
