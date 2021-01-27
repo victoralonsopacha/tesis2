@@ -21,7 +21,7 @@
                     <th>Cedula</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Cargo</th>
+                    <th>Cargo</th> 
                     <th></th>
                 </tr>
                 </thead>

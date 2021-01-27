@@ -49,6 +49,15 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="form-group row">
+                    @foreach ($consulta2 as $itemconsulta2)
+                        
+                    @endforeach
+                    <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS SIN APROBAR</label>
+                    <div class="col-sm-6">
+                        <input type="input" class="form-control" name="date" value="{{$itemconsulta2->permisos}}">
+                    </div>
+                </div>
             </li>
 
           </ul>
