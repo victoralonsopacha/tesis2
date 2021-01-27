@@ -23,6 +23,7 @@ class ControlTiempoController extends Controller
 
     public function index()
     {
+        //CONSULTA PARA EXTRAER SOLO LOS PERMISOS CONPERFIL DE PROFESOR 
         $usersl= User::where('cargo','=','profesor')->get();
         return view('calculo_tiempos.index', compact('usersl'));
     }
@@ -63,7 +64,7 @@ class ControlTiempoController extends Controller
 
     public function total(Request $request, User $user)
     {
-        return view('calculo_tiempos.total',['user' => $request]);
+        return view('calculo_tiempos.total',['user' => $user]);
     }
 
     /**
@@ -113,6 +114,7 @@ class ControlTiempoController extends Controller
         $ced_usuario = $user->cedula;
         $estado_aprobado=1;
         $estado_desaprobado=0;
+        //CONSULTAS PARA CONTAR LOS PERMISOS APROBADOS Y NO APROBADOS DE UN SOLO PROFESOR
         $consulta= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_aprobado.' GROUP BY u.name, u.last_name');
         $consulta2= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_desaprobado.' GROUP BY u.name, u.last_name');
 

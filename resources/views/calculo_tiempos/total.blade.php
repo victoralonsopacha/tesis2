@@ -51,12 +51,6 @@
                         <input type="input" class="form-control" name="date" value="3">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS APROBADOS</label>
-                    <div class="col-sm-6">
-                        <input type="input" class="form-control" name="date" value=" ">
-                    </div>
-                </div>
             </li>
 
           </ul>

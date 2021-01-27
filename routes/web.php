@@ -89,8 +89,7 @@ $this->post('register', 'Auth\RegisterController@register');
  
 
 
-//RUTAS PARA CALCULAR TIEMPOS
-
+//RUTAS PARA CALCULAR TIEMPOS Y CONTAR PERMISOS
 Route::get('/calculo_tiempos/index','ControlTiempoController@index')->name('calculo_tiempos.index')->middleware('auth');
 Route::get('/calculo_tiempos/{user}/calcular','ControlTiempoController@show')->name('calculo_tiempos.calcular')->middleware('auth');
 Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@total')->name('calculo_tiempos.total')->middleware('auth');
