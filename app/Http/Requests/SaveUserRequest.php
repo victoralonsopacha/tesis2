@@ -35,6 +35,7 @@ class SaveUserRequest extends FormRequest
             'tipo_relacion_laboral' => 'required',
             'cargo' => 'required',
             'fecha_ingreso' => 'required'
+            
         ];      
     }
 

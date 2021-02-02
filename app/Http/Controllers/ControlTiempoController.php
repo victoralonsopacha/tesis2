@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 
+
 class ControlTiempoController extends Controller
 {
     /**
@@ -62,10 +63,12 @@ class ControlTiempoController extends Controller
         );
     }
 
+    /*
     public function total(Request $request, User $user)
     {
         return view('calculo_tiempos.total',['user' => $user]);
     }
+    */
 
     /**
      * Show the form for editing the specified resource.
@@ -117,13 +120,35 @@ class ControlTiempoController extends Controller
         //CONSULTAS PARA CONTAR LOS PERMISOS APROBADOS Y NO APROBADOS DE UN SOLO PROFESOR
         $consulta= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_aprobado.' GROUP BY u.name, u.last_name');
         $consulta2= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_desaprobado.' GROUP BY u.name, u.last_name');
-
+    
         return view('calculo_tiempos.permisos', 
         ['consulta' => $consulta,
-         'consulta2' => $consulta2       
+         'consulta2' => $consulta2      
+        ]);
+    }
+
+
+    public function suma_total_tiempo(User $user, Request $request){
+        $ced_usuario = $user->cedula;
+        $fecha_inicio = $request->fecha_inicio;
+        $fecha_fin = $request->fecha_fin;
+
+        $consulta = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_trabajado FROM reporte_asistencia r 
+        WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
+
+        $consulta2 = DB::select('SELECT  r.cedula,r.nombre,r.apellido  FROM reporte_asistencia r 
+        WHERE 
+        r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"
+        AND r.cedula LIKE "'.$ced_usuario.'" LIMIT 1');
+
+        return view('calculo_tiempos.total',
+        ['consulta' => $consulta,
+            'consulta2'=>$consulta2    
         ]
-        
+    
     );
+
+    
 
 
     }

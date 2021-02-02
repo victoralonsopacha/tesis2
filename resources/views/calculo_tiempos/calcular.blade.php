@@ -38,19 +38,25 @@
                         <label for="staticEmail" class="col-sm-2 col-form-label">{{ $user->cargo }}</label>
                     </div>
                 </div>
+
+
+                <form method="POST" action="{{ route('calculo_tiempos.total2', $user) }}">
+                    @csrf
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
-                    <div class="col-sm-6">
-                        <input type="date" class="form-control" name="date" value="date">
+                    <div class="col-sm-9">
+                        <input type="date" class="form-control" name="fecha_inicio" value="'fecha_inicio'">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
-                    <div class="col-sm-6">
-                        <input type="date" class="form-control" name="date" value="date">
+                    <div class="col-sm-9">
+                        <input type="date" class="form-control" name="fecha_fin" value="'fecha_fin'">
                     </div>
                 </div>
+                <button type="submit" class="btn btn-success"><a class="nav-link" >Calcular tiempos</a></button>
 
+                </form>
                 
             </li>
 
@@ -62,7 +68,6 @@
 
 
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="submit" class="btn btn-success"><a class="nav-link" href="{{ route('calculo_tiempos.total', $user) }}">Horas Totales</a></button>
         <button type="submit" class="btn btn-success"><a class="nav-link" href="{{ route('calculo_tiempos.permisos', $user) }}">Permisos</a></button>
         <button type="submit" class="btn btn-success"><a class="nav-link" href="{{ route('calculo_tiempos.calcular', $user) }}">Horas a reponer</a></button>
       </div>

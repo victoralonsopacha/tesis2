@@ -28,7 +28,9 @@ class User extends Authenticatable
         'cedula',
         'tipo_relacion_laboral',
         'cargo',
-        'fecha_ingreso'
+        'fecha_ingreso',
+        'fecha_inicio',
+        'fecha_fin'
 
     ];
 
