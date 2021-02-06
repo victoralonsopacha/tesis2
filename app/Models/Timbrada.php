@@ -18,4 +18,7 @@ class Timbrada extends Model
         'fecha',
         'estado'
     ];
+
+    //DESAHABILITAR ASIGNACION MASIVA
+    protected $guarded = [];
 }

@@ -97,6 +97,10 @@ Route::post('/calculo_tiempos/{user}/total2','ControlTiempoController@suma_total
 
 Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_permisos')->name('calculo_tiempos.permisos')->middleware('auth');
 
+//RUTAS PARA REGISTRAR TIMBRADAS 
+Route::get('/timbrada_permisos/index', 'TimbradaPermisoController@index')->name('timbrada_permisos.index')->middleware('auth');;
+Route::post('/timbrada_permisos/crear', 'TimbradaPermisoController@create')->name('timbrada_permisos.create')->middleware('auth');
+Route::post('/timbrada_permisos', 'TimbradaPermisoController@store')->name('timbrada_permisos.store')->middleware('auth');
 
 
 
@@ -104,3 +108,4 @@ Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_perm
 
 
 
+ 

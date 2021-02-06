@@ -26,7 +26,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { 
         return view('users.create',[
             'user' => new User
         ]);
