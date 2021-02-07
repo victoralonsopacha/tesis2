@@ -14,26 +14,26 @@
 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
-            <div class="col-sm-6">
+            <div class="col-sm-2">
                 <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}">
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">hora</label>
-            <div class="col-sm-6">
+            <div class="col-sm-2">
                 <input type="time" class="form-control" name="hora" value="{{old('hora', $timbrada_permiso->hora)}}">
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
-            <div class="col-sm-6">
+            <div class="col-sm-2">
                 <input type="date" class="form-control" name="fecha" value="{{old('fecha', $timbrada_permiso->fecha)}}">
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="observacion" value="{{'observacion', $timbrada_permiso->observacion}}">
+                <input type="text" class="form-control" name="observacion" value="{{$timbrada_permiso->observacion}}">
             </div>
         </div>
         <div class="form-group row">

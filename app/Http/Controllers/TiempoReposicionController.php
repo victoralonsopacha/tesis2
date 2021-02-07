@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TimbradaPermiso;
+
+use App\Models\TiempoReposicion;
 
 
-class TimbradaPermisoController extends Controller
+class TiempoReposicionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class TimbradaPermisoController extends Controller
      */
     public function index()
     {
-        return view('timbrada_permisos.index'); 
+        return view('tiempo_reposicions.index');
     }
 
     /**
@@ -25,8 +26,8 @@ class TimbradaPermisoController extends Controller
      */
     public function create()
     {
-        return view('timbrada_permisos.create',[
-            'timbrada_permiso' => new TimbradaPermiso
+        return view('tiempo_reposicions.create',[
+            'tiempo_reposicions' => new TiempoReposicion
         ]);
     }
 
@@ -36,12 +37,11 @@ class TimbradaPermisoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TimbradaPermiso $timbrada_permiso, Request $request)
+    public function store(TiempoReposicion $tiempo_reposicion,Request $request)
     {
         $request->all();
-        TimbradaPermiso::create($request->all());
-        return redirect()->route('timbrada_permisos.index')->with('status', 'Usted ha timbrado con exito');
-
+        TiempoReposicion::create($request->all());
+        return redirect()->route('tiempo_reposicions.index')->with('status', 'Usted ha registrado su tiempo con exito');
     }
 
     /**

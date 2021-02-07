@@ -102,6 +102,10 @@ Route::get('/timbrada_permisos/index', 'TimbradaPermisoController@index')->name(
 Route::post('/timbrada_permisos/crear', 'TimbradaPermisoController@create')->name('timbrada_permisos.create')->middleware('auth');
 Route::post('/timbrada_permisos', 'TimbradaPermisoController@store')->name('timbrada_permisos.store')->middleware('auth');
 
+//RUTAS PARA CREAR Y ALMACENAR EL TIEMPO A REPONER
+Route::get('/tiempo_reposicions/index', 'TiempoReposicionController@index')->name('tiempo_reposicions.index')->middleware('auth');;
+Route::post('/tiempo_reposicions/create', 'TiempoReposicionController@create')->name('tiempo_reposicions.create')->middleware('auth');
+Route::post('/tiempo_reposicions', 'TiempoReposicionController@store')->name('tiempo_reposicions.store')->middleware('auth');
 
 
 
