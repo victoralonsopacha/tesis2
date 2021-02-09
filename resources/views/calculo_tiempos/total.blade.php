@@ -18,7 +18,7 @@
 
                 @foreach ($consulta2 as $itemconsulta2)
                     
-                @endforeach
+                
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                     <div class="col-sm-6">
@@ -38,7 +38,7 @@
                         <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->apellido }}</label>
                     </div>
                 </div>
-
+                @endforeach
 
 
                 @foreach ($consulta as $itemconsulta2)

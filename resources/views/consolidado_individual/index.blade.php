@@ -33,7 +33,7 @@
                         <td>{!! $userItem->last_name !!}</td>
                         <td>{!! $userItem->cargo!!}</td>
                         <td>
-                            <a href="{{ route('calculo_tiempos.calcular', $userItem) }}">CALCULAR</a>
+                            <a href="{{ route('consolidado_individual.calcular', $userItem) }}">CALCULAR</a>
                         </td>
                         <td>
                     </tr>
