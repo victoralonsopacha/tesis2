@@ -4,15 +4,9 @@
     {{ trans('adminlte_lang::message.home') }}
 @endsection
 
-<<<<<<< HEAD
-
-@section('main-content')
-    <h1>REPORTE CONSOLIDADO</h1>
-=======
  
 @section('main-content')
     <h1>CALCULAR HORAS</h1>
->>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
 
     <div class="panel panel-default">
         <!-- Default panel contents -->
@@ -27,11 +21,7 @@
                     <th>Cedula</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-<<<<<<< HEAD
-                    <th>Cargo</th>
-=======
                     <th>Cargo</th> 
->>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
                     <th></th>
                 </tr>
                 </thead>
@@ -50,11 +40,7 @@
                 @endforeach
                 </tbody>
             </table>
-<<<<<<< HEAD
-        @endif
-=======
         @endif 
->>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
 
     </div>
 

@@ -116,7 +116,7 @@ Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@suma_total_t
 Route::post('/calculo_tiempos/{user}/total2','ControlTiempoController@suma_total_tiempo')->name('calculo_tiempos.total2')->middleware('auth');
 Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_permisos')->name('calculo_tiempos.permisos')->middleware('auth');
 
-//RUTAS PARA REGISTRAR TIMBRADAS DE PERMISOS 
+//RUTAS PARA REGISTRAR TIMBRADAS DE PERMISOS
 Route::get('/timbrada_permisos/index', 'TimbradaPermisoController@index')->name('timbrada_permisos.index')->middleware('auth');;
 Route::post('/timbrada_permisos/crear', 'TimbradaPermisoController@create')->name('timbrada_permisos.create')->middleware('auth');
 Route::post('/timbrada_permisos', 'TimbradaPermisoController@store')->name('timbrada_permisos.store')->middleware('auth');
@@ -130,13 +130,3 @@ Route::post('/tiempo_reposicions', 'TiempoReposicionController@store')->name('ti
 ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
 ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
 Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@consolidado_individual')->name('consolidado_individual.total2')->middleware('auth');
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
-
-
-
-
- 

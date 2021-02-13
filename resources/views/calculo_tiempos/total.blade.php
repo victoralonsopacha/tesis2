@@ -14,37 +14,31 @@
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
+                
 
-<<<<<<< HEAD
-
-                @foreach($consulta2 as $itemconsulta)
-                @endforeach
-=======
                 @foreach ($consulta2 as $itemconsulta2)
                     
                 
->>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label"></label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->cedula }}</label>
                     </div>
-                </div>
+                </div>      
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Nombre</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label"></label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->nombre }}</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Apellido</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label"></label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->apellido }}</label>
                     </div>
                 </div>
                 @endforeach
-
 
 
                 @foreach ($consulta as $itemconsulta2)
@@ -55,7 +49,7 @@
                     </div>
                 </div>
                 @endforeach
-
+                
 
                 @foreach ($consulta4 as $itemconsulta4)
                 <div class="form-group row">

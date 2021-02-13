@@ -46,6 +46,7 @@
             <li><a href="{{ route('calculo_tiempos.index') }}"><i class='fa fa-users'></i> <span>Usuarios</span></a></li>
             <li><a href="{{ route('permisos.index') }}"><i class='fa fa-file-o'></i> <span>Permisos</span></a></li>
             <li><a href="#"><i class='fa fa-clock-o'></i><span>Atrasos</span></a></li>
+            <li><a href="{{ route('timbrada_permisos.index') }}"><i class='fa fa-bell-o'></i> <span>Timbrar Permisos</span></a></li>
             <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Reportes</span></a></li>
 
 

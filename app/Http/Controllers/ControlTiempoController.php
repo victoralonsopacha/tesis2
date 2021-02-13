@@ -19,9 +19,12 @@ class ControlTiempoController extends Controller
         $this->middleware('auth');
     }
 
+
+
+
     public function index()
     {
-        //CONSULTA PARA EXTRAER SOLO LOS PERMISOS CONPERFIL DE PROFESOR
+        //CONSULTA PARA EXTRAER SOLO LOS PERMISOS CONPERFIL DE PROFESOR 
         $usersl= User::where('cargo','=','profesor')->get();
         return view('calculo_tiempos.index', compact('usersl'));
     }
@@ -110,22 +113,17 @@ class ControlTiempoController extends Controller
 
 
     public function suma_permisos(User $user){
-
+        
         $ced_usuario = $user->cedula;
         $estado_aprobado=1;
         $estado_desaprobado=0;
         //CONSULTAS PARA CONTAR LOS PERMISOS APROBADOS Y NO APROBADOS DE UN SOLO PROFESOR
         $consulta= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_aprobado.' GROUP BY u.name, u.last_name');
         $consulta2= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_desaprobado.' GROUP BY u.name, u.last_name');
-<<<<<<< HEAD
-
-        return view('calculo_tiempos.permisos',
-=======
         
         return view('calculo_tiempos.permisos', 
->>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
         ['consulta' => $consulta,
-         'consulta2' => $consulta2
+         'consulta2' => $consulta2      
         ]);
     }
 
@@ -135,16 +133,12 @@ class ControlTiempoController extends Controller
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
 
-<<<<<<< HEAD
-        $consulta = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_trabajado FROM reporte_asistencia r
-=======
         //CONSULTAS PARA SUMAR LOS TIEMPOS TOTALES DE LAS ASISTENCIAS
         $consulta = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_trabajado FROM reporte_asistencia r 
->>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
         WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
 
-        $consulta2 = DB::select('SELECT  r.cedula,r.nombre,r.apellido  FROM reporte_asistencia r
-        WHERE
+        $consulta2 = DB::select('SELECT  r.cedula,r.nombre,r.apellido  FROM reporte_asistencia r 
+        WHERE 
         r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"
         AND r.cedula LIKE "'.$ced_usuario.'" LIMIT 1');
 
@@ -157,21 +151,16 @@ class ControlTiempoController extends Controller
 
 
         return view('calculo_tiempos.total',
-<<<<<<< HEAD
-        ['consulta' => $consulta,
-            'consulta2'=>$consulta2
-=======
         [   'consulta' => $consulta,
             'consulta2'=>$consulta2,
             'consulta3'=> $consulta3,
             'consulta4'=> $consulta4,
             
->>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
         ]
-
+    
     );
 
-
+    
 
 
     }
