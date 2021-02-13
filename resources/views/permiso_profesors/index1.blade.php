@@ -6,11 +6,17 @@
 
 
 @section('main-content')
-    <h2>PERMISOS APROBADOS</h2>
+    <h2>PERMISOS RECHAZADOS</h2>
+    {{--@auth--}}
+    <a href="{{ route('permiso_profesors.create') }}" class="btn btn-info">Crear Permiso</a>
+    {{--@endauth--}}
+    <br>
+    <br>
     @if($permisosl->isEmpty())
         <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
         <a href="/permiso_profesors/principal">Regresar a menu Permisos</a>
     @else
+
     <div class="panel panel-default">
         <div class="panel-heading">Permisos</div>
             <table class="table table-responsive-md text-center">
@@ -21,7 +27,7 @@
                     <th>Hora Fin</th>
                     <th>Fecha Inicio</th>
                     <th>Fecha Fin</th>
-                    <th></th>
+                    <th>Estado</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,7 +37,7 @@
                         <td>{!! $permisoItem->hora_inicio !!}</td>
                         <td>{!! $permisoItem->hora_fin !!}</td>
                         <td>{!! $permisoItem->fecha_inicio!!}</td>
-                        <td>{!! $permisoItem->fecha_fin !!}</td>
+                        <td>{!! $permisoItem->fecha_fin!!}</td>
                         <td>{!! $permisoItem->estado !!}</td>
                         <td>
                             <a href="{{ route('permiso_profesors.edit', $permisoItem) }}">Editar</a>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\SaveUserRequest;
+use Illuminate\Support\Facades\Hash;
+
 //use DB;
 
 class UserController extends Controller
@@ -84,9 +86,11 @@ class UserController extends Controller
      */
     public function update(User $user, SaveUserRequest $request)
     {
-        $user->update( $request->validated() );
-
-        return redirect()->route('users.show', $user)->with('status', 'El usuario ha sido actualizado con exito');
+        $request->validated();
+        $userl=$request->all();
+        $userl['password']=Hash::make($request['password']);
+        $user->update($userl);
+        return redirect()->route('users.show', $user)->with('message', 'El usuario ha sido actualizado con exito');
     }
 
     /**
@@ -95,10 +99,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
         $user->delete();
-
         return redirect()->route('users.index')->with('status', 'El usuario ha sido eliminado');
     }
 }

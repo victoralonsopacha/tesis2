@@ -10,6 +10,12 @@
     {{--@auth--}}
     <a href="{{ route('permisos.create') }}">Crear Permiso</a>
     {{--@endauth--}}
+    @if(Session::has('message'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{Session::get('message')}}
+        </div>
+    @endif
 
     <div class="panel panel-default">
         <!-- Default panel contents -->
@@ -26,6 +32,8 @@
                     <th>Hora Fin</th>
                     <th>Fecha Inicio</th>
                     <th>Fecha Fin</th>
+                    <th>Estado</th>
+                    <th></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -37,13 +45,20 @@
                         <td>{!! $permisoItem->hora_fin !!}</td>
                         <td>{!! $permisoItem->fecha_inicio!!}</td>
                         <td>{!! $permisoItem->fecha_fin!!}</td>
-
-                        <td>
-                            <a href="{{ route('permisos.edit', $permisoItem) }}">Editar</a>
-                        </td>
+                        @if($permisoItem->estado == '1')
+                            <td><span class="label label-success">Aprobado</span></td>
+                        @elseif($permisoItem->estado == '0')
+                            <td><span class="label label-warning">Desaprobado</span></td>
+                        @else($permisoItem->estado == 'null')
+                            <td><span class="label label-danger">Pendiente</span></td>
+                        @endif
                         <td>
                             <a href="{{ route('permisos.justificar', $permisoItem) }}">Justificar</a>
                         </td>
+                        <td>
+                            <a href="{{ route('permisos.edit', $permisoItem) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </td>
+
                     </tr>
                 @endforeach
                 </tbody>

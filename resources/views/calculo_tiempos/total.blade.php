@@ -13,30 +13,30 @@
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                
 
-                @foreach ($consulta2 as $itemconsulta2)
-                    
+
+                @foreach($consulta2 as $itemconsulta)
                 @endforeach
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->cedula }}</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label"></label>
                     </div>
-                </div>      
+                </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Nombre</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->nombre }}</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label"></label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Apellido</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->apellido }}</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label"></label>
                     </div>
                 </div>
+
 
 
 
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 @endforeach
-                
+
 
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">DIAS TOTALES</label>

@@ -13,14 +13,10 @@
         @include('permiso_profesors._form')
         <button type="submit" class="btn btn-success">Actualizar</button>
     </form>
-    
-        <div class="col-6 col-md-6 col-sm-6">
-            <form action="{{route('permiso_profesors.destroy', $permiso_profesor)}}" method="POST">
-                @csrf @method('DELETE')
-                <button type="submit" class="btn btn-danger"ss>Eliminar</button>
-            </form>
-        </div>
     <br>
-    
-
+    <form action="{{route('permiso_profesors.destroy', $permiso_profesor)}}" method="POST">
+        @csrf @method('DELETE')
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+    <br>
 @endsection

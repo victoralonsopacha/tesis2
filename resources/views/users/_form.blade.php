@@ -15,7 +15,7 @@
 <br>
 <label for="">
     Pass del usuario
-    <input type="text" name="password" value="{{old('password', $user->password)}}">
+    <input type="password" name="password" value="{{old('password', $user->password)}}">
 </label>
 <br>
 <label for="">

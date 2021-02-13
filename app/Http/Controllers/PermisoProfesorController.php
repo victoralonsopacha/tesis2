@@ -7,6 +7,7 @@ use App\Models\PermisoProfesor;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\SavePermisoProfesorRequest;
+use Illuminate\Support\Facades\DB;
 
 class PermisoProfesorController extends Controller
 {
@@ -25,13 +26,19 @@ class PermisoProfesorController extends Controller
     {
 
         $cedula = auth()->user()->cedula;
-        $permisosl= PermisoProfesor::where('cedula','=',$cedula)->get();
+        $permisosl= PermisoProfesor::where('cedula','=',$cedula)
+            ->where('estado','=',1)
+            ->get();
         return view('permiso_profesors.index',compact('permisosl'));
+    }
+    public function index1(Request $request)
+    {
 
-        /*
-        $permisosl= PermisoProfesor::get();
-        return view('permiso_profesors.index',compact('permisosl'));
-        */
+        $cedula = auth()->user()->cedula;
+        $permisosl= PermisoProfesor::where('cedula','=',$cedula)
+            ->where('estado','=',0)
+            ->get();
+        return view('permiso_profesors.index1',compact('permisosl'));
     }
 
     public function inicio(){
@@ -69,7 +76,7 @@ class PermisoProfesorController extends Controller
 
         PermisoProfesor::create($entrada);
 
-        return redirect()->route('permiso_profesors.index',$request->cedula)->with('status', 'El permiso fue creado con exito');
+        return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
 
         //PermisoProfesor::create($request->validated());
         //return redirect()->route('permiso_profesors.index')->with('status', 'El permiso fue creado con exito');
@@ -87,7 +94,23 @@ class PermisoProfesorController extends Controller
             'permiso_profesor' => $permiso_profesor
             //'user' => User::findOrFail($id)
         ]);
-
+    }
+    public function shows(PermisoProfesor $permiso_profesor)
+    {
+        $cedula = auth()->user()->cedula;
+        $permisos=PermisoProfesor::where('cedula','=',$cedula)
+            ->get();
+        return view('permiso_profesors.shows', compact('permisos'));
+    }
+    public function buscar(Request $request)
+    {
+        $cedula = auth()->user()->cedula;
+        $fecha_inicio=$request->input('fecha_inicio');
+        $fecha_fin=$request->input('fecha_fin');
+        $permisos=PermisoProfesor::where('cedula','=', $cedula)
+            ->whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])
+            ->get();
+        return view('permiso_profesors.shows', compact('permisos'));
     }
 
     /**

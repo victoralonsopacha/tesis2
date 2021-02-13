@@ -97,15 +97,18 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SavePermisoRequet $request, $permiso)
+    public function update(PermisoProfesor $permiso, Request $request)
     {
-        if($permiso->estado == null){
-            return redirect()->route('permisos.index');
-        }
-
-        //$permiso->update($request->all());
-        //return redirect()->route('permisos.index', $request)->with('status', 'El permiso ha sido actualizado con exito');
-
+        $permiso->fecha_inicio=$request->fecha_inicio;
+        $permiso->hora_inicio=$request->hora_inicio;
+        $permiso->fecha_fin=$request->fecha_fin;
+        $permiso->hora_fin=$request->hora_fin;
+        $permiso->tipo_permiso=$request->tipo_permiso;
+        $permiso->fecha_fin=$request->fecha_fin;
+        $permiso->file=$request->file;
+        $permiso->estado=$request->input('estado');
+        $permiso->save();
+        return redirect()->route('permisos.index', $permiso)->with('message', 'El permiso ha sido actualizado con exito');
     }
     /**
      * Remove the specified resource from storage.

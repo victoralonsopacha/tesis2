@@ -13,8 +13,9 @@
         @csrf @method('DELETE')
         <button>Eliminar</button>
     </form>
-
     <p>{{$user->cargo}}</p>
     <p>{{$user->fecha_ingreso}}</p>
+
+
 @endsection
 

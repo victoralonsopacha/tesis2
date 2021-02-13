@@ -8,7 +8,8 @@
 @section('main-content')
     <h1>Justificar Permisos</h1>
     <form method="POST" action="{{ route('permisos.update', $permiso) }}">
-        @csrf @method('PATCH')
+        @method('PATCH')
+        @csrf
         <span>Permiso de: {{  $permiso->cedula }}</span><br>
         <span>Permiso N.: {{ $permiso->id }}</span><br>
 
@@ -17,27 +18,28 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Fecha de inicio</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" name="fecha_inicio" value="{{old('fecha_inicio', $permiso->fecha_inicio)}}" disabled>
+                        <input type="date" class="form-control" name="fecha_inicio" value="{{old('fecha_inicio', $permiso->fecha_inicio)}}" >
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Hora Inicio</label>
                     <div class="col-sm-8">
-                        <input type="time" class="form-control" name="hora_inicio" value="{{old('hora_inicio', $permiso->hora_inicio)}}" disabled>
+                        <input type="time" class="form-control" name="hora_inicio" value="{{old('hora_inicio', $permiso->hora_inicio)}}" >
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Descripción</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="descripcion" value="{{old('descripcion', $permiso->descripcion)}}" disabled>
+                        <input type="text" class="form-control" name="descripcion" value="{{old('descripcion', $permiso->descripcion)}}" >
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Aprobar/Desaprobar</label>
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Estado</label>
                     <div class="col-sm-8">
-                        <select name="estado" id="estado" class="form-control input-sm">
-                            <option value="0">Desaprobar</option>
-                            <option value="1">Aprobar</option>
+                        <select name="estado">
+                            <option {{old('estado',$permiso->estado)=="null"? 'selected':''}} value="null">Seleccionar</option>
+                            <option {{old('estado',$permiso->estado)=="1"? 'selected':''}} value="1">Aprobado</option>
+                            <option {{old('estado',$permiso->estado)=="0"? 'selected':''}} value="0">Desaprobado</option>
                         </select>
                     </div>
                 </div>
@@ -46,25 +48,25 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Fecha Fin</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" name="fecha_fin" value="{{old('fecha_fin', $permiso->fecha_fin)}}" disabled>
+                        <input type="date" class="form-control" name="fecha_fin" value="{{old('fecha_fin', $permiso->fecha_fin)}}" >
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Hora Fin</label>
                     <div class="col-sm-8">
-                        <input type="time" class="form-control" name="hora_fin" value="{{old('hora_fin', $permiso->hora_fin)}}" disabled>
+                        <input type="time" class="form-control" name="hora_fin" value="{{old('hora_fin', $permiso->hora_fin)}}" >
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Tipo Permiso</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="tipo_permiso" value="{{$permiso->tipo_permiso}}" disabled>
+                        <input type="text" class="form-control" name="tipo_permiso" value="{{$permiso->tipo_permiso}}" >
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Ver justificativo</label>
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Archivo Adjunto</label>
                     <div class="col-sm-8">
-                        <img src="public/WhatsApp Image 2021-01-08 at 18.05.58 (2).jpeg">
+                        <input type="file" class="form-control" name="file" value="{{old('file', $permiso->file)}}">
                     </div>
                 </div>
             </div>

@@ -13,16 +13,16 @@
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                
+
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                     <div class="col-sm-6">
                         @foreach ($consulta as $itemconsulta)
                             <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta->cedula }}</label>
-                        
-                        
+
+
                     </div>
-                </div>      
+                </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Nombre</label>
                     <div class="col-sm-6">
@@ -51,12 +51,11 @@
                 </div>
                 <div class="form-group row">
                     @foreach ($consulta2 as $itemconsulta2)
-                        
-                    @endforeach
                     <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS SIN APROBAR</label>
                     <div class="col-sm-6">
                         <input type="input" class="form-control" name="date" value="{{$itemconsulta2->permisos}}">
                     </div>
+                    @endforeach
                 </div>
             </li>
 
