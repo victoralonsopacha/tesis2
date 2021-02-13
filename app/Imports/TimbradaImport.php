@@ -16,7 +16,7 @@ class TimbradaImport implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
-        return new Timbrada([
+        return new Timbrada([ 
             'cedula' => $row['cedula'],
             'nombre' => $row['nombre'],
             'tiempo' => $row['tiempo'],

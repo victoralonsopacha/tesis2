@@ -13,7 +13,7 @@
                 <div class="col-md-6 offset-md-3">
                     <div class="card">
                         <div class="card-header">
-                            Importar Excel
+                            Importar Excel 
                         </div>
                         <div class="card-body">
                             <form method="POST" enctype="multipart/form-data" action="{{route('import')}}">

@@ -2,6 +2,7 @@
 
 @section('htmlheader_title')
     {{ trans('adminlte_lang::message.home') }}
+    <h1>HORAS TOTALES</h1>
 @endsection
 
 
@@ -14,9 +15,15 @@
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
 
+<<<<<<< HEAD
 
                 @foreach($consulta2 as $itemconsulta)
                 @endforeach
+=======
+                @foreach ($consulta2 as $itemconsulta2)
+                    
+                
+>>>>>>> 34ff6b54779d1b9cdbf2c1f5fba008e6abcaac34
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                     <div class="col-sm-6">
@@ -36,7 +43,7 @@
                         <label for="staticEmail" class="col-sm-5 col-form-label"></label>
                     </div>
                 </div>
-
+                @endforeach
 
 
 
@@ -50,18 +57,26 @@
                 @endforeach
 
 
+                @foreach ($consulta4 as $itemconsulta4)
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">DIAS TOTALES</label>
                     <div class="col-sm-6">
-                        <input type="input" class="form-control" name="date" value="5 dias">
+                        <input type="input" class="form-control" name="date" value="{{$itemconsulta4->num_dias}} DIAS">
                     </div>
                 </div>
+                @endforeach
+                
+
+                @foreach ($consulta3 as $itemconsulta3)
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">ATRASOS</label>
                     <div class="col-sm-6">
-                        <input type="input" class="form-control" name="date" value="3">
+                        <input type="input" class="form-control" name="date" value="{{$itemconsulta3->retraso_trabajado}}">
                     </div>
                 </div>
+                @endforeach
+                
+                
             </li>
 
           </ul>
