@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permiso;
+use App\Models\User;
 
 use App\Models\PermisoProfesor;
 use Illuminate\Http\Request;
@@ -21,10 +22,20 @@ class PermisoController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        
+
+        if($request){
+            $query= trim($request->get('buscador'));
+            $permisosl = PermisoProfesor::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
+            
+            return view('permisos.index', ['permisosl'=>$permisosl, 'buscador'=>$query]);
+        }
+        /*
         $permisosl= PermisoProfesor::get();
         return view('permisos.index',compact('permisosl'));
+        */
     }
 
     /**

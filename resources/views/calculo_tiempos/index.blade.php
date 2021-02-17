@@ -11,8 +11,8 @@
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <form class="form-inline my-2 my-lg-0 float-right">
-            <input name="buscador" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
+            <input name="buscador" class="form-control me-2" type="search" placeholder="Ingrese una cedula" aria-label="Search">
+            <button class="btn btn-success" type="submit">Buscar</button>
           </form>
         <div class="panel-heading">Profesores</div>
         <!-- Table -->
