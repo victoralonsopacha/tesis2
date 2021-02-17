@@ -6,7 +6,7 @@
 
 
 @section('main-content')
-    <h1>CALCULO DE HORAS</h1>
+    <h1>VER TIMBRADAS</h1>
 
 
     <div class="card text-center">
@@ -54,7 +54,7 @@
                         <input type="date" class="form-control" name="fecha_fin" value="'fecha_fin'">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success"><a class="nav-link" >Calcular Consolidado</a></button>
+                <button type="submit" class="btn btn-success"><a class="nav-link" >Ver Timbradas</a></button>
 
                 </form>
                 

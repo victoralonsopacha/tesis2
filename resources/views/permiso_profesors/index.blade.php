@@ -7,6 +7,11 @@
 
 @section('main-content')
     <h2>PERMISOS APROBADOS</h2>
+
+
+
+
+
     @if($permisosl->isEmpty())
         <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
         <a href="/permiso_profesors/principal">Regresar a menu Permisos</a>

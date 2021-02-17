@@ -17,7 +17,7 @@ class TimbradaPermisoController extends Controller
     {
         return view('timbrada_permisos.index'); 
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -25,9 +25,13 @@ class TimbradaPermisoController extends Controller
      */
     public function create()
     {
+
+        //return view('timbrada_permisos.create'); 
+        
         return view('timbrada_permisos.create',[
             'timbrada_permiso' => new TimbradaPermiso
         ]);
+        
     }
 
     /**
@@ -40,7 +44,7 @@ class TimbradaPermisoController extends Controller
     {
         $request->all();
         TimbradaPermiso::create($request->all());
-        return redirect()->route('timbrada_permisos.index')->with('status', 'Usted ha timbrado con exito');
+        return redirect()->route('timbrada_permisos.create')->with('status', 'Usted ha timbrado con exito');
 
     }
 

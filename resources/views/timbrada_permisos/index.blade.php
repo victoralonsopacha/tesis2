@@ -15,7 +15,7 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}">
+                <input type="text" class="form-control" name="cedula" value="">
             </div>
         </div>
         

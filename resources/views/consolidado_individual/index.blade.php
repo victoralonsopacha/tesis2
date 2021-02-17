@@ -4,10 +4,13 @@
     {{ trans('adminlte_lang::message.home') }}
 @endsection
 
- 
+  
 @section('main-content')
-    <h1>CALCULAR HORAS</h1>
-
+    <h1>VER TIMBRADAS</h1>
+    <form class="form-inline my-2 my-lg-0 float-right">
+        <input name="buscador" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Profesores</div>
@@ -33,7 +36,7 @@
                         <td>{!! $userItem->last_name !!}</td>
                         <td>{!! $userItem->cargo!!}</td>
                         <td>
-                            <a href="{{ route('consolidado_individual.calcular', $userItem) }}">CALCULAR</a>
+                            <a href="{{ route('consolidado_individual.calcular', $userItem) }}">VER</a>
                         </td>
                         <td>
                     </tr>

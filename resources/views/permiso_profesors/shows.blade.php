@@ -8,6 +8,8 @@
 @section('main-content')
     <h1>PERMISOS</h1>
 
+
+
     <div class="row">
         {!! Form::open(['route' => 'permiso_profesors.buscar', 'method'=>'POST']) !!}
         {!! Form::token() !!}

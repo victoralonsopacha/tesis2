@@ -15,27 +15,28 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}">
+                <input type="text" class="form-control" name="cedula" >
             </div>
-        </div>
+        </div> 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">hora</label>
             <div class="col-sm-2">
-                <input type="time" class="form-control" name="hora" value="{{old('hora', $timbrada_permiso->hora)}}">
+                <input type="time" class="form-control" name="hora">
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
             <div class="col-sm-2">
-                <input type="date" class="form-control" name="fecha" value="{{old('fecha', $timbrada_permiso->fecha)}}">
+                <input type="date" class="form-control" name="fecha" >
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="observacion" value="{{$timbrada_permiso->observacion}}">
+                <input type="text" class="form-control" name="observacion">
             </div>
         </div>
+
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
             <div class="col-sm-6">
@@ -48,7 +49,12 @@
             </div>
         </div>
   
-        
+        <div class="form-group row">
+            
+            <div class="col-sm-6">
+                <input style="visibility:hidden" type="text" class="form-control" name="estado" value="{{$timbrada_permiso->estado=0}}">
+            </div>
+        </div>
 
 
         <button type="submit" class="btn btn-info">Timbrar</button>

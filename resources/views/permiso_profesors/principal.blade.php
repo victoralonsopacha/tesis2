@@ -7,6 +7,10 @@
 
 @section('main-content')
     <h2>GESTIONAR PERMISOS</h2>
+
+
+
+
     <div class="row">
         <div class="col-md-2">
             <a class="btn btn-success btn-group-justified" href="{{ route('permiso_profesors.shows') }}">Ver todos los permisos</a>
