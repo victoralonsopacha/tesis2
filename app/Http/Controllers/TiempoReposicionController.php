@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\TiempoReposicion;
 
+use App\Models\User;
 
 class TiempoReposicionController extends Controller
 {
@@ -17,6 +20,28 @@ class TiempoReposicionController extends Controller
     public function index()
     {
         return view('tiempo_reposicions.index');
+    }
+
+
+    public function index_inspector(Request $request)
+    {
+        if($request){
+            $query= trim($request->get('buscador'));
+            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
+            
+            return view('tiempo_reposicions.index_inspector', ['usersl'=>$usersl, 'buscador'=>$query]);
+        }
+    }
+
+    public function ver_dias(User $user, TiempoReposicion $tiempo_reposicion){
+        
+        $ced_usuario=$user->cedula;
+        $consulta = DB::select('SELECT * FROM tiempo_reposicions t WHERE t.cedula LIKE  "'.$ced_usuario.'"');
+
+
+        return (view('tiempo_reposicions.ver_dias', ['consulta' => $consulta]));
+
+
     }
 
     /**

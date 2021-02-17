@@ -6,7 +6,7 @@
 
  
 @section('main-content')
-    <h1>CALCULAR HORAS</h1>
+    <h1>DIAS DE REPOSICION</h1>
 
     <div class="panel panel-default">
         <!-- Default panel contents -->
@@ -38,8 +38,8 @@
                         <td>{!! $userItem->name !!}</td>
                         <td>{!! $userItem->last_name !!}</td>
                         <td>{!! $userItem->cargo!!}</td>
-                        <td> 
-                            <a href="{{ route('calculo_tiempos.calcular', $userItem) }}">CALCULAR</a>
+                        <td>
+                            <a href="{{ route('tiempo_reposicions.ver_dias', $userItem) }}">VER</a>
                         </td>
                         <td>
                     </tr>

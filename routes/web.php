@@ -126,6 +126,13 @@ Route::get('/tiempo_reposicions/index', 'TiempoReposicionController@index')->nam
 Route::post('/tiempo_reposicions/create', 'TiempoReposicionController@create')->name('tiempo_reposicions.create')->middleware('auth');
 Route::post('/tiempo_reposicions', 'TiempoReposicionController@store')->name('tiempo_reposicions.store')->middleware('auth');
 
+Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector')->middleware('auth');;
+Route::get('/tiempo_reposicions/{user}/ver_dias', 'TiempoReposicionController@ver_dias')->name('tiempo_reposicions.ver_dias')->middleware('auth');
+
+
+
+
+
 //RUTAS PARA REPORTE CONSOLIDADO
 ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
 ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');

@@ -103,11 +103,11 @@ class ConsolidadoIndividualController extends Controller
         $fecha_fin = $request->fecha_fin;
 
         //CONSULTA LISTAR LOS TIMBRADOS CON UN USUARIO Y ENTRE FECHAS 
-        $consulta = DB::select('SELECT * FROM timbradas r WHERE r.cedula LIKE  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
+        $consultal = DB::select('SELECT * FROM timbradas r WHERE r.cedula LIKE  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
         return view('consolidado_individual.consolidado',
         [   
-            'consulta' => $consulta
+            'consulta' => $consultal
         ]
     
     );

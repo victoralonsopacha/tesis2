@@ -67,10 +67,7 @@
 
 
 <br>
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="submit" class="btn btn-success"><a class="nav-link" href="{{ route('calculo_tiempos.permisos', $user) }}">Permisos</a></button>
-        <button type="submit" class="btn btn-success"><a class="nav-link" href="{{ route('calculo_tiempos.calcular', $user) }}">Horas a reponer</a></button>
-      </div>
+
 
 
 @endsection
