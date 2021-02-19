@@ -117,8 +117,8 @@ Route::post('/calculo_tiempos/{user}/total2','ControlTiempoController@suma_total
 Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_permisos')->name('calculo_tiempos.permisos')->middleware('auth');
 
 //RUTAS PARA REGISTRAR TIMBRADAS DE PERMISOS
-//Route::get('/timbrada_permisos/index', 'TimbradaPermisoController@index')->name('timbrada_permisos.index')->middleware('auth');;
-Route::get('/timbrada_permisos/crear', 'TimbradaPermisoController@create')->name('timbrada_permisos.create')->middleware('auth');
+Route::get('/timbrada_permisos/index', 'TimbradaPermisoController@index')->name('timbrada_permisos.index')->middleware('auth');;
+Route::get('/timbrada_permisos/{user}/crear', 'TimbradaPermisoController@create')->name('timbrada_permisos.create')->middleware('auth');
 Route::post('/timbrada_permisos', 'TimbradaPermisoController@store')->name('timbrada_permisos.store')->middleware('auth');
 
 //RUTAS PARA CREAR Y ALMACENAR EL TIEMPO A REPONER
@@ -130,10 +130,7 @@ Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@in
 Route::get('/tiempo_reposicions/{user}/ver_dias', 'TiempoReposicionController@ver_dias')->name('tiempo_reposicions.ver_dias')->middleware('auth');
 
 
-
-
-
-//RUTAS PARA REPORTE CONSOLIDADO
+//RUTAS PARA VER TIMBRADAS
 ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
 ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
 Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@consolidado_individual')->name('consolidado_individual.total2')->middleware('auth');

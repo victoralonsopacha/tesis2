@@ -46,7 +46,7 @@
             <li><a href="{{ route('calculo_tiempos.index') }}"><i class='fa fa-users'></i> <span>Calcular Horas</span></a></li>
             <li><a href="{{ route('permisos.index') }}"><i class='fa fa-file-o'></i> <span>Ver Permisos</span></a></li>
             <li><a href="{{ route('tiempo_reposicions.index_inspector')}}"><i class='fa fa-clock-o'></i><span>Dias Reposicion</span></a></li>
-            <li><a href="{{ route('timbrada_permisos.create') }}"><i class='fa fa-bell-o'></i> <span>Timbrar Permiso</span></a></li>
+            <li><a href="{{ route('timbrada_permisos.index') }}"><i class='fa fa-bell-o'></i> <span>Timbrar Permiso</span></a></li>
             <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Timbradas</span></a></li>
 
  

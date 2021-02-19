@@ -11,13 +11,19 @@
     <form method="POST" action="{{ route('timbrada_permisos.store') }}">
         @csrf
         
-
+        @foreach ($timbrada_permiso as $item)
+            
+        
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" name="cedula" >
+                <input type="text" class="form-control" name="cedula" value="{{ $timbrada_permiso->cedula }}">
             </div>
         </div> 
+
+        @endforeach
+
+
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">hora</label>
             <div class="col-sm-2">
@@ -36,6 +42,8 @@
                 <input type="text" class="form-control" name="observacion">
             </div>
         </div>
+
+
 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>

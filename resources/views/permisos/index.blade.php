@@ -34,6 +34,8 @@
                 <thead class="thead-tomate">
                 <tr>
                     <th>Cedula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Hora Inicio</th>
                     <th>Hora Fin</th>
                     <th>Fecha Inicio</th>
@@ -47,6 +49,8 @@
                 @foreach($permisosl as $permisoItem)
                     <tr>
                         <td>{!! $permisoItem->cedula !!}</td>
+                        <td>{!! $permisoItem->name !!}</td>
+                        <td>{!! $permisoItem->last_name !!}</td>
                         <td>{!! $permisoItem->hora_inicio !!}</td>
                         <td>{!! $permisoItem->hora_fin !!}</td>
                         <td>{!! $permisoItem->fecha_inicio!!}</td>

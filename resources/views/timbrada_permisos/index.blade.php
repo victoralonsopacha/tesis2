@@ -5,24 +5,41 @@
 @endsection
 
 @section('main-content')
-    <h1>TIMBRAR Permiso</h1>
+<h1>TIMBRAR PERMISO</h1>
+<form class="form-inline my-2 my-lg-0 float-right">
+    <input name="buscador" class="form-control me-2" type="search" placeholder="Ingrese una cedula" aria-label="Search">
+    <button class="btn btn-success" type="submit">Buscar</button>
+  </form>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Profesores</div>
+  
+        <table class="table table-responsive-md text-center">
+            <thead class="thead-tomate">
+            <tr>
+                <th>Cedula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cargo</th> 
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($usersl as $userItem)
+                <tr>
+                    <td>{!! $userItem->cedula !!}</td>
+                    <td>{!! $userItem->name !!}</td>
+                    <td>{!! $userItem->last_name !!}</td>
+                    <td>{!! $userItem->cargo!!}</td>
+                    <td>
+                        <a href="{{ route('consolidado_individual.calcular', $userItem) }}">TIMBRAR</a>
+                    </td>
+                    <td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+     
 
-    @include('partials.validation-errors')
-    <form method="POST" action="{{ route('timbrada_permisos.create') }}">
-        @csrf
-        
-
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" name="cedula" value="">
-            </div>
-        </div>
-        
-        
-
-
-        <button type="submit" class="btn btn-info">Timbrar</button>
-    </form>
-
+</div>
 @endsection

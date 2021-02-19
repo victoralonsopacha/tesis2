@@ -19,7 +19,7 @@ class ConsolidadoIndividualController extends Controller
             $query= trim($request->get('buscador'));
             $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
             
-            return view('consolidado_individual.index', ['usersl'=>$usersl, 'buscador'=>$query]);
+            return view('timbrada_permisos.index', ['usersl'=>$usersl, 'buscador'=>$query]);
         }
         
         /*

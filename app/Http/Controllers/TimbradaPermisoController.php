@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TimbradaPermiso;
+use App\Models\User;
 
 
 class TimbradaPermisoController extends Controller
@@ -13,9 +14,15 @@ class TimbradaPermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('timbrada_permisos.index'); 
+        if($request){
+            $query= trim($request->get('buscador'));
+            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
+            
+            return view('consolidado_individual.index', ['usersl'=>$usersl, 'buscador'=>$query]);
+        }
+        
     }
  
     /**
@@ -23,9 +30,10 @@ class TimbradaPermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-
+        dd($cedula=$user->cedula
+    );
         //return view('timbrada_permisos.create'); 
         
         return view('timbrada_permisos.create',[
