@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TimbradaPermiso;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
+use Carbon\Carbon;
 
 
 class TimbradaPermisoController extends Controller
@@ -20,7 +23,7 @@ class TimbradaPermisoController extends Controller
             $query= trim($request->get('buscador'));
             $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
             
-            return view('consolidado_individual.index', ['usersl'=>$usersl, 'buscador'=>$query]);
+            return view('timbrada_permisos.index', ['usersl'=>$usersl, 'buscador'=>$query]);
         }
         
     }
@@ -30,14 +33,18 @@ class TimbradaPermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create(User $user, TimbradaPermiso $timbrada_permiso)
     {
-        dd($cedula=$user->cedula
-    );
+        $fecha_hora= Carbon::now();
+        $ced_usuario=$user->cedula;
+        
+        $consulta = DB::select('SELECT * FROM users t WHERE t.cedula LIKE  "'.$ced_usuario.'"');
+
         //return view('timbrada_permisos.create'); 
         
         return view('timbrada_permisos.create',[
-            'timbrada_permiso' => new TimbradaPermiso
+            'consulta' => $consulta,
+            'fecha_hora' => $fecha_hora
         ]);
         
     }
@@ -52,7 +59,7 @@ class TimbradaPermisoController extends Controller
     {
         $request->all();
         TimbradaPermiso::create($request->all());
-        return redirect()->route('timbrada_permisos.create')->with('status', 'Usted ha timbrado con exito');
+        return redirect()->route('timbrada_permisos.index')->with('status', 'Usted ha timbrado con exito');
 
     }
 

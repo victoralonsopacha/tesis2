@@ -27,6 +27,11 @@
                                         Archivo Importado con Exito!
                                       </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="alert alert-info" role="alert">
+                                        <a href="{{route()->redirect('import-form')}}">REGRESAR</a>
+                                      </div>
+                                </div>
                             </form>
                         </div>
                     </div>

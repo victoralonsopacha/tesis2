@@ -37,7 +37,7 @@ class TiempoReposicionController extends Controller
         
         $ced_usuario=$user->cedula;
         $consulta = DB::select('SELECT * FROM tiempo_reposicions t WHERE t.cedula LIKE  "'.$ced_usuario.'"');
-
+        //$consulta2 = DB::select('SELECT * FROM usuers s WHERE s.cedula LIKE  "'.$ced_usuario.'"');
 
         return (view('tiempo_reposicions.ver_dias', ['consulta' => $consulta]));
 

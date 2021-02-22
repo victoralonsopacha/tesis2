@@ -17,8 +17,8 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                     <div class="col-sm-6">
-                        @foreach ($consulta as $itemconsulta)
-                            <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta->cedula }}</label>
+                        @foreach ($consulta5 as $itemconsulta5)
+                            <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta5->cedula }}</label>
                         
                         
                     </div>
@@ -26,7 +26,7 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Nombre</label>
                     <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta->name }}</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta5->name }}</label>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -44,18 +44,18 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS APROBADOS</label>
                     <div class="col-sm-6">
-                        <input type="input" class="form-control" name="date" value="{{$itemconsulta->permisos}}">
+                        <input type="input" class="form-control" name="date" value="{{$itemconsulta5->permisos}}">
 
                         @endforeach
                     </div>
                 </div>
                 <div class="form-group row">
-                    @foreach ($consulta2 as $itemconsulta2)
+                    @foreach ($consulta6 as $itemconsulta6)
                         
                     @endforeach
                     <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS SIN APROBAR</label>
                     <div class="col-sm-6">
-                        <input type="input" class="form-control" name="date" value="{{$itemconsulta2->permisos}}">
+                        <input type="input" class="form-control" name="date" value="{{$itemconsulta6->permisos}}">
                     </div>
                 </div>
             </li>

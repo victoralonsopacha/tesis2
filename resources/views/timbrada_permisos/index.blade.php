@@ -6,6 +6,8 @@
 
 @section('main-content')
 <h1>TIMBRAR PERMISO</h1>
+<h4>Por favor ingrese su numero de cedula para timbrar</h4>
+<br>
 <form class="form-inline my-2 my-lg-0 float-right">
     <input name="buscador" class="form-control me-2" type="search" placeholder="Ingrese una cedula" aria-label="Search">
     <button class="btn btn-success" type="submit">Buscar</button>
@@ -32,7 +34,7 @@
                     <td>{!! $userItem->last_name !!}</td>
                     <td>{!! $userItem->cargo!!}</td>
                     <td>
-                        <a href="{{ route('consolidado_individual.calcular', $userItem) }}">TIMBRAR</a>
+                        <a class="btn btn-primary" href="{{ route('timbrada_permisos.create', $userItem) }}">TIMBRAR</a>
                     </td>
                     <td>
                 </tr>

@@ -7,7 +7,8 @@
  
 @section('main-content')
     <h1>DIAS DE REPOSICION</h1>
-
+    <h4>En este modulo puede observar los dias que el profesor a escogido para reponer sus sus atrasos</h4>
+    <br>
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <form class="form-inline my-2 my-lg-0 float-right">
@@ -39,7 +40,7 @@
                         <td>{!! $userItem->last_name !!}</td>
                         <td>{!! $userItem->cargo!!}</td>
                         <td>
-                            <a href="{{ route('tiempo_reposicions.ver_dias', $userItem) }}">VER</a>
+                            <a class="btn btn-primary" href="{{ route('tiempo_reposicions.ver_dias', $userItem) }}">VER</a>
                         </td>
                         <td>
                     </tr>

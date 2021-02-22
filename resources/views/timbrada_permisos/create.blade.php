@@ -11,13 +11,29 @@
     <form method="POST" action="{{ route('timbrada_permisos.store') }}">
         @csrf
         
-        @foreach ($timbrada_permiso as $item)
+        
+            
+        @foreach ($consulta as $consultaItem)
             
         
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" name="cedula" value="{{ $timbrada_permiso->cedula }}">
+                <input type="text" class="form-control" name="cedula" value="{{$consultaItem->cedula}}" readonly>
+            </div>
+        </div> 
+
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre del usuario</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="name" value="{{$consultaItem->name}}" readonly>
+            </div>
+        </div> 
+
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Apellido del usuario</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="last_name" value="{{$consultaItem->last_name}}" readonly>
             </div>
         </div> 
 
@@ -27,13 +43,13 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">hora</label>
             <div class="col-sm-2">
-                <input type="time" class="form-control" name="hora">
+                <input type="time" class="form-control" name="hora" value="{{ $fecha_hora->format('h:i:s') }}" readonly>
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
             <div class="col-sm-2">
-                <input type="date" class="form-control" name="fecha" >
+                <input type="date" class="form-control" name="fecha" value="{{ $fecha_hora->format('Y-m-d') }}" readonly>
             </div>
         </div>
         <div class="form-group row">
@@ -48,11 +64,9 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
             <div class="col-sm-6">
-
-
                 <select name="tipo_permiso">
-                    <option {{old('tipo_permiso',$timbrada_permiso->tipo_permiso)=="salida"? 'selected':''}}  value="salida">salida</option>
-                    <option {{old('tipo_permiso',$timbrada_permiso->tipo_permiso)=="entrada"? 'selected':''}} value="entrada">entrada</option>
+                    <option {{old('tipo_permiso')=="salida"? 'selected':''}}  value="salida">salida</option>
+                    <option {{old('tipo_permiso')=="entrada"? 'selected':''}} value="entrada">entrada</option>
                  </select>
             </div>
         </div>
@@ -60,7 +74,7 @@
         <div class="form-group row">
             
             <div class="col-sm-6">
-                <input style="visibility:hidden" type="text" class="form-control" name="estado" value="{{$timbrada_permiso->estado=0}}">
+                <input style="visibility:hidden" type="text" class="form-control" name="estado" value="0">
             </div>
         </div>
 

@@ -8,8 +8,8 @@
 @section('main-content')
     <h1>CALCULAR HORAS</h1>
 
-    <h3>Este </h3>
-
+    <h4>Este modulo permite calcular la cantidad de horas, dias, y atrasos en el periodo de tiempo que usted necesite</h4>
+<br>
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <form class="form-inline my-2 my-lg-0 float-right">
@@ -41,7 +41,7 @@
                         <td>{!! $userItem->last_name !!}</td>
                         <td>{!! $userItem->cargo!!}</td>
                         <td> 
-                            <a href="{{ route('calculo_tiempos.calcular', $userItem) }}">CALCULAR</a>
+                            <a class="btn btn-primary" href="{{ route('calculo_tiempos.calcular', $userItem) }}">CALCULAR</a>
                         </td>
                         <td>
                     </tr>
