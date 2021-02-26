@@ -6,17 +6,22 @@
 
 
 @section('main-content')
+    <div class="container-fluid">
     <h1>Editar Permiso</h1>
-
-    <form method="POST" action="{{ route('permiso_profesors.update', $permiso_profesor) }}">
-        @csrf @method('PATCH')
-        @include('permiso_profesors._form')
-        <button type="submit" class="btn btn-success">Actualizar</button>
-    </form>
-    <br>
-    <form action="{{route('permiso_profesors.destroy', $permiso_profesor)}}" method="POST">
+        <div class="pull-left">
+            <a class="btn btn-primary" href="{{ route('permiso_profesors.shows')}}">Regresar</a>
+        </div>
+        <br><br>
+        {!! Form::model($permiso_profesor, ['method' => 'PATCH','route' => ['permiso_profesors.update', $permiso_profesor]]) !!}
+        {!! Form::token() !!}
+            @include('permiso_profesors._form')
+            <button type="submit" class="btn btn-success">Actualizar</button>
+        {!! Form::close() !!}
+        <br>
+        {!! Form::model($permiso_profesor, ['method' => 'POST','route' => ['permiso_profesors.destroy', $permiso_profesor]]) !!}
+        {!! Form::token() !!}
         @csrf @method('DELETE')
         <button type="submit" class="btn btn-danger">Eliminar</button>
-    </form>
-    <br>
+        {!! Form::close() !!}
+    </div>
 @endsection

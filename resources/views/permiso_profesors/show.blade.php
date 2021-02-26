@@ -4,46 +4,56 @@
     {{ trans('adminlte_lang::message.home') }}
 @endsection
 
-
 @section('main-content')
-    <h1>PERMISO </h1>
+    <div class="container-fluid">
+        <h1>Permiso</h1>
+        <div class="pull-left">
+            <a class="btn btn-primary" href="{{ route('permiso_profesors.shows')}}">Regresar</a>
+        </div>
+        <br><br>
+        @if(Session::has('message'))
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{Session::get('message')}}
+            </div>
+        @endif
+        {!! Form::model($permiso_profesor, ['method' => 'PATCH','route' => ['permiso_profesors.update', $permiso_profesor]]) !!}
 
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="cedula" value="{{ $permisol->cedula }}">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+        <div class="form-group">
+            <strong>Fecha de Inicio:</strong>
+            {!! Form::date('fecha_inicio',null,['class' => 'form-control','readonly']) !!}
+        </div>
+        <div class="form-group">
+            <strong>Fecha Fin:</strong>
+            {!! Form::date('fecha_fin', null, array('class' => 'form-control','readonly')) !!}
+        </div>
+        <div class="form-group">
+            <strong>Hora Inicio:</strong>
+            {!! Form::time('hora_inicio', \Carbon\Carbon::now(), array('class' => 'form-control','readonly')) !!}
+        </div>
+        <div class="form-group">
+            <strong>Hora Fin:</strong>
+            {!! Form::time('hora_fin', null, array('class' => 'form-control','readonly')) !!}
         </div>
     </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Inicio</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="cedula" value="{{$permisol->fecha_inicio}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Fin</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="cedula" value="{{$permisol->fecha_fin}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Inicio</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="cedula" value="{{$permisol->hora_inicio}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Fin</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="cedula" value="{{$permisol->hora_fin}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Descripcion</label>
-        <div class="col-sm-6">
-            <input type="textarea" class="form-control" name="cedula" value="{{$permisol->descripcion}}">
-        </div>
-    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6">
+        <div class="form-group">
+            <strong>Tipo Permiso:</strong>
+            {!! Form::text('tipo_permiso', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
 
+        </div>
+        <div class="form-group">
+            <strong>Descripcion:</strong>
+            {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
+        </div>
+        <div class="form-group">
+            <strong>Justificacion:</strong>
+        </div>
+    </div>
+    {!! Form::close() !!}
+
+
+</div>
 @endsection
 

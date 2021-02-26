@@ -1,3 +1,4 @@
+<div class="row">
 <div class="col-xs-6 col-sm-6 col-md-6">
     <div class="form-group">
         <strong>Fecha de Inicio:</strong>
@@ -19,7 +20,7 @@
 <div class="col-xs-6 col-sm-6 col-md-6">
     <div class="form-group">
         <strong>Tipo Permiso:</strong>
-        {!! Form::select('tipo_permiso[]', array('Medico' => 'Medico', 'Calamidad Domestica' => 'Calamidad Domestica'), 'Medico',['class' => 'form-control']); !!}
+        {!! Form::select('tipo_permiso[]',$tipo_permiso, null,['class' => 'form-control']); !!}
     </div>
     <div class="form-group">
         <strong>Descripcion:</strong>
@@ -29,6 +30,7 @@
         <strong>Adjuntar Justificacion:</strong>
         {!! Form::file('file', null, array('class' => 'form-control')) !!}
     </div>
+</div>
 </div>
 
 

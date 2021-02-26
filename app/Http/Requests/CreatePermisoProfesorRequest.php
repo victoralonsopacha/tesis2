@@ -13,7 +13,7 @@ class CreatePermisoProfesorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class CreatePermisoProfesorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'fecha_inicio' => 'required|after:yesterday',
+            'fecha_fin' => 'required|after:yesterday',
+            'hora_inicio' => 'required',
+            'hora_fin' => 'required',
+            'tipo_permiso'=>'required',
         ];
     }
+
+    public function messages(){
+        return [
+            'fecha_inicio.after' => 'La fecha de inicio no puede ser anterior a la del dia de hoy',
+            'fecha_fin.after' => 'La fecha de finalizacion no debe ser anterior a la de la fecha de inicio'
+
+        ];
+    }
+
 }

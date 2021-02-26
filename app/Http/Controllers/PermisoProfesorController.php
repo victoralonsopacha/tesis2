@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PermisoProfesor;
 
+use App\Http\Requests\SearchPermisoProfesorRequest;
+use App\Models\PermisoProfesor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\SavePermisoProfesorRequest;
+use App\Http\Requests\CreatePermisoProfesorRequest;
 use Illuminate\Support\Facades\DB;
 use App\Events\PermisoEvent;
 use App\Notifications\PermisosNotification;
@@ -27,21 +29,21 @@ class PermisoProfesorController extends Controller
 
     public function index(Request $request)
     {
-
+        $i=1;
         $cedula = auth()->user()->cedula;
-        $permisosl= PermisoProfesor::where('cedula','=',$cedula)
+        $permisos= PermisoProfesor::where('cedula','=',$cedula)
             ->where('estado','=','1')
             ->get();
-        return view('permiso_profesors.index',compact('permisosl'));
+        return view('permiso_profesors.index',compact('permisos','i'));
     }
     public function index1(Request $request)
     {
-
+        $i=1;
         $cedula = auth()->user()->cedula;
         $permisosl= PermisoProfesor::where('cedula','=',$cedula)
             ->where('estado','=','2')
             ->get();
-        return view('permiso_profesors.index1',compact('permisosl'));
+        return view('permiso_profesors.index1',compact('permisosl','i'));
     }
 
     public function inicio(){
@@ -56,8 +58,13 @@ class PermisoProfesorController extends Controller
      */
     public function create()
     {
+        $tipo_permiso = array(
+            "Medico" => "Medico",
+            "Calamidad Domestrica" => "Calamidad Domestrica",
+            "Otro" => "Otro",
+        );
         return view('permiso_profesors.create',
-            ['permiso_profesor' => new PermisoProfesor]);
+            ['permiso_profesor' => new PermisoProfesor,'tipo_permiso'=>$tipo_permiso]);
     }
 
     /**
@@ -66,27 +73,23 @@ class PermisoProfesorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SavePermisoProfesorRequest $request)
+    public function store(CreatePermisoProfesorRequest $request)
     {
-        //$request->validated();
+        $request->validated();
         $permiso=$request->all();
-        $request['fecha_inicio']=Carbon::now()->format('Y-m-d');
-
-
-        /*$permiso['cedula']=auth()->user()->cedula;;
+        $permiso['cedula']=auth()->user()->cedula;
         $permiso['tipo_permiso']=implode($request['tipo_permiso']);
         $permiso['estado']='0';
         if($archivo=$request->file('file')){
             $nombre_imagen=$archivo->getClientOriginalName();
             $archivo->move('public',$nombre_imagen);
             $permiso['file']=$nombre_imagen;
-        }*/
-        return $request['fecha_inicio'];
+        }
+        PermisoProfesor::create($permiso);
 
-        //PermisoProfesor::create($permiso);
         //event(new PermisoEvent($permiso));
 
-        //return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
+        return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
     }
 
     /**
@@ -95,29 +98,56 @@ class PermisoProfesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show(PermisoProfesor $permiso_profesor)
     {
-        return view('permiso_profesors.show', [
-            'permiso_profesor' => $permiso_profesor
-            //'user' => User::findOrFail($id)
-        ]);
+        $tipo_permiso = array(
+            "Medico" => "Medico",
+            "Calamidad Domestrica" => "Calamidad Domestrica",
+            "Otro" => "Otro",
+        );
+        return view('permiso_profesors.show',
+            ['permiso_profesor' => $permiso_profesor,'tipo_permiso'=>$tipo_permiso]);
     }
+
     public function shows(PermisoProfesor $permiso_profesor)
     {
+        $i=1;
         $cedula = auth()->user()->cedula;
         $permisos=PermisoProfesor::where('cedula','=',$cedula)
             ->get();
-        return view('permiso_profesors.shows', compact('permisos'));
+        return view('permiso_profesors.shows', compact('permisos','i'));
     }
-    public function buscar(Request $request)
+    public function buscar(SearchPermisoProfesorRequest $request)
     {
+        $request->validated();
         $cedula = auth()->user()->cedula;
         $fecha_inicio=$request->input('fecha_inicio');
         $fecha_fin=$request->input('fecha_fin');
+
         $permisos=PermisoProfesor::where('cedula','=', $cedula)
             ->whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])
             ->get();
-        return view('permiso_profesors.shows', compact('permisos'));
+
+        $i=1;
+        return redirect(route('permiso_profesors.shows', compact('permisos','i')));
+    }
+    public function buscarA(SearchPermisoProfesorRequest $request)
+    {
+        $request->validated();
+        $cedula = auth()->user()->cedula;
+        $fecha_inicio=$request->input('fecha_inicio');
+        $fecha_fin=$request->input('fecha_fin');
+
+        $permisos=PermisoProfesor::where('cedula','=', $cedula)
+            ->where('estado','=','1')
+            ->whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])
+            ->get();
+
+        $i=1;
+        return view('permiso_profesors.index',compact('permisos','i'));
+
+
     }
 
     /**
@@ -128,8 +158,13 @@ class PermisoProfesorController extends Controller
      */
     public function edit(PermisoProfesor $permiso_profesor)
     {
+        $tipo_permiso = array(
+            "Medico" => "Medico",
+            "Calamidad Domestrica" => "Calamidad Domestrica",
+            "Otro" => "Otro",
+        );
         return view('permiso_profesors.edit',
-            ['permiso_profesor' => $permiso_profesor ]);
+            ['permiso_profesor' => $permiso_profesor,'tipo_permiso'=>$tipo_permiso]);
     }
 
     /**
@@ -143,18 +178,18 @@ class PermisoProfesorController extends Controller
     {
         $request->validated();
         $entrada=$request->all();
+        $entrada['tipo_permiso']=implode($request['tipo_permiso']);
         if($archivo=$request->file('file')){
             $nombre_imagen=$archivo->getClientOriginalName();
             $archivo->move('public',$nombre_imagen);
             $entrada['file']=$nombre_imagen;
         }
-        //VALIDACION PEDIENTE DEBIDO A QUE ES NECESARIO GUARDAR LA IMAGEN
+        //VALIDACION PENDIENTE DEBIDO A QUE ES NECESARIO GUARDAR LA IMAGEN
         $permiso_profesor->update($entrada);
 
-        return redirect()->route('permiso_profesors.show', $permiso_profesor)->with('status', 'El permiso ha sido actualizado con exito');
 
-        //$permiso_profesor->update( $request->validated() );
-        //return redirect()->route('permiso_profesors.show', $permiso_profesor)->with('status', 'El permiso ha sido actualizado con exito');
+        return view('permiso_profesors.show',
+            ['permiso_profesor' => $permiso_profesor]);
 
     }
 
@@ -168,7 +203,7 @@ class PermisoProfesorController extends Controller
     {
         $permiso_profesor->delete();
 
-        return redirect()->route('permiso_profesors.index')->with('status', 'El permiso ha sido eliminado');
+        return redirect()->route('permiso_profesors.shows')->with('message', 'El permiso ha sido eliminado');
 
     }
 }

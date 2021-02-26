@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -37,8 +41,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    //Redirigir segun correo al dashboard correspondiente
 
+    public function email()
+    {
+        return 'email';
+    }
+
+    //FUNCION PARA VERIFICAR CORREO, CONTRASENA Y ESTADO ACTIVO PARA ACCEDER AL SISTEMA
+    protected function credentials(Request $request)
+    {
+        return ['email' => $request->{$this->email()}, 'password' => $request->password, 'estado' => 1];
+
+        if(Auth::attempt( $credentials,false ))
+        {
+            return back()->withErrors([$this->email()=>'Este usuario no concuerdan con nuestros registros']);
+        }
+    }
+
+    //Redirigir segun ROL al dashboard correspondiente
     public function authenticated($request , $user){
         if($user->hasRole('Admin')){
             return redirect()->route('home') ;

@@ -6,6 +6,7 @@
 
 
 @section('main-content')
+    <div class="container-fluid">
     <h2>PERMISOS APROBADOS</h2>
     <div class="pull-left">
         <a href="{{ route('permiso_profesors.shows') }}"
@@ -15,47 +16,34 @@
         <a class="btn btn-danger" href="{{ route('permiso_profesors.create')}}">Crear Nuevo Permiso</a>
     </div>
     <br><br><br>
+        @include('partials.validation-errors')
+        <div class="row">
+            {!! Form::open(['route' => 'permiso_profesors.buscarA', 'method'=>'POST']) !!}
+            {!! Form::token() !!}
+            <div class="col-sm-1 col-lg-1">
+                <strong>De:</strong>
+            </div>
+            <div class="col-sm-3 col-lg-3">
+                {!! Form::date('fecha_inicio',null,['class' => 'form-control']) !!}
+            </div>
+            <div class="col-sm-1 col-lg-1">
+                <strong>Hasta:</strong>
+            </div>
+            <div class="col-sm-3 col-lg-3">
+                {!! Form::date('fecha_fin',\Carbon\Carbon::now(),['class' => 'form-control']) !!}
+            </div>
+            <div class="col-sm-3 col-lg-3">
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </div>
+            {{ Form::close() }}
+        </div>
+        <!-- /.row -->
 
-
-    @if($permisosl->isEmpty())
+    @if($permisos->isEmpty())
         <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
     @else
-    <div class="panel panel-default">
-        <div class="panel-heading">Permisos</div>
-            <table class="table table-responsive-md text-center">
-                <thead class="thead-tomate">
-                <tr>
-                    <th>Cedula</th>
-                    <th>Hora Inicio</th>
-                    <th>Hora Fin</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($permisosl as $permisoItem)
-                    <tr>
-                        <td>{!! $permisoItem->cedula !!}</td>
-                        <td>{!! $permisoItem->hora_inicio !!}</td>
-                        <td>{!! $permisoItem->hora_fin !!}</td>
-                        <td>{!! $permisoItem->fecha_inicio!!}</td>
-                        <td>{!! $permisoItem->fecha_fin !!}</td>
-                        <td>{!! $permisoItem->estado !!}</td>
-                        <td>
-                            <a href="{{ route('permiso_profesors.edit', $permisoItem) }}">Editar</a>
-                        </td>
-                        <td>
-                            <a href="#">Justificación</a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        @endif
-
+            <br>
+        @include('permiso_profesors.form')
+    @endif
     </div>
-
-
-
 @endsection

@@ -23,8 +23,8 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Registration Routes...
-/*$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-$this->post('register', 'Auth\RegisterController@register');
+/*Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');*/
 // Password Reset Routes...*/
 //Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');/*password.email*/
 //Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email'); /*password.email*/
@@ -103,6 +103,8 @@ Route::group(['middleware' => ['role:Profesor']], function () {
     Route::delete('/permiso_profesors/{permiso_profesor}', 'PermisoProfesorController@destroy')->name('permiso_profesors.destroy');
     //BUSCAR
     Route::post('/permiso_profesors/buscar','PermisoProfesorController@buscar')->name('permiso_profesors.buscar');
+    Route::post('/permiso_profesors/buscarA','PermisoProfesorController@buscarA')->name('permiso_profesors.buscarA');
+
 
 });
 //RUTAS PARA VER TIMBRADAS
