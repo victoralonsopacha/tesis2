@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SavePermisoProfesorRequest extends FormRequest
+class CreatePermisoProfesorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class SavePermisoProfesorRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,17 +24,7 @@ class SavePermisoProfesorRequest extends FormRequest
     public function rules()
     {
         return [
-            'fecha_inicio' =>'required',
-            'fecha_fin' => 'required',
-            'hora_inicio' => 'required',
-            'hora_fin' => 'required',
-            'tipo_permiso' => 'required',
-        ];
-    }
-
-    public function messages(){
-        return [
-            'cedula.required' => 'Debe ingresar una cedula'
+            //
         ];
     }
 }

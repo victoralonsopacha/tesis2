@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Sistema de Control de Asistencia Escuela Velasco Ibarra'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'Pacific/Galapagos',
+    'timezone' => 'America/Bogota',
 
     /*
     |--------------------------------------------------------------------------

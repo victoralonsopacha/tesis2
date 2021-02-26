@@ -37,4 +37,17 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    //Redirigir segun correo al dashboard correspondiente
+
+    public function authenticated($request , $user){
+        if($user->hasRole('Admin')){
+            return redirect()->route('home') ;
+        }
+        if($user->hasRole('Inspector')){
+            return redirect()->route('dashboard.inspector') ;
+        }
+        elseif($user->hasRole('Profesor')){
+            return redirect()->route('dashboard.profesor') ;
+        }
+    }
 }

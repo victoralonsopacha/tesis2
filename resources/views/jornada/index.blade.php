@@ -25,17 +25,12 @@
         </div>
             @else
                 @foreach($horarios as $horario)
-                    <div class="row">
-                        <div class="col-md-4">
-                            {!! Form::label($horario->hora_entrada) !!}
-                        </div>
-                        <div class="col-md-4">
-                            {!! Form::label($horario->hora_salida) !!}
-                        </div>
-                        <div class="col-md-4">
-                            {!! Form::label($horario->tipo) !!}
-                        </div>
-                    </div>
+                <span class="">Tu Jornada es
+                    {!! Form::label($horario->tipo) !!} en horario de
+                    {!! Form::label($horario->hora_entrada) !!} a
+                    {!! Form::label($horario->hora_salida) !!}
+
+                </span><br>
                 @endforeach
 
     @endif
@@ -44,8 +39,6 @@
         <div class="row">
             {!! Form::open(['route' => 'jornada.buscar', 'method'=>'POST']) !!}
             {!! Form::token() !!}
-
-
             <div class="col-sm-3 col-lg-3">
                 {!! Form::date('fecha_inicio',null,['class' => 'form-control']) !!}
             </div>

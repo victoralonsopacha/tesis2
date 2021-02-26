@@ -5,16 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af145d22-d578-4f62-8d42-70800367ccc4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tesis2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tesis2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/admin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/perfiles/profesor_edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/timbrada_permisos/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/users/activos.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/users/inactivos.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ControlTiempoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ControlTiempoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConsolidadoIndividualController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConsolidadoIndividualController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermisoProfesorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermisoProfesorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TimbradaPermisoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TimbradaPermisoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/SavePermisoProfesorRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/SavePermisoProfesorRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PermisoProfesor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PermisoProfesor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/TimbradaPermiso.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TimbradaPermiso.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/calculo_tiempos/calcular.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/calculo_tiempos/calcular.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/calculo_tiempos/permisos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/calculo_tiempos/permisos.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/calculo_tiempos/total.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/calculo_tiempos/total.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/consolidado_individual/calcular.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/consolidado_individual/calcular.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/consolidado_individual/consolidado.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/consolidado_individual/consolidado.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/consolidado_individual/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/consolidado_individual/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/jornada/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jornada/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/perfiles/profesor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/perfiles/profesor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permiso_profesors/_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permiso_profesors/_form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permiso_profesors/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permiso_profesors/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permiso_profesors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permiso_profesors/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permiso_profesors/index1.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permiso_profesors/index1.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permiso_profesors/principal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permiso_profesors/principal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permiso_profesors/shows.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permiso_profesors/shows.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/timbrada_permisos/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/timbrada_permisos/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/timbrada_permisos/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/timbrada_permisos/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/_form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/layouts/partials/mainheader.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/layouts/partials/mainheader.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/layouts/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/layouts/partials/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -260,7 +290,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -269,11 +299,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210202\tesis2\resources\views" />
-      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210202\tesis2\app\Http\Controllers" />
-      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210202\tesis2\resources\views\permisos" />
-      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210202\tesis2\app\Models" />
-      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210202\tesis2\resources\views\permiso_profesors" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\app\Http\Controllers" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\app\Models" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\resources\views\permiso_profesors" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\resources\views\jornada" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\resources\views\perfiles" />
     </key>
   </component>
   <component name="RunManager">
@@ -306,6 +336,14 @@
       <workItem from="1612544013535" duration="22256000" />
       <workItem from="1612877529065" duration="30803000" />
       <workItem from="1613132004495" duration="22691000" />
+      <workItem from="1614008411731" duration="866000" />
+      <workItem from="1614011452601" duration="3898000" />
+      <workItem from="1614088833134" duration="297000" />
+      <workItem from="1614089619446" duration="853000" />
+      <workItem from="1614090908229" duration="1072000" />
+      <workItem from="1614092233826" duration="28406000" />
+      <workItem from="1614205564597" duration="17324000" />
+      <workItem from="1614298995908" duration="6898000" />
     </task>
     <servers />
   </component>

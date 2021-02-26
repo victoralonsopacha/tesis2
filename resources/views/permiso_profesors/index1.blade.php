@@ -6,15 +6,20 @@
 
 
 @section('main-content')
-    <h2>PERMISOS RECHAZADOS</h2>
-    {{--@auth--}}
-    <a href="{{ route('permiso_profesors.create') }}" class="btn btn-info">Crear Permiso</a>
-    {{--@endauth--}}
-    <br>
-    <br>
+    <h2>PERMISOS DESAPROBADOS</h2>
+    <div class="pull-left">
+        <a href="{{ route('permiso_profesors.shows') }}"
+           class="btn btn-primary">Regresar</a>
+    </div>
+    <div class="pull-right">
+        <a class="btn btn-danger" href="{{ route('permiso_profesors.create')}}">Crear Nuevo Permiso</a>
+    </div>
+    <br><br><br>
+
+
     @if($permisosl->isEmpty())
         <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
-        <a href="/permiso_profesors/principal">Regresar a menu Permisos</a>
+        <a href="{{route('permiso_profesors.shows')}}">Regresar a menu Permisos</a>
     @else
 
     <div class="panel panel-default">

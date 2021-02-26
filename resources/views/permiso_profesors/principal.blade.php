@@ -7,22 +7,13 @@
 
 @section('main-content')
     <h2>GESTIONAR PERMISOS</h2>
-
-
-
-
-    <div class="row">
-        <div class="col-md-2">
-            <a class="btn btn-success btn-group-justified" href="{{ route('permiso_profesors.shows') }}">Ver todos los permisos</a>
-        </div>
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <a class="btn btn-info btn-group-justified" href="{{ route('permiso_profesors.create')}}">Crear Nuevo Permiso</a>
-        </div>
+    <div class="pull-left">
+        <a class="btn btn-success" href="{{ route('permiso_profesors.shows') }}">Ver todos los permisos</a>
     </div>
-    <br>
+    <div class="pull-right">
+        <a class="btn btn-info" href="{{ route('permiso_profesors.create')}}">Crear Nuevo Permiso</a>
+    </div>
+    <br><br>
     <div class="row">
         <div class="col-sm-6 col-md-6">
             <div class="thumbnail">

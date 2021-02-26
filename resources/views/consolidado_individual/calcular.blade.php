@@ -6,8 +6,7 @@
 
 
 @section('main-content')
-    <h1>VER TIMBRADAS</h1>
-
+    <h1>PERMISOS REGISTRADOS</h1>
 
     <div class="card text-center">
         <div class="card-header">
@@ -15,11 +14,11 @@
             <li class="nav-item">
                 <a class="nav-link active" href="#">Profesor</a>
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Cedula</label>              
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Cedula</label>
                     <div class="col-sm-6">
                         <label for="staticEmail" class="col-sm-2 col-form-label">{{ $user->cedula }}</label>
                     </div>
-                </div>      
+                </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
                     <div class="col-sm-6">
@@ -57,7 +56,7 @@
                 <button type="submit" class="btn btn-success"><a class="nav-link" >Ver Timbradas</a></button>
 
                 </form>
-                
+
             </li>
 
           </ul>

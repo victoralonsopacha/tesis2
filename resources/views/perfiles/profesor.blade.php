@@ -5,60 +5,45 @@
 @endsection
 
 @section('main-content')
+    <div class="container-fluid">
     <div class="panel panel-primary">
-        <div class="panel-heading">Perfil Inspector</div>
+        <div class="panel-heading text-center">Mi Informacion</div>
     </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Nombre</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->name}}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Apellido</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->lastname}}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->email}}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Cargo</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="password" class="form-control" name="fecha_inicio" value="{{Auth::user()->password}}">
-                    </div>
-                </div>
+        @if(Session::has('message'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{Session::get('message')}}
             </div>
-            <div class="col-sm-6">
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">C.I</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->cedula}}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Relacion Laboral</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->tipo_relacion_laboral}}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Cargo</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->cargo}}">
-                    </div>
-                </div>
-            </div>
+        @endif
+        {!! Form::model($user, ['method' => 'POST','route' => ['user.edit', $user->id]]) !!}
+        <div class="panel panel-default">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td><strong class="col-md-4">Nombres:</strong></td>
+                    <td><label class="col-md-8">{!! auth()->user()->name." ".auth()->user()->last_name !!}</label></td>
+                </tr>
+                <tr>
+                    <td><strong class="col-md-4">Correo:</strong></td>
+                    <td><label class="col-md-8">{!! auth()->user()->email !!}</label></td>
+                </tr>
+                <tr>
+                    <td><label class="col-md-4">Cedula:</label></td>
+                    <td><label class="col-md-8">{!! auth()->user()->cedula !!}</label></td>
+                </tr>
+                <tr>
+                    <td><label class="col-md-4">Relacion Laboral:</label></td>
+                    <td><label class="col-md-8">{!! auth()->user()->tipo_relacion_laboral !!}</label></td>
+                </tr>
+                <tr>
+                    <td><label class="col-md-4">Fecha de Ingreso:</label></td>
+                    <td><label class="col-md-8">{!! auth()->user()->fecha_ingreso !!}</label></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+        <button type="submit" class="btn btn-info">Editar Información</button>
+        {!! Form::close() !!}
     </div>
-
 @endsection
 

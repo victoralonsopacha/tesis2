@@ -2,107 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\SaveUserRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
-//use DB;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $usersl= User::get();
-        return view('users.index', compact('usersl'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    { 
-        return view('users.create',[
-            'user' => new User
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(SaveUserRequest $request)
-    {
-        //FORMA DIFERENTE PARA IMMPEDIR LA ASIGNACION MASIVA
-        User::create($request->validated());
-        return redirect()->route('users.index')->with('status', 'El usuario fue creado con exito');
-
-        //return request();
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        return view('users.show', [
-            'user' => $user
-            //'user' => User::findOrFail($id)
-        ]);
-    }
-
-    /**
-     * LLENA LOS CAMPOS DEL FORMULARIO PARA EMPEZAR A EDITARLO.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        return view('users.edit', [
-            'user' => $user
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(User $user, SaveUserRequest $request)
-    {
-        $request->validated();
-        $userl=$request->all();
-        $userl['password']=Hash::make($request['password']);
-        $user->update($userl);
-        return redirect()->route('users.show', $user)->with('message', 'El usuario ha sido actualizado con exito');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    //
+    public function edit($id)
     {
         $user = User::find($id);
-        $user->delete();
-        return redirect()->route('users.index')->with('status', 'El usuario ha sido eliminado');
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+        $tipo_relacion = array(
+            "Contrato" => "Contrato",
+            "Temporal" => "Temporal"
+        );
+        return view('perfiles.profesor_edit',compact('user','roles','userRole','tipo_relacion'));
+
+    }
+
+    public function update($id, Request $request)
+    {
+        //$input=$request->validated();
+        $input = $request->all();
+        $input['tipo_relacion_laboral']=implode($request['tipo_relacion']);
+        $input['password'] = Hash::make($input['password']);
+        $user = User::find($id);
+
+        $user->update($input);
+        return redirect()->route('perfil.profesor',compact('user'))->with('message', 'Tu informacion ha sido actualizada con exito');
     }
 }

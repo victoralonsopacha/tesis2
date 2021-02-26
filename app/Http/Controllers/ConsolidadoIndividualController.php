@@ -17,11 +17,17 @@ class ConsolidadoIndividualController extends Controller
     {
         if($request){
             $query= trim($request->get('buscador'));
-            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
-            
-            return view('consolidado_individual.index', ['usersl'=>$usersl, 'buscador'=>$query]);
+            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->where('estado','=','1')->orderBy('id','asc')->get();
+            $roles=DB::table('model_has_roles')
+                ->select('role_id', 'model_id')
+                ->get();
+            $rolesl=DB::table('roles')
+                ->where('id','=','2')
+                ->select('id', 'name')
+                ->get();
+            return view('consolidado_individual.index', ['usersl'=>$usersl,'roles'=>$roles,'rolesl'=>$rolesl, 'buscador'=>$query]);
         }
-        
+
         /*
         $usersl= User::where('cargo','=','profesor')->get();
         return view('consolidado_individual.index', compact('usersl'));
@@ -102,14 +108,14 @@ class ConsolidadoIndividualController extends Controller
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
 
-        //CONSULTA LISTAR LOS TIMBRADOS CON UN USUARIO Y ENTRE FECHAS 
+        //CONSULTA LISTAR LOS TIMBRADOS CON UN USUARIO Y ENTRE FECHAS
         $consultal = DB::select('SELECT * FROM timbradas r WHERE r.cedula LIKE  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
         return view('consolidado_individual.consolidado',
-        [   
+        [
             'consulta' => $consultal
         ]
-    
+
     );
 }
 

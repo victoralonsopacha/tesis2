@@ -30,7 +30,8 @@ class User extends Authenticatable
         'cargo',
         'fecha_ingreso',
         'fecha_inicio',
-        'fecha_fin'
+        'fecha_fin',
+         'estado'
 
     ];
 

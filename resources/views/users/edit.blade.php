@@ -6,11 +6,8 @@
 
 @section('main-content')
     <h1>Editar Usuario</h1>
-
-    @include('partials.validation-errors')
-    <form method="POST" action="{{ route('users.update', $user) }}">
-        @csrf @method('PATCH')
-        @include('users._form')
-        <button>Actualizar</button>
-    </form>
+    {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+    @include('users._form')
+    <button type="submit" class="btn btn-success">Actualizar</button>
+    {!! Form::close() !!}
 @endsection

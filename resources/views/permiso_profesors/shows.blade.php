@@ -6,10 +6,17 @@
 
 
 @section('main-content')
-    <h1>PERMISOS</h1>
-
-
-
+    <h1>MIS PERMISOS</h1>
+    <div class="pull-left">
+        <a href="{{ route('permiso_profesors.index', ['permiso_profesor' => $permiso_profesor=auth()->user()->cedula]) }}"
+           class="btn btn-success">Permisos Aprobados</a>
+        <a href="{{ route('permiso_profesors.index1', ['permiso_profesor' => $permiso_profesor=auth()->user()->cedula]) }}"
+           class="btn btn-info">Permisos Desaprobados</a>
+    </div>
+    <div class="pull-right">
+        <a class="btn btn-danger" href="{{ route('permiso_profesors.create')}}">Crear Nuevo Permiso</a>
+    </div>
+    <br><br><br>
     <div class="row">
         {!! Form::open(['route' => 'permiso_profesors.buscar', 'method'=>'POST']) !!}
         {!! Form::token() !!}
@@ -34,8 +41,6 @@
         </div>
         @endif
         <br>
-        <a href="{{ route('permiso_profesors.create') }}" class="btn btn-info">Crear Nuevo Permiso</a>
-        <br><br>
         <div class="panel panel-default">
         <div class="panel-heading">Permisos</div>
             <table class="table table-responsive-md text-center">
@@ -57,13 +62,19 @@
                     <td>{!! $permiso->hora_fin !!}</td>
                     <td>{!! $permiso->fecha_inicio!!}</td>
                     <td>{!! $permiso->fecha_fin!!}</td>
-                    <td>{!! $permiso->estado !!}</td>
-                    <td>
-                        <a href="{{ route('permiso_profesors.edit', $permiso) }}" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    </td>
-                    <td>
-                        <a href="#">Ver Justificación</a>
-                    </td>
+                    @if($permiso->estado == '0')
+                    <td><span class="label label-danger">Pendiente</span></td>
+                    @elseif($permiso->estado == '1')
+                        <td>Aprobado</td>
+                        <td>
+                            <a href="{{ route('permiso_profesors.show', $permiso) }}" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </td>
+                    @elseif($permiso->estado == '2')
+                        <td>DesAprobado</td>
+                        <td>
+                            <a href="{{ route('permiso_profesors.show', $permiso) }}" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </td>
+                    @endif
                 </tr>
                 @endforeach
                 </tbody>

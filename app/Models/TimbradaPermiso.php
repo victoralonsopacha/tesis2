@@ -17,7 +17,6 @@ class TimbradaPermiso extends Model
         'hora',
         'tipo_permiso',
         'observacion',
-        'estado'
 
     ];
 

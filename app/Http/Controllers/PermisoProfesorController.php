@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\PermisoProfesor;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\SavePermisoProfesorRequest;
 use Illuminate\Support\Facades\DB;
+use App\Events\PermisoEvent;
+use App\Notifications\PermisosNotification;
 
 class PermisoProfesorController extends Controller
 {
@@ -27,7 +30,7 @@ class PermisoProfesorController extends Controller
 
         $cedula = auth()->user()->cedula;
         $permisosl= PermisoProfesor::where('cedula','=',$cedula)
-            ->where('estado','=',1)
+            ->where('estado','=','1')
             ->get();
         return view('permiso_profesors.index',compact('permisosl'));
     }
@@ -36,7 +39,7 @@ class PermisoProfesorController extends Controller
 
         $cedula = auth()->user()->cedula;
         $permisosl= PermisoProfesor::where('cedula','=',$cedula)
-            ->where('estado','=',0)
+            ->where('estado','=','2')
             ->get();
         return view('permiso_profesors.index1',compact('permisosl'));
     }
@@ -65,21 +68,25 @@ class PermisoProfesorController extends Controller
      */
     public function store(SavePermisoProfesorRequest $request)
     {
+        //$request->validated();
+        $permiso=$request->all();
+        $request['fecha_inicio']=Carbon::now()->format('Y-m-d');
 
-        $request->validated();
-        $entrada=$request->all();
+
+        /*$permiso['cedula']=auth()->user()->cedula;;
+        $permiso['tipo_permiso']=implode($request['tipo_permiso']);
+        $permiso['estado']='0';
         if($archivo=$request->file('file')){
             $nombre_imagen=$archivo->getClientOriginalName();
             $archivo->move('public',$nombre_imagen);
-            $entrada['file']=$nombre_imagen;
-        }
+            $permiso['file']=$nombre_imagen;
+        }*/
+        return $request['fecha_inicio'];
 
-        PermisoProfesor::create($entrada);
+        //PermisoProfesor::create($permiso);
+        //event(new PermisoEvent($permiso));
 
-        return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
-
-        //PermisoProfesor::create($request->validated());
-        //return redirect()->route('permiso_profesors.index')->with('status', 'El permiso fue creado con exito');
+        //return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
     }
 
     /**
@@ -134,8 +141,6 @@ class PermisoProfesorController extends Controller
      */
     public function update(PermisoProfesor $permiso_profesor, SavePermisoProfesorRequest $request)
     {
-
-
         $request->validated();
         $entrada=$request->all();
         if($archivo=$request->file('file')){
@@ -148,9 +153,7 @@ class PermisoProfesorController extends Controller
 
         return redirect()->route('permiso_profesors.show', $permiso_profesor)->with('status', 'El permiso ha sido actualizado con exito');
 
-
         //$permiso_profesor->update( $request->validated() );
-
         //return redirect()->route('permiso_profesors.show', $permiso_profesor)->with('status', 'El permiso ha sido actualizado con exito');
 
     }

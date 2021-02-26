@@ -1,51 +1,36 @@
-    <div class="form-group row">
+<div class="col-xs-6 col-sm-6 col-md-6">
+    <div class="form-group">
+        <strong>Fecha de Inicio:</strong>
+        {!! Form::date('fecha_inicio',\Carbon\Carbon::now(),['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        <strong>Fecha Fin:</strong>
+        {!! Form::date('fecha_fin', null, array('class' => 'form-control')) !!}
+    </div>
+    <div class="form-group">
+        <strong>Hora Inicio:</strong>
+        {!! Form::time('hora_inicio', \Carbon\Carbon::now(), array('class' => 'form-control')) !!}
+    </div>
+    <div class="form-group">
+        <strong>Hora Fin:</strong>
+        {!! Form::time('hora_fin', null, array('class' => 'form-control')) !!}
+    </div>
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6">
+    <div class="form-group">
+        <strong>Tipo Permiso:</strong>
+        {!! Form::select('tipo_permiso[]', array('Medico' => 'Medico', 'Calamidad Domestica' => 'Calamidad Domestica'), 'Medico',['class' => 'form-control']); !!}
+    </div>
+    <div class="form-group">
+        <strong>Descripcion:</strong>
+        {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control')) !!}
+    </div>
+    <div class="form-group">
+        <strong>Adjuntar Justificacion:</strong>
+        {!! Form::file('file', null, array('class' => 'form-control')) !!}
+    </div>
+</div>
 
-        <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de inicio</label>
-        <div class="col-sm-6">
-            <input type="date" class="form-control" name="fecha_inicio" value="{{old('fecha_inicio', $permiso_profesor->fecha_inicio)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Fin</label>
-        <div class="col-sm-6">
-            <input type="date" class="form-control" name="fecha_fin" value="{{old('fecha_fin', $permiso_profesor->fecha_fin)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Inicio</label>
-        <div class="col-sm-6">
-            <input type="time" class="form-control" name="hora_inicio" value="{{old('hora_inicio', $permiso_profesor->hora_inicio)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Fin</label>
-        <div class="col-sm-6">
-            <input type="time" class="form-control" name="hora_fin" value="{{old('hora_fin', $permiso_profesor->hora_fin)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="descripcion" value="{{old('descripcion', $permiso_profesor->descripcion)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="tipo_permiso" value="{{old('tipo_permiso', $permiso_profesor->tipo_permiso)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Archivo Adjunto</label>
-        <div class="col-sm-6">
-            <input type="file" class="form-control" name="file" value="{{old('file', $permiso_profesor->file)}}">
-        </div>
-    </div>
+
 
 
