@@ -38,7 +38,7 @@
 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">hora</label>
-            <div class="col-sm-6">
+            <div class="col-sm-6"> 
                 <input type="time" class="form-control" name="hora" value="{{ $fecha_hora->format('h:i:s') }}" readonly>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 <input type="text" class="form-control" name="observacion">
             </div>
         </div>
-
+ 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
             <div class="col-sm-6">

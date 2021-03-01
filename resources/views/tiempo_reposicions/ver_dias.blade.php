@@ -44,7 +44,7 @@
         @endforeach
             
     </table>
-
     </div>
+    <a class="btn btn-primary" href="{{ route('tiempo_reposicions.index_inspector') }}">Regresar</a>
 
 @endsection

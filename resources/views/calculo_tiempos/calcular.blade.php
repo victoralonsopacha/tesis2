@@ -54,7 +54,10 @@
                         <input type="date" class="form-control" name="fecha_fin" value="'fecha_fin'">
                     </div>
                 </div>
+                <div class="col-sm-9">
                 <button type="submit" class="btn btn-success"><a class="nav-link" >Calcular tiempos</a></button>
+
+                </div>
 
                 </form>
                 
@@ -63,10 +66,13 @@
           </ul>
         </div>
       </div>
+      <br>
+      <br>
+<div class="col-sm-9">
+<a class="btn btn-primary" href="{{ route('calculo_tiempos.index') }}">Regresar</a>
 
+</div>
 
-
-<br>
 
 
 

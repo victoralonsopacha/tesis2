@@ -40,20 +40,20 @@
 
 
                 <form method="POST" action="{{ route('consolidado_individual.total2', $user) }}">
-                    @csrf
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
-                    <div class="col-sm-9">
-                        <input type="date" class="form-control" name="fecha_inicio" value="'fecha_inicio'">
+                        @csrf
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" name="fecha_inicio" value="'fecha_inicio'">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
-                    <div class="col-sm-9">
-                        <input type="date" class="form-control" name="fecha_fin" value="'fecha_fin'">
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" name="fecha_fin" value="'fecha_fin'">
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-success"><a class="nav-link" >Ver Timbradas</a></button>
+                    <button type="submit" class="btn btn-success"><a class="nav-link" >Ver Timbradas</a></button>
 
                 </form>
 
@@ -63,7 +63,9 @@
         </div>
       </div>
 
-
+      <div class="pull-left">
+            <a class="btn btn-primary" href="{{ route('consolidado_individual.index') }}">Regresar</a>
+        </div>
 
 
 

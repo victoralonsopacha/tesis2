@@ -66,9 +66,7 @@
                         <td>
                             <a href="{{ route('permisos.justificar', $permisoItem) }}">Justificar</a>
                         </td>
-                        <td>
-                            <a href="{{ route('permisos.edit', $permisoItem) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        </td>
+                       
 
                     </tr>
                 @endforeach

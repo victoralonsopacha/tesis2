@@ -96,43 +96,72 @@
                   
                   
                        
-                  @foreach ($consulta7 as $itemconsulta7)
+                  
                   <div class="form-group row">
                       <label for="staticEmail" class="col-sm-5 col-form-label">HORAS TOTALES DE PERMISOS</label>
                       <div class="col-sm-6">
+                      @foreach ($consulta7 as $itemconsulta7)
                           <input type="input" class="form-control" name="date" value="{{$itemconsulta7->tiempo_permiso}}" readonly>
-                      </div>
-                  </div>
-                  @endforeach
-                  @foreach ($consulta8 as $itemconsulta8)
-                  <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-5 col-form-label">CANTIDAD DE PERMISOS SOLICITADOS</label>
-                      <div class="col-sm-6">
-                          <input type="input" class="form-control" name="date" value="{{$itemconsulta8->cantidad_permisos}}" readonly>
-                      </div>
-                  </div>
-                  @endforeach
-
-                  @foreach ($consulta5 as $itemconsulta5)
-                  <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS APROBADOS</label>
-                      <div class="col-sm-6">
-                          <input type="input" class="form-control" name="date" value="{{$itemconsulta5->permisos}}" readonly>
-  
                           @endforeach
                       </div>
                   </div>
-
-
+                 
+                  
                   <div class="form-group row">
-                    @foreach ($consulta6 as $itemconsulta3)
-                        
-                    @endforeach
-                    <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS SIN APROBAR</label>
+                      <label for="staticEmail" class="col-sm-5 col-form-label">CANTIDAD DE PERMISOS SOLICITADOS</label>
+                      <div class="col-sm-6">
+                      @foreach ($consulta8 as $itemconsulta8)
+                          <input type="input" class="form-control" name="date" value="{{$itemconsulta8->cantidad_permisos}}" readonly>
+                          @endforeach
+                      </div>
+                  </div>
+                
+
+                 
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS APROBADOS</label>
                     <div class="col-sm-6">
-                        <input type="input" class="form-control" name="date" value="{{$itemconsulta3->permisos}}" readonly>
+                    @if($consulta5)
+                        @foreach ($consulta5 as $itemconsulta5)
+                            <input type="input" class="form-control" name="date" value="{{$itemconsulta5->permisos1}}" readonly>     
+                        @endforeach                         
+                    @else
+                        <input type="input" class="form-control" name="date" value="0" readonly>
+                    @endif
+                      </div>
+                  </div>
+                  
+
+                 
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS DESAPROBADOS</label>
+                    <div class="col-sm-6">
+                    @if($consulta6)
+                        @foreach ($consulta6 as $itemconsulta6)
+                            <input type="input" class="form-control" name="date" value="{{$itemconsulta6->permisos2}}" readonly> 
+                        @endforeach  
+                    @else
+                        <input type="input" class="form-control" name="date" value="0" readonly> 
+                    @endif
+                    
                     </div>
                 </div>
+                 
+
+                
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS PENDIENTES</label>
+                    <div class="col-sm-6">
+                        @if($consulta9)
+                            @foreach ($consulta9 as $itemconsulta9)
+                                <input type="input" class="form-control" name="date" value="{{$itemconsulta9->permisos3}}" readonly>   
+                            @endforeach  
+                        @else  
+                            <input type="input" class="form-control" name="date" value="0" readonly>   
+                        @endif
+                    </div>
+                  </div>
+                 
                 
             
 

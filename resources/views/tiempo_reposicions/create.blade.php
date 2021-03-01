@@ -15,7 +15,19 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}">
+                <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre del usuario</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="nombre" value="{{$cedula=auth()->user()->name}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Apellido del usuario</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="apellido" value="{{$cedula=auth()->user()->last_name}}" readonly>
             </div>
         </div>
         <div class="form-group row">

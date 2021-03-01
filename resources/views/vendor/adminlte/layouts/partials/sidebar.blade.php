@@ -57,9 +57,11 @@
             <li><a href="{{ route('perfil.inspector') }}"><i class='fa fa-user-circle'></i> <span>Perfil</span></a></li>
             <li><a href="{{ route('calculo_tiempos.index') }}"><i class='fa fa-users'></i> <span>Calcular horas</span></a></li>
             <li><a href="{{ route('permisos.index') }}"><i class='fa fa-file-o'></i> <span>Permisos</span></a></li>
-            <li><a href="{{route('tiempo_reposicions.index')}}"><i class='fa fa-clock-o'></i><span>Dias Reposicion</span></a></li>
+            <li><a href="{{route('tiempo_reposicions.index_inspector')}}"><i class='fa fa-clock-o'></i><span>Dias Reposicion</span></a></li>
             <li><a href="{{ route('timbrada_permisos.index') }}"><i class='fa fa-bell-o'></i> <span>Timbrar Permisos</span></a></li>
             <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Ver Timbradas</span></a></li>
+            <li><a href="{{route('consolidado_individual.exportPdf')}}"><i class='fa fa-file-excel-o'></i> <span>EXPORTAR PDF</span></a></li>
+
 
 
             <!-- <li><a href=""><i class='fa fa-link'></i> <span>Justificaciones</span></a></li> -->
@@ -69,6 +71,7 @@
             <li><a href="{{ route('perfil.profesor') }}"><i class='fa fa-user'></i> <span>Perfil</span></a></li>
             <li><a href="{{ route('jornada.index') }}"><i class='fa fa-clock-o'></i> <span>Jornada</span></a></li>
             <li><a href="{{ route('atrasos.index') }}"><i class='fa fa-cogs'></i> <span>Atrasos</span></a></li>
+            <li><a href="{{ route('tiempo_reposicions.create') }}"><i class='fa fa-clock-o'></i> <span>Reponer Horas</span></a></li>
             <li class="treeview">
                 <a href="#"><span><i class='fa fa-file-o'></i> <span> Permisos</span></span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

@@ -42,7 +42,7 @@ class TiempoReposicionController extends Controller
         return (view('tiempo_reposicions.ver_dias', ['consulta' => $consulta]));
 
 
-    }
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -66,7 +66,7 @@ class TiempoReposicionController extends Controller
     {
         $request->all();
         TiempoReposicion::create($request->all());
-        return redirect()->route('tiempo_reposicions.index')->with('status', 'Usted ha registrado su tiempo con exito');
+        return redirect()->route('tiempo_reposicions.create',$request);
     }
 
     /**

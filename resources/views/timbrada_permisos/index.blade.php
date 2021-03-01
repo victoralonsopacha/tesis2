@@ -14,9 +14,7 @@
         {{Session::get('message')}}
     </div>
 @endif
-<div class="pull-left">
-    <a class="btn btn-primary" href="{{ route('timbrada_permisos.index') }}">Regresar</a>
-</div>
+
 <div class="pull-right">
     <form class="form-inline my-2 my-lg-0 float-right">
         <label for="">Buscar por cedula:</label>
@@ -46,7 +44,7 @@
                         @if($rol->model_id == $userItem->id)
                             @if($rol->role_id == $role->id)
                                 <tr>
-                                    <td>{!! $userItem->id !!}</td>
+                                    
                                     <td>{!! $userItem->cedula !!}</td>
                                     <td>{!! $userItem->name !!}</td>
                                     <td>{!! $userItem->last_name !!}</td>

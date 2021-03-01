@@ -16,6 +16,8 @@ class CreateTiempoReposicionsTable extends Migration
         Schema::create('tiempo_reposicions', function (Blueprint $table) {
             $table->id();
             $table->string('cedula',10);
+            $table->string('nombre',50);
+            $table->string('apellido',50);
             $table->time('horas');
             $table->date('fecha');
             $table->timestamps();

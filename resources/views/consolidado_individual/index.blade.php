@@ -8,9 +8,7 @@
 @section('main-content')
     <div class="container-fluid">
     <h1>PERMISOS REGISTRADOS</h1>
-        <div class="pull-left">
-            <a class="btn btn-primary" href="{{ route('consolidado_individual.index') }}">Regresar</a>
-        </div>
+        
         <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 float-right">
             <label for="">Buscar por cedula:</label>

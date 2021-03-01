@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Log;
 
 class ConsolidadoIndividualController extends Controller
 {
@@ -101,7 +103,7 @@ class ConsolidadoIndividualController extends Controller
     {
         //
     }
-
+ 
 
     public function consolidado_individual(User $user, Request $request){
         $ced_usuario = $user->cedula;
@@ -109,7 +111,7 @@ class ConsolidadoIndividualController extends Controller
         $fecha_fin = $request->fecha_fin;
 
         //CONSULTA LISTAR LOS TIMBRADOS CON UN USUARIO Y ENTRE FECHAS
-        $consultal = DB::select('SELECT * FROM timbradas r WHERE r.cedula LIKE  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
+        $consultal = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
         return view('consolidado_individual.consolidado',
         [
@@ -119,6 +121,14 @@ class ConsolidadoIndividualController extends Controller
     );
 }
 
+
+    public function exportPdf(){
+        $consultas = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "1703908736"');     
+        $pdf   = PDF::loadView('pdf.timbradas', compact('consultas'));
+        //Log::info($consultal);
+        return $pdf->download('timbradas.pdf');
+
+    }
 
 
 }

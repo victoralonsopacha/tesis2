@@ -12,6 +12,8 @@ class TiempoReposicion extends Model
 
     protected $fillable = [
         'cedula',
+        'nombre',
+        'apellido',
         'horas',
         'fecha'
 

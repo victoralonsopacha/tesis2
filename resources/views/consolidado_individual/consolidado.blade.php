@@ -7,8 +7,8 @@
 
 @section('main-content')
     <div class="container-fluid">
-        <h1>PERMISOS REGISTRADOS</h1>
-
+        <h1>TIMBRADAS REGISTRADAS</h1>
+        
     @if(empty($consulta))
         <div class="row">
             <div class="col-lg-12">
@@ -54,5 +54,7 @@
     </div>
     @endif
     </div>
+    
 
+    
 @endsection

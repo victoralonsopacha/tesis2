@@ -105,7 +105,7 @@ Route::group(['middleware' => ['role:Profesor']], function () {
     Route::post('/permiso_profesors/buscar','PermisoProfesorController@buscar')->name('permiso_profesors.buscar');
     Route::post('/permiso_profesors/buscarA','PermisoProfesorController@buscarA')->name('permiso_profesors.buscarA');
 
-
+ 
 });
 //RUTAS PARA VER TIMBRADAS
 ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
@@ -139,8 +139,8 @@ Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_perm
 
 
 //RUTAS PARA CREAR Y ALMACENAR EL TIEMPO A REPONER
-Route::get('/tiempo_reposicions/index', 'TiempoReposicionController@index')->name('tiempo_reposicions.index')->middleware('auth');;
-Route::post('/tiempo_reposicions/create', 'TiempoReposicionController@create')->name('tiempo_reposicions.create')->middleware('auth');
+Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector')->middleware('auth');;
+Route::get('/tiempo_reposicions/create', 'TiempoReposicionController@create')->name('tiempo_reposicions.create')->middleware('auth');
 Route::post('/tiempo_reposicions', 'TiempoReposicionController@store')->name('tiempo_reposicions.store')->middleware('auth');
 
 Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector')->middleware('auth');;
@@ -153,3 +153,7 @@ Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualContro
 
 //DASHBOARD ADMIN
 Route::get('/dashboard/admin','AdminController@dashboard')->name('dashboard.admin');
+ 
+//EXPORTAR A PDF
+Route::get('/consolidado_individual/exportPdf', 'ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.exportPdf');
+

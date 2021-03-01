@@ -38,7 +38,7 @@
                         <td>{!! $userItem->cedula !!}</td>
                         <td>{!! $userItem->name !!}</td>
                         <td>{!! $userItem->last_name !!}</td>
-                        <td>{!! $userItem->cargo!!}</td>
+                        
                         <td>
                             <a class="btn btn-primary" href="{{ route('tiempo_reposicions.ver_dias', $userItem) }}">VER</a>
                         </td>

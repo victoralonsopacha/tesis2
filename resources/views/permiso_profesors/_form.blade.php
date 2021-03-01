@@ -1,9 +1,8 @@
 <div class="row">
 <div class="col-xs-6 col-sm-6 col-md-6">
     <div class="form-group">
-        <strong>Fecha de Inicio:</strong>
-        {!! Form::date('fecha_inicio',\Carbon\Carbon::now(),['class' => 'form-control']) !!}
-    </div>
+        <strong>Fecha de Inicio:</strong>        
+        {!! Form::date('fecha_inicio',\Carbon\Carbon::now(),['class' => 'form-control']) !!}    </div>
     <div class="form-group">
         <strong>Fecha Fin:</strong>
         {!! Form::date('fecha_fin', null, array('class' => 'form-control')) !!}
