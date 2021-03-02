@@ -55,6 +55,7 @@
       <th scope="col">#</th>
       <th scope="col">Cedula</th>
       <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
       <th scope="col">Tiempo</th>
       <th scope="col">Fecha</th>
     </tr>
@@ -64,7 +65,8 @@
     <tr>
         <th scope="row">1</th>
         <td>{{ $consulta->cedula }}</td>
-        <td>{{ $consulta->nombre }}</td>
+        <td>{{ $consulta->name }}</td>
+        <td>{{ $consulta->last_name }}</td>
         <td>{{ $consulta->tiempo }}</td>
         <td>{{ $consulta->fecha }}</td>   
     </tr>

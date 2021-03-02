@@ -45,7 +45,7 @@ class PermisoProfesorController extends Controller
             ->get();
         return view('permiso_profesors.index1',compact('permisosl','i'));
     }
-
+ 
     public function inicio(){
         $permisosl= PermisoProfesor::get();
         return view('permiso_profesors.principal',compact('permisosl'));
@@ -63,8 +63,11 @@ class PermisoProfesorController extends Controller
             "Calamidad Domestrica" => "Calamidad Domestrica",
             "Otro" => "Otro",
         );
+
+        $cedula=auth()->user()->cedula;
+        $usuario=DB::select('SELECT u.cedula, u.name, u.last_name FROM users u WHERE u.cedula = "'.$cedula.'"');
         return view('permiso_profesors.create',
-            ['permiso_profesor' => new PermisoProfesor,'tipo_permiso'=>$tipo_permiso]);
+            ['permiso_profesor' => new PermisoProfesor,'tipo_permiso'=>$tipo_permiso, 'usuario'=>$usuario]);
     }
 
     /**
@@ -78,6 +81,8 @@ class PermisoProfesorController extends Controller
         $request->validated();
         $permiso=$request->all();
         $permiso['cedula']=auth()->user()->cedula;
+        $permiso['name'];
+        $permiso['last_name'];
         $permiso['tipo_permiso']=implode($request['tipo_permiso']);
         $permiso['estado']='0';
         if($archivo=$request->file('file')){
@@ -109,7 +114,7 @@ class PermisoProfesorController extends Controller
         return view('permiso_profesors.show',
             ['permiso_profesor' => $permiso_profesor,'tipo_permiso'=>$tipo_permiso]);
     }
-
+ 
     public function shows(PermisoProfesor $permiso_profesor)
     {
         $i=1;
@@ -117,7 +122,8 @@ class PermisoProfesorController extends Controller
         $permisos=PermisoProfesor::where('cedula','=',$cedula)
             ->get();
         return view('permiso_profesors.shows', compact('permisos','i'));
-    }
+    } 
+
     public function buscar(SearchPermisoProfesorRequest $request)
     {
         $request->validated();
@@ -132,6 +138,8 @@ class PermisoProfesorController extends Controller
         $i=1;
         return redirect(route('permiso_profesors.shows', compact('permisos','i')));
     }
+
+    
     public function buscarA(SearchPermisoProfesorRequest $request)
     {
         $request->validated();

@@ -21,7 +21,7 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Apellido</label>
                     <div class="col-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->lastname}}">
+                        <input type="text" class="form-control" name="last_name" value="{{Auth::user()->last_name}}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -30,12 +30,7 @@
                         <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->email}}">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Cargo</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="password" class="form-control" name="fecha_inicio" value="{{Auth::user()->password}}">
-                    </div>
-                </div>
+                
             </div>
             <div class="col-sm-6">
                 <div class="form-group row">
@@ -50,12 +45,7 @@
                         <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->tipo_relacion_laboral}}">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Cargo</label>
-                    <div class="col-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="fecha_inicio" value="{{Auth::user()->cargo}}">
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

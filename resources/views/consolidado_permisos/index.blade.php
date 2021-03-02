@@ -7,8 +7,8 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h1>TIMBRADAS DEL BIOMETRICO</h1>
-    <h2>Aqui puede ver las timbradas de los usuarios registradas en el biometrico</h2>
+    <h1>TIMBRADAS DE PERMISOS</h1>
+    <h2>Aqui puede ver las timbradas de los usuarios que registraron sus salidas y entradas</h2>
         <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 float-right">
             <label for="">Buscar por cedula:</label>

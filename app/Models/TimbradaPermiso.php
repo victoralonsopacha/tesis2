@@ -13,8 +13,11 @@ class TimbradaPermiso extends Model
 
     protected $fillable = [
         'cedula',
+        'name',
+        'last_name',
         'fecha',
         'hora',
+        'estado',
         'tipo_permiso',
         'observacion',
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Permiso;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\PermisoProfesor;
 use Illuminate\Http\Request;
@@ -24,13 +25,14 @@ class PermisoController extends Controller
 
     public function index(Request $request)
     {
-        
-
         if($request){
             $query= trim($request->get('buscador'));
-            $permisosl = PermisoProfesor::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
+            $query2= trim($request->get('estado'));
             
-            return view('permisos.index', ['permisosl'=>$permisosl, 'buscador'=>$query]);
+                //dd($permisosl= DB::select('SELECT p.cedula, u.name, u.last_name, p.hora_inicio, p.hora_fin, p.fecha_inicio, p.fecha_fin, p.estado FROM permiso_profesors p, users u WHERE p.cedula = "'.$query.'" and u.cedula = "'.$query.'"'));
+                $permisosl = PermisoProfesor::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
+                return view('permisos.index', ['permisosl'=>$permisosl, 'buscador'=>$query]);
+
         }
         /*
         $permisosl= PermisoProfesor::get();
@@ -118,6 +120,7 @@ class PermisoController extends Controller
         $permiso->fecha_fin=$request->fecha_fin;
         $permiso->file=$request->file;
         $permiso->estado=$request->input('estado');
+        $permiso->desaprobacion=$request->desaprobacion;
         $permiso->save();
         return redirect()->route('permisos.index', $permiso)->with('message', 'El permiso ha sido actualizado con exito');
     }

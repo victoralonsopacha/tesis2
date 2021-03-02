@@ -48,7 +48,8 @@
             {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
         </div>
         <div class="form-group">
-            <strong>Justificacion:</strong>
+            <strong>Observacion de la desaprobacion:</strong>
+            {!! Form::text('desaprobacion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
         </div>
     </div>
     {!! Form::close() !!}

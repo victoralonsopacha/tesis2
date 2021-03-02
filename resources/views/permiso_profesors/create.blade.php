@@ -20,7 +20,7 @@
             <button type="submit" class="btn btn-success">Crear Permiso</button>
         </div>
         {!! Form::close() !!}
-
+ 
     </div>
 
 @endsection

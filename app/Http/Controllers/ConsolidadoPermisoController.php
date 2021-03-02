@@ -8,7 +8,7 @@ use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Log;
 
-class ConsolidadoIndividualController extends Controller
+class ConsolidadoPermisoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,15 +27,9 @@ class ConsolidadoIndividualController extends Controller
                 ->where('id','=','2')
                 ->select('id', 'name')
                 ->get();
-            return view('consolidado_individual.index', ['usersl'=>$usersl,'roles'=>$roles,'rolesl'=>$rolesl, 'buscador'=>$query]);
+            return view('consolidado_permisos.index', ['usersl'=>$usersl,'roles'=>$roles,'rolesl'=>$rolesl, 'buscador'=>$query]);
         }
-
-        /*
-        $usersl= User::where('cargo','=','profesor')->get();
-        return view('consolidado_individual.index', compact('usersl'));
-        */
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -63,11 +57,9 @@ class ConsolidadoIndividualController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return view('consolidado_individual.calcular',
-           ['user' => $user]
-        );
+        //
     }
 
     /**
@@ -103,7 +95,6 @@ class ConsolidadoIndividualController extends Controller
     {
         //
     }
- 
 
     public function consolidado_individual(User $user, Request $request){
         $ced_usuario = $user->cedula;
@@ -113,13 +104,13 @@ class ConsolidadoIndividualController extends Controller
         //CONSULTA LISTAR LOS TIMBRADOS CON UN USUARIO Y ENTRE FECHAS
         $consultal = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
-        return view('consolidado_individual.consolidado',
+        return view('consolidado_permisos.consolidado',
         [
             'consulta' => $consultal
         ]
 
-    );
-}
+        );
+    }
 
 
     public function exportPdf(User $user, Request $request){
@@ -131,9 +122,7 @@ class ConsolidadoIndividualController extends Controller
         Log::info($consultas);
       
       
-      return $pdf->download('timbradas.pdf');
+        return $pdf->download('timbradas.pdf');
 
     }
-
-
 }

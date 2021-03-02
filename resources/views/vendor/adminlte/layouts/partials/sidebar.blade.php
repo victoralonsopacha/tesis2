@@ -59,10 +59,11 @@
             <li><a href="{{ route('permisos.index') }}"><i class='fa fa-file-o'></i> <span>Permisos</span></a></li>
             <li><a href="{{route('tiempo_reposicions.index_inspector')}}"><i class='fa fa-clock-o'></i><span>Dias Reposicion</span></a></li>
             <li><a href="{{ route('timbrada_permisos.index') }}"><i class='fa fa-bell-o'></i> <span>Timbrar Permisos</span></a></li>
-            <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Ver Timbradas</span></a></li>
+            <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Biometrico</span></a></li>
+            <li><a href="{{route('consolidado_permisos.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Permisos</span></a></li>
+            <!--
             <li><a href="{{route('consolidado_individual.exportPdf')}}"><i class='fa fa-file-excel-o'></i> <span>EXPORTAR PDF</span></a></li>
-
-
+            -->
 
             <!-- <li><a href=""><i class='fa fa-link'></i> <span>Justificaciones</span></a></li> -->
             @endhasrole

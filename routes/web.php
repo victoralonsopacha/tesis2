@@ -110,7 +110,7 @@ Route::group(['middleware' => ['role:Profesor']], function () {
 //RUTAS PARA VER TIMBRADAS
 ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
 ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
-Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@consolidado_individual')->name('consolidado_individual.total2')->middleware('auth');
+Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2')->middleware('auth');
 
 
 //MOSTRAR INICIO, EDITAR, ACTUALIZAR
@@ -149,11 +149,19 @@ Route::get('/tiempo_reposicions/{user}/ver_dias', 'TiempoReposicionController@ve
 //RUTAS PARA VER TIMBRADAS
 ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
 ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
-Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@consolidado_individual')->name('consolidado_individual.total2')->middleware('auth');
+Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2')->middleware('auth');
+
+//RUTAS PARA VER TIMBRADAS PERMISOS
+//RUTAS PARA VER TIMBRADAS
+ROUTE::get('/consolidado_permisos/index', 'ConsolidadoPermisoController@index')->name('consolidado_permisos.index')->middleware('auth');
+ROUTE::get('/consolidado_permisos/{user}/calcular', 'ConsolidadoPermisoController@show')->name('consolidado_permisos.calcular')->middleware('auth');
+Route::post('/consolidado_permisos/{user}/total2','ConsolidadoPermisoController@exportPdf')->name('consolidado_permisos.total2')->middleware('auth');
+
 
 //DASHBOARD ADMIN
 Route::get('/dashboard/admin','AdminController@dashboard')->name('dashboard.admin');
  
-//EXPORTAR A PDF
+//EXPORTAR A PDF    
 Route::get('/consolidado_individual/exportPdf', 'ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.exportPdf');
+Route::get('/consolidado_permisos/exportPdf2', 'ConsolidadoIndividualController@exportPdf2')->name('consolidado_permisos.exportPdf2');
 

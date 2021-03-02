@@ -48,6 +48,7 @@
                 <input type="date" class="form-control" name="fecha" value="{{ $fecha_hora->format('Y-m-d') }}" readonly>
             </div>
         </div>
+        
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-6">
@@ -61,6 +62,13 @@
                 {!! Form::select('tipo_permiso[]', $tipo_permiso,$tipo_permiso,['class' => 'form-control']); !!}
             </div>
         </div>
+
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="estado" value='0' style="visibility:hidden">
+            </div>
+        </div>
+        
         <button type="submit" class="btn btn-success">Timbrar</button>
     </form>
 

@@ -16,4 +16,4 @@ class InspectorController extends Controller
     {
         return view('dashboard.inspector');
     }
-}
+} 

@@ -39,7 +39,7 @@
                 </div>
 
 
-                <form  method="POST"  id="formulariofecha" action="{{ route('consolidado_individual.total2', $user) }}">
+                <form  method="POST"  id="formulariofecha" action="{{ route('consolidado_permisos.total2', $user) }}">
                         @csrf
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
