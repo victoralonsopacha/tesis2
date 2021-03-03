@@ -24,11 +24,11 @@ class CreatePermisoProfesorRequest extends FormRequest
     public function rules()
     {
         return [
-            'fecha_inicio' => 'required|after:yesterday',
-            'fecha_fin' => 'required|after:yesterday',
-            'hora_inicio' => 'required',
-            'hora_fin' => 'required',
-            'tipo_permiso'=>'required',
+            'fecha_inicio' => 'nullable|required|after:yesterday',
+            'fecha_fin' => 'nullable|required|after:yesterday',
+            'hora_inicio' => 'nullable|required',
+            'hora_fin' => 'nullable|required',
+            'tipo_permiso'=>'nullable|required',
         ];
     }
 

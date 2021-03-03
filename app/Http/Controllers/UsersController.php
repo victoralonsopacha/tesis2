@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\SaveUserRequest;
@@ -64,10 +65,14 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $tipo_relacion_laboral = array(
+            "Contrato" => "Contrato",
+            "Temporal" => "Temporal",
+        );
         $roles = Role::orderBy('name','asc')
             ->where('id','<','3')
             ->pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        return view('users.create',compact('roles','tipo_relacion_laboral'));
     }
 
     /**
@@ -76,17 +81,12 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveUserRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]);
+        $request->validated();
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
+        $input['tipo_relacion_laboral']=implode($request['tipo_relacion_laboral']);
         $input['estado']='1';
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
@@ -136,7 +136,11 @@ class UsersController extends Controller
             ->where('id','<','3')
             ->pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
-        return view('users.edit',compact('user','roles','userRole'));
+        $tipo_relacion_laboral = array(
+            "Contrato" => "Contrato",
+            "Temporal" => "Temporal",
+        );
+        return view('users.edit',compact('user','roles','userRole','tipo_relacion_laboral'));
 
     }
 
@@ -147,19 +151,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update(Request $request,$id)
     {
+        //$request->validated();
         $input = $request->all();
-        if(!empty($input['password'])){
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = array_except($input,array('password'));
-        }
+        $input['password'] = Hash::make($input['password']);
+        $input['tipo_relacion_laboral']=implode($request['tipo_relacion_laboral']);
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
         $user->assignRole($request->input('roles'));
-
         return redirect()->route('users.activos')->with('message', 'El usuario ha sido actualizado con exito');
     }
 

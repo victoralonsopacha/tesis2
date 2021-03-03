@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
             <strong>Tipo Relacion Laboral:</strong>
-            {!! Form::text('tipo_relacion_laboral', null, array('placeholder' => 'Tipo Relacion Laboral','class' => 'form-control')) !!}
+            {!! Form::select('tipo_relacion_laboral[]', $tipo_relacion_laboral, null,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
             <strong>Rol:</strong>

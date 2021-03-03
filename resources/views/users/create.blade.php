@@ -1,26 +1,20 @@
-@extends('layouts.app')
-@section('content')
+@extends('adminlte::layouts.app')
+
+@section('htmlheader_title')
+    {{ trans('adminlte_lang::message.home') }}
+@endsection
+
+@section('main-content')
     <div class="container-fluid">
+        <h2>Crear Nuevo Usuario</h2>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Crear Nuevo Usuario</h2>
-            </div>
-            <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('users.activos') }}">Regresar</a>
             </div>
         </div>
     </div>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('partials.validation-errors')
     {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
         {!! Form::token() !!}
         <div class="row">
@@ -37,24 +31,29 @@
                 <strong>Cedula:</strong>
                 {!! Form::text('cedula', null, array('placeholder' => 'Cedula','class' => 'form-control')) !!}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                 <strong>Contraseña:</strong>
                 {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control')) !!}
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                @endif
             </div>
-
             <div class="form-group">
                 <strong>Confirmar contraseña:</strong>
-                {!! Form::password('confirm-password', array('placeholder' => 'Confirmar contraseña','class' => 'form-control')) !!}
+                {!! Form::password('password_confirmation', array('placeholder' => 'Confirmar contraseña','class' => 'form-control')) !!}
             </div>
+
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>Correo:</strong>
-                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                {!! Form::email('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
             </div>
             <div class="form-group">
                 <strong>Tipo Relacion Laboral:</strong>
-                {!! Form::text('tipo_relacion_laboral', null, array('placeholder' => 'Tipo Relacion Laboral','class' => 'form-control')) !!}
+                {!! Form::select('tipo_relacion_laboral[]',$tipo_relacion_laboral, null,['class' => 'form-control']); !!}
             </div>
             <div class="form-group">
                 <strong>Rol:</strong>
@@ -66,7 +65,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-outline-success">Aceptar</button>
+            <button type="submit" class="btn btn-success">Aceptar</button>
         </div>
     </div>
     {!! Form::close() !!}
