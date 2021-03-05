@@ -64,7 +64,7 @@
       </div>
 
       <div class="pull-left">
-            <a class="btn btn-primary" href="{{ route('consolidado_individual.index') }}">Regresar</a>
+            <a class="btn btn-primary" href="{{ route('consolidado_permisos.index') }}">Regresar</a>
         </div>
 
         <script>

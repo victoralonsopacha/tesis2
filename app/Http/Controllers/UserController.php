@@ -11,17 +11,17 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
     //
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
         $tipo_relacion = array(
             "Contrato" => "Contrato",
             "Temporal" => "Temporal"
         );
-        return view('perfiles.profesor_edit',compact('user','roles','userRole','tipo_relacion'));
+        return view('perfiles.profesorEdit',compact('user','userRole','tipo_relacion'));
 
     }
 
@@ -34,6 +34,9 @@ class UserController extends Controller
         $user = User::find($id);
 
         $user->update($input);
-        return redirect()->route('perfil.profesor',compact('user'))->with('message', 'Tu informacion ha sido actualizada con exito');
+        return redirect()->route('perfil.inspector',compact('user'))->with('message', 'Tu informacion ha sido actualizada con exito');
     }
+
+
+
 }

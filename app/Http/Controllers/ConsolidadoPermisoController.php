@@ -102,7 +102,7 @@ class ConsolidadoPermisoController extends Controller
         $fecha_fin = $request->fecha_fin;
 
         //CONSULTA LISTAR LOS TIMBRADOS CON UN USUARIO Y ENTRE FECHAS
-        $consultal = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
+        $consultal = DB::select('SELECT * FROM timbrada_permisos r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
         return view('consolidado_permisos.consolidado',
         [
@@ -113,16 +113,16 @@ class ConsolidadoPermisoController extends Controller
     }
 
 
-    public function exportPdf(User $user, Request $request){
+    public function exportPdf2(User $user, Request $request){
         $ced_usuario = $user->cedula;
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
-        $consultas = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
-        $pdf= PDF::loadView('pdf.timbradas', compact('consultas'));
+        $consultas = DB::select('SELECT * FROM timbrada_permisos r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
+        //$pdf= PDF::loadView('pdf.timbradas_permisos.', compact('consultas'));
         Log::info($consultas);
       
       
-        return $pdf->download('timbradas.pdf');
+      //return $pdf->download('timbradas_permisos.pdf');
 
     }
 }

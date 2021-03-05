@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Log;
-
+use App\Exports\TimbradasExport;
+use Maatwebsite\Excel\Facades\Excel;
 class ConsolidadoIndividualController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class ConsolidadoIndividualController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
+    { 
         if($request){
             $query= trim($request->get('buscador'));
             $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->where('estado','=','1')->orderBy('id','asc')->get();
@@ -126,13 +127,27 @@ class ConsolidadoIndividualController extends Controller
         $ced_usuario = $user->cedula;
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
+        $extension = $request->formato;
         $consultas = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
         $pdf= PDF::loadView('pdf.timbradas', compact('consultas'));
-        Log::info($consultas);
-      
-      
-      return $pdf->download('timbradas.pdf');
+        //Log::info($consultas);
+        if($extension == 'PDF'){
+           return $pdf->download('timbradas.pdf');
+        }
+        if($extension == 'EXCEL'){
 
+            return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin), 'consolidadoIndividual.xlsx');
+        }
+
+      
+
+    }
+
+    public function exportExcel(User $user, Request $request){
+        $ced_usuario = $user->cedula;
+        $fecha_inicio = $request->fecha_inicio;
+        $fecha_fin = $request->fecha_fin;
+        return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin), 'consolidadoIndividual.xlsx');
     }
 
 

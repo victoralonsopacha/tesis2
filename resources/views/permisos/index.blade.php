@@ -9,24 +9,18 @@
     <h1>GESTIONAR PERMISOS</h1>
     <h4>Este modulo permite gestionar la justificación de todos los permisos creados por los profesores</h4>
 <br>
-    <form class="form-inline my-2 my-lg-0 float-right">
+    <form method="POST" action="{{route('permisos.find')}}" class="form-inline my-2 my-lg-0 float-right">
+        @csrf
         <input name="buscador" class="form-control me-2" type="search" placeholder="Ingrese una cédula" aria-label="Search">
+        <select name="estado">
+            <option {{old('estado')=="0"? 'selected':''}} value="0">Pendiente</option>
+            <option {{old('estado')=="1"? 'selected':''}} value="1">Aprobado</option>
+            <option {{old('estado')=="2"? 'selected':''}} value="2">Desaprobado</option>
+        </select>
         <button class="btn btn-success" type="submit">Buscar</button>
     </form>
-    <form class="form-inline my-2 my-lg-0 float-right">
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <form class="form-inline my-2 my-lg-0 float-right">
-                    <select name="estado">
-                        <option {{old('estado')=="0"? 'selected':''}} value="0">Pendiente</option>
-                        <option {{old('estado')=="1"? 'selected':''}} value="1">Aprobado</option>
-                        <option {{old('estado')=="2"? 'selected':''}} value="2">Desaprobado</option>
-                    </select>
-                    <button class="btn btn-success" type="submit">Buscar</button>              
-                </form>
-            </div>
-        </div>
-    </form>
+
+
 
     {{--@auth--}}
     <!--
@@ -44,7 +38,7 @@
         <!-- Default panel contents -->
         <div class="panel-heading">Permisos</div>
         <!-- Table -->
-        
+
                 <table class="table table-responsive-md text-center">
                     <thead class="thead-tomate">
                     <tr>
@@ -86,7 +80,7 @@
                 </table>
 
 
-        
+
 
     </div>
 

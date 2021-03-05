@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Permiso;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 use App\Models\PermisoProfesor;
 use Illuminate\Http\Request;
 
@@ -28,7 +28,6 @@ class PermisoController extends Controller
         if($request){
             $query= trim($request->get('buscador'));
             $query2= trim($request->get('estado'));
-            
                 //dd($permisosl= DB::select('SELECT p.cedula, u.name, u.last_name, p.hora_inicio, p.hora_fin, p.fecha_inicio, p.fecha_fin, p.estado FROM permiso_profesors p, users u WHERE p.cedula = "'.$query.'" and u.cedula = "'.$query.'"'));
                 $permisosl = PermisoProfesor::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
                 return view('permisos.index', ['permisosl'=>$permisosl, 'buscador'=>$query]);
@@ -39,6 +38,14 @@ class PermisoController extends Controller
         return view('permisos.index',compact('permisosl'));
         */
     }
+    //METODO FIND
+    public function find(Request $request)
+    {
+        Log::info("aqui");
+        $permisosl = PermisoProfesor::where('cedula', 'LIKE', '%17%')->where('estado', '=', '1')->orderBy('id','asc')->get();
+        Log::info($permisosl);
+    }
+
 
     /**
      * Show the form for creating a new resource.

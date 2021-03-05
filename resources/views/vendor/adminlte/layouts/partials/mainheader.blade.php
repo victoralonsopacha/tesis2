@@ -135,7 +135,7 @@
                             <li class="user-footer">
                                 <div class="pull-left">
                                     @hasrole('Inspector')
-                                    <a href="{{ route('perfil.inspector') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
+                                    <a href="{{ route('profile.inspector') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
                                     @endhasrole
                                     @hasrole('Profesor')
                                     <a href="{{ route('perfil.profesor')}}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
