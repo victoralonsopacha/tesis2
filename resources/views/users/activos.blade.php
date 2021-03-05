@@ -11,7 +11,7 @@
             <a class="btn btn-primary" href="{{ route('users.inactivos') }}">Ver usuarios inactivos</a>
         </div>
         <div class="pull-right">
-            <a href="{{route('users.create')}}" class="btn btn-danger">Agregar nuevo usuario</a>
+            <a href="{{route('users.create')}}" class="btn btn-warning">Agregar nuevo usuario</a>
         </div>
         <br><br>
 
@@ -41,7 +41,7 @@
                     <table class="table table-responsive-md">
                         <thead class="thead-tomate">
                         <tr>
-                            <th>ID</th>
+                            <th>Nr.</th>
                             <th>Nombre</th>
                             <th>Email</th>
                             <th>Rol</th>
@@ -49,13 +49,16 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @php
+                        $i=1;
+                        @endphp
                         @foreach($usersl as $users)
                                 @foreach($roles as $rol)
                                     @foreach($rolesl as $role)
                                         @if($rol->model_id == $users->id)
                                             @if($rol->role_id == $role->id)
                                                 <tr>
-                                                    <td>{!! $users->id !!}</td>
+                                                    <td>{!! $i++ !!}</td>
                                                     <td>{!! $users->name." ".$users->last_name !!}</td>
                                                     <td>{!! $users->email !!}
                                                     <td>{!! $role->name !!}</td>
@@ -66,7 +69,9 @@
                                                     <td>
                                                         <form action="{{route('users.deactive', $users->id)}}" method="POST">
                                                             @csrf @method('PATCH')
-                                                            <button class="btn btn-warning btn-xs">Desactivar</button>
+                                                            <button class="btn btn-danger btn-xs" onclick="return confirm('¿Seguro que deseas desactivar este usuario?')">
+                                                                <span aria-hidden="true" class="glyphicon glyphicon-trash">
+                                                                </span></button>
                                                         </form>
                                                     </td>
                                                 </tr>

@@ -43,13 +43,16 @@
                 </ul>
             </li>
             <li><a href="{{ route('import-form') }}"><i class='fa fa-upload'></i> <span>Importar datos biometrico</span></a></li>
+            <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Biometrico</span></a></li>
+            <li><a href="{{route('consolidado_permisos.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Permisos</span></a></li>
+            <!--
             <li class="treeview">
                 <a href="#"><span><i class='fa fa-bell-o'></i> <span>Permisos Timbrados</span></span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('timbrada_permisos.index') }}">Registrar Permiso</a></li>
                     <li><a href="{{ route('consolidado_individual.index') }}">Ver Permisos registrados</a></li>
                 </ul>
-            </li>
+            </li>-->
 
             @endhasrole
             @hasrole('Inspector')

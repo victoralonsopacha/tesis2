@@ -26,6 +26,19 @@
       <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/layouts/partials/mainheader.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/layouts/partials/mainheader.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/layouts/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/layouts/partials/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreatePermisoProfesorRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreatePermisoProfesorRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/SaveUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/SaveUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permiso_profesors/_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permiso_profesors/_form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/_form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/activos.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +282,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../20210301/tesis2" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/users" />
+>>>>>>> 33cc696dc12006ed614f21008333df7f15fa2d7a
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -278,11 +295,19 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210303\tesis2\resources\views\permisos" />
       <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\app\Http\Controllers" />
       <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\app\Models" />
       <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\resources\views\permiso_profesors" />
       <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\resources\views\jornada" />
+=======
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210301\tesis2\resources\views\users" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210301\tesis2\resources\views\auth" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210301\tesis2\app\Http\Controllers" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210301\tesis2\app\Http\Requests" />
+      <recent name="C:\Users\Jazmin\Documents\Tesis\2Repositorio\bk\20210217\tesis2\app\Http\Controllers" />
+>>>>>>> 33cc696dc12006ed614f21008333df7f15fa2d7a
     </key>
   </component>
   <component name="RunManager">
@@ -323,8 +348,13 @@
       <workItem from="1614092233826" duration="28406000" />
       <workItem from="1614205564597" duration="17324000" />
       <workItem from="1614298995908" duration="31336000" />
+<<<<<<< HEAD
       <workItem from="1614899150104" duration="13031000" />
       <workItem from="1614914217766" duration="2592000" />
+=======
+      <workItem from="1614702705519" duration="1506000" />
+      <workItem from="1614722321280" duration="3861000" />
+>>>>>>> 33cc696dc12006ed614f21008333df7f15fa2d7a
     </task>
     <servers />
   </component>
