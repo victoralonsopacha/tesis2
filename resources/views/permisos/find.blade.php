@@ -8,13 +8,13 @@
     <h1>GESTIONAR PERMISOS</h1>
     <h4>Este modulo permite gestionar la justificación de todos los permisos creados por los profesores.</h4>
     <br>
-    <form method="POST" action="{{route('permisos.findRequest')}}" class="form-inline my-2 my-lg-0 float-right">
+    <form method="POST" action="{{route('permisos.findRequest')}}" class="form-inline my-2 my-lg-0 pull-right">
         @csrf
         <input name="buscador" class="form-control me-2" type="number" placeholder="Ingrese una cédula" aria-label="Search">
         <button class="btn btn-success" type="submit">Buscar</button>
     </form>
 
-    <form method="POST" action="{{route('permisos.findRequest')}}" class="form-inline my-2 my-lg-0 float-right">
+    <form method="POST" action="{{route('permisos.findRequest')}}" class="form-inline my-2 my-lg-0 pull-right">
         @csrf
         <select name="estado">
             <option {{old('estado')=="0"? 'selected':''}} value="0">Pendiente</option>

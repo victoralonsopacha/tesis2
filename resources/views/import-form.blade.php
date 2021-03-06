@@ -13,13 +13,12 @@
                     <div class="card-header">
                         Importar Excel
                     </div>
-                    @include('partials.validation-error)
                     <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data" action="{{route('import')}}">
+                        <form id="formularioExcel" method="POST" enctype="multipart/form-data" action="{{route('import')}}">
                             @csrf
                             <div class="form-group">
                                 <label for="file">Escoja xlsx</label>
-                                <input type="file" name="file" class="form-control">
+                                <input id="file" type="file" name="file" class="form-control">
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Cargar</button>
@@ -30,4 +29,24 @@
         </div>
     </section>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("formularioExcel").addEventListener('submit', validarExtensiones);
+        });
+
+        function validarExtensiones(evento) {
+            evento.preventDefault();
+            var fileInput = document.getElementById('file');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(.xlsx)$/i;
+            if(!allowedExtensions.exec(filePath)){
+                alert('Please upload file having extensions .xlsx');
+                fileInput.value = '';
+                return false;
+            }else{
+                this.submit();
+            }
+        }
+    </script>
  @endsection
