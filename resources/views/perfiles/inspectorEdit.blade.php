@@ -13,6 +13,7 @@
     <br><br>
     @include('partials.validationMessage')
     @include('partials.validation-errors')
+
     {!! Form::model($user, ['method' => 'PATCH','route' => ['inspector.update', $user->id]]) !!}
     @csrf
     @include('perfiles.form')

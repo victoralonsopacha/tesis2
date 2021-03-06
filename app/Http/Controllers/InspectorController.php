@@ -34,18 +34,16 @@ class InspectorController extends Controller
 
     public function update($id, Request $request)
     {
-        $this->validate($request, [
-            'name' =>'required|string|max:100',
-            'last_name' =>'required|string|max:100',
-            'password' => 'nullable|min:5|required_with:password_confirmation|string|confirmed',
-            'fecha_ingreso' => 'required|before:tomorrow'
-        ]);
         $input = $request->all();
         $input['tipo_relacion_laboral']=implode($request['tipo_relacion']);
         $input['password'] = Hash::make($input['password']);
         $user = User::find($id);
 
-        $user->update($input);
-        return redirect()->route('profile.inspector',compact('user'))->with('message', 'Tu informacion ha sido actualizada con exito');
+        $updated=$user->update($input);
+        if($updated){
+            return redirect()->route('profile.inspector',compact('user'))->with('message', 'Tu informacion ha sido actualizada con exito');
+        }else{
+            return redirect()->route('profile.inspector',compact('user'))->with('message', 'Could not update');
+        }
     }
 }

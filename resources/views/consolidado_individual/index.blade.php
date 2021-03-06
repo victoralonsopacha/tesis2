@@ -10,11 +10,15 @@
     <h1>TIMBRADAS DEL BIOMETRICO</h1>
     <h2>Aqui puede ver las timbradas de los usuarios registradas en el biometrico</h2>
         <div class="pull-right">
-        <form class="form-inline my-2 my-lg-0 float-right">
-            <label for="">Buscar por cedula:</label>
-        <input name="buscador" class="form-control me-2" type="search" placeholder="Ingrese una cedula" aria-label="Search">
-        <button class="btn btn-success" type="submit">Buscar</button>
-        </form>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2">Buscar Por:</label>
+                </div>
+                <div class="form-group">
+                    <input name="buscador" class="form-control me-2" type="search" placeholder="Ingrese una cedula" aria-label="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar</button>
+            </form>
         </div>
     <br><br>
     @if($usersl->isEmpty())
@@ -36,7 +40,7 @@
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <!-- Table -->
-
+        <div class="panel-heading text-center"><b>USUARIOS</b></div>
             <table class="table table-responsive-md text-center">
                 <thead class="thead-tomate">
                 <tr>

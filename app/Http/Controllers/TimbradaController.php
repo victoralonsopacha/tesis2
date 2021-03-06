@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImportTimbradaRequest;
 use Illuminate\Http\Request;
 use App\Models\Timbrada;
 use Excel;
@@ -13,14 +14,14 @@ class TimbradaController extends Controller
         return view('import-form');
     }
 
-    public function import(Request $request){
+    public function import(ImportTimbradaRequest $request){
+
         if($request->file){
             Excel::import(new TimbradaImport, $request->file);
             return view('import-succes');
         }else{
-            
             return view('import-form');
         }
-        
+
     }
 }

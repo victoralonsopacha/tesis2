@@ -24,6 +24,7 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
+    //Vista Index Users
     public function index()
     {
         $roles=DB::table('model_has_roles')
@@ -35,7 +36,9 @@ class UsersController extends Controller
         $usersl= User::get();
         return view('users.index', compact('usersl','roles','rolesl'));
     }
-    public function activos()
+
+    //Vista Usuarios Activos
+    public function activos(Request $request)
     {
         $roles=DB::table('model_has_roles')
             ->select('role_id', 'model_id')
@@ -43,9 +46,15 @@ class UsersController extends Controller
         $rolesl=DB::table('roles')
             ->select('id', 'name')
             ->get();
+
         $usersl= User::where('estado','=','1')->get();
-        return view('users.activos', compact('usersl','roles','rolesl'));
+
+        return view('users.activos', ['usersl'=>$usersl,
+            'roles'=>$roles,'rolesl'=>$rolesl]);
+
     }
+
+    //Vista Usuarios Inactivos
     public function inactivos()
     {
         $roles=DB::table('model_has_roles')

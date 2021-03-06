@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveHorarioRequest extends FormRequest
+class ImportTimbradaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,12 @@ class SaveHorarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required',
-            'cedula' => 'required',
-            'last_name' => 'required',
-            'hora_entrada' => 'required',
-            'hora_salida'=>'required',
-            'tipo'=>'required'
-
+            'file'=>'mimes:xslsx',
+        ];
+    }
+    public function messages(){
+        return [
+            'file.mimes'=> 'Debe ingresar un correo electronico',
         ];
     }
 }

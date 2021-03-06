@@ -14,13 +14,24 @@
             <a href="{{route('users.create')}}" class="btn btn-warning">Agregar nuevo usuario</a>
         </div>
         <br><br>
-
-    @if(Session::has('message'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            {{Session::get('message')}}
+        <br>
+        <div class="pull-right">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2">Buscar Por:</label>
+                    <input type="text" name="buscarpornombre" class="form-control" id="exampleInputName2" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="buscarporcedula" class="form-control" id="exampleInputEmail2" placeholder="Cedula">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar</button>
+            </form>
         </div>
-    @endif
+        <br><br>
+
+    @include('partials.validationMessage')
+
+
     @if($usersl->isempty())
         <div class="row">
             <div class="col-lg-12">
@@ -42,8 +53,9 @@
                         <thead class="thead-tomate">
                         <tr>
                             <th>Nr.</th>
-                            <th>Nombre</th>
+                            <th>Nombres y Apellidos</th>
                             <th>Email</th>
+                            <th>Cedula</th>
                             <th>Rol</th>
                             <th>Estado</th>
                         </tr>
@@ -61,6 +73,7 @@
                                                     <td>{!! $i++ !!}</td>
                                                     <td>{!! $users->name." ".$users->last_name !!}</td>
                                                     <td>{!! $users->email !!}
+                                                    <td>{!! $users->cedula !!}
                                                     <td>{!! $role->name !!}</td>
                                                     <td><span class="label label-primary">Activo</span></td>
                                                     <td>

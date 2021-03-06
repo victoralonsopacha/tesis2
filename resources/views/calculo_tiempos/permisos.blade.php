@@ -7,22 +7,20 @@
 
 @section('main-content')
     <h1>PERMISOS TOTALES</h1>
-
-
     <div class="card text-center">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                
+
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                     <div class="col-sm-6">
                         @foreach ($consulta5 as $itemconsulta5)
                             <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta5->cedula }}</label>
-                        
-                        
+
+
                     </div>
-                </div>      
+                </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-5 col-form-label">Nombre</label>
                     <div class="col-sm-6">
@@ -51,7 +49,7 @@
                 </div>
                 <div class="form-group row">
                     @foreach ($consulta6 as $itemconsulta6)
-                        
+
                     @endforeach
                     <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS SIN APROBAR</label>
                     <div class="col-sm-6">
