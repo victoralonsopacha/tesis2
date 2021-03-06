@@ -68,8 +68,6 @@ Route::patch('/inspector/{inspector_id}','InspectorController@update')->name('in
 //*CRUD PERMISOS*//
 Route::group(['middleware' => ['role:Inspector']], function () {
     Route::get('/profile/inspector','InspectorController@profile')->name('profile.inspector');
-
-
     Route::get('/permisos/index','PermisoController@index')->name('permisos.index');
     Route::get('/permisos/crear','PermisoController@create')->name('permisos.create');
     Route::get('/permisos/{permiso}/editar','PermisoController@edit')->name('permisos.edit');
@@ -81,6 +79,8 @@ Route::group(['middleware' => ['role:Inspector']], function () {
     Route::get('/permisos/{permiso}','PermisoController@show')->name('permisos.show');
     Route::post('/permisos/find','PermisoController@find')->name('permisos.find');
 });
+Route::post('/permisos/findRequest','PermisoController@findRequest')->name('permisos.findRequest');
+
 
 
 

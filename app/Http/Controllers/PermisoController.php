@@ -31,7 +31,6 @@ class PermisoController extends Controller
                 //dd($permisosl= DB::select('SELECT p.cedula, u.name, u.last_name, p.hora_inicio, p.hora_fin, p.fecha_inicio, p.fecha_fin, p.estado FROM permiso_profesors p, users u WHERE p.cedula = "'.$query.'" and u.cedula = "'.$query.'"'));
                 $permisosl = PermisoProfesor::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
                 return view('permisos.index', ['permisosl'=>$permisosl, 'buscador'=>$query]);
-
         }
         /*
         $permisosl= PermisoProfesor::get();
@@ -39,11 +38,24 @@ class PermisoController extends Controller
         */
     }
     //METODO FIND
-    public function find(Request $request)
+    public function findRequest(Request $request)
     {
-        Log::info("aqui");
-        $permisosl = PermisoProfesor::where('cedula', 'LIKE', '%17%')->where('estado', '=', '1')->orderBy('id','asc')->get();
-        Log::info($permisosl);
+        $cedula=trim($request->input('buscador'));
+        $estado=$request->input('estado');
+        if($cedula != ''){
+            Log::info('cedula');
+            $permisosl = PermisoProfesor::where('cedula', 'LIKE', $cedula)->orderBy('id','asc')->get();
+        }
+        if($estado != ''){
+            Log::info('estado');
+            $permisosl = PermisoProfesor::where('estado', '=', $estado)->orderBy('id','asc')->get();
+        }
+        if($cedula == '' && $estado == ''){
+            $permisosl=PermisoProfesor::all();
+        }
+
+        return view('permisos.find',['permisosl'=>$permisosl]);
+
     }
 
 

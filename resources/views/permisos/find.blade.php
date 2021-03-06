@@ -4,12 +4,10 @@
     {{ trans('adminlte_lang::message.home') }}
 @endsection
 
-
 @section('main-content')
     <h1>GESTIONAR PERMISOS</h1>
-    <h4>Este modulo permite gestionar la justificación de todos los permisos creados por los profesores</h4>
-<br>
-
+    <h4>Este modulo permite gestionar la justificación de todos los permisos creados por los profesores.</h4>
+    <br>
     <form method="POST" action="{{route('permisos.findRequest')}}" class="form-inline my-2 my-lg-0 float-right">
         @csrf
         <input name="buscador" class="form-control me-2" type="number" placeholder="Ingrese una cédula" aria-label="Search">
@@ -25,8 +23,6 @@
         </select>
         <button class="btn btn-success" type="submit">Buscar</button>
     </form>
-
-
 
     {{--@auth--}}
     <!--
