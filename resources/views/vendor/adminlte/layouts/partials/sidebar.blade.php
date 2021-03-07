@@ -60,9 +60,15 @@
             <li><a href="{{ route('profile.inspector') }}"><i class='fa fa-user-circle'></i> <span>Perfil</span></a></li>
             <li><a href="{{ route('calculo_tiempos.index') }}"><i class='fa fa-users'></i> <span>Calcular horas</span></a></li>
             <li><a href="{{ route('permisos.index') }}"><i class='fa fa-file-o'></i> <span>Permisos</span></a></li>
-
-            <li><a href="{{route('tiempo_reposicions.index_inspector')}}"><i class='fa fa-clock-o'></i><span>Dias Reposicion</span></a></li>
             <li><a href="{{ route('timbrada_permisos.index') }}"><i class='fa fa-bell-o'></i> <span>Timbrar Permisos</span></a></li>
+            <li class="treeview">
+                <a href="#"><span><i class='fa fa-clock-o'><span>  Dias Reposicion</span></span></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('tiempo_reposicions.index') }}">Todos</a></li>
+                    <li><a href="{{route('tiempo_reposicions.index_inspector')}}">Por Usuario</span></a></li>
+                </ul>
+            </li>
+
             <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Biometrico</span></a></li>
 
 

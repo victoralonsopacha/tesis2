@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 
 
 class ControlTiempoController extends Controller
@@ -142,6 +143,8 @@ class ControlTiempoController extends Controller
         $estado_aprobado=1;
         $estado_desaprobado=2;
 
+        Log::info('cedula');
+
         //CONSULTAS PARA SUMAR LOS TIEMPOS TOTALES DE LAS ASISTENCIAS
         $consulta = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_trabajado FROM reporte_asistencia r
         WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
@@ -182,7 +185,6 @@ class ControlTiempoController extends Controller
             'consulta7'=> $consulta7,
             'consulta8'=> $consulta8,
             'consulta9'=> $consulta9
-
         ]
 
     );

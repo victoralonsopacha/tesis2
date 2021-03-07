@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jornada;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -9,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TiempoReposicion;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class TiempoReposicionController extends Controller
 {
@@ -17,9 +20,11 @@ class TiempoReposicionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('tiempo_reposicions.index');
+        $tiempos=TiempoReposicion::all();
+        return view('tiempo_reposicions.index', ['tiempos'=>$tiempos]);
+
     }
 
 
@@ -28,21 +33,21 @@ class TiempoReposicionController extends Controller
         if($request){
             $query= trim($request->get('buscador'));
             $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
-            
+
             return view('tiempo_reposicions.index_inspector', ['usersl'=>$usersl, 'buscador'=>$query]);
         }
     }
 
     public function ver_dias(User $user, TiempoReposicion $tiempo_reposicion){
-        
+
         $ced_usuario=$user->cedula;
         $consulta = DB::select('SELECT * FROM tiempo_reposicions t WHERE t.cedula LIKE  "'.$ced_usuario.'"');
         //$consulta2 = DB::select('SELECT * FROM usuers s WHERE s.cedula LIKE  "'.$ced_usuario.'"');
 
-        return (view('tiempo_reposicions.ver_dias', ['consulta' => $consulta]));
+        return (view('tiempo_reposicions.ver_dias', ['consulta' => $consulta,'user'=>$user]));
 
 
-    } 
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -64,20 +69,70 @@ class TiempoReposicionController extends Controller
      */
     public function store(TiempoReposicion $tiempo_reposicion,Request $request)
     {
-        $request->all();
-        TiempoReposicion::create($request->all());
-        return redirect()->route('tiempo_reposicions.create',$request);
+        $tiempo=$request->all();
+        $tiempo['estado']='1';
+        TiempoReposicion::create($tiempo);
+        return redirect()->route('tiempo_reposicions.create',$tiempo);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param TiempoReposicion $reposicion
+     * @param $consulta
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function active($id)
     {
-        //
+        $tiempo=TiempoReposicion::find($id);
+        $input['estado']='1';
+        $tiempo->update($input);
+        return redirect()->back()->with('message','El atraaso ha sido aprobado');
+    }
+    public function desactive($id)
+    {
+        $tiempo=TiempoReposicion::find($id);
+        $input['estado']='2';
+        $tiempo->update($input);
+        return redirect()->back()->with('message','El usuario ha sido desaprobado');
+    }
+    public function show(TiempoReposicion $reposicion)
+    {
+        $cedula=$reposicion->cedula;
+        $fecha=$reposicion->fecha;
+        $horas=$reposicion->horas;
+
+        $consultas=DB::table('reporte_asistencia')
+            ->select('cedula','fecha', 'tiempo_total')
+            ->where('cedula','=',$cedula)
+            ->where('fecha','=',$fecha)
+            ->get();
+
+        if($consultas == '[]'){
+            return redirect()->back()->with('message', 'El usuario aun no ha recuperado este atraso');
+        }
+        else {
+
+            foreach ($consultas as $consulta) {
+                $tiempo_total = $consulta->tiempo_total;
+                $tiempo_real = Carbon::parse($tiempo_total)->format('H');
+                $tiempo_propuesto = Carbon::parse($horas)->format('H');
+                if ($tiempo_real == $tiempo_propuesto || $tiempo_real > $tiempo_propuesto ) {
+                    $r['estado'] = '2';
+                    $reposicion->update($r);
+                    return redirect()->back()->with('message', 'El usuario HA recuperado correctamente el atraso');
+                }
+
+                if ($tiempo_real < $tiempo_propuesto) {
+                    $r['estado'] = '1';
+                    $reposicion->update($r);
+                    return redirect()->back()->with('message', 'El usuario NO ha recuperado correctamente el atraso');
+                }
+            }
+
+
+        }
     }
 
     /**

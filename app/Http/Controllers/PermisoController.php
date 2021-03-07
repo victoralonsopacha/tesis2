@@ -43,17 +43,14 @@ class PermisoController extends Controller
         $cedula=trim($request->input('buscador'));
         $estado=$request->input('estado');
         if($cedula != ''){
-            Log::info('cedula');
             $permisosl = PermisoProfesor::where('cedula', 'LIKE', $cedula)->orderBy('id','asc')->get();
         }
         if($estado != ''){
-            Log::info('estado');
             $permisosl = PermisoProfesor::where('estado', '=', $estado)->orderBy('id','asc')->get();
         }
         if($cedula == '' && $estado == ''){
             $permisosl=PermisoProfesor::all();
         }
-
         return view('permisos.find',['permisosl'=>$permisosl]);
 
     }

@@ -118,15 +118,16 @@ Route::group(['middleware' => ['role:Profesor']], function () {
     Route::post('/permiso_profesors/buscarA','PermisoProfesorController@buscarA')->name('permiso_profesors.buscarA');
 
 });
+//MOSTRAR INICIO, EDITAR, ACTUALIZAR
+Route::get('/jornada/index','JornadaController@index')->name('jornada.index');
+Route::post('/jornada/buscar','JornadaController@buscar')->name('jornada.buscar');
+
 //RUTAS PARA VER TIMBRADAS
 ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
 ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
 Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2')->middleware('auth');
 
 
-//MOSTRAR INICIO, EDITAR, ACTUALIZAR
-Route::get('/jornada/index','JornadaController@index')->name('jornada.index');
-Route::post('/jornada/buscar','JornadaController@buscar')->name('jornada.buscar');
 
 
 //RUTAS PARA ATRASOS
@@ -157,8 +158,15 @@ Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@in
 Route::get('/tiempo_reposicions/create', 'TiempoReposicionController@create')->name('tiempo_reposicions.create')->middleware('auth');
 Route::post('/tiempo_reposicions', 'TiempoReposicionController@store')->name('tiempo_reposicions.store')->middleware('auth');
 
+Route::get('/tiempo_reposicions/index', 'TiempoReposicionController@index')->name('tiempo_reposicions.index')->middleware('auth');;
 Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector')->middleware('auth');;
 Route::get('/tiempo_reposicions/{user}/ver_dias', 'TiempoReposicionController@ver_dias')->name('tiempo_reposicions.ver_dias')->middleware('auth');
+ROUTE::get('/tiempo_reposicions/{reposicion}/calcular', 'TiempoReposicionController@show')->name('tiempo_reposicions.calcular')->middleware('auth');
+//ACTIVAR Y DESACTIVAR TIEMPOS DE REPOSICION
+ROUTE::patch('/tiempo_reposicions/{reposicion}/active', 'TiempoReposicionController@active')->name('tiempo_reposicions.active')->middleware('auth');
+ROUTE::patch('/tiempo_reposicions/{reposicion}/desactive', 'TiempoReposicionController@desactive')->name('tiempo_reposicions.desactive')->middleware('auth');
+
+
 
 //RUTAS PARA VER TIMBRADAS BIOMETRICO
 ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');

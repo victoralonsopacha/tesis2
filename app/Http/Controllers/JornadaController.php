@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Horario;
+use App\Models\Jornada;
 use App\Models\PermisoProfesor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,12 +21,9 @@ class JornadaController extends Controller
         //
         $cedula = auth()->user()->cedula;
         $fecha_actual=Carbon::now()->format('Y,m,d');
-        $horarios= Horario::where('id_usuario','=',$cedula)->get();
-        $jornadas=DB::table('reporte_asistencia')
-            ->select('anio','mes_nombre','dia','fecha', 'hora_entrada','hora_salida','tiempo_total')
-            ->where('cedula', $cedula)
-            ->get();
-        return view('jornada.index',compact('horarios','jornadas'));
+        $jornadas=Jornada::where('cedula', $cedula)
+            ->paginate(10);
+        return view('jornada.index',compact('jornadas'));
     }
 
     public function buscar(Request $request)

@@ -9,33 +9,10 @@
     <div class="panel panel-primary">
         <div class="panel-heading" style="text-align: center">Jornada</div>
     </div>
-    @if($horarios->isEmpty())
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row mb-2">
-                            <div class="alert alert-warning" role="alert">
-                                No existen registros !!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            @else
-                @foreach($horarios as $horario)
-                <span class="">Tu Jornada es
-                    {!! Form::label($horario->tipo) !!} en horario de
-                    {!! Form::label($horario->hora_entrada) !!} a
-                    {!! Form::label($horario->hora_salida) !!}
 
-                </span><br>
-                @endforeach
-
-    @endif
     <!--Seccion Validacion Fechas-->
         <br>
+        @include('partials.validation-errors')
         <div class="row">
             {!! Form::open(['route' => 'jornada.buscar', 'method'=>'POST']) !!}
             {!! Form::token() !!}
@@ -52,21 +29,28 @@
         </div>
         <br>
         <div class="panel panel-default">
+            <div class="table-responsive">
             <table class="table table-responsive-md">
                 <thead class="thead-tomate">
                 <tr>
+                    <th>Nr.</th>
                     <th>Año</th>
                     <th>Mes</th>
                     <th>Dia</th>
                     <th>Fecha</th>
                     <th>Hora Entrada</th>
                     <th>Hora Salida</th>
-                    <th>Tiempo Total</th>
+                    <th>Jornada Diaria</th>
                 </tr>
                 </thead>
                 <tbody>
+                @php
+                    $i=1;
+                @endphp
                 @foreach($jornadas as $jornada)
+
                     <tr>
+                        <td>{!! $i++ !!}</td>
                         <td>{!! $jornada->anio!!}</td>
                         <td>{!! $jornada->mes_nombre!!}</td>
                         <td>{!! $jornada->dia!!}</td>
@@ -76,8 +60,15 @@
                         <td>{!! $jornada->tiempo_total!!}</td>
                     </tr>
                 @endforeach
+                <tr>
+                </tr>
                 </tbody>
             </table>
+                <nav aria-label="..." class="text-center">
+                    {{$jornadas->links()}}
+                </nav>
+
+            </div>
         </div>
     </div>
 @endsection

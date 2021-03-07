@@ -5,20 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TiempoReposicion extends Model
+class Jornada extends Model
 {
     use HasFactory;
-    protected $table = "tiempo_reposicions";
-
+    protected $table = 'reporte_asistencia';
     protected $fillable = [
+        'id_reporte',
         'cedula',
-        'nombre',
         'apellido',
-        'horas',
+        'nombre',
+        'anio',
+        'mes_nombre',
+        'dia',
         'fecha',
-        'estado'
+        'hora_entrada',
+        'hora_salida',
+        'tiempo_total'
+
     ];
 
-    //DESAHABILITAR ASIGNACION MASIVA
-    protected $guarded = [];
 }
