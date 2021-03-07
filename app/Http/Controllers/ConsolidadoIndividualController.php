@@ -17,7 +17,7 @@ class ConsolidadoIndividualController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    { 
+    {
         if($request){
             $query= trim($request->get('buscador'));
             $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->where('estado','=','1')->orderBy('id','asc')->get();
@@ -104,7 +104,7 @@ class ConsolidadoIndividualController extends Controller
     {
         //
     }
- 
+
 
     public function consolidado_individual(User $user, Request $request){
         $ced_usuario = $user->cedula;
@@ -138,9 +138,6 @@ class ConsolidadoIndividualController extends Controller
 
             return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin), 'consolidadoIndividual.xlsx');
         }
-
-      
-
     }
 
     public function exportExcel(User $user, Request $request){

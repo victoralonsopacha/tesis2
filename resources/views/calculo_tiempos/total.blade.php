@@ -27,12 +27,14 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
                 <div class="col-sm-6">
+                    <input id="cedula" type="hidden" class="form-control" name="date" value="{{$itemconsulta2->cedula }}">
                     <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->cedula }}</label>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-5 col-form-label">Nombre</label>
                 <div class="col-sm-6">
+                    <input id="nombre" type="hidden" class="form-control" name="date" value="{{$itemconsulta2->nombre }}">
                     <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->nombre }}</label>
                 </div>
             </div>
@@ -40,6 +42,7 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-5 col-form-label">Apellido</label>
                 <div class="col-sm-6">
+                    <input id="apellido" type="hidden" class="form-control" name="date" value="{{$itemconsulta2->apellido }}">
                     <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->apellido }}</label>
                 </div>
             </div>
@@ -103,7 +106,7 @@
                         <input id="permisos_aprobados" type="input" class="form-control" name="date" value="{{$itemconsulta5->permisos1}}" readonly>
                     @endforeach
                 @else
-                    <input type="input" class="form-control" name="date" value="0" readonly>
+                    <input id="permisos_aprobados" type="input" class="form-control" name="date" value="0" readonly>
                 @endif
             </div>
         </div>
@@ -115,7 +118,7 @@
                         <input id="permisos_desaprobados" type="input" class="form-control" name="date" value="{{$itemconsulta6->permisos2}}" readonly>
                     @endforeach
                 @else
-                    <input type="input" class="form-control" name="date" value="0" readonly>
+                    <input id="permisos_desaprobados" type="input" class="form-control" name="date" value="0" readonly>
                 @endif
 
             </div>
@@ -128,7 +131,7 @@
                         <input id="permisos_pendientes" type="input"  class="form-control" name="date" value="{{$itemconsulta9->permisos3}}" readonly>
                     @endforeach
                 @else
-                    <input type="input" class="form-control" name="date" value="0" readonly>
+                    <input id="permisos_pendientes" type="input" class="form-control" name="date" value="0" readonly>
                 @endif
             </div>
         </div>
@@ -137,31 +140,93 @@
             <div class="col-sm-6">
                 @if($reposicion)
                     @foreach ($reposicion as $itemreposicion)
-                    <input type="input" id="reposicion" class="form-control" name="date" value="{{$itemreposicion->tiempo_reposicions}}" readonly>
+                    <input id="reposicion" type="input"  class="form-control" name="date" value="{{$itemreposicion->tiempo_reposicions}}" readonly>
                     @endforeach
                 @else
-                    <input type="input" class="form-control" name="date" value="0" readonly>
+                    <input id="reposicion" type="input" class="form-control" name="date" value="0" readonly>
                 @endif
             </div>
         </div>
-        <form action="#" method="POST">
+        <form id="datosformulario" action="{{route('calculo_tiempos.exportPdf')}}" method="POST">
             @csrf
-            <input id="" type="hidden" class="form-control" name="date" value="" >
-            <input id="" type="input" class="form-control" name="date" value="" >
-            <input id="" type="input" class="form-control" name="date" value="" >
-            <input id="" type="input" class="form-control" name="date" value="" >
-            <input id="" type="input" class="form-control" name="date" value="" >
-            <input id="" type="input" class="form-control" name="date" value="" >
-            <input id="" type="input" class="form-control" name="date" value="" >
-            <input id="" type="input" class="form-control" name="date" value="" >
-            <input id="" type="input" class="form-control" name="date" value="" >
+            <input id="pdfcedula" type="hidden" class="form-control" name="pdfcedula" value="" >
+            <input id="pdfnombre" type="hidden" class="form-control" name="pdfnombre" value="" >
+            <input id="pdfapellido" type="hidden" class="form-control" name="pdfapellido" value="" >
+
+            <input id="pdftotaltrabajado" type="hidden" class="form-control" name="pdftotaltrabajado" value="" >
+            <input id="pdfdias" type="hidden" class="form-control" name="pdfdias" value="" >
+            <input id="pdfhoras" type="hidden" class="form-control" name="pdfhoras" value="" >
+            <input id="pdfatrasos" type="hidden" class="form-control" name="pdfatrasos" value="" >
+
+            <input id="pdftotal" type="hidden" class="form-control" name="pdftotal" value="" >
+            <input id="pdfpermisos" type="hidden" class="form-control" name="pdfpermisos" value="" >
+            <input id="pdfaprobados" type="hidden" class="form-control" name="pdfaprobados" value="" >
+            <input id="pdfdesaprobados" type="hidden" class="form-control" name="pdfdesaprobados" value="" >
+            <input id="pdfpendientes" type="hidden" class="form-control" name="pdfpendientes" value="" >
+            <input id="pdfreposicion" type="hidden" class="form-control" name="pdfreposicion" value="" >
 
 
-            <button class="btn btn-danger btn-xs">DESCARGAR PDF</button>
+            <button class="btn btn-danger btn-xs" type="submit">DESCARGAR PDF</button>
         </form>
 
     </div><!--col-sm-6-->
     </div><!--row-->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("datosformulario").addEventListener('submit', obtenerDatos);
+        });
+
+        function obtenerDatos(evento) {
+            evento.preventDefault();
+            var cedula = document.getElementById('cedula').value;
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+
+            var horas_total_trabajados = document.getElementById('horas_total_trabajados').value;
+            var dias_total_trabajados = document.getElementById('dias_total_trabajados').value;
+            var horas_total_trabajados = document.getElementById('horas_total_trabajados').value;
+            var atrasos = document.getElementById('atrasos').value;
+
+            var total_permisos = document.getElementById('total_permisos').value;
+            var permisos_solicitados = document.getElementById('permisos_solicitados').value;
+            var permisos_aprobados = document.getElementById('permisos_aprobados').value;
+            var permisos_desaprobados = document.getElementById('permisos_desaprobados').value;
+            var permisos_pendientes = document.getElementById('permisos_pendientes').value;
+            var reposicion = document.getElementById('reposicion').value;
+
+            document.getElementById('pdfcedula').value=cedula;
+            document.getElementById('pdfnombre').value=nombre;
+            document.getElementById('pdfapellido').value=apellido;
+
+            document.getElementById('pdftotaltrabajado').value=horas_total_trabajados;
+            document.getElementById('pdfdias').value=dias_total_trabajados;
+            document.getElementById('pdfhoras').value=horas_total_trabajados;
+            document.getElementById('pdfatrasos').value=atrasos;
+
+            document.getElementById('pdftotal').value=total_permisos;
+            document.getElementById('pdfpermisos').value=permisos_solicitados;
+            document.getElementById('pdfaprobados').value=permisos_aprobados;
+            document.getElementById('pdfdesaprobados').value=permisos_desaprobados;
+            document.getElementById('pdfpendientes').value=permisos_pendientes;
+            document.getElementById('pdfreposicion').value=reposicion;
+
+            /*console.log(cedula);
+            console.log(dias_total_trabajados);
+            console.log(horas_total_trabajados);
+            console.log(atrasos);
+
+            console.log(total_permisos);
+            console.log(permisos_solicitados);
+            console.log(permisos_aprobados);
+            console.log(permisos_desaprobados);
+            console.log(permisos_pendientes);
+            console.log(reposicion);
+            console.log(permisos_aprobados);*/
+
+        this.submit();
+    }
+</script>
 
 
 @endsection
