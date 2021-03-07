@@ -145,7 +145,7 @@ class ControlTiempoController extends Controller
         $estado_aprobado=1;
         $estado_desaprobado=2;
 
-        Log::info('cedula');
+
 
         //CONSULTAS PARA SUMAR LOS TIEMPOS TOTALES DE LAS ASISTENCIAS
         $consulta = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_trabajado FROM reporte_asistencia r
@@ -175,7 +175,10 @@ class ControlTiempoController extends Controller
         //CONSULTA PARA CONTAR LOS PERMISOS SOLICITADOS
         $consulta8 = DB::select('SELECT COUNT(p.cedula) AS cantidad_permisos FROM permiso_profesors p WHERE p.cedula LIKE "'.$ced_usuario.'" AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
-
+        //CONSULTA PARA MOSTRAR TIEMPOS DE REPOSICION
+        $reposicion=DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas))) AS tiempo_reposicions FROM tiempo_reposicions WHERE cedula = "'.$ced_usuario.'" AND estado = "2"');
+        Log::info('aqui');
+        Log::info($reposicion);
 
         return view('calculo_tiempos.total',
         [   'consulta' => $consulta,
@@ -186,7 +189,8 @@ class ControlTiempoController extends Controller
             'consulta6'=> $consulta6,
             'consulta7'=> $consulta7,
             'consulta8'=> $consulta8,
-            'consulta9'=> $consulta9
+            'consulta9'=> $consulta9,
+            'reposicion'=> $reposicion
         ]
 
     );
@@ -195,8 +199,9 @@ class ControlTiempoController extends Controller
     }
 
 
-    public function exportPdf(){
-
+    public function exportPdf(Request $request){
+        $request->all();
+        Log::info($request->all());
 
     }
 

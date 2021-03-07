@@ -50,7 +50,7 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-5 col-form-label">HORAS TOTALES TRABAJADAS</label>
                 <div class="col-sm-6">
-                    <input type="input" class="form-control" name="date" value="{{$itemconsulta2->tiempo_trabajado}}" readonly>
+                    <input id="horas_total_trabajados" type="input" class="form-control" name="date" value="{{$itemconsulta2->tiempo_trabajado}}" readonly>
                 </div>
             </div>
         @endforeach
@@ -60,7 +60,7 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-5 col-form-label">DIAS TOTALES TRABAJADOS</label>
                 <div class="col-sm-6">
-                    <input type="input" class="form-control" name="date" value="{{$itemconsulta4->num_dias}} DIAS" readonly>
+                    <input id="dias_total_trabajados" type="input" class="form-control" name="date" value="{{$itemconsulta4->num_dias}} DIAS" readonly>
                 </div>
             </div>
         @endforeach
@@ -70,7 +70,7 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-5 col-form-label">ATRASOS</label>
                 <div class="col-sm-6">
-                    <input type="input" class="form-control" name="date" value="{{$itemconsulta3->retraso_trabajado}}" readonly>
+                    <input id="atrasos" type="input" class="form-control" name="date" value="{{$itemconsulta3->retraso_trabajado}}" readonly>
                 </div>
             </div>
         @endforeach
@@ -83,7 +83,7 @@
             <label for="staticEmail" class="col-sm-5 col-form-label">HORAS TOTALES DE PERMISOS</label>
             <div class="col-sm-6">
                 @foreach ($consulta7 as $itemconsulta7)
-                    <input type="input" class="form-control" name="date" value="{{$itemconsulta7->tiempo_permiso}}" readonly>
+                    <input id="total_permisos" type="input" class="form-control" name="date" value="{{$itemconsulta7->tiempo_permiso}}" readonly>
                 @endforeach
             </div>
         </div>
@@ -91,7 +91,7 @@
             <label for="staticEmail" class="col-sm-5 col-form-label">CANTIDAD DE PERMISOS SOLICITADOS</label>
             <div class="col-sm-6">
                 @foreach ($consulta8 as $itemconsulta8)
-                    <input type="input" class="form-control" name="date" value="{{$itemconsulta8->cantidad_permisos}}" readonly>
+                    <input id="permisos_solicitados" type="input" class="form-control" name="date" value="{{$itemconsulta8->cantidad_permisos}}" readonly>
                 @endforeach
             </div>
         </div>
@@ -100,7 +100,7 @@
             <div class="col-sm-6">
                 @if($consulta5)
                     @foreach ($consulta5 as $itemconsulta5)
-                        <input type="input" class="form-control" name="date" value="{{$itemconsulta5->permisos1}}" readonly>
+                        <input id="permisos_aprobados" type="input" class="form-control" name="date" value="{{$itemconsulta5->permisos1}}" readonly>
                     @endforeach
                 @else
                     <input type="input" class="form-control" name="date" value="0" readonly>
@@ -112,7 +112,7 @@
             <div class="col-sm-6">
                 @if($consulta6)
                     @foreach ($consulta6 as $itemconsulta6)
-                        <input type="input" class="form-control" name="date" value="{{$itemconsulta6->permisos2}}" readonly>
+                        <input id="permisos_desaprobados" type="input" class="form-control" name="date" value="{{$itemconsulta6->permisos2}}" readonly>
                     @endforeach
                 @else
                     <input type="input" class="form-control" name="date" value="0" readonly>
@@ -125,13 +125,41 @@
             <div class="col-sm-6">
                 @if($consulta9)
                     @foreach ($consulta9 as $itemconsulta9)
-                        <input type="input" class="form-control" name="date" value="{{$itemconsulta9->permisos3}}" readonly>
+                        <input id="permisos_pendientes" type="input"  class="form-control" name="date" value="{{$itemconsulta9->permisos3}}" readonly>
                     @endforeach
                 @else
                     <input type="input" class="form-control" name="date" value="0" readonly>
                 @endif
             </div>
         </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">TIEMPO DE REPOSICION</label>
+            <div class="col-sm-6">
+                @if($reposicion)
+                    @foreach ($reposicion as $itemreposicion)
+                    <input type="input" id="reposicion" class="form-control" name="date" value="{{$itemreposicion->tiempo_reposicions}}" readonly>
+                    @endforeach
+                @else
+                    <input type="input" class="form-control" name="date" value="0" readonly>
+                @endif
+            </div>
+        </div>
+        <form action="#" method="POST">
+            @csrf
+            <input id="" type="hidden" class="form-control" name="date" value="" >
+            <input id="" type="input" class="form-control" name="date" value="" >
+            <input id="" type="input" class="form-control" name="date" value="" >
+            <input id="" type="input" class="form-control" name="date" value="" >
+            <input id="" type="input" class="form-control" name="date" value="" >
+            <input id="" type="input" class="form-control" name="date" value="" >
+            <input id="" type="input" class="form-control" name="date" value="" >
+            <input id="" type="input" class="form-control" name="date" value="" >
+            <input id="" type="input" class="form-control" name="date" value="" >
+
+
+            <button class="btn btn-danger btn-xs">DESCARGAR PDF</button>
+        </form>
+
     </div><!--col-sm-6-->
     </div><!--row-->
 

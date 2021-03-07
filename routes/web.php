@@ -149,6 +149,10 @@ Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@suma_total_t
 Route::post('/calculo_tiempos/{user}/total2','ControlTiempoController@suma_total_tiempo')->name('calculo_tiempos.total2')->middleware('auth');
 Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_permisos')->name('calculo_tiempos.permisos')->middleware('auth');
 
+Route::post('/calculo_tiempos/{user}/exportar','ControlTiempoController@exportPdf')->name('calculo_tiempos.exportPdf')->middleware('auth');
+
+
+
 //RUTA PARA BUSCADOR EN PERMISOS
 Route::post('/calculo_tiempos/index','BuscadorController@index')->name('calculo_tiempos.index')->middleware('auth');
 
