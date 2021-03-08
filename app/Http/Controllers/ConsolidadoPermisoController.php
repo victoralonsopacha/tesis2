@@ -121,16 +121,18 @@ class ConsolidadoPermisoController extends Controller
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
         $extension = $request->formato;
+        $identificador = 1;
         $consultas = DB::select('SELECT * FROM timbrada_permisos r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
+         //Log::info($consultas);
         $pdf= PDF::loadView('pdf.timbradas_permisos', compact('consultas'));
-        //Log::info($consultas);
+       
       
         if($extension == 'PDF'){
             return $pdf->download('permisospdf.pdf');
          }
          if($extension == 'EXCEL'){
  
-             return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin), 'permisosexcel.xlsx');
+             return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin,$identificador), 'permisosexcel.xlsx');
          }
       
 

@@ -51,6 +51,7 @@
                         <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
+                            <input type="hidden" class="form-control" id='formato' name="formato" value=""  >
                         </div>
                     </div>
                     <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
@@ -91,6 +92,15 @@
                 return;
             }            
                 this.submit();
+        }
+
+        function pfd() {
+            var inputFormato = document.getElementById("formato");
+            inputFormato.value = "PDF";
+        }
+        function excel() {
+            var inputFormato = document.getElementById("formato");
+            inputFormato.value = "EXCEL";
         }
        
         </script>

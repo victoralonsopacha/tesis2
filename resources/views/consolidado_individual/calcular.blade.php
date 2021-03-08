@@ -58,8 +58,6 @@
                     </div>
                     <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
                     <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">Ver Timbradas excel</a></button>
- 
-
                 </form>
 
             </li>
@@ -99,12 +97,11 @@
         }
 
         function pfd() {
-
             var inputFormato = document.getElementById("formato");
             inputFormato.value = "PDF";
         }
-        function excel() {
 
+        function excel() {
             var inputFormato = document.getElementById("formato");
             inputFormato.value = "EXCEL";
         }

@@ -128,6 +128,7 @@ class ConsolidadoIndividualController extends Controller
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
         $extension = $request->formato;
+        $identificador = 2;
         $consultas = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
         //Log::info($consultas);
         $pdf= PDF::loadView('pdf.timbradas', compact('consultas'));
@@ -137,7 +138,7 @@ class ConsolidadoIndividualController extends Controller
         }
         if($extension == 'EXCEL'){
 
-            return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin), 'consolidadoIndividual.xlsx');
+            return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin,$identificador), 'consolidadoIndividual.xlsx');
         }
     } 
 

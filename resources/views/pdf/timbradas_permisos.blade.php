@@ -31,8 +31,6 @@
 <h1><p class="text-center text-uppercase">Parroquia de Guangopolo</p></h1>    
 <h1><p class="text-center text-uppercase">Reporte de timbradas diarias de usuario</p></h1>    
 
-<h1>ESCUELA VELASCO IBARRA</h1>    
-        <h2>Reporte de timbradas de usuario TIMBRADAS PERMISOS</h2> 
  
 <table class="table">
     <thead>
