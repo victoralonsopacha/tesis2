@@ -87,7 +87,7 @@ class PermisoProfesorController extends Controller
         $permiso['estado']='0';
         if($archivo=$request->file('file')){
             $nombre_imagen=$archivo->getClientOriginalName();
-            $archivo->move('public',$nombre_imagen);
+            $archivo->move(public_path("img/categorias/"),$nombre_imagen);
             $permiso['file']=$nombre_imagen;
         }
         PermisoProfesor::create($permiso);

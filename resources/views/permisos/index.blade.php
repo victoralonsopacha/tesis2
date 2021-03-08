@@ -6,7 +6,6 @@
 
 
 @section('main-content')
-    <h1>GESTIONAR PERMISOS</h1>
     <h4>Este modulo permite gestionar la justificación de todos los permisos creados por los profesores</h4>
 <br>
 

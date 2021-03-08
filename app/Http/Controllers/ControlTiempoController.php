@@ -140,7 +140,7 @@ class ControlTiempoController extends Controller
         $ced_usuario = $user->cedula;
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = Carbon::now();
-       $fecha_fin = $fecha_fin->toDateTimeString();
+        $fecha_fin = $fecha_fin->toDateTimeString();
         $estado_pendiente=0;
         $estado_aprobado=1;
         $estado_desaprobado=2;

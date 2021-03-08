@@ -18,7 +18,7 @@
             <div class="col-sm-2">
                 <input type="text" class="form-control" name="cedula" value="{{$consultaItem->cedula}}" readonly>
             </div>
-        </div>
+        </div> 
 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Nombre del usuario</label>
