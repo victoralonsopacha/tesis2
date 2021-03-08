@@ -83,11 +83,8 @@ Route::post('/permisos/findRequest','PermisoController@findRequest')->name('perm
 
 
 
-
-
 //JUSTIFICAR
 Route::get('/permisos/{permiso}/justificar','PermisoController@justificar')->name('permisos.justificar');
-
 
 //**ROL PROFESOR**
 Route::group(['middleware' => ['role:Profesor']], function () {
@@ -149,7 +146,7 @@ Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@suma_total_t
 Route::post('/calculo_tiempos/{user}/total2','ControlTiempoController@suma_total_tiempo')->name('calculo_tiempos.total2')->middleware('auth');
 Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_permisos')->name('calculo_tiempos.permisos')->middleware('auth');
 
-Route::post('/calculo_tiempos/{user}/exportar','ControlTiempoController@exportPdf')->name('calculo_tiempos.exportPdf')->middleware('auth');
+Route::post('/calculo_tiempos/exportar','ControlTiempoController@exportPdf')->name('calculo_tiempos.exportPdf')->middleware('auth');
 
 
 

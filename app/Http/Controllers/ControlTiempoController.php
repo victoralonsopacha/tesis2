@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\SearchTimeRequest;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
@@ -198,11 +199,28 @@ class ControlTiempoController extends Controller
 
     }
 
-
     public function exportPdf(Request $request){
-        $request->all();
-        Log::info($request->all());
+        //$informes=$request->cedula;
 
+        $informe = array(
+            "cedula" =>$request['pdfcedula'],
+            "nombre" => $request['pdfnombre'],
+            "apellido" => $request['pdfapellido'],
+            "totaltrabajado" => $request['pdftotaltrabajado'],
+            "dias" => $request['pdfdias'],
+            "horas" => $request['pdfhoras'],
+            "atrasos" => $request['pdfatrasos'],
+            "total" => $request['pdftotal'],
+            "permisos" => $request['pdfpermisos'],
+            "aprobados" => $request['pdfaprobados'],
+            "desaprobados" => $request['pdfdesaprobados'],
+            "pendientes" => $request['pdfpendientes'],
+            "reposicion" => $request['pdfreposicion'],
+        );
+
+        $pdf=PDF::loadView('pdf.informes', array('informe'=>$informe));
+
+        return $pdf->download('informes.pdf');
     }
 
 }
