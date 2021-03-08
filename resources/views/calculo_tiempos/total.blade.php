@@ -17,7 +17,7 @@
     <br><br>
     @if(empty($consulta2))
         <div class="alert alert-success alert-dismissible text-center" role="alert">
-            <p>No existe informacion para este lapso de tiempo</p>
+            <p>No existe informacion para timbrada diarias</p>
         </div>
     @endif
     <div class="row">

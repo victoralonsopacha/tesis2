@@ -9,6 +9,10 @@
     <div class="pull-left">
         <a class="btn btn-primary" href="{{ route('timbrada_permisos.index') }}">Regresar</a>
     </div><br><br>
+
+    @include('partials.validationMessage')
+    @include('partials.validationError')
+
     @include('partials.validation-errors')
     <form method="POST" action="{{ route('timbrada_permisos.store') }}">
         @csrf
@@ -38,7 +42,7 @@
 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">hora</label>
-            <div class="col-sm-6"> 
+            <div class="col-sm-6">
                 <input type="time" class="form-control" name="hora" value="{{ $fecha_hora->format('h:i:s') }}" readonly>
             </div>
         </div>
@@ -48,14 +52,14 @@
                 <input type="date" class="form-control" name="fecha" value="{{ $fecha_hora->format('Y-m-d') }}" readonly>
             </div>
         </div>
-        
+
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control" name="observacion">
             </div>
         </div>
- 
+
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
             <div class="col-sm-6">
@@ -68,7 +72,7 @@
                 <input type="text" class="form-control" name="estado" value='0' style="visibility:hidden">
             </div>
         </div>
-        
+
         <button type="submit" class="btn btn-success">Timbrar</button>
     </form>
 

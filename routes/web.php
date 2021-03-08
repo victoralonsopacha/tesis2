@@ -83,11 +83,8 @@ Route::post('/permisos/findRequest','PermisoController@findRequest')->name('perm
 
 
 
-
-
 //JUSTIFICAR
 Route::get('/permisos/{permiso}/justificar','PermisoController@justificar')->name('permisos.justificar');
-
 
 //**ROL PROFESOR**
 Route::group(['middleware' => ['role:Profesor']], function () {

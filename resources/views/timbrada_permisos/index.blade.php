@@ -8,12 +8,8 @@
 <h1>TIMBRAR PERMISO</h1>
 <h4>Por favor ingrese su numero de cedula para timbrar</h4>
 <br>
-@if(Session::has('message'))
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        {{Session::get('message')}}
-    </div>
-@endif
+@include('partials.validationMessage')
+@include('partials.validationError')
 
 <div class="pull-right">
     <form class="form-inline my-2 my-lg-0 float-right">
@@ -44,7 +40,7 @@
                         @if($rol->model_id == $userItem->id)
                             @if($rol->role_id == $role->id)
                                 <tr>
-                                    
+
                                     <td>{!! $userItem->cedula !!}</td>
                                     <td>{!! $userItem->name !!}</td>
                                     <td>{!! $userItem->last_name !!}</td>

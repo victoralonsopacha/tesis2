@@ -13,14 +13,14 @@
     </div>
     <br><br><br>
     @include('partials.validation-errors')
-        {!! Form::open(array('route' => 'permiso_profesors.store','method'=>'POST')) !!}
-        {!! Form::token() !!}
+        <form action="{{route('permiso_profesors.store')}}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+        @csrf
         @include('permiso_profesors._form')
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-success">Crear Permiso</button>
         </div>
-        {!! Form::close() !!}
- 
+        </form>
+
     </div>
 
 @endsection

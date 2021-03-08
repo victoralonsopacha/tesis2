@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use App\Events\PermisoEvent;
 use App\Notifications\PermisosNotification;
 
+
+
 class PermisoProfesorController extends Controller
 {
 
@@ -45,7 +47,7 @@ class PermisoProfesorController extends Controller
             ->get();
         return view('permiso_profesors.index1',compact('permisosl','i'));
     }
- 
+
     public function inicio(){
         $permisosl= PermisoProfesor::get();
         return view('permiso_profesors.principal',compact('permisosl'));
@@ -85,15 +87,22 @@ class PermisoProfesorController extends Controller
         $permiso['last_name'];
         $permiso['tipo_permiso']=implode($request['tipo_permiso']);
         $permiso['estado']='0';
+
         if($archivo=$request->file('file')){
             $nombre_imagen=$archivo->getClientOriginalName();
             $archivo->move('public',$nombre_imagen);
             $permiso['file']=$nombre_imagen;
+
+            //obtenemos el campo file definido en el formulario
+
+            //obtenemos el nombre del archivo
+            $nombre = $archivo->getClientOriginalName();
+            //indicamos que queremos guardar un nuevo archivo en el disco local
+            \Storage::disk('local')->put($nombre,  \File::get($archivo));
+
         }
+
         PermisoProfesor::create($permiso);
-
-        //event(new PermisoEvent($permiso));
-
         return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
     }
 
@@ -114,7 +123,7 @@ class PermisoProfesorController extends Controller
         return view('permiso_profesors.show',
             ['permiso_profesor' => $permiso_profesor,'tipo_permiso'=>$tipo_permiso]);
     }
- 
+
     public function shows(PermisoProfesor $permiso_profesor)
     {
         $i=1;
@@ -122,7 +131,7 @@ class PermisoProfesorController extends Controller
         $permisos=PermisoProfesor::where('cedula','=',$cedula)
             ->get();
         return view('permiso_profesors.shows', compact('permisos','i'));
-    } 
+    }
 
     public function buscar(SearchPermisoProfesorRequest $request)
     {
@@ -139,7 +148,7 @@ class PermisoProfesorController extends Controller
         return redirect(route('permiso_profesors.shows', compact('permisos','i')));
     }
 
-    
+
     public function buscarA(SearchPermisoProfesorRequest $request)
     {
         $request->validated();

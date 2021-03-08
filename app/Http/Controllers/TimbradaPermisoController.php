@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
 
 
@@ -70,12 +71,30 @@ class TimbradaPermisoController extends Controller
      */
     public function store(TimbradaPermiso $timbrada_permiso, Request $request)
     {
-
         $permiso=$request->all();
-        $permiso['tipo_permiso']=implode($request['tipo_permiso']);
-        TimbradaPermiso::create($permiso);
+        $permiso['estado']='0';
+        $cedula=$request['cedula'];
+        $fecha=$request['fecha'];
+        $tipo_permiso=implode($request['tipo_permiso']);
+        $permiso['tipo_permiso']=$tipo_permiso;
 
-        return redirect()->route('timbrada_permisos.index')->with('message', 'Usted ha timbrado con exito');
+        $validate_timbrada=TimbradaPermiso::where('cedula','=',$cedula)
+            ->where('fecha','=',$fecha)
+            ->where('tipo_permiso','=',$tipo_permiso)
+            ->get();
+        if($validate_timbrada){
+            Log::info('no guardar');
+            return redirect()->route('timbrada_permisos.index')->with('error', 'Usted NO ha timbrado con exito');
+        }else{
+            Log::info('guardar');
+            $permiso_creado=TimbradaPermiso::create($permiso);
+            return redirect()->route('timbrada_permisos.index')->with('message', 'Usted ha timbrado con exito');
+        }
+
+
+
+
+
 
     }
 
