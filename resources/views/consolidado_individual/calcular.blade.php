@@ -6,7 +6,7 @@
 
 
 @section('main-content')
-    <h1>PERMISOS REGISTRADOS</h1>
+    <h1>Timbradas diarias registradas</h1>
     <div class="pull-left">
         <a class="btn btn-primary" href="{{ route('consolidado_individual.index') }}">Regresar</a>
     </div>
@@ -58,7 +58,7 @@
                     </div>
                     <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
                     <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">Ver Timbradas excel</a></button>
-
+ 
 
                 </form>
 
@@ -70,7 +70,7 @@
 
 
 
-        <script>
+    <script>
           document.addEventListener("DOMContentLoaded", function() {
           document.getElementById("formulariofecha").addEventListener('submit', validarFechas);
            });
@@ -82,11 +82,14 @@
           var inicio = new Date(fecha_inicio);
             var fin = new Date(fecha_fin);
             if(fecha_inicio.length == 0){
-
+                alert("Debe ingresar una fecha de inicio");
+                return;
             }
             if(fecha_fin.length == 0){
-
+                alert("Debe ingresar una fecha final");
+                return;
             }
+            
             if(inicio > fin){
 
                 alert("La fecha fin no puede ser menor");
@@ -106,7 +109,7 @@
             inputFormato.value = "EXCEL";
         }
 
-        </script>
+    </script>
 
 @endsection
 

@@ -6,7 +6,7 @@
 
 
 @section('main-content')
-    <h4>Este modulo permite gestionar la justificación de todos los permisos creados por los profesores</h4>
+    <h4>Este modulo permite aprobar o desaprobar los permisos solicitados</h4>
 <br>
 
     <form method="POST" action="{{route('permisos.findRequest')}}" class="form-inline my-2 my-lg-0 float-right">

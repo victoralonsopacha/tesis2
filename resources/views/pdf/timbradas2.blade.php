@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .table {
+            width: 100%;
+            border: 1px solid #999999;
+        }
+    </style>
+</head>
+<body>
+    <table class="table">    
+        <h1>ESCUELA VELASCO IBARRA</h1>    
+        <h2>Reporte de timbradas de usuario TIMBRADAS BIOMETRICO</h2> 
+        <thead>
+            <tr>
+                <th>Cedula</th>
+                <th>Nombre</th>
+                <th>Tiempo</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($consultas as $consulta)
+                <tr>           
+                    <td>{{ $consulta->cedula }}</td>
+                    <td>{{ $consulta->nombre }}</td>
+                    <td>{{ $consulta->tiempo }}</td>
+                    <td>{{ $consulta->fecha }}</td>               
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</body>
+</html>
+
+
+

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Log;
-
+use App\Exports\TimbradasExport;
+use Maatwebsite\Excel\Facades\Excel;
 class ConsolidadoPermisoController extends Controller
 {
     /**
@@ -57,9 +58,11 @@ class ConsolidadoPermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('consolidado_permisos.calcular',
+           ['user' => $user]
+        );
     }
 
     /**
@@ -117,12 +120,19 @@ class ConsolidadoPermisoController extends Controller
         $ced_usuario = $user->cedula;
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
+        $extension = $request->formato;
         $consultas = DB::select('SELECT * FROM timbrada_permisos r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
-        //$pdf= PDF::loadView('pdf.timbradas_permisos.', compact('consultas'));
-        Log::info($consultas);
+        $pdf= PDF::loadView('pdf.timbradas_permisos', compact('consultas'));
+        //Log::info($consultas);
       
+        if($extension == 'PDF'){
+            return $pdf->download('permisospdf.pdf');
+         }
+         if($extension == 'EXCEL'){
+ 
+             return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin), 'permisosexcel.xlsx');
+         }
       
-      //return $pdf->download('timbradas_permisos.pdf');
 
     }
 }
