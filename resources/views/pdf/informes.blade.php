@@ -34,10 +34,10 @@
   <p>Atrasos: <label for="">{{{ $informe['atrasos'] }}}</label></p>
   <p>PERMISOS</p>
   <p>Horas totaes de permisos: <label for="">{{{ $informe['permisos'] }}}</label></p>
-  <p>Horas totaes de permisos: <label for="">{{{ $informe['aprobados'] }}}</label></p>
-  <p>Horas totaes de permisos: <label for="">{{{ $informe['desaprobados'] }}}</label></p>
-  <p>Horas totaes de permisos: <label for="">{{{ $informe['pendientes'] }}}</label></p>
-  <p>Horas totaes de permisos: <label for="">{{{ $informe['reposicion'] }}}</label></p>
+  <p>Cantidad de permisos aprobados: <label for="">{{{ $informe['aprobados'] }}}</label></p>
+  <p>Cantidad de permisos desaprobados: <label for="">{{{ $informe['desaprobados'] }}}</label></p>
+  <p>Cantidad de permisos pendientes: <label for="">{{{ $informe['pendientes'] }}}</label></p>
+  <p>Cantidad de tiempo de reposicion: <label for="">{{{ $informe['reposicion'] }}}</label></p>
 
 </form>
     

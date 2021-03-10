@@ -57,7 +57,7 @@
                     <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
                     <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">Ver Timbradas excel</a></button>
                 </form>
- 
+  
             </li>
 
           </ul>
@@ -73,12 +73,25 @@
           document.getElementById("formulariofecha").addEventListener('submit', validarFechas);     
            });
 
+
+
+          
+
+
+
         function validarFechas(evento) {
             evento.preventDefault();
-            var fecha_inicio = $("#fecha_inicio").val();
-            var fecha_fin =  $("#fecha_fin").val();
+
+            
+            var fecha_inicio = document.getElementById("fecha_inicio").value;
+            //$("#fecha_inicio").val();
+            var fecha_fin =  document.getElementById("fecha_fin").value;
+            //$("#fecha_fin").val();
             var inicio = new Date(fecha_inicio);
             var fin = new Date(fecha_fin); 
+            var fecha_actual = new Date();
+
+
             if(fecha_inicio.length == 0){
                 alert("Debe ingresar una fecha de inicio");
                 return;
@@ -90,7 +103,13 @@
             if(inicio > fin){
                 alert("La fecha fin no puede ser menor");
                 return;
-            }            
+            }     
+            if(fecha_actual<fin)
+            {
+                alert("No puede ingresar una fecha superior a la actual")
+            return;
+            }
+          
                 this.submit();
         }
 

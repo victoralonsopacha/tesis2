@@ -121,7 +121,7 @@ class ConsolidadoIndividualController extends Controller
 
     );
 } 
-
+ 
 
     public function exportPdf(User $user, Request $request){
         $ced_usuario = $user->cedula;
