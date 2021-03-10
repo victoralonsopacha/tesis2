@@ -20,6 +20,7 @@
             <p>No existe informacion para timbrada diarias</p>
         </div>
     @endif
+    
     <div class="row">
     <div class="col-sm-6">
         <h1>HORAS TOTALES</h1>
