@@ -6,7 +6,7 @@
 
 
 @section('main-content')
-    <h1>CALCULAR HORAS</h1>
+    
     <h4>Este modulo permite calcular la cantidad de horas, dias, y atrasos en el periodo de tiempo que usted necesite</h4>
     <br>
     <div class="pull-right">

@@ -62,7 +62,7 @@
                                     <td>{!! $userItem->name !!}</td>
                                     <td>{!! $userItem->last_name !!}</td>
                                     <td>{!! $role->name!!}</td>
-
+ 
                                     <td>
 
                                         <a class="btn btn-primary" href="{{ route('consolidado_individual.calcular', $userItem) }}">VER</a>

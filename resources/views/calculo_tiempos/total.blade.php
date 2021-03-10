@@ -134,7 +134,7 @@
                 @else
                     <input id="permisos_pendientes" type="input" class="form-control" name="date" value="0" readonly>
                 @endif
-            </div>
+            </div> 
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-5 col-form-label">TIEMPO DE REPOSICION</label>

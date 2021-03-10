@@ -174,11 +174,11 @@ ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@ind
 ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
 Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2')->middleware('auth');
 
-//RUTAS PARA VER TIMBRADAS PERMISOS
+//RUTAS PARA VER TIMBRADAS PERMISOS 
 //RUTAS PARA VER TIMBRADAS
 ROUTE::get('/consolidado_permisos/index', 'ConsolidadoPermisoController@index')->name('consolidado_permisos.index')->middleware('auth');
 ROUTE::get('/consolidado_permisos/{user}/calcular', 'ConsolidadoPermisoController@show')->name('consolidado_permisos.calcular')->middleware('auth');
-Route::post('/consolidado_permisos/{user}/total2','ConsolidadoPermisoController@exportPdf')->name('consolidado_permisos.total2')->middleware('auth');
+Route::post('/consolidado_permisos/{user}/total2','ConsolidadoPermisoController@exportPdf2')->name('consolidado_permisos.total2')->middleware('auth');
 
 
 //DASHBOARD ADMIN

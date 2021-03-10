@@ -178,9 +178,9 @@ class ControlTiempoController extends Controller
 
         //CONSULTA PARA MOSTRAR TIEMPOS DE REPOSICION
         $reposicion=DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas))) AS tiempo_reposicions FROM tiempo_reposicions WHERE cedula = "'.$ced_usuario.'" AND estado = "2"');
-        Log::info('aqui');
-        Log::info($reposicion);
-
+        //Log::info('aqui');
+        //Log::info($reposicion);
+ 
         return view('calculo_tiempos.total',
         [   'consulta' => $consulta,
             'consulta2'=>$consulta2,

@@ -6,8 +6,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h1>DIAS DE REPOSICION</h1>
-    <h4>En este modulo puede observar los dias que el profesor a escogido para reponer sus sus atrasos</h4>
+    <h4>En este modulo puede observar todos los dias que profesores han escogido para reponer sus sus atrasos</h4>
     <br>
         <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 ">

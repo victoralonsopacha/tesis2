@@ -5,7 +5,6 @@
 @endsection
 
 @section('main-content')
-<h1>TIMBRAR PERMISO</h1>
 <h4>Por favor ingrese su numero de cedula para timbrar</h4>
 <br>
 @include('partials.validationMessage')

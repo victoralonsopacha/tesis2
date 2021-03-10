@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Motivo de la desaprobacion</label>
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Observacion del permiso</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="desaprobacion" value="{{old('desaprobacion', $permiso->desaprobacion)}}" >
                     </div>

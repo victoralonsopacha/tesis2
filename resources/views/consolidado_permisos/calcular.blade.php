@@ -51,12 +51,13 @@
                         <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
+                            <input type="hidden" class="form-control" id='formato' name="formato" value=""  >
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success"><a class="nav-link" >Ver Timbradas</a></button>
-
+                    <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
+                    <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">Ver Timbradas excel</a></button>
                 </form>
-
+ 
             </li>
 
           </ul>
@@ -74,17 +75,32 @@
 
         function validarFechas(evento) {
             evento.preventDefault();
-          var fecha_inicio = $("#fecha_inicio").val();
-          var fecha_fin =  $("#fecha_fin").val();
-          var inicio = new Date(fecha_inicio);
+            var fecha_inicio = $("#fecha_inicio").val();
+            var fecha_fin =  $("#fecha_fin").val();
+            var inicio = new Date(fecha_inicio);
             var fin = new Date(fecha_fin); 
-
-            if(inicio > fin){
-              
-                alert("La fecha fin no puede ser menor");
+            if(fecha_inicio.length == 0){
+                alert("Debe ingresar una fecha de inicio");
                 return;
             }
-            this.submit();
+            if(fecha_fin.length == 0){
+                alert("Debe ingresar una fecha final");
+                return;
+            }
+            if(inicio > fin){
+                alert("La fecha fin no puede ser menor");
+                return;
+            }            
+                this.submit();
+        }
+
+        function pfd() {
+            var inputFormato = document.getElementById("formato");
+            inputFormato.value = "PDF";
+        }
+        function excel() {
+            var inputFormato = document.getElementById("formato");
+            inputFormato.value = "EXCEL";
         }
        
         </script>

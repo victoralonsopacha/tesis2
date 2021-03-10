@@ -44,7 +44,6 @@
             <table class="table table-responsive-md text-center">
                 <thead class="thead-tomate">
                 <tr>
-                    <th>Nr.</th>
                     <th>Cedula</th>
                     <th>Nombres y Apellidos</th>
                     <th>Cargo</th>
@@ -52,23 +51,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                @php
-                $i=1;
-                @endphp
+                
                 @foreach($usersl as $userItem)
                     @foreach($roles as $rol)
                         @foreach($rolesl as $role)
                             @if($rol->model_id == $userItem->id)
                                 @if($rol->role_id == $role->id)
                                 <tr>
-                                    <td>{!! $i++ !!}</td>
+                                    
                                     <td>{!! $userItem->cedula !!}</td>
                                     <td>{!! $userItem->name.' '.$userItem->last_name !!}</td>
                                     <td>{!! $role->name!!}</td>
 
                                     <td>
-
-                                        <a class="btn btn-primary" href="{{ route('consolidado_individual.calcular', $userItem) }}">VER</a>
+                                        <a class="btn btn-primary" href="{{ route('consolidado_permisos.calcular', $userItem) }}">VER</a>
                                     </td>
                                     <td>
                                 </tr>

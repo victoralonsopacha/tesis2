@@ -6,7 +6,6 @@
 
  
 @section('main-content')
-    <h1>DIAS DE REPOSICION</h1>
     <h4>En este modulo puede observar los dias que el profesor a escogido para reponer sus sus atrasos</h4>
     <br>
     <div class="panel panel-default">
