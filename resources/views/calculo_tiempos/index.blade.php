@@ -12,7 +12,7 @@
     <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 float-right">
             <label>Buscar Por:</label>
-            <input name="buscador" class="form-control me-2" type="search" placeholder="Cedula" aria-label="Search">
+            <input name="buscador" class="form-control me-2" type="search" placeholder="Nombre" aria-label="Search">
             <button class="btn btn-success" type="submit">Buscar</button>
         </form>
     </div>
