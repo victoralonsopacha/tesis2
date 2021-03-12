@@ -5,12 +5,15 @@
 @endsection
 
 @section('main-content')
-    <h1>Escoger Reposicion</h1>
+    <div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">Solicitar Reposicion de Atraso</div>
+    </div>
 
     @include('partials.validation-errors')
     <form method="POST" action="{{ route('tiempo_reposicions.store') }}">
         @csrf
-        
+
 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
@@ -44,15 +47,10 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-6">
-                <button type="submit" class="btn btn-info">Guardar</button>
+                <button type="submit" class="btn btn-success">Solicitar</button>
             </div>
         </div>
-        
-  
-        
-
-
-        
     </form>
+    </div><!--div container-fluid-->
 
 @endsection

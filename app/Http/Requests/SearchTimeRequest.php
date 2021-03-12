@@ -25,7 +25,7 @@ class SearchTimeRequest extends FormRequest
     {
         return [
             'fecha_fin' => 'required|before:tomorrow',
-            'fecha_inicio' => 'required|before:fecha_fin',
+            'fecha_inicio' => 'required',
         ];
     }
 
@@ -34,8 +34,6 @@ class SearchTimeRequest extends FormRequest
             'fecha_fin.required' => 'La fecha de finalizacion es requerida',
             'fecha_fin.before' => 'El sistema no tiene informacion para fechas posteriores a la actual',
             'fecha_inicio.required' => 'La fecha de inicio es requerida',
-            'fecha_inicio.before' => 'La fecha de inicio debe ser una fecha anterior a la fecha de finalizacion',
-
         ];
     }
 }

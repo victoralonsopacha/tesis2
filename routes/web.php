@@ -96,10 +96,8 @@ Route::group(['middleware' => ['role:Profesor']], function () {
     //PERFIL
     Route::get('/profile/profesor','ProfesorController@perfil')->name('profile.profesor');
 
-
     //CRUD PERMISOS PROFESORES
     //MOSTRAR INICIO, EDITAR, ACTUALIZAR
-    Route::get('/permiso_profesors/principal','PermisoProfesorController@inicio')->name('permiso_profesors.principal');
     Route::get('/permiso_profesors/{permiso_profesor}/index','PermisoProfesorController@index')->name('permiso_profesors.index');
     Route::get('/permiso_profesors/{permiso_profesor}/index1','PermisoProfesorController@index1')->name('permiso_profesors.index1');
     Route::get('/permiso_profesors/crear','PermisoProfesorController@create')->name('permiso_profesors.create');
@@ -116,6 +114,7 @@ Route::group(['middleware' => ['role:Profesor']], function () {
     //BUSCAR
     Route::post('/permiso_profesors/buscar','PermisoProfesorController@buscar')->name('permiso_profesors.buscar');
     Route::post('/permiso_profesors/buscarA','PermisoProfesorController@buscarA')->name('permiso_profesors.buscarA');
+    Route::post('/permiso_profesors/buscarB','PermisoProfesorController@buscarB')->name('permiso_profesors.buscarB');
 
 });
 //MOSTRAR INICIO, EDITAR, ACTUALIZAR
@@ -191,4 +190,3 @@ Route::get('/dashboard/admin','AdminController@dashboard')->name('dashboard.admi
 Route::get('/consolidado_individual/exportPdf', 'ConsolidadoIndividualController@exportExcel')->name('consolidado_individual.exportPdf');
 Route::get('/consolidado_permisos/exportPdf2', 'ConsolidadoIndividualController@exportPdf2')->name('consolidado_permisos.exportPdf2');
 
- 

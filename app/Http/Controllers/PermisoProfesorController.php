@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\SearchPermisoProfesorRequest;
+use App\Http\Requests\SearchTimeRequest;
 use App\Models\PermisoProfesor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -124,14 +125,15 @@ class PermisoProfesorController extends Controller
 
     public function shows(PermisoProfesor $permiso_profesor)
     {
-        $i=1;
+
         $cedula = auth()->user()->cedula;
         $permisos=PermisoProfesor::where('cedula','=',$cedula)
+            ->orderBy('fecha_inicio','desc')
             ->get();
-        return view('permiso_profesors.shows', compact('permisos','i'));
+        return view('permiso_profesors.shows', compact('permisos'));
     }
 
-    public function buscar(SearchPermisoProfesorRequest $request)
+    public function buscar(SearchTimeRequest $request)
     {
         $request->validated();
         $cedula = auth()->user()->cedula;
@@ -140,10 +142,10 @@ class PermisoProfesorController extends Controller
 
         $permisos=PermisoProfesor::where('cedula','=', $cedula)
             ->whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])
+            ->orderBy('fecha_inicio','desc')
             ->get();
 
-        $i=1;
-        return redirect(route('permiso_profesors.shows', compact('permisos','i')));
+        return view('permiso_profesors.shows', compact('permisos'));
     }
 
 
@@ -158,11 +160,21 @@ class PermisoProfesorController extends Controller
             ->where('estado','=','1')
             ->whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])
             ->get();
+        return view('permiso_profesors.index',compact('permisos'));
+    }
 
-        $i=1;
-        return view('permiso_profesors.index',compact('permisos','i'));
+    public function buscarB(SearchPermisoProfesorRequest $request)
+    {
+        $request->validated();
+        $cedula = auth()->user()->cedula;
+        $fecha_inicio=$request->input('fecha_inicio');
+        $fecha_fin=$request->input('fecha_fin');
 
-
+        $permisos=PermisoProfesor::where('cedula','=', $cedula)
+            ->where('estado','=','1')
+            ->whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])
+            ->get();
+        return view('permiso_profesors.index1',compact('permisos'));
     }
 
     /**

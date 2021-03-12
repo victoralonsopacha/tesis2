@@ -7,11 +7,13 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h1>Crear Permiso</h1>
-    <div class="pull-left">
-        <a class="btn btn-primary" href="{{ route('permiso_profesors.shows') }}">Regresar</a>
-    </div>
-    <br><br><br>
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">Crear Permisos</div>
+        </div>
+        <div class="pull-left">
+            <a class="btn btn-primary" href="{{ route('permiso_profesors.shows') }}">Regresar</a>
+        </div>
+        <br><br><br>
     @include('partials.validation-errors')
         <form action="{{route('permiso_profesors.store')}}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
         @csrf

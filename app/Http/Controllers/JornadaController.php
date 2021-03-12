@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchTimeRequest;
 use App\Models\Horario;
 use App\Models\Jornada;
 use App\Models\PermisoProfesor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class JornadaController extends Controller
 {
@@ -22,22 +24,28 @@ class JornadaController extends Controller
         $cedula = auth()->user()->cedula;
         $fecha_actual=Carbon::now()->format('Y,m,d');
         $jornadas=Jornada::where('cedula', $cedula)
+            ->orderBy('fecha','desc')
             ->paginate(10);
+        Log::info($jornadas);
+
         return view('jornada.index',compact('jornadas'));
     }
 
-    public function buscar(Request $request)
+    public function buscar(SearchTimeRequest $request)
     {
+        $request->validated();
         $cedula = auth()->user()->cedula;
-        $horarios= Horario::where('id_usuario','=',$cedula)->get();
         $fecha_inicio=$request->input('fecha_inicio');
         $fecha_fin=$request->input('fecha_fin');
         $jornadas=DB::table('reporte_asistencia')
             ->select('anio','mes_nombre','dia','fecha', 'hora_entrada','hora_salida','tiempo_total')
             ->where('cedula', $cedula)
             ->whereBetween('fecha', [$fecha_inicio, $fecha_fin])
-            ->get();
-        return view('jornada.index',compact('jornadas','horarios'));
+            ->orderBy('fecha','desc')
+            ->paginate(10);
+
+        return view('jornada.index',compact('jornadas'));
+
     }
 
     /**

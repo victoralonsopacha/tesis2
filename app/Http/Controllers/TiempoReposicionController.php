@@ -88,14 +88,14 @@ class TiempoReposicionController extends Controller
         $tiempo=TiempoReposicion::find($id);
         $input['estado']='1';
         $tiempo->update($input);
-        return redirect()->back()->with('message','El atraaso ha sido aprobado');
+        return redirect()->back()->with('message','El atraso ha sido aprobado');
     }
     public function desactive($id)
     {
         $tiempo=TiempoReposicion::find($id);
         $input['estado']='2';
         $tiempo->update($input);
-        return redirect()->back()->with('message','El usuario ha sido desaprobado');
+        return redirect()->back()->with('message','El atraso ha sido desaprobado');
     }
     public function show(TiempoReposicion $reposicion)
     {

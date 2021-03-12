@@ -6,6 +6,7 @@
 
 @section('main-content')
     <div class="container-fluid">
+
     <h4>En este modulo puede observar todos los dias que profesores han escogido para reponer sus sus atrasos</h4>
     <br>
         <div class="pull-right">

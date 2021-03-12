@@ -41,7 +41,7 @@
                 </div>
 
 
-                <form  method="POST"  id="formulariofecha" action="{{ route('consolidado_individual.total2', $user) }}">
+                <form method="POST" id="formulariofecha" action="{{ route('consolidado_individual.total2', $user) }}">
                         @csrf
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
@@ -87,7 +87,7 @@
                 alert("Debe ingresar una fecha final");
                 return;
             }
-            
+
             if(inicio > fin){
 
                 alert("La fecha fin no puede ser menor");

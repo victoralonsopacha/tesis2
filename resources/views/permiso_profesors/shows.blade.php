@@ -6,7 +6,10 @@
 
 
 @section('main-content')
-    <h1>MIS PERMISOS</h1>
+    <div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">Mis Permisos</div>
+    </div>
     <div class="pull-left">
         <a href="{{ route('permiso_profesors.index', ['permiso_profesor' => $permiso_profesor=auth()->user()->cedula]) }}"
            class="btn btn-success">Permisos Aprobados</a>
@@ -18,37 +21,32 @@
     </div>
     <br><br><br>
     @include('partials.validation-errors')
-    <div class="row">
-        {!! Form::open(['route' => 'permiso_profesors.buscar', 'method'=>'POST']) !!}
-        {!! Form::token() !!}
-        <div class="col-sm-1 col-lg-1">
-            <strong>De:</strong>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-            {!! Form::date('fecha_inicio',null,['class' => 'form-control']) !!}
-        </div>
-        <div class="col-sm-1 col-lg-1">
-            <strong>Hasta:</strong>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-            {!! Form::date('fecha_fin',\Carbon\Carbon::now(),['class' => 'form-control']) !!}
-        </div>
-        <div class="col-sm-3 col-lg-3">
-        <button type="submit" class="btn btn-success">Buscar</button>
-        </div>
-        {{ Form::close() }}
-    </div>
-    <!-- /.row -->
-    @if($permisos->isEmpty())
-        <h4>No existen registros</h4>
-    @else
-        @if(Session::has('message'))
-        <div class="alert alert-warning alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            {{Session::get('message')}}
-        </div>
-        @endif
+        <div class="row">
+            <form method="POST" id="formulariofecha" action="{{ route('permiso_profesors.buscar') }}">
+                @csrf
+                <div class="col-sm-1 col-lg-1">
+                    <strong>De:</strong>
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="'fecha_inicio'">
+                </div>
+                <div class="col-sm-1 col-lg-1">
+                    <strong>Hasta:</strong>
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <button type="submit" class="btn btn-success">Buscar</button>
+                </div>
+            </form>
+        </div><!-- /.row -->
         <br>
+    @include('partials.validationMessage')
+
+    @if($permisos->isEmpty())
+        <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
+    @else
         <div class="panel panel-default">
         <div class="panel-heading">Permisos</div>
             <table class="table table-responsive-md text-center">
@@ -63,6 +61,9 @@
                 </tr>
                 </thead>
                 <tbody>
+                @php
+                $i=1;
+                @endphp
                 @foreach($permisos as $permiso)
                 <tr>
                     <td>{!! $i++ !!}</td>
@@ -81,7 +82,7 @@
                             <a href="{{ route('permiso_profesors.show', $permiso) }}" class="btn btn-xs btn-success"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </td>
                     @elseif($permiso->estado == '2')
-                        <td><span class="label label-info">Desaprobado</span></td>
+                        <td><span class="label label-info">Reprobado</span></td>
                         <td>
                             <a href="{{ route('permiso_profesors.show', $permiso) }}" class="btn btn-xs btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </td>
@@ -90,8 +91,35 @@
                 @endforeach
                 </tbody>
             </table>
+        </div><!--/.div panel-->
         @endif
-        </div>
+    </div><!--/.container fluid-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("formulariofecha").addEventListener('submit', validarFechas);
+        });
 
+        function validarFechas(evento) {
+            evento.preventDefault();
+            var fecha_inicio = $("#fecha_inicio").val();
+            var fecha_fin =  $("#fecha_fin").val();
+            var inicio = new Date(fecha_inicio);
+            var fin = new Date(fecha_fin);
+            if(fecha_inicio.length == 0){
+                alert("Debe ingresar una fecha de inicio");
+                return;
+            }
+            if(fecha_fin.length == 0){
+                alert("Debe ingresar una fecha final");
+                return;
+            }
+
+            if(inicio > fin){
+                alert("La fecha fin no puede ser menor");
+                return;
+            }
+            this.submit();
+        }
+    </script>
 @endsection
 

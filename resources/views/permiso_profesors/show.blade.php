@@ -6,7 +6,9 @@
 
 @section('main-content')
     <div class="container-fluid">
-        <h1>Permiso</h1>
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">Mi Permiso</div>
+        </div>
         <div class="pull-left">
             <a class="btn btn-primary" href="{{ route('permiso_profesors.shows')}}">Regresar</a>
         </div>

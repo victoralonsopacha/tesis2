@@ -11,64 +11,93 @@
     </div>
 
     <!--Seccion Validacion Fechas-->
-        <br>
         @include('partials.validation-errors')
         <div class="row">
-            {!! Form::open(['route' => 'jornada.buscar', 'method'=>'POST']) !!}
-            {!! Form::token() !!}
-            <div class="col-sm-3 col-lg-3">
-                {!! Form::date('fecha_inicio',null,['class' => 'form-control']) !!}
-            </div>
-            <div class="col-sm-3 col-lg-3">
-                {!! Form::date('fecha_fin',\Carbon\Carbon::now(),['class' => 'form-control']) !!}
-            </div>
-            <div class="col-sm-3 col-lg-3">
-                {!! Form::submit('Buscar'); !!}
-            </div>
-            {{ Form::close() }}
+            <form method="POST" id="formulariofecha" action="{{ route('jornada.buscar') }}">
+                @csrf
+                <div class="col-sm-1 col-lg-1">
+                    <strong>De:</strong>
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="'fecha_inicio'">
+                </div>
+                <div class="col-sm-1 col-lg-1">
+                    <strong>Hasta:</strong>
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <button type="submit" class="btn btn-success">Buscar</button>
+                </div>
+            </form>
         </div>
         <br>
-        <div class="panel panel-default">
-            <div class="table-responsive">
-            <table class="table table-responsive-md">
-                <thead class="thead-tomate">
-                <tr>
-                    <th>Nr.</th>
-                    <th>Año</th>
-                    <th>Mes</th>
-                    <th>Dia</th>
-                    <th>Fecha</th>
-                    <th>Hora Entrada</th>
-                    <th>Hora Salida</th>
-                    <th>Jornada Diaria</th>
-                </tr>
-                </thead>
-                <tbody>
-                @php
-                    $i=1;
-                @endphp
-                @foreach($jornadas as $jornada)
+        @if($jornadas->isempty())
+            <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
+        @else
+            <div class="panel">
+                <div class="table-responsive">
+                    <table class="table table-responsive-md">
+                        <thead class="thead-tomate">
+                        <tr>
+                            <th>Nr.</th>
+                            <th>Fecha</th>
+                            <th>Hora Entrada</th>
+                            <th>Hora Salida</th>
+                            <th>Total Horas Trabajadas</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @php
+                            $i=1;
+                        @endphp
+                        @foreach($jornadas as $jornada)
+                            <tr>
+                                <td>{!! $i++ !!}</td>
+                                <td>{!! $jornada->fecha!!}</td>
+                                <td>{!! $jornada->hora_entrada!!}</td>
+                                <td>{!! $jornada->hora_salida!!}</td>
+                                <td>{!! $jornada->tiempo_total!!}</td>
+                            </tr>
+                        @endforeach
+                        <tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <nav aria-label="..." class="text-center">
+                        {{$jornadas->links()}}
+                    </nav>
+                </div><!--div table-->
+            </div><!--div panel-->
+        @endif
+    </div><!--div container-fluid-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("formulariofecha").addEventListener('submit', validarFechas);
+        });
 
-                    <tr>
-                        <td>{!! $i++ !!}</td>
-                        <td>{!! $jornada->anio!!}</td>
-                        <td>{!! $jornada->mes_nombre!!}</td>
-                        <td>{!! $jornada->dia!!}</td>
-                        <td>{!! $jornada->fecha!!}</td>
-                        <td>{!! $jornada->hora_entrada!!}</td>
-                        <td>{!! $jornada->hora_salida!!}</td>
-                        <td>{!! $jornada->tiempo_total!!}</td>
-                    </tr>
-                @endforeach
-                <tr>
-                </tr>
-                </tbody>
-            </table>
-                <nav aria-label="..." class="text-center">
-                    {{$jornadas->links()}}
-                </nav>
+        function validarFechas(evento) {
+            evento.preventDefault();
+            var fecha_inicio = $("#fecha_inicio").val();
+            var fecha_fin =  $("#fecha_fin").val();
+            var inicio = new Date(fecha_inicio);
+            var fin = new Date(fecha_fin);
+            if(fecha_inicio.length == 0){
+                alert("Debe ingresar una fecha de inicio");
+                return;
+            }
+            if(fecha_fin.length == 0){
+                alert("Debe ingresar una fecha final");
+                return;
+            }
 
-            </div>
-        </div>
-    </div>
+            if(inicio > fin){
+                alert("La fecha fin no puede ser menor");
+                return;
+            }
+            this.submit();
+        }
+    </script>
+
 @endsection
