@@ -191,3 +191,4 @@ Route::get('/dashboard/admin','AdminController@dashboard')->name('dashboard.admi
 Route::get('/consolidado_individual/exportPdf', 'ConsolidadoIndividualController@exportExcel')->name('consolidado_individual.exportPdf');
 Route::get('/consolidado_permisos/exportPdf2', 'ConsolidadoIndividualController@exportPdf2')->name('consolidado_permisos.exportPdf2');
 
+ 

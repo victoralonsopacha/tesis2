@@ -114,7 +114,7 @@ class ConsolidadoPermisoController extends Controller
 
         );
     }
-
+ 
 
     public function exportPdf2(User $user, Request $request){
         $ced_usuario = $user->cedula;
@@ -123,9 +123,10 @@ class ConsolidadoPermisoController extends Controller
         $extension = $request->formato;
         $identificador = 1;
         $consultas = DB::select('SELECT * FROM timbrada_permisos r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
-         //Log::info($consultas);
-        $pdf= PDF::loadView('pdf.timbradas_permisos', compact('consultas'));
-       
+        $usuario = DB::select('SELECT * FROM users WHERE cedula = "'.$ced_usuario.'"');
+        Log::info($usuario);
+        $pdf= PDF::loadView('pdf.timbradas_permisos', compact('consultas','usuario'));
+        
       
         if($extension == 'PDF'){
             return $pdf->download('permisospdf.pdf');

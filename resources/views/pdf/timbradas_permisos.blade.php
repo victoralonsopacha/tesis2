@@ -29,32 +29,43 @@
 <main class="container">
 <h1><p class="text-center text-uppercase">Unidad Educativa Velasco Ibarra</p></h1>    
 <h1><p class="text-center text-uppercase">Parroquia de Guangopolo</p></h1>    
-<h1><p class="text-center text-uppercase">Reporte de timbradas diarias de usuario</p></h1>    
+<h1><p class="text-center text-uppercase">Reporte de timbradas diarias de usuario</p></h1> 
 
- 
+
+<table class="table">
+
+    <tbody>
+        @foreach($usuario as $urs)
+            <tr>
+                <td>Cedula: {{ $urs->cedula }}</td>
+                <td>Nombre: {{ $urs->name }}</td>
+                <td>Apellido: {{ $urs->last_name }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+
+
+
 <table class="table">
     <thead>
         <tr>
-        <th scope="col">Cedula</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Tiempo</th>
         <th scope="col">Fecha</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Entrada/Salida</th>
         <th scope="col">Observacion</th>
         </tr>
     </thead>
-  <tbody>
-    @foreach($consultas as $consulta)
-        <tr>
-            <td>{{ $consulta->cedula }}</td>
-            <td>{{ $consulta->name }}</td>
-            <td>{{ $consulta->last_name }}</td>
-            <td>{{ $consulta->hora }}</td>
-            <td>{{ $consulta->fecha }}</td>   
-            <td>{{ $consulta->observacion }}</td> 
-        </tr>
-    @endforeach
-  </tbody>
+    <tbody>
+        @foreach($consultas as $consulta)
+            <tr>
+                <td>{{ $consulta->fecha }}</td>
+                <td>{{ $consulta->hora }}</td>
+                <td>{{ $consulta->tipo_permiso }}</td>  
+                <td>{{ $consulta->observacion }}</td> 
+            </tr>
+        @endforeach
+    </tbody>
 </table>
 
 </main>
