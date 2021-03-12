@@ -13,7 +13,7 @@
            class="btn btn-primary">Regresar</a>
     </div>
     <div class="pull-right">
-        <a class="btn btn-danger" href="{{ route('permiso_profesors.create')}}">Crear Nuevo Permiso</a>
+        <a class="btn btn-warning" href="{{ route('permiso_profesors.create')}}">Crear Nuevo Permiso</a>
     </div>
     <br><br><br>
         @include('partials.validation-errors')
@@ -41,8 +41,7 @@
 
     @if($permisos->isEmpty())
         <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
-    @else
-            <br>
+    @else<br>
         @include('permiso_profesors.form')
     @endif
     </div>

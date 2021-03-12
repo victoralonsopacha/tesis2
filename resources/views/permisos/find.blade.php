@@ -23,7 +23,7 @@
         </select>
         <button class="btn btn-success" type="submit">Buscar</button>
     </form>
-
+    <br><br>
     {{--@auth--}}
     <!--
     <a href="{{ route('permisos.create') }}">Crear Permiso</a>
@@ -68,14 +68,17 @@
                             <td>{!! $permisoItem->fecha_fin!!}</td>
                             @if($permisoItem->estado == '1')
                                 <td><span class="label label-success">Aprobado</span></td>
-                            @elseif($permisoItem->estado == '2')
+                            @elseif($permisoItem->estado == '2' )
                                 <td><span class="label label-warning">Desaprobado</span></td>
+                                <td>
+                                    <a href="{{ route('permisos.justificar', $permisoItem) }}">Justificar</a>
+                                </td>
                             @else($permisoItem->estado == '0')
                                 <td><span class="label label-danger">Pendiente</span></td>
+                                <td>
+                                    <a href="{{ route('permisos.justificar', $permisoItem) }}">Justificar</a>
+                                </td>
                             @endif
-                            <td>
-                                <a href="{{ route('permisos.justificar', $permisoItem) }}">Justificar</a>
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>

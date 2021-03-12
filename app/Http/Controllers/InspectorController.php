@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class InspectorController extends Controller
@@ -36,14 +37,15 @@ class InspectorController extends Controller
     {
         $input = $request->all();
         $input['tipo_relacion_laboral']=implode($request['tipo_relacion']);
-        $input['password'] = Hash::make($input['password']);
-        $user = User::find($id);
-
-        $updated=$user->update($input);
-        if($updated){
-            return redirect()->route('profile.inspector',compact('user'))->with('message', 'Tu informacion ha sido actualizada con exito');
-        }else{
-            return redirect()->route('profile.inspector',compact('user'))->with('message', 'Could not update');
+        if($input['password'] == ''){
+            $input['password'] = Auth::user()->password;
+        } else {
+            $input['password'] = Hash::make($input['password']);
         }
+        $user = User::find($id);
+        $user->update($input);
+        
+        return redirect()->route('profile.inspector')->with('message', 'Tu informacion ha sido actualizada con exito');
+
     }
 }

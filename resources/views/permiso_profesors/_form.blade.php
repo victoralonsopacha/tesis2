@@ -42,9 +42,8 @@
         <strong>Descripcion:</strong>
         {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control')) !!}
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">
         <strong>Adjuntar Justificacion:</strong>
-        {!! Form::file('file', null, array('class' => 'form-control')) !!}
-    </div>
-
+        {!! Form::file('file', null, array('class' => 'form-control'))!!}
+    </div>-->
 </div>

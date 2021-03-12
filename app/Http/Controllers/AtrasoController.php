@@ -11,7 +11,8 @@ class AtrasoController extends Controller
     public function index()
     {
         $cedula = auth()->user()->cedula;
-        $atrasos= DB::select('select fecha, hora_entrada, hora_salida, retraso_jornada from reporte_asistencia where cedula = :cedula', ['cedula' => $cedula]);
+        $atrasos= DB::select('select fecha, hora_entrada, hora_salida, retraso_jornada
+                from reporte_asistencia WHERE cedula = "'.$cedula.'" AND retraso_jornada != "00:00:00"');
         return view('atrasos.index',compact('atrasos'));
 
     }

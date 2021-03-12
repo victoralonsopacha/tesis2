@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TiempoReposicion extends Model
+class Atraso extends Model
 {
     use HasFactory;
 
@@ -20,6 +20,5 @@ class TiempoReposicion extends Model
         'estado'
     ];
 
-    //DESAHABILITAR ASIGNACION MASIVA
     protected $guarded = [];
 }

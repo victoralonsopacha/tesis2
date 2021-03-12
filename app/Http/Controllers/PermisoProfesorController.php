@@ -31,21 +31,19 @@ class PermisoProfesorController extends Controller
 
     public function index(Request $request)
     {
-        $i=1;
         $cedula = auth()->user()->cedula;
         $permisos= PermisoProfesor::where('cedula','=',$cedula)
             ->where('estado','=','1')
             ->get();
-        return view('permiso_profesors.index',compact('permisos','i'));
+        return view('permiso_profesors.index',compact('permisos'));
     }
     public function index1(Request $request)
     {
-        $i=1;
         $cedula = auth()->user()->cedula;
-        $permisosl= PermisoProfesor::where('cedula','=',$cedula)
+        $permisos= PermisoProfesor::where('cedula','=',$cedula)
             ->where('estado','=','2')
             ->get();
-        return view('permiso_profesors.index1',compact('permisosl','i'));
+        return view('permiso_profesors.index1',compact('permisos'));
     }
 
     public function inicio(){

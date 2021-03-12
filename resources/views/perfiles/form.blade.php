@@ -12,15 +12,16 @@
             <strong>Cedula:</strong>
             {!! Form::text('cedula', null, array('placeholder' => 'Cedula','class' => 'form-control','readonly')) !!}
         </div>
-        <div class="form-group">
-            <strong>Password:</strong>
-            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+            <strong>Contraseña:</strong>
+            {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control')) !!}
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
         </div>
 
-        <div class="form-group">
-            <strong>Confirm Password:</strong>
-            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-        </div>
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
@@ -37,7 +38,7 @@
         </div>
         <div class="form-group">
             <strong>Fecha de Ingreso:</strong>
-            {!! Form::date('fecha_ingreso', null,['class' => 'form-control']) !!}
+            {!! Form::date('fecha_ingreso', null,['class' => 'form-control','readonly']) !!}
         </div>
     </div>
 </div>

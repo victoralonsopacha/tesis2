@@ -81,7 +81,7 @@
             @endhasrole
             @hasrole('Profesor')
             <li class="active"><a href="{{ route('dashboard.profesor') }}"><i class='fa fa-tachometer'></i> <span>Dashboard</span></a></li>
-            <li><a href="{{ route('perfil.profesor') }}"><i class='fa fa-user'></i> <span>Perfil</span></a></li>
+            <li><a href="{{ route('profile.profesor') }}"><i class='fa fa-user'></i> <span>Perfil</span></a></li>
             <li><a href="{{ route('jornada.index') }}"><i class='fa fa-clock-o'></i> <span>Jornada</span></a></li>
             <li><a href="{{ route('atrasos.index') }}"><i class='fa fa-cogs'></i> <span>Atrasos</span></a></li>
             <li><a href="{{ route('tiempo_reposicions.create') }}"><i class='fa fa-clock-o'></i> <span>Reponer Horas</span></a></li>

@@ -62,12 +62,13 @@ Route::post('/timbrada_permisos', 'TimbradaPermisoController@store')->name('timb
 //EDITAR PERFIL
 
 Route::get('/dashboard/inspector','InspectorController@dashboard')->name('dashboard.inspector');
-Route::post('/inspector/{inspector_id}/edit','InspectorController@edit')->name('inspector.edit');
-Route::patch('/inspector/{inspector_id}','InspectorController@update')->name('inspector.update');
+Route::post('/inspector/{user_id}/edit','InspectorController@edit')->name('inspector.edit');
+Route::patch('/inspector/{user_id}','InspectorController@update')->name('inspector.update');
 
 //*CRUD PERMISOS*//
 Route::group(['middleware' => ['role:Inspector']], function () {
     Route::get('/profile/inspector','InspectorController@profile')->name('profile.inspector');
+
     Route::get('/permisos/index','PermisoController@index')->name('permisos.index');
     Route::get('/permisos/crear','PermisoController@create')->name('permisos.create');
     Route::get('/permisos/{permiso}/editar','PermisoController@edit')->name('permisos.edit');
@@ -85,15 +86,17 @@ Route::post('/permisos/findRequest','PermisoController@findRequest')->name('perm
 
 //JUSTIFICAR
 Route::get('/permisos/{permiso}/justificar','PermisoController@justificar')->name('permisos.justificar');
+//EDITAR PERFIL
+Route::patch('/user/{user_id}','ProfesorController@update')->name('profesor.update');
+Route::post('/user/{user_id}/editar','ProfesorController@edit')->name('profesor.edit');
 
 //**ROL PROFESOR**
 Route::group(['middleware' => ['role:Profesor']], function () {
     Route::get('/dashboard/profesor','ProfesorController@dashboard')->name('dashboard.profesor');
     //PERFIL
-    Route::get('/perfil/profesor','ProfesorController@perfil')->name('perfil.profesor');
-    //EDITAR PERFIL
-    Route::patch('/user/{user_id}','UserController@update')->name('user.update');
-    Route::post('/user/{user_id}/editar','UserController@edit')->name('user.edit');
+    Route::get('/profile/profesor','ProfesorController@perfil')->name('profile.profesor');
+
+
     //CRUD PERMISOS PROFESORES
     //MOSTRAR INICIO, EDITAR, ACTUALIZAR
     Route::get('/permiso_profesors/principal','PermisoProfesorController@inicio')->name('permiso_profesors.principal');
@@ -174,7 +177,7 @@ ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@ind
 ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
 Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2')->middleware('auth');
 
-//RUTAS PARA VER TIMBRADAS PERMISOS 
+//RUTAS PARA VER TIMBRADAS PERMISOS
 //RUTAS PARA VER TIMBRADAS
 ROUTE::get('/consolidado_permisos/index', 'ConsolidadoPermisoController@index')->name('consolidado_permisos.index')->middleware('auth');
 ROUTE::get('/consolidado_permisos/{user}/calcular', 'ConsolidadoPermisoController@show')->name('consolidado_permisos.calcular')->middleware('auth');

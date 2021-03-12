@@ -7,7 +7,7 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading">Atrasos</div>
+            <div class="panel-heading text-center">Atrasos</div>
         </div>
         <!--Seccion Validacion Fechas-->
         <div class="row">

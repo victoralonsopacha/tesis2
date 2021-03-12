@@ -12,6 +12,9 @@
         </tr>
         </thead>
         <tbody>
+        @php
+        $i=1;
+        @endphp
         @foreach($permisos as $permisoItem)
             <tr>
                 <td>{!! $i++ !!}</td>

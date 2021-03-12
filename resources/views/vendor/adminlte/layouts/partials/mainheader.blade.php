@@ -138,7 +138,7 @@
                                     <a href="{{ route('profile.inspector') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
                                     @endhasrole
                                     @hasrole('Profesor')
-                                    <a href="{{ route('perfil.profesor')}}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
+                                    <a href="{{ route('profile.profesor')}}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
                                     @endhasrole
                                 </div>
                                 <div class="pull-right">

@@ -70,9 +70,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label">Archivo Adjunto</label>
                     <div class="col-sm-8">
-                        <input type="file" class="form-control" name="file" value="{{old('file', $permiso->file)}}">
+                        <input type="hidden" class="form-control" name="file" value="{{old('file', $permiso->file)}}">
                     </div>
                 </div>
             </div>
@@ -91,6 +90,6 @@
                 </div>
     </form>
 
-      
+
 
 @endsection
