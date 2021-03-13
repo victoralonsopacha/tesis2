@@ -91,16 +91,13 @@ class PermisoProfesorController extends Controller
             $nombre_imagen=$archivo->getClientOriginalName();
             $archivo->move(public_path("img/categorias/"),$nombre_imagen);
             $permiso['file']=$nombre_imagen;
-
             //obtenemos el campo file definido en el formulario
 
             //obtenemos el nombre del archivo
             $nombre = $archivo->getClientOriginalName();
             //indicamos que queremos guardar un nuevo archivo en el disco local
             \Storage::disk('local')->put($nombre,  \File::get($archivo));
-
         }
-
         PermisoProfesor::create($permiso);
         return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
     }
@@ -125,7 +122,6 @@ class PermisoProfesorController extends Controller
 
     public function shows(PermisoProfesor $permiso_profesor)
     {
-
         $cedula = auth()->user()->cedula;
         $permisos=PermisoProfesor::where('cedula','=',$cedula)
             ->orderBy('fecha_inicio','desc')

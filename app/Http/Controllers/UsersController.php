@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\PermisoProfesor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\SaveUserRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
 
 //use DB;
@@ -51,6 +53,48 @@ class UsersController extends Controller
 
         return view('users.activos', ['usersl'=>$usersl,
             'roles'=>$roles,'rolesl'=>$rolesl]);
+
+    }
+
+    //METODO FIND
+    public function find(Request $request)
+    {
+        $roles=DB::table('model_has_roles')
+            ->select('role_id', 'model_id')
+            ->get();
+        $rolesl=DB::table('roles')
+            ->select('id', 'name')
+            ->get();
+
+        $cedula=trim($request->input('cedula'));
+        $nombre=trim($request->input('nombre'));
+
+        if($cedula != ''){
+            Log::info('cedula');
+            $usersl= User::where('estado','=','1')
+                ->where('cedula', 'LIKE','%'.$cedula.'%')
+                ->get();
+        }
+        if($nombre != ''){
+            Log::info('nombre');
+            $usersl= User::where('estado','=','1')
+                ->where('name', 'LIKE', '%'.$nombre.'%')
+                ->orderBy('id','asc')
+                ->get();
+        }
+        if($cedula != '' && $nombre != ''){
+            $usersl= User::where('estado','=','1')
+                ->where('name', 'LIKE', '%'.$nombre.'%')
+                ->where('cedula', 'LIKE', '%'.$cedula.'%')
+                ->get();
+        }
+        if($cedula == '' && $nombre == ''){
+            Log::info('cedula y nombre');
+            $usersl= User::where('estado','=','1')->get();
+        }
+
+
+        return view('users.find',['usersl'=>$usersl,'roles'=>$roles,'rolesl'=>$rolesl]);
 
     }
 

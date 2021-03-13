@@ -34,6 +34,8 @@ Route::post('register', 'Auth\RegisterController@register');*/
 Route::group(['middleware' => ['role:Admin']], function () {
     //CRUD USUARIOS
     Route::get('/users/activos', 'UsersController@activos')->name('users.activos');
+    Route::post('/users/find', 'UsersController@find')->name('users.find');
+
     Route::get('/users/inactivos', 'UsersController@inactivos')->name('users.inactivos');
     Route::get('/users/crear', 'UsersController@create')->name('users.create');
     Route::get('/users/{user_id}/editar','UsersController@edit')->name('users.edit');
