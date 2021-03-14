@@ -25,6 +25,7 @@
         <table class="table table-responsive-md text-center">
             <thead class="thead-tomate">
             <tr>
+                <th>Nr.</th>
                 <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
@@ -33,13 +34,16 @@
             </tr>
             </thead>
             <tbody>
+            @php
+            $i=1;
+            @endphp
             @foreach($usersl as $userItem)
                 @foreach($roles as $rol)
                     @foreach($rolesl as $role)
                         @if($rol->model_id == $userItem->id)
                             @if($rol->role_id == $role->id)
                                 <tr>
-
+                                    <td>{{$i++}}</td>
                                     <td>{!! $userItem->cedula !!}</td>
                                     <td>{!! $userItem->name !!}</td>
                                     <td>{!! $userItem->last_name !!}</td>

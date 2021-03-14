@@ -6,7 +6,7 @@
 
 
 @section('main-content')
-    
+
     <h4>Este modulo permite calcular la cantidad de horas, dias, y atrasos en el periodo de tiempo que usted necesite</h4>
     <br>
     <div class="pull-right">
@@ -28,8 +28,8 @@
                 <tr>
                     <th>Nr.</th>
                     <th>Nombres y Apellidos</th>
+                    <th>Email</th>
                     <th>Cedula</th>
-                    <th>Correo</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -41,8 +41,8 @@
                     <tr>
                         <td>{!! $i++ !!}</td>
                         <td>{!! $userItem->name.' '.$userItem->last_name !!}</td>
-                        <td>{!! $userItem->cedula !!}</td>
                         <td>{!! $userItem->email!!}</td>
+                        <td>{!! $userItem->cedula !!}</td>
                         <td>
                             <a class="btn btn-primary" href="{{ route('calculo_tiempos.calcular', $userItem) }}">CALCULAR</a>
                         </td>

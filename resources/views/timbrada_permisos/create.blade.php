@@ -22,7 +22,7 @@
             <div class="col-sm-2">
                 <input type="text" class="form-control" name="cedula" value="{{$consultaItem->cedula}}" readonly>
             </div>
-        </div> 
+        </div>
 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Nombre del usuario</label>
@@ -54,16 +54,16 @@
         </div>
 
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
+            <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="observacion">
+                {!! Form::select('tipo_permiso[]', $tipo_permiso,$tipo_permiso,['class' => 'form-control']); !!}
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
+            <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-6">
-                {!! Form::select('tipo_permiso[]', $tipo_permiso,$tipo_permiso,['class' => 'form-control']); !!}
+                <input type="text" class="form-control" name="observacion">
             </div>
         </div>
 

@@ -92,8 +92,6 @@ class UsersController extends Controller
             Log::info('cedula y nombre');
             $usersl= User::where('estado','=','1')->get();
         }
-
-
         return view('users.find',['usersl'=>$usersl,'roles'=>$roles,'rolesl'=>$rolesl]);
 
     }

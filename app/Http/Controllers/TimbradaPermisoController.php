@@ -81,14 +81,16 @@ class TimbradaPermisoController extends Controller
         $validate_timbrada=TimbradaPermiso::where('cedula','=',$cedula)
             ->where('fecha','=',$fecha)
             ->where('tipo_permiso','=',$tipo_permiso)
-            ->get();
-        if($validate_timbrada){
-            Log::info('no guardar');
-            return redirect()->route('timbrada_permisos.index')->with('error', 'Usted NO ha timbrado con exito');
-        }else{
-            Log::info('guardar');
-            $permiso_creado=TimbradaPermiso::create($permiso);
+            ->count();
+        Log::info('Controlador Timbrada');
+        Log::info($validate_timbrada);
+
+        if($validate_timbrada == 0){
+            TimbradaPermiso::create($permiso);
             return redirect()->route('timbrada_permisos.index')->with('message', 'Usted ha timbrado con exito');
+        }
+        else{
+            return redirect()->route('timbrada_permisos.index')->with('error', 'Usted NO ha timbrado con exito');
         }
 
 
