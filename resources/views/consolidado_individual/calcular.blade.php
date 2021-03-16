@@ -6,67 +6,47 @@
 
 
 @section('main-content')
-    <h1>Timbradas diarias registradas</h1>
-    <div class="pull-left">
-        <a class="btn btn-primary" href="{{ route('consolidado_individual.index') }}">Regresar</a>
-    </div>
-    <br><br><br>
-    <div class="card text-center">
-        <div class="card-header">
-          <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-                <div class="form-group">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Cedula</label>
-                    <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">{{ $user->cedula }}</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
-                    <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">{{ $user->name }}</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Apellido</label>
-                    <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">{{ $user->last_name }}</label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Cargo</label>
-                    <div class="col-sm-6">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">{{ $user->cargo }}</label>
-                    </div>
-                </div>
-
-
-                <form method="POST" id="formulariofecha" action="{{ route('consolidado_individual.total2', $user) }}">
-                        @csrf
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="'fecha_inicio'">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
-                            <input type="hidden" class="form-control" id='formato' name="formato" value=""  >
-                        </div>
-                    </div>
-                    <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
-                    <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">Ver Timbradas excel</a></button>
-                </form>
-
-            </li>
-
-          </ul>
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">TIMBRADAS BIOMETRICO DIARIAS</div>
         </div>
-      </div>
+        <div class="pull-left">
+            <a class="btn btn-primary" href="{{ route('consolidado_individual.index') }}">Regresar</a>
+        </div>
+        <br><br><br>
+    @include('partials.validationError')
+        <div class="text-center">
+            <h3><b>USUARIO</b></h3>
+            <h4>
+                <p>Nombres y Apellidos:{{ ' '.$user->name.' '.$user->last_name }}</p>
+                <p>Cedula:{{ ' '.$user->cedula }}</p>
+            </h4>
+        </div>
+        <br>
+        <form method="POST" id="formulariofecha" action="{{ route('consolidado_individual.total2', $user) }}" class="form-inline text-center">
+            @csrf
+            <div class="form-group">
+                <label>FECHA INICIO:</label>
+                <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="'fecha_inicio'">
+            </div>
+            <div class="form-group">
+                <label>FECHA FIN:</label>
+                <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
+            </div>
+            <br><br>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button id="pdf" type="submit" class="btn btn-danger"><a class="nav-link"  onclick="pfd()"></a>
+                    Descargar <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                </button>
+                <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()"></a>
+                    Descargar <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                </button>
+            </div>
+
+        </form>
 
 
+    </div><!--/.container-fluid-->
 
     <script>
           document.addEventListener("DOMContentLoaded", function() {

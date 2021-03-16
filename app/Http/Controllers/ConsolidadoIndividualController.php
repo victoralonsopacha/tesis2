@@ -20,7 +20,10 @@ class ConsolidadoIndividualController extends Controller
     {
         if($request){
             $query= trim($request->get('buscador'));
-            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->where('estado','=','1')->orderBy('id','asc')->get();
+            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')
+                ->where('estado','=','1')
+                ->orderBy('id','asc')
+                ->get();
             $roles=DB::table('model_has_roles')
                 ->select('role_id', 'model_id')
                 ->get();
@@ -120,8 +123,8 @@ class ConsolidadoIndividualController extends Controller
         ]
 
     );
-} 
- 
+}
+
 
     public function exportPdf(User $user, Request $request){
         $ced_usuario = $user->cedula;
@@ -132,7 +135,13 @@ class ConsolidadoIndividualController extends Controller
         $consultas = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
         //Log::info($consultas);
         $pdf= PDF::loadView('pdf.timbradas', compact('consultas'));
-        
+
+        Log::info($consultas);
+
+        if(empty($consultas)){
+            return redirect()->back()->with('error', 'No existen registros');
+        }
+
         if($extension == 'PDF'){
            return $pdf->download('timbradas.pdf');
         }
@@ -140,7 +149,7 @@ class ConsolidadoIndividualController extends Controller
 
             return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin,$identificador), 'consolidadoIndividual.xlsx');
         }
-    } 
+    }
 
     public function exportExcel(User $user, Request $request){
         $ced_usuario = $user->cedula;

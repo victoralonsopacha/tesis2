@@ -26,11 +26,10 @@
             <thead class="thead-tomate">
             <tr>
                 <th>Nr.</th>
-                <th>Cedula</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
+                <th>Nombres y Apellidos</th>
+                <th>Cédula</th>
                 <th>Cargo</th>
-                <th></th>
+                <th>Acción</th>
             </tr>
             </thead>
             <tbody>
@@ -44,14 +43,13 @@
                             @if($rol->role_id == $role->id)
                                 <tr>
                                     <td>{{$i++}}</td>
+                                    <td>{!! $userItem->name.' '.$userItem->last_name !!}</td>
                                     <td>{!! $userItem->cedula !!}</td>
-                                    <td>{!! $userItem->name !!}</td>
-                                    <td>{!! $userItem->last_name !!}</td>
                                     <td>{!! $role->name!!}</td>
                                     <td>
                                         <form action="{{route('timbrada_permisos.create', $userItem->id)}}" method="POST">
                                             @csrf @method('PATCH')
-                                            <button class="btn btn-warning btn-xs">Timbrar</button>
+                                            <button class="btn btn-primary btn-xs">Seleccionar</button>
                                         </form>
                                     </td>
                                     <td>
@@ -63,7 +61,5 @@
             @endforeach
             </tbody>
         </table>
-
-
 </div>
 @endsection

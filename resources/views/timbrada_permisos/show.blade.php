@@ -6,7 +6,9 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h1>TIMBRADAS DE PERMISOS</h1>
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">Timbrar Permiso</div>
+        </div>
         <div class="pull-right">
             <a class="btn btn-info" href="{{ route('timbrada_permisos.index') }}">Timbrar Permisos</a>
         </div>
@@ -17,11 +19,12 @@
                 {{Session::get('message')}}
             </div>
         @endif
-    @if($timbradas->isempty())
-    @else
+        @if($timbradas->isempty())
+            @include('partials.validationAlertempty')
+        @else
             <div class="panel panel-default">
-            <table class="table table-responsive-md text-center">
-                <thead>
+                <table class="table table-responsive-md text-center">
+                    <thead>
                     <tr>
                         <th>Nr.</th>
                         <th>Cedula</th>
@@ -30,20 +33,21 @@
                         <th>Tipo Permiso</th>
                         <th>Descripcion</th>
                     </tr>
-                </thead>
-                <tbody>
-                @foreach($timbradas as $timbrada)
-                    <tr>
-                        <td>{!! $timbrada->id !!}</td>
-                        <td>{!! $timbrada->cedula !!}</td>
-                        <td>{!! $timbrada->fecha !!}</td>
-                        <td>{!! $timbrada->hora!!}</td>
-                        <td>{!! $timbrada->tipo_permiso!!}</td>
-                        <td>{!! $timbrada->descripcion!!}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-            </div>
-    @endif
+                    </thead>
+                    <tbody>
+                    @foreach($timbradas as $timbrada)
+                        <tr>
+                            <td>{!! $timbrada->id !!}</td>
+                            <td>{!! $timbrada->cedula !!}</td>
+                            <td>{!! $timbrada->fecha !!}</td>
+                            <td>{!! $timbrada->hora!!}</td>
+                            <td>{!! $timbrada->tipo_permiso!!}</td>
+                            <td>{!! $timbrada->descripcion!!}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table><!--/.table-->
+            </div><!--/.panel-->
+        @endif
+    </div><!--/.container-fluid-->
 @endsection

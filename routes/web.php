@@ -54,9 +54,9 @@ Route::group(['middleware' => ['role:Admin']], function () {
 
 });
 //RUTAS PARA REGISTRAR TIMBRADAS DE PERMISOS
-Route::get('/timbrada_permisos/index', 'TimbradaPermisoController@index')->name('timbrada_permisos.index')->middleware('auth');;
-Route::patch('/timbrada_permisos/{timbrada}/crear', 'TimbradaPermisoController@create')->name('timbrada_permisos.create')->middleware('auth');
-Route::post('/timbrada_permisos', 'TimbradaPermisoController@store')->name('timbrada_permisos.store')->middleware('auth');
+Route::get('/timbrada_permisos/index', 'TimbradaPermisoController@index')->name('timbrada_permisos.index');
+Route::patch('/timbrada_permisos/{timbrada}/crear', 'TimbradaPermisoController@create')->name('timbrada_permisos.create');
+Route::post('/timbrada_permisos', 'TimbradaPermisoController@store')->name('timbrada_permisos.store');
 //
 //**ROL INSPECTOR**
 
@@ -70,7 +70,6 @@ Route::patch('/inspector/{user_id}','InspectorController@update')->name('inspect
 //*CRUD PERMISOS*//
 Route::group(['middleware' => ['role:Inspector']], function () {
     Route::get('/profile/inspector','InspectorController@profile')->name('profile.inspector');
-
     Route::get('/permisos/index','PermisoController@index')->name('permisos.index');
     Route::get('/permisos/crear','PermisoController@create')->name('permisos.create');
     Route::get('/permisos/{permiso}/editar','PermisoController@edit')->name('permisos.edit');
@@ -81,13 +80,19 @@ Route::group(['middleware' => ['role:Inspector']], function () {
     //MOSTRAR
     Route::get('/permisos/{permiso}','PermisoController@show')->name('permisos.show');
     Route::post('/permisos/find','PermisoController@find')->name('permisos.find');
+    Route::post('/permisos/findRequest','PermisoController@findRequest')->name('permisos.findRequest');
+    //JUSTIFICAR
+    Route::get('/permisos/{permiso}/justificar','PermisoController@justificar')->name('permisos.justificar');
+
+
 });
-Route::post('/permisos/findRequest','PermisoController@findRequest')->name('permisos.findRequest');
+
+//PERMISOS APROBADOS
+
+//PERMISOS REPROBADOS
 
 
 
-//JUSTIFICAR
-Route::get('/permisos/{permiso}/justificar','PermisoController@justificar')->name('permisos.justificar');
 //EDITAR PERFIL
 Route::patch('/user/{user_id}','ProfesorController@update')->name('profesor.update');
 Route::post('/user/{user_id}/editar','ProfesorController@edit')->name('profesor.edit');
@@ -159,17 +164,17 @@ Route::post('/calculo_tiempos/index','BuscadorController@index')->name('calculo_
 
 
 //RUTAS PARA CREAR Y ALMACENAR EL TIEMPO A REPONER
-Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector')->middleware('auth');;
-Route::get('/tiempo_reposicions/create', 'TiempoReposicionController@create')->name('tiempo_reposicions.create')->middleware('auth');
-Route::post('/tiempo_reposicions', 'TiempoReposicionController@store')->name('tiempo_reposicions.store')->middleware('auth');
+Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector');
+Route::get('/tiempo_reposicions/create', 'TiempoReposicionController@create')->name('tiempo_reposicions.create');
+Route::post('/tiempo_reposicions', 'TiempoReposicionController@store')->name('tiempo_reposicions.store');
 
-Route::get('/tiempo_reposicions/index', 'TiempoReposicionController@index')->name('tiempo_reposicions.index')->middleware('auth');;
-Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector')->middleware('auth');;
-Route::get('/tiempo_reposicions/{user}/ver_dias', 'TiempoReposicionController@ver_dias')->name('tiempo_reposicions.ver_dias')->middleware('auth');
-ROUTE::get('/tiempo_reposicions/{reposicion}/calcular', 'TiempoReposicionController@show')->name('tiempo_reposicions.calcular')->middleware('auth');
+Route::get('/tiempo_reposicions/index', 'TiempoReposicionController@index')->name('tiempo_reposicions.index');
+Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector');
+Route::get('/tiempo_reposicions/{user}/ver_dias', 'TiempoReposicionController@ver_dias')->name('tiempo_reposicions.ver_dias');
+ROUTE::get('/tiempo_reposicions/{reposicion}/calcular', 'TiempoReposicionController@show')->name('tiempo_reposicions.calcular');
 //ACTIVAR Y DESACTIVAR TIEMPOS DE REPOSICION
-ROUTE::patch('/tiempo_reposicions/{reposicion}/active', 'TiempoReposicionController@active')->name('tiempo_reposicions.active')->middleware('auth');
-ROUTE::patch('/tiempo_reposicions/{reposicion}/desactive', 'TiempoReposicionController@desactive')->name('tiempo_reposicions.desactive')->middleware('auth');
+ROUTE::patch('/tiempo_reposicions/{reposicion}/active', 'TiempoReposicionController@active')->name('tiempo_reposicions.active');
+ROUTE::patch('/tiempo_reposicions/{reposicion}/desactive', 'TiempoReposicionController@desactive')->name('tiempo_reposicions.desactive');
 
 
 

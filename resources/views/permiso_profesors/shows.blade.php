@@ -45,7 +45,7 @@
     @include('partials.validationMessage')
 
     @if($permisos->isEmpty())
-        <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
+        @include('partials.validationAlertempty')
     @else
         <div class="panel panel-default">
         <div class="panel-heading">Permisos</div>

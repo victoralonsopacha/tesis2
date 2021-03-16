@@ -34,7 +34,7 @@
         </div>
         <br>
         @if($jornadas->isempty())
-            <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
+            @include('partials.validationAlertempty')
         @else
             <div class="panel">
                 <div class="table-responsive">

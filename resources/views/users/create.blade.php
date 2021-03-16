@@ -68,6 +68,7 @@
             <button type="submit" class="btn btn-success">Aceptar</button>
         </div>
     </div>
+
     {!! Form::close() !!}
 
     </div>

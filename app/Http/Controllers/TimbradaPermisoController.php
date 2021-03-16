@@ -19,6 +19,10 @@ class TimbradaPermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         if($request){
@@ -55,7 +59,7 @@ class TimbradaPermisoController extends Controller
 
         $consulta = DB::select('SELECT * FROM users t WHERE t.cedula LIKE  "'.$ced_usuario.'"');
 
-        return view('timbrada_permisos.create',[
+        return view('timbrada_permisos.creates',[
             'consulta' => $consulta,
             'fecha_hora' => $fecha_hora,
             'tipo_permiso' => $tipo_permiso

@@ -23,19 +23,52 @@ class ControlTiempoController extends Controller
         $this->middleware('auth');
     }
 
-
     public function index(Request $request)
     {
-
         if($request){
-            $query= trim($request->get('buscador'));
+            $cedula=trim($request->input('cedula'));
+            $nombre=trim($request->input('nombre'));
 
-            $usersl = User::where('name', 'LIKE', '%'.$query.'%')
-                ->where('estado','=','1')
-                ->orderBy('id','asc')
+            $roles=DB::table('model_has_roles')
+                ->select('role_id', 'model_id')
+                ->get();
+            $rolesl=DB::table('roles')
+                ->where('id','=','2')
+                ->select('id', 'name')
                 ->get();
 
-            return view('calculo_tiempos.index', ['usersl'=>$usersl, 'buscador'=>$query]);
+            if($cedula != ''){
+                Log::info('cedula');
+                $usersl= User::where('estado','=','1')
+                    ->where('cedula', 'LIKE','%'.$cedula.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($nombre != ''){
+                Log::info('nombre');
+                $usersl= User::where('estado','=','1')
+                    ->where('name', 'LIKE', '%'.$nombre.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($cedula != '' && $nombre != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('name', 'LIKE', '%'.$nombre.'%')
+                    ->where('cedula', 'LIKE', '%'.$cedula.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+
+            if($cedula == '' && $nombre == ''){
+                $usersl = User::where('name', 'LIKE', '%'.$nombre.'%')
+                    ->where('estado','=','1')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+
+            return view('calculo_tiempos.index',
+                ['usersl'=>$usersl, 'roles'=>$roles,'rolesl'=>$rolesl]
+            );
         }
         //CONSULTA PARA EXTRAER SOLO LOS PERMISOS CONPERFIL DE PROFESOR
         /*

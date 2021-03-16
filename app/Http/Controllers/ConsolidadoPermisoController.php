@@ -20,7 +20,10 @@ class ConsolidadoPermisoController extends Controller
     {
         if($request){
             $query= trim($request->get('buscador'));
-            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->where('estado','=','1')->orderBy('id','asc')->get();
+            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')
+                ->where('estado','=','1')
+                ->orderBy('id','asc')
+                ->get();
             $roles=DB::table('model_has_roles')
                 ->select('role_id', 'model_id')
                 ->get();
@@ -114,7 +117,7 @@ class ConsolidadoPermisoController extends Controller
 
         );
     }
- 
+
 
     public function exportPdf2(User $user, Request $request){
         $ced_usuario = $user->cedula;
@@ -126,16 +129,16 @@ class ConsolidadoPermisoController extends Controller
         $usuario = DB::select('SELECT * FROM users WHERE cedula = "'.$ced_usuario.'"');
         Log::info($usuario);
         $pdf= PDF::loadView('pdf.timbradas_permisos', compact('consultas','usuario'));
-        
-      
+
+
         if($extension == 'PDF'){
             return $pdf->download('permisospdf.pdf');
          }
          if($extension == 'EXCEL'){
- 
+
              return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin,$identificador), 'permisosexcel.xlsx');
          }
-      
+
 
     }
 }

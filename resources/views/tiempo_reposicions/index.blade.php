@@ -6,12 +6,12 @@
 
 @section('main-content')
     <div class="container-fluid">
-
-    <h4>En este modulo puede observar todos los dias que profesores han escogido para reponer sus sus atrasos</h4>
+    <h4>En este módulo puede observar todos los dias que profesores han escogido para reponer sus atrasos</h4>
     <br>
         <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 ">
-            <input name="buscador" class="form-control me-2" type="search" placeholder="Ingrese una cedula" aria-label="Search">
+            <strong>Buscar por:</strong>
+            <input name="buscador" class="form-control me-2" type="search" placeholder="Cédula" aria-label="Search">
             <button class="btn btn-success" type="submit">Buscar</button>
         </form>
         </div>
@@ -22,7 +22,9 @@
             <thead class="thead-tomate">
             <tr>
                 <th>Nr.</th>
+                <th>Nombres y Apellidos</th>
                 <th>Cedula</th>
+
                 <th>Fecha</th>
                 <th>Hora</th>
             </tr>
@@ -34,7 +36,9 @@
                 <tbody>
                 <tr>
                     <td>{{$i++ }}</td>
+                    <td>{{ $tiempos->nombre.' '.$tiempos->apellido }}</td>
                     <td>{{ $tiempos->cedula }}</td>
+
                     <td>{{ $tiempos->fecha }}</td>
                     <td>{{ $tiempos->horas }}</td>
                 </tbody>

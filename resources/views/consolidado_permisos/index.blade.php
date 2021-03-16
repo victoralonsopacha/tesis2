@@ -7,8 +7,12 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h1>TIMBRADAS DE PERMISOS</h1>
-    <h2>Aqui puede ver las timbradas de los usuarios que registraron sus salidas y entradas</h2>
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <b>TIMBRADAS DE PERMISOS</b>
+            </div>
+        </div>
+    <p class="text-left">Aqui puede ver las timbradas de los usuarios que registraron sus salidas y entradas</p>
         <div class="pull-right">
             <form class="form-inline">
                 <div class="form-group">
@@ -22,61 +26,50 @@
         </div>
     <br><br>
     @if($usersl->isEmpty())
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row mb-2">
-                            <div class="alert alert-warning" role="alert">
-                                No existen registros!!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('partials.validationAlertempty')
     @else
-
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <!-- Table -->
-        <div class="panel-heading text-center"><b>USUARIOS</b></div>
-            <table class="table table-responsive-md text-center">
-                <thead class="thead-tomate">
-                <tr>
-                    <th>Cedula</th>
-                    <th>Nombres y Apellidos</th>
-                    <th>Cargo</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                
-                @foreach($usersl as $userItem)
-                    @foreach($roles as $rol)
-                        @foreach($rolesl as $role)
-                            @if($rol->model_id == $userItem->id)
-                                @if($rol->role_id == $role->id)
-                                <tr>
-                                    
-                                    <td>{!! $userItem->cedula !!}</td>
-                                    <td>{!! $userItem->name.' '.$userItem->last_name !!}</td>
-                                    <td>{!! $role->name!!}</td>
-
-                                    <td>
-                                        <a class="btn btn-primary" href="{{ route('consolidado_permisos.calcular', $userItem) }}">VER</a>
-                                    </td>
-                                    <td>
-                                </tr>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <!-- Table -->
+            <div class="panel-heading text-center"><b>USUARIOS</b></div>
+                <table class="table table-responsive-md text-center">
+                    <thead class="thead-tomate">
+                    <tr>
+                        <th>Nr.</th>
+                        <th>Nombres y Apellidos</th>
+                        <th>Cedula</th>
+                        <th>Cargo</th>
+                        <th>Accion</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @php
+                    $i=1;
+                    @endphp
+                    @foreach($usersl as $userItem)
+                        @foreach($roles as $rol)
+                            @foreach($rolesl as $role)
+                                @if($rol->model_id == $userItem->id)
+                                    @if($rol->role_id == $role->id)
+                                    <tr>
+                                        <td>{!! $i++ !!}</td>
+                                        <td>{!! $userItem->name.' '.$userItem->last_name !!}</td>
+                                        <td>{!! $userItem->cedula !!}</td>
+                                        <td>{!! $role->name!!}</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-xs" href="{{ route('consolidado_permisos.calcular', $userItem) }}">Seleccionar</a>
+                                        </td>
+                                        <td>
+                                    </tr>
+                                    @endif
                                 @endif
-                            @endif
+                            @endforeach
                         @endforeach
                     @endforeach
-                @endforeach
-                </tbody>
-            </table>
-        @endif
-    </div>
-    </div>
+                    </tbody>
+                </table>
+            @endif
+        </div><!--/.panel-default-->
+    </div><!--/.container-fluid-->
 
 @endsection

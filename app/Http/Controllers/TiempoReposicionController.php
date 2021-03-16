@@ -20,6 +20,12 @@ class TiempoReposicionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         $tiempos=TiempoReposicion::all();
@@ -32,9 +38,18 @@ class TiempoReposicionController extends Controller
     {
         if($request){
             $query= trim($request->get('buscador'));
-            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')->orderBy('id','asc')->get();
-
-            return view('tiempo_reposicions.index_inspector', ['usersl'=>$usersl, 'buscador'=>$query]);
+            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')
+                ->where('estado','=','1')
+                ->orderBy('id','asc')
+                ->get();
+            $roles=DB::table('model_has_roles')
+                ->select('role_id', 'model_id')
+                ->get();
+            $rolesl=DB::table('roles')
+                ->where('id','=','2')
+                ->select('id', 'name')
+                ->get();
+            return view('tiempo_reposicions.index_inspector', ['usersl'=>$usersl, 'buscador'=>$query , 'roles'=>$roles,'rolesl'=>$rolesl]);
         }
     }
 

@@ -9,10 +9,7 @@
 @section('main-content')
 <div class="container-fluid">
     <div class="pull-left">
-        <a class="btn btn-primary" href="javascript:history.back()"> Volver Atrás</a>
-    </div>
-    <div class="pull-right">
-        <a class="btn btn-primary" href="{{route('calculo_tiempos.index')}}"> Volver a Calcular</a>
+        <a class="btn btn-primary" href="javascript:history.back()">Regresar</a>
     </div>
     <br><br>
     @if(empty($consulta2))
@@ -20,7 +17,7 @@
             <p>No existe informacion para timbrada diarias</p>
         </div>
     @endif
-    
+
     <div class="row">
     <div class="col-sm-6">
         <h1>HORAS TOTALES</h1>
@@ -134,7 +131,7 @@
                 @else
                     <input id="permisos_pendientes" type="input" class="form-control" name="date" value="0" readonly>
                 @endif
-            </div> 
+            </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-5 col-form-label">TIEMPO DE REPOSICION</label>
@@ -166,8 +163,9 @@
             <input id="pdfpendientes" type="hidden" class="form-control" name="pdfpendientes" value="" >
             <input id="pdfreposicion" type="hidden" class="form-control" name="pdfreposicion" value="" >
 
-
-            <button class="btn btn-danger btn-xs" type="submit">DESCARGAR PDF</button>
+            <button class="btn btn-danger" type="submit">DESCARGAR
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+            </button>
         </form>
 
     </div><!--col-sm-6-->
