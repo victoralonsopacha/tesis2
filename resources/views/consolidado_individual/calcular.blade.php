@@ -38,8 +38,11 @@
                     <input type="hidden" class="form-control" id='formato' name="formato" value=""  >
                 </div>
             </div>
-            <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
-            <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">Ver Timbradas excel</a></button>
+            <button id="pdf" type="submit" class="btn btn-danger"><a class="nav-link"  onclick="pfd()">
+                    Descargar<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+            </button>
+            <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">
+                    Descargar<i class="fa fa-file-excel-o" aria-hidden="true"></i></a></button>
         </form>
 
 
