@@ -19,6 +19,7 @@
         </div>
         <br>
         @include('partials.validationMessage')
+        @include('partials.validationError')
         <div class="panel panel-default">
             <!-- Default panel contents -->
 
@@ -29,9 +30,10 @@
                 <thead class="thead-tomate">
                 <tr>
                     <th>Nr.</th>
-                    <th>Hora Propuesta</th>
                     <th>Fecha</th>
+                    <th>Hora Propuesta</th>
                     <th>Estado</th>
+                    <th>Acción</th>
                 </tr>
                 </thead>
                 @php
@@ -44,24 +46,25 @@
                         <td>{{ $reposicion->fecha }}</td>
                         <td>{{ $reposicion->horas }}</td>
                         @if($reposicion->estado == 0)
+                            <td></td>
                             <td>
                                 <form action="{{route('tiempo_reposicions.active', $reposicion->id)}}" method="POST">
                                     @csrf @method('PATCH')
                                     <button class="btn btn-success btn-xs">
                                         <span aria-hidden="true" class="glyphicon glyphicon-ok"></span>Aceptar</button>
                                 </form>
-                            </td>
-                            <td>
                                 <form action="{{route('tiempo_reposicions.desactive', $reposicion->id)}}" method="POST">
                                     @csrf @method('PATCH')
-                                    <button class="btn btn-danger btn-xs" onclick="return confirm('¿Seguro que deseas desactivar este usuario?')">
+                                    <button class="btn btn-danger btn-xs" onclick="return confirm('¿Seguro que deseas rechazar esta solicitud?')">
                                         <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>Rechazar</button>
                                 </form>
                             </td>
                         @elseif($reposicion->estado == 1)
-                            <td><span class="label label-danger">Aprobado</span></td>
+                            <td><span class="label label-warning">Aprobado</span></td>
+                            <td></td>
                         @elseif($reposicion->estado == 2)
-                            <td><span class="label label-danger">Aprobado</span></td>
+                            <td><span class="label label-info">Reprobado</span></td>
+                            <td></td>
                         @endif
 
                 </tbody>

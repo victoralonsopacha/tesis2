@@ -19,11 +19,9 @@ class ConsolidadoPermisoController extends Controller
     public function index(Request $request)
     {
         if($request){
-            $query= trim($request->get('buscador'));
-            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')
-                ->where('estado','=','1')
-                ->orderBy('id','asc')
-                ->get();
+            $cedula= trim($request->get('cedula'));
+            $nombre=trim($request->input('nombre'));
+
             $roles=DB::table('model_has_roles')
                 ->select('role_id', 'model_id')
                 ->get();
@@ -31,7 +29,32 @@ class ConsolidadoPermisoController extends Controller
                 ->where('id','=','2')
                 ->select('id', 'name')
                 ->get();
-            return view('consolidado_permisos.index', ['usersl'=>$usersl,'roles'=>$roles,'rolesl'=>$rolesl, 'buscador'=>$query]);
+            if($cedula != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('cedula', 'LIKE','%'.$cedula.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($nombre != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('name', 'LIKE', '%'.$nombre.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($cedula != '' && $nombre != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('name', 'LIKE', '%'.$nombre.'%')
+                    ->where('cedula', 'LIKE', '%'.$cedula.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($cedula == '' && $nombre == ''){
+                $usersl = User::where('name', 'LIKE', '%'.$nombre.'%')
+                    ->where('estado','=','1')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            return view('consolidado_permisos.index', ['usersl'=>$usersl,'roles'=>$roles,'rolesl'=>$rolesl]);
         }
     }
     /**
@@ -127,9 +150,12 @@ class ConsolidadoPermisoController extends Controller
         $identificador = 1;
         $consultas = DB::select('SELECT * FROM timbrada_permisos r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
         $usuario = DB::select('SELECT * FROM users WHERE cedula = "'.$ced_usuario.'"');
-        Log::info($usuario);
+
         $pdf= PDF::loadView('pdf.timbradas_permisos', compact('consultas','usuario'));
 
+        if(empty($consultas)){
+            return redirect()->back()->with('error', 'No existen registros');
+        }
 
         if($extension == 'PDF'){
             return $pdf->download('permisospdf.pdf');

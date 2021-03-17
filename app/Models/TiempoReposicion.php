@@ -17,7 +17,8 @@ class TiempoReposicion extends Model
         'apellido',
         'horas',
         'fecha',
-        'estado'
+        'estado',
+        'inspector_cedula'
     ];
 
     //DESAHABILITAR ASIGNACION MASIVA

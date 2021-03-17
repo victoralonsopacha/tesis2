@@ -9,11 +9,10 @@
     <div class="panel panel-primary">
         <div class="panel-heading text-center">Solicitar Reposicion de Atraso</div>
     </div>
-
+        @include('partials.validationMessage')
     @include('partials.validation-errors')
     <form method="POST" action="{{ route('tiempo_reposicions.store') }}">
         @csrf
-
 
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>

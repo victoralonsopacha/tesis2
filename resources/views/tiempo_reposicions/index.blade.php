@@ -11,7 +11,7 @@
         <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 ">
             <strong>Buscar por:</strong>
-            <input name="buscador" class="form-control me-2" type="search" placeholder="Cédula" aria-label="Search">
+            <input name="cedula" class="form-control me-2" type="search" placeholder="Cédula" aria-label="Search">
             <button class="btn btn-success" type="submit">Buscar</button>
         </form>
         </div>
@@ -24,7 +24,6 @@
                 <th>Nr.</th>
                 <th>Nombres y Apellidos</th>
                 <th>Cedula</th>
-
                 <th>Fecha</th>
                 <th>Hora</th>
             </tr>
@@ -38,9 +37,9 @@
                     <td>{{$i++ }}</td>
                     <td>{{ $tiempos->nombre.' '.$tiempos->apellido }}</td>
                     <td>{{ $tiempos->cedula }}</td>
-
                     <td>{{ $tiempos->fecha }}</td>
                     <td>{{ $tiempos->horas }}</td>
+                <td>{!! $tiempos->estado  !!}</td>
                 </tbody>
             @endforeach
         </table>

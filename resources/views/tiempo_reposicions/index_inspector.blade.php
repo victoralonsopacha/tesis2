@@ -9,19 +9,27 @@
     <div class="container-fluid">
     <h4>En este módulo puede observar los dias que el profesor a escogido para reponer sus atrasos</h4>
     <br>
+        <div class="pull-right">
+            <form class="form-inline my-2 my-lg-0 float-right">
+                @csrf
+                <div class="form-group">
+                    <label for="exampleInputName2">Buscar Por:</label>
+                    <input name="nombre" class="form-control me-2" type="text" placeholder="Nombre" aria-label="Search">
+                </div>
+                <div class="form-group">
+                    <input name="cedula" class="form-control me-2" type="number" placeholder="Cédula" aria-label="Search">
+                </div>
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </form>
+        </div>
+        <br><br>
+        @if($usersl->isEmpty())
+            @include('partials.validationAlertempty')
+        @else
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <form class="form-inline my-2 my-lg-0 float-right">
-                <input name="buscador" class="form-control me-2" type="search" placeholder="Ingrese una cedula" aria-label="Search">
-                <button class="btn btn-success" type="submit">Buscar</button>
-              </form>
             <div class="panel-heading">Profesores</div>
             <!-- Table -->
-
-
-            @if($usersl->isEmpty())
-                <p>No existen profesores</p>
-            @else
                 <table class="table table-responsive-md text-center">
                     <thead class="thead-tomate">
                         <tr>
@@ -58,7 +66,7 @@
                     @endforeach
                     </tbody>
                 </table>
-            @endif
         </div><!--/.panel-default-->
+        @endif
     </div><!--/.container-fluid-->
 @endsection

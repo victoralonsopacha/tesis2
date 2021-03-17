@@ -147,7 +147,7 @@ class PermisoProfesorController extends Controller
 
     public function buscarA(SearchPermisoProfesorRequest $request)
     {
-        $request->validated();
+        //$request->validated();
         $cedula = auth()->user()->cedula;
         $fecha_inicio=$request->input('fecha_inicio');
         $fecha_fin=$request->input('fecha_fin');
@@ -161,7 +161,7 @@ class PermisoProfesorController extends Controller
 
     public function buscarB(SearchPermisoProfesorRequest $request)
     {
-        $request->validated();
+        //$request->validated();
         $cedula = auth()->user()->cedula;
         $fecha_inicio=$request->input('fecha_inicio');
         $fecha_fin=$request->input('fecha_fin');

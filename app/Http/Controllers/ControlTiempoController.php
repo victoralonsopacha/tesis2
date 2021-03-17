@@ -38,14 +38,12 @@ class ControlTiempoController extends Controller
                 ->get();
 
             if($cedula != ''){
-                Log::info('cedula');
                 $usersl= User::where('estado','=','1')
                     ->where('cedula', 'LIKE','%'.$cedula.'%')
                     ->orderBy('id','asc')
                     ->get();
             }
             if($nombre != ''){
-                Log::info('nombre');
                 $usersl= User::where('estado','=','1')
                     ->where('name', 'LIKE', '%'.$nombre.'%')
                     ->orderBy('id','asc')
@@ -58,7 +56,6 @@ class ControlTiempoController extends Controller
                     ->orderBy('id','asc')
                     ->get();
             }
-
             if($cedula == '' && $nombre == ''){
                 $usersl = User::where('name', 'LIKE', '%'.$nombre.'%')
                     ->where('estado','=','1')
@@ -70,11 +67,7 @@ class ControlTiempoController extends Controller
                 ['usersl'=>$usersl, 'roles'=>$roles,'rolesl'=>$rolesl]
             );
         }
-        //CONSULTA PARA EXTRAER SOLO LOS PERMISOS CONPERFIL DE PROFESOR
-        /*
-        $usersl= User::where('cargo','=','profesor')->get();
-        return view('calculo_tiempos.index', compact('usersl'));
-        */
+
     }
 
     /**

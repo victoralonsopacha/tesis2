@@ -64,10 +64,10 @@ class LoginController extends Controller
             return redirect()->route('home') ;
         }
         if($user->hasRole('Inspector')){
-            return redirect()->route('dashboard.inspector') ;
+            return redirect()->route('profile.inspector') ;
         }
         elseif($user->hasRole('Profesor')){
-            return redirect()->route('dashboard.profesor') ;
+            return redirect()->route('profile.profesor') ;
         }
     }
 }

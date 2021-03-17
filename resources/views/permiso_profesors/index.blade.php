@@ -53,10 +53,24 @@
         });
         function validarFechas(evento) {
             evento.preventDefault();
-            var fecha_inicio = $("#fecha_inicio").val();
-            var fecha_fin =  $("#fecha_fin").val();
+            var fecha_inicio = document.getElementById("fecha_inicio").value;
+            var fecha_fin = document.getElementById("fecha_fin").value;
             var inicio = new Date(fecha_inicio);
             var fin = new Date(fecha_fin);
+            var array_fechafin = fecha_fin.split("-");
+
+
+            var objFecha = new Date();
+            let DIA_EN_MILISEGUNDOS = 24 * 60 * 60 * 1000;
+            let manana = new Date(objFecha.getTime() + DIA_EN_MILISEGUNDOS);
+            var dia  = manana.getDate();
+            var mes  = manana.getMonth()+1;
+            var anio = manana.getFullYear();
+
+            var transfor_fechafin =new Date(array_fechafin[0],array_fechafin[1],array_fechafin[2]);
+            var transfor_fechamanana =new Date(anio,mes,dia);
+
+
             if(fecha_inicio.length == 0){
                 alert("Debe ingresar una fecha de inicio");
                 return;
@@ -65,9 +79,12 @@
                 alert("Debe ingresar una fecha final");
                 return;
             }
-
             if(inicio > fin){
                 alert("La fecha fin no puede ser menor");
+                return;
+            }
+            if(transfor_fechamanana <= transfor_fechafin){
+                alert("La fecha fin no puede ser superior a la actual");
                 return;
             }
             this.submit();

@@ -26,10 +26,9 @@ class TimbradaPermisoController extends Controller
     public function index(Request $request)
     {
         if($request){
-            $query= trim($request->get('buscador'));
-            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')
-                ->where('estado','=','1')
-                ->orderBy('id','asc')->get();
+            $cedula= trim($request->get('cedula'));
+            $nombre=trim($request->input('nombre'));
+
             $roles=DB::table('model_has_roles')
                 ->select('role_id', 'model_id')
                 ->get();
@@ -37,7 +36,35 @@ class TimbradaPermisoController extends Controller
                 ->where('id','=','2')
                 ->select('id', 'name')
                 ->get();
-            return view('timbrada_permisos.index', ['usersl'=>$usersl, 'buscador'=>$query,'roles'=>$roles, 'rolesl'=>$rolesl]);
+
+            if($cedula != ''){
+                $usersl = User::where('cedula', 'LIKE', '%'.$cedula.'%')
+                    ->where('estado','=','1')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($nombre != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('name', 'LIKE', '%'.$nombre.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($cedula != '' && $nombre != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('name', 'LIKE', '%'.$nombre.'%')
+                    ->where('cedula', 'LIKE', '%'.$cedula.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($cedula == '' && $nombre == ''){
+                $usersl = User::where('name', 'LIKE', '%'.$nombre.'%')
+                    ->where('estado','=','1')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+
+            return view('timbrada_permisos.index',
+                ['usersl'=>$usersl, 'roles'=>$roles, 'rolesl'=>$rolesl]);
         }
 
     }

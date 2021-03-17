@@ -28,20 +28,24 @@ class TiempoReposicionController extends Controller
 
     public function index(Request $request)
     {
-        $tiempos=TiempoReposicion::all();
+        if($request) {
+            $cedula = trim($request->get('cedula'));
+            if($cedula == ''){
+                $tiempos = TiempoReposicion::orderBy('id','desc')->get();
+            }
+            $tiempos = TiempoReposicion::where('cedula', 'LIKE','%'.$cedula.'%')
+                ->orderBy('id','desc')
+                ->get();
+        }
         return view('tiempo_reposicions.index', ['tiempos'=>$tiempos]);
-
     }
-
 
     public function index_inspector(Request $request)
     {
         if($request){
-            $query= trim($request->get('buscador'));
-            $usersl = User::where('cedula', 'LIKE', '%'.$query.'%')
-                ->where('estado','=','1')
-                ->orderBy('id','asc')
-                ->get();
+            $cedula= trim($request->get('cedula'));
+            $nombre=trim($request->input('nombre'));
+
             $roles=DB::table('model_has_roles')
                 ->select('role_id', 'model_id')
                 ->get();
@@ -49,7 +53,34 @@ class TiempoReposicionController extends Controller
                 ->where('id','=','2')
                 ->select('id', 'name')
                 ->get();
-            return view('tiempo_reposicions.index_inspector', ['usersl'=>$usersl, 'buscador'=>$query , 'roles'=>$roles,'rolesl'=>$rolesl]);
+
+            if($cedula != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('cedula', 'LIKE','%'.$cedula.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($nombre != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('name', 'LIKE', '%'.$nombre.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($cedula != '' && $nombre != ''){
+                $usersl= User::where('estado','=','1')
+                    ->where('name', 'LIKE', '%'.$nombre.'%')
+                    ->where('cedula', 'LIKE', '%'.$cedula.'%')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if($cedula == '' && $nombre == ''){
+                $usersl = User::where('name', 'LIKE', '%'.$nombre.'%')
+                    ->where('estado','=','1')
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+
+            return view('tiempo_reposicions.index_inspector', ['usersl'=>$usersl, 'roles'=>$roles,'rolesl'=>$rolesl]);
         }
     }
 
@@ -87,7 +118,8 @@ class TiempoReposicionController extends Controller
         $tiempo=$request->all();
         $tiempo['estado']='1';
         TiempoReposicion::create($tiempo);
-        return redirect()->route('tiempo_reposicions.create',$tiempo);
+        return redirect()->route('tiempo_reposicions.create',$tiempo)
+            ->with('message','Su solicitud ha sido procesada con exito');
     }
 
     /**
@@ -100,17 +132,21 @@ class TiempoReposicionController extends Controller
 
     public function active($id)
     {
+        $cedula = auth()->user()->cedula;
         $tiempo=TiempoReposicion::find($id);
+        $input['inspector_cedula']=$cedula;
         $input['estado']='1';
         $tiempo->update($input);
         return redirect()->back()->with('message','El atraso ha sido aprobado');
     }
     public function desactive($id)
     {
+        $cedula = auth()->user()->cedula;
         $tiempo=TiempoReposicion::find($id);
+        $input['inspector_cedula']=$cedula;
         $input['estado']='2';
         $tiempo->update($input);
-        return redirect()->back()->with('message','El atraso ha sido desaprobado');
+        return redirect()->back()->with('error','El atraso ha sido rechazado');
     }
     public function show(TiempoReposicion $reposicion)
     {
