@@ -159,17 +159,19 @@ class ConsolidadoIndividualController extends Controller
         //Log::info($consultas);
         $pdf= PDF::loadView('pdf.timbradas', compact('consultas'));
 
-        Log::info($consultas);
+        Log::info($extension);
 
         if(empty($consultas)){
+
             return redirect()->back()->with('error', 'No existen registros');
         }
 
         if($extension == 'PDF'){
+            Log::info('pdf');
            return $pdf->download('timbradas.pdf');
         }
         if($extension == 'EXCEL'){
-
+            Log::info('excel');
             return Excel::download(new TimbradasExport($ced_usuario,$fecha_inicio,$fecha_fin,$identificador), 'consolidadoIndividual.xlsx');
         }
     }

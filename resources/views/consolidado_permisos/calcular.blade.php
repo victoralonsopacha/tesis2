@@ -25,23 +25,21 @@
         <br>
         <form  method="POST"  id="formulariofecha" action="{{ route('consolidado_permisos.total2', $user) }}" class="form-inline text-center">
             @csrf
-            <div class="form-group">
-                <label>FECHA INICIO:</label>
-                <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
+                <div class="col-sm-9">
+                    <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="'fecha_inicio'">
+                </div>
             </div>
-            <div class="form-group">
-                <label>FECHA FIN:</label>
-                <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
+                <div class="col-sm-9">
+                    <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
+                    <input type="hidden" class="form-control" id='formato' name="formato" value=""  >
+                </div>
             </div>
-            <br><br>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button id="pdf" type="submit" class="btn btn-danger"><a class="nav-link"  onclick="pfd()"></a>
-                        Descargar <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                </button>
-                <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()"></a>
-                    Descargar <i class="fa fa-file-excel-o" aria-hidden="true"></i>
-                </button>
-            </div>
+            <button id="pdf" type="submit" class="btn btn-success"><a class="nav-link"  onclick="pfd()" >Ver Timbradas pdf</a></button>
+            <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">Ver Timbradas excel</a></button>
         </form>
       </div><!--/.container-fluid-->
 
