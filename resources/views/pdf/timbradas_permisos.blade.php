@@ -20,16 +20,16 @@
             font-family: 'Roboto', sans-serif;
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: none; 
+            -webkit-text-size-adjust: none;
         }
-        
+
     </style>
 </head>
 <body>
 <main class="container">
-<h1><p class="text-center text-uppercase">Unidad Educativa Velasco Ibarra</p></h1>    
-<h1><p class="text-center text-uppercase">Parroquia de Guangopolo</p></h1>    
-<h1><p class="text-center text-uppercase">Reporte de timbradas diarias de usuario</p></h1> 
+<h1><p class="text-center text-uppercase">Unidad Educativa Velasco Ibarra</p></h1>
+<h1><p class="text-center text-uppercase">Parroquia de Guangopolo</p></h1>
+<h1><p class="text-center text-uppercase">Reporte de timbradas de permisos de usuario</p></h1>
 
 
 <table class="table">
@@ -61,8 +61,8 @@
             <tr>
                 <td>{{ $consulta->fecha }}</td>
                 <td>{{ $consulta->hora }}</td>
-                <td>{{ $consulta->tipo_permiso }}</td>  
-                <td>{{ $consulta->observacion }}</td> 
+                <td>{{ $consulta->tipo_permiso }}</td>
+                <td>{{ $consulta->observacion }}</td>
             </tr>
         @endforeach
     </tbody>

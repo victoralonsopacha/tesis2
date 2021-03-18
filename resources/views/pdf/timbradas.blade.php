@@ -20,34 +20,39 @@
             font-family: 'Roboto', sans-serif;
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: none; 
+            -webkit-text-size-adjust: none;
         }
-        
+
     </style>
 </head>
 <body>
 <main class="container">
-<h1><p class="text-center text-uppercase">Unidad Educativa Velasco Ibarra</p></h1>    
-<h1><p class="text-center text-uppercase">Parroquia de Guangopolo</p></h1>    
-<h1><p class="text-center text-uppercase">Reporte de timbradas diarias de usuario</p></h1>    
-
-    <table class="table">    
-        
-        <thead>
+<h1><p class="text-center text-uppercase">Unidad Educativa Velasco Ibarra</p></h1>
+<h1><p class="text-center text-uppercase">Parroquia de Guangopolo</p></h1>
+<h1><p class="text-center text-uppercase">Reporte de timbradas diarias del usuario</p></h1>
+    <table class="table">
+        <tbody>
+        @foreach($usuario as $urs)
             <tr>
-                <th>Cedula</th>
-                <th>Nombre</th>
-                <th>Tiempo</th>
-                <th>Fecha</th>
+                <td>Cedula: {{ $urs->cedula }}</td>
+                <td>Nombre: {{ $urs->name }}</td>
+                <td>Apellido: {{ $urs->last_name }}</td>
             </tr>
+        @endforeach
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+        </tr>
         </thead>
         <tbody>
             @foreach($consultas as $consulta)
-                <tr>           
-                    <td>{{ $consulta->cedula }}</td>
-                    <td>{{ $consulta->nombre }}</td>
+                <tr>
+                    <td>{{ $consulta->fecha}}</td>
                     <td>{{ $consulta->tiempo }}</td>
-                    <td>{{ $consulta->fecha }}</td>               
                 </tr>
             @endforeach
         </tbody>

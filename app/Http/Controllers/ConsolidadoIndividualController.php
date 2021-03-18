@@ -156,8 +156,9 @@ class ConsolidadoIndividualController extends Controller
         $extension = $request->formato;
         $identificador = 2;
         $consultas = DB::select('SELECT * FROM timbradas r WHERE r.cedula =  "'.$ced_usuario.'" AND r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
+        $usuario = DB::select('SELECT * FROM users WHERE cedula = "'.$ced_usuario.'"');
         //Log::info($consultas);
-        $pdf= PDF::loadView('pdf.timbradas', compact('consultas'));
+        $pdf= PDF::loadView('pdf.timbradas', compact('consultas','usuario'));
 
         Log::info($extension);
 
