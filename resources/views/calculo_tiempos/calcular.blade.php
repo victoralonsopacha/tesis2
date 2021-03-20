@@ -41,7 +41,5 @@
             <button type="submit" class="btn btn-success">Calcular tiempos</button>
             </div>
         </form>
-
-
     </div>
 @endsection
