@@ -6,7 +6,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h4>En este módulo puede observar todos los dias que profesores han escogido para reponer sus atrasos</h4>
+    <h4>En este módulo puede observar todos los días que profesores han escogido para reponer sus atrasos</h4>
     <br>
         <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 ">
@@ -23,7 +23,7 @@
             <tr>
                 <th>Nr.</th>
                 <th>Nombres y Apellidos</th>
-                <th>Cedula</th>
+                <th>Cédula</th>
                 <th>Fecha</th>
                 <th>Hora</th>
             </tr>

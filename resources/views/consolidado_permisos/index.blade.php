@@ -9,10 +9,10 @@
     <div class="container-fluid">
         <div class="panel panel-primary">
             <div class="panel-heading text-center">
-                <b>TIMBRADAS DE PERMISOS</b>
+                <b>Timbradas de Permisos</b>
             </div>
         </div>
-        <p class="text-left">Aqui puede ver las timbradas de los usuarios que registraron sus salidas y entradas</p>
+        <p class="text-left">Aquí puede ver las timbradas de los usuarios que registraron sus salidas y entradas</p>
         <div class="pull-right">
             <form class="form-inline my-2 my-lg-0 float-right">
                 <label>Buscar Por:</label>
@@ -32,15 +32,15 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <!-- Table -->
-                <div class="panel-heading text-center"><b>USUARIOS</b></div>
+                <div class="panel-heading text-center"><b>Usuarios</b></div>
                     <table class="table table-responsive-md text-center">
                         <thead class="thead-tomate">
                         <tr>
                             <th>Nr.</th>
                             <th>Nombres y Apellidos</th>
-                            <th>Cedula</th>
+                            <th>Cédula</th>
                             <th>Cargo</th>
-                            <th>Accion</th>
+                            <th>Acción</th>
                         </tr>
                         </thead>
                         <tbody>

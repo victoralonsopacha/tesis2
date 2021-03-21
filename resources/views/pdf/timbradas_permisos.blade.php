@@ -37,7 +37,7 @@
     <tbody>
         @foreach($usuario as $urs)
             <tr>
-                <td>Cedula: {{ $urs->cedula }}</td>
+                <td>Cédula: {{ $urs->cedula }}</td>
                 <td>Nombre: {{ $urs->name }}</td>
                 <td>Apellido: {{ $urs->last_name }}</td>
             </tr>
@@ -53,7 +53,7 @@
         <th scope="col">Fecha</th>
         <th scope="col">Hora</th>
         <th scope="col">Entrada/Salida</th>
-        <th scope="col">Observacion</th>
+        <th scope="col">Observación</th>
         </tr>
     </thead>
     <tbody>

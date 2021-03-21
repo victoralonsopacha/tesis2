@@ -15,8 +15,9 @@
     </style>
 </head>
 <body>
-<h1>ESCUELA VELASCO IBARRA</h1>
-<h2>Reporte de timbradas de usuario TIMBRADAS BIOMETRICO</h2>
+<h1>Unidad Educativa Velasco Ibarra</h1>
+<h2>Parroquia de Guangopolo</h2>
+<h2>Reporte de timbradas de usuario provenientes del biométrico</h2>
 
 
 
@@ -24,20 +25,20 @@
 
 
     <form>
-    <P>RESUMEN DE HORAS TRABAJADAS</P>
-  <p>Cedula: <label for="">{{{ $informe['cedula'] }}}</label></p>
+    <P>Resumen de horas trabajadas</P>
+  <p>Cédula: <label for="">{{{ $informe['cedula'] }}}</label></p>
   <p>Nombre: <label for="">{{{ $informe['nombre'] }}}</label></p>
 
   <p>Horas totales trabajadas: <label for="">{{{ $informe['totaltrabajado'] }}}</label></p>
 
-  <p>Dias totales trabajados: <label for="">{{{ $informe['dias'] }}}</label></p>
+  <p>Días totales trabajados: <label for="">{{{ $informe['dias'] }}}</label></p>
   <p>Atrasos: <label for="">{{{ $informe['atrasos'] }}}</label></p>
-  <p>PERMISOS</p>
+  <p>Permisos</p>
   <p>Horas totaes de permisos: <label for="">{{{ $informe['permisos'] }}}</label></p>
   <p>Cantidad de permisos aprobados: <label for="">{{{ $informe['aprobados'] }}}</label></p>
   <p>Cantidad de permisos desaprobados: <label for="">{{{ $informe['desaprobados'] }}}</label></p>
   <p>Cantidad de permisos pendientes: <label for="">{{{ $informe['pendientes'] }}}</label></p>
-  <p>Cantidad de tiempo de reposicion: <label for="">{{{ $informe['reposicion'] }}}</label></p>
+  <p>Cantidad de tiempo de reposición: <label for="">{{{ $informe['reposicion'] }}}</label></p>
 
 </form>
     

@@ -6,7 +6,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-<h4>Por favor ingrese su numero de cedula para timbrar</h4>
+<h4>Por favor ingrese su número de cédula para timbrar</h4>
 <br>
 @include('partials.validationMessage')
 @include('partials.validationError')

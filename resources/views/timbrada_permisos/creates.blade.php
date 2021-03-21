@@ -53,7 +53,7 @@
                         {!! Form::select('tipo_permiso[]', $tipo_permiso,$tipo_permiso,['class' => 'form-control']); !!}
                     </div>
                     <div class="form-group">
-                        <strong>Observacion:</strong>
+                        <strong>Observación:</strong>
                         <input type="text" class="form-control" name="observacion">
                     </div>
                 </div><!--/.col-md-6-->

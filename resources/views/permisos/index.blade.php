@@ -8,9 +8,9 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading text-center"><b>PERMISOS</b></div>
+            <div class="panel-heading text-center"><b>Permisos</b></div>
         </div>
-    <h4>Este modulo permite aprobar o desaprobar los permisos solicitados</h4>
+    <h4>Este módulo permite aprobar o desaprobar los permisos solicitados</h4>
     <br>
     <form method="POST" action="{{route('permisos.findRequest')}}" class="form-inline my-2 my-lg-0 pull-right">
         @csrf
@@ -42,7 +42,7 @@
                 <tr>
                     <th>Nr.</th>
                     <th>Nombres y Apellidos</th>
-                    <th>Cedula</th>
+                    <th>Cédula</th>
                     <th>Fecha Inicio</th>
                     <th>Hora Inicio</th>
                     <th>Fecha Fin</th>

@@ -14,13 +14,13 @@
             <a class="btn btn-primary" href="{{ route('calculo_tiempos.index') }}">Regresar</a>
         </div><br><br>
         <div class="text-center">
-            <h3><b>USUARIO</b></h3>
+            <h3><b>Usuario</b></h3>
             <h4>
-                <p class="text-uppercase">
+                <p class="text-normal">
                     Nombres y Apellidos:{{ ' '.$user->name.' '.$user->last_name }}
                 </p>
-                <p class="text-uppercase">
-                    Cedula:{{ ' '.$user->cedula }}
+                <p class="text-normal">
+                    Cédula:{{ ' '.$user->cedula }}
                 </p>
             </h4>
         </div>
@@ -30,11 +30,11 @@
         <form method="POST" action="{{ route('calculo_tiempos.total2', $user) }}" class="form-inline text-center">
             @csrf
             <div class="form-group">
-                <label>FECHA INICIO:</label>
+                <label>Fecha Inicio:</label>
                 <input type="date" class="form-control" name="fecha_inicio" value="'fecha_inicio'">
             </div>
             <div class="form-group">
-                <label>FECHA FIN:</label>
+                <label>Fecha Fin:</label>
                 <input type="date" class="form-control" name="fecha_fin" value="'fecha_fin'">
             </div>
             <div class="form-group">
