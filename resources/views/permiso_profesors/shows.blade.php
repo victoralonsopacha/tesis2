@@ -55,8 +55,8 @@
                     <th>Nr.</th>
                     <th>Fecha Inicio</th>
                     <th>Hora Inicio</th>
-                    <th>Fecha Finalizacion</th>
-                    <th>Hora Finalizacion</th>
+                    <th>Fecha Finalización</th>
+                    <th>Hora Finalización</th>
                     <th>Estado</th>
                 </tr>
                 </thead>
@@ -82,7 +82,7 @@
                             <a href="{{ route('permiso_profesors.show', $permiso) }}" class="btn btn-xs btn-success"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </td>
                     @elseif($permiso->estado == '2')
-                        <td><span class="label label-info">Reprobado</span></td>
+                        <td><span class="label label-info">Rechazado</span></td>
                         <td>
                             <a href="{{ route('permiso_profesors.show', $permiso) }}" class="btn btn-xs btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </td>

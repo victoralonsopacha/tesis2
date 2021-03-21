@@ -28,8 +28,8 @@
                 {!! Form::text('last_name', null, array('placeholder' => 'Apellidos','class' => 'form-control')) !!}
             </div>
             <div class="form-group">
-                <strong>Cedula:</strong>
-                {!! Form::text('cedula', null, array('placeholder' => 'Cedula','class' => 'form-control')) !!}
+                <strong>Cédula:</strong>
+                {!! Form::text('cedula', null, array('placeholder' => 'Cédula','class' => 'form-control')) !!}
             </div>
             <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                 <strong>Contraseña:</strong>
@@ -52,7 +52,7 @@
                 {!! Form::email('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
             </div>
             <div class="form-group">
-                <strong>Tipo Relacion Laboral:</strong>
+                <strong>Tipo Relación Laboral:</strong>
                 {!! Form::select('tipo_relacion_laboral[]',$tipo_relacion_laboral, null,['class' => 'form-control']); !!}
             </div>
             <div class="form-group">

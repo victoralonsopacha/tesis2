@@ -12,7 +12,7 @@
                 <b>Timbradas de Permisos</b>
             </div>
         </div>
-        <p class="text-left">Aquí puede ver las timbradas de los usuarios que registraron sus salidas y entradas</p>
+        <h4><p class="text-left">Aquí puede ver las timbradas de los usuarios que registraron sus salidas y entradas</p></h4>
         <div class="pull-right">
             <form class="form-inline my-2 my-lg-0 float-right">
                 <label>Buscar Por:</label>

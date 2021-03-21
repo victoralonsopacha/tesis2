@@ -7,7 +7,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h4>Este módulo permite calcular la cantidad de horas, dias, y atrasos en el periodo de tiempo que usted necesite</h4>
+    <h4>Este módulo permite calcular la cantidad de horas, días, y atrasos en el periodo de tiempo que usted necesite</h4>
     <br>
     <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 float-right">
@@ -16,7 +16,7 @@
                 <input name="nombre" class="form-control me-2" type="text" placeholder="Nombre" aria-label="Search">
             </div>
             <div class="form-group">
-                <input name="cedula" class="form-control me-2" type="search" placeholder="Cedula" aria-label="Search">
+                <input name="cedula" class="form-control me-2" type="search" placeholder="Cédula" aria-label="Search">
             </div>
             <button class="btn btn-success" type="submit">Buscar</button>
         </form>

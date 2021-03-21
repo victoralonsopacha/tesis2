@@ -46,11 +46,11 @@
 
         </div>
         <div class="form-group">
-            <strong>Descripcion:</strong>
+            <strong>Descripción:</strong>
             {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
         </div>
         <div class="form-group">
-            <strong>Observacion de la desaprobacion:</strong>
+            <strong>Observación de la desaprobación:</strong>
             {!! Form::text('desaprobacion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
         </div>
     </div>

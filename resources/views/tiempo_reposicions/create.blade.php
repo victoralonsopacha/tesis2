@@ -7,7 +7,7 @@
 @section('main-content')
     <div class="container-fluid">
     <div class="panel panel-primary">
-        <div class="panel-heading text-center">Solicitar Reposicion de Atraso</div>
+        <div class="panel-heading text-center">Solicitar Reposición de Atraso</div>
     </div>
         @include('partials.validationMessage')
     @include('partials.validation-errors')
@@ -15,7 +15,7 @@
         @csrf
 
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
+            <label for="staticEmail" class="col-sm-2 col-form-label">Cédula del usuario</label>
             <div class="col-sm-2">
                 <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}" readonly>
             </div>
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Dia que desea reponer</label>
+            <label for="staticEmail" class="col-sm-2 col-form-label">Día que desea reponer</label>
             <div class="col-sm-2">
                 <input type="date" class="form-control" name="fecha" value="{{old('fecha', $tiempo_reposicions->fecha)}}">
             </div>

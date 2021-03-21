@@ -7,7 +7,7 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading text-center">GESTIÓN DE USUARIOS</div>
+            <div class="panel-heading text-center">Gestión de Usuarios</div>
         </div>
         <div class="pull-left">
             <a class="btn btn-primary" href="{{ route('users.inactivos') }}">Ver usuarios inactivos</a>
@@ -44,7 +44,7 @@
                         <th>Nr.</th>
                         <th>Nombres y Apellidos</th>
                         <th>Email</th>
-                        <th>Cedula</th>
+                        <th>Cédula</th>
                         <th>Rol</th>
                         <th>Estado</th>
                     </tr>

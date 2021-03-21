@@ -2,7 +2,7 @@
     @foreach($usuario as $itemUsuario)
 
         <div class="form-group">
-            <strong>Cedula :</strong>
+            <strong>Cédula :</strong>
             <input type="text" class="form-control" name="cedula" value="{{ old('cedula', $itemUsuario->cedula) }}" readonly>
         </div>
         <div class="form-group">
@@ -39,7 +39,7 @@
         {!! Form::select('tipo_permiso[]',$tipo_permiso, null,['class' => 'form-control']); !!}
     </div>
     <div class="form-group">
-        <strong>Descripcion:</strong>
+        <strong>Descripción:</strong>
         {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control')) !!}
     </div>
     <!--<div class="form-group">
