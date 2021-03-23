@@ -18,6 +18,7 @@ class PermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //middleware Auth
     function __construct()
     {
         $this->middleware('auth');
@@ -25,35 +26,51 @@ class PermisoController extends Controller
 
     public function index(Request $request)
     {
-        $permisosl = PermisoProfesor::orderBy('id','desc')->paginate(10);
-        return view('permisos.index', ['permisosl'=>$permisosl]);
+        $estado = array(
+            "" => "Estado:",
+            "0" => "Pendiente",
+            "1" => "Aprobado",
+            "2" => "Reprobado",
+        );
+        $permisosl=PermisoProfesor::orderBy('id','desc')->paginate(10);
+
+        return view('permisos.index', ['permisosl'=>$permisosl,'estado'=>$estado]);
     }
 
     //METODO FIND
     public function findRequest(Request $request)
     {
+        $estado = array(
+            "" => "Estado:",
+            "0" => "Pendiente",
+            "1" => "Aprobado",
+            "2" => "Reprobado",
+        );
         $cedula=trim($request->input('buscador'));
-        $estado=$request->input('estado');
+        $state=implode($request->input('estado'));
         if($cedula != ''){
             $permisosl = PermisoProfesor::where('cedula', 'LIKE', $cedula)->orderBy('id','desc')->paginate(10);
         }
-        if($estado != ''){
-            Log::info('estado');
-            $permisosl = PermisoProfesor::where('estado', '=', $estado)->orderBy('id','desc')->paginate(10);
+        if($state != ''){
+            $permisosl = PermisoProfesor::where('estado', '=', $state)->orderBy('id','desc')->paginate(10);
         }
-        if($cedula == '' && $estado == ''){
+        if($cedula != '' && $state != ''){
+            $permisosl = PermisoProfesor::where('estado', '=', $state)
+                ->where('cedula', 'LIKE', $cedula)
+                ->orderBy('id','desc')->paginate(10);
+        }
+        if($cedula == '' && $state == ''){
             $permisosl=PermisoProfesor::orderBy('id','desc')->paginate(10);
         }
-        return view('permisos.find',['permisosl'=>$permisosl]);
-
+        return view('permisos.index', ['permisosl'=>$permisosl,'estado'=>$estado]);
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+/**
+ * Show the form for creating a new resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
     public function create()
     {
         return view('permisos.create',
@@ -100,8 +117,12 @@ class PermisoController extends Controller
 
     public function justificar(PermisoProfesor $permiso)
     {
+        $estado = array(
+            "1" => "Aprobado",
+            "2" => "Reprobado",
+        );
         return view('permisos.justificar',
-            ['permiso' => $permiso ]);
+            ['permiso' => $permiso,'estado'=>$estado]);
     }
 
     /**
@@ -128,7 +149,7 @@ class PermisoController extends Controller
         $permiso->tipo_permiso=$request->tipo_permiso;
         $permiso->fecha_fin=$request->fecha_fin;
         $permiso->file=$request->file;
-        $permiso->estado=$request->input('estado');
+        $permiso->estado=implode($request->input('estado'));
         $permiso->desaprobacion=$request->desaprobacion;
         $permiso->save();
         return redirect()->route('permisos.index', $permiso)->with('message', 'El permiso ha sido actualizado con exito');

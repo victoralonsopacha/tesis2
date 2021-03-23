@@ -21,6 +21,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //middleware Auth
     function __construct()
     {
         $this->middleware('auth');

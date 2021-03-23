@@ -14,7 +14,11 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-
+    //middleware Auth
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function edit($id)
     {

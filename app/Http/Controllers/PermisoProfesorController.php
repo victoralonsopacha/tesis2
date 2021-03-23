@@ -14,7 +14,10 @@ use App\Http\Requests\CreatePermisoProfesorRequest;
 use Illuminate\Support\Facades\DB;
 use App\Events\PermisoEvent;
 use App\Notifications\PermisosNotification;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 
 class PermisoProfesorController extends Controller
@@ -25,6 +28,7 @@ class PermisoProfesorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //middleware Auth
     function __construct()
     {
         $this->middleware('auth');
@@ -38,6 +42,7 @@ class PermisoProfesorController extends Controller
             ->get();
         return view('permiso_profesors.index',compact('permisos'));
     }
+
     public function index1(Request $request)
     {
         $cedula = auth()->user()->cedula;
@@ -64,7 +69,6 @@ class PermisoProfesorController extends Controller
             "Calamidad Domestrica" => "Calamidad Domestrica",
             "Otro" => "Otro",
         );
-
         $cedula=auth()->user()->cedula;
         $usuario=DB::select('SELECT u.cedula, u.name, u.last_name FROM users u WHERE u.cedula = "'.$cedula.'"');
         return view('permiso_profesors.create',
@@ -87,17 +91,15 @@ class PermisoProfesorController extends Controller
         $permiso['tipo_permiso']=implode($request['tipo_permiso']);
         $permiso['estado']='0';
 
-        if($archivo=$request->file('file')){
-            $nombre_imagen=$archivo->getClientOriginalName();
-            $archivo->move(public_path("img/categorias/"),$nombre_imagen);
-            $permiso['file']=$nombre_imagen;
-            //obtenemos el campo file definido en el formulario
-
-            //obtenemos el nombre del archivo
-            $nombre = $archivo->getClientOriginalName();
-            //indicamos que queremos guardar un nuevo archivo en el disco local
-            \Storage::disk('local')->put($nombre,  \File::get($archivo));
+        if($request->hasFile('file')){
+            $file=$request->file('file');
+            $name=time().'-'.$file->getClientOriginalName();
+            $destination='storage/permissions/';
+            $url=$request->file('file')->move($destination,$name);
+            $path=$destination.$name;
+            $permiso['file']=$path;
         }
+
         PermisoProfesor::create($permiso);
         return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
     }
@@ -124,7 +126,7 @@ class PermisoProfesorController extends Controller
     {
         $cedula = auth()->user()->cedula;
         $permisos=PermisoProfesor::where('cedula','=',$cedula)
-            ->orderBy('fecha_inicio','desc')
+            ->orderBy('created_at','desc')
             ->get();
         return view('permiso_profesors.shows', compact('permisos'));
     }

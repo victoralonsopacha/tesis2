@@ -18,10 +18,6 @@
             <button type="submit" class="btn btn-success">Actualizar</button>
         {!! Form::close() !!}
         <br>
-        {!! Form::model($permiso_profesor, ['method' => 'POST','route' => ['permiso_profesors.destroy', $permiso_profesor]]) !!}
-        {!! Form::token() !!}
-        @csrf @method('DELETE')
-        <button type="submit" class="btn btn-danger">Eliminar</button>
-        {!! Form::close() !!}
+
     </div>
 @endsection

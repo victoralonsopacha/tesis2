@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class InspectorController extends Controller
 {
+    //middleware Auth
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //
     public function profile()
     {
@@ -44,7 +50,7 @@ class InspectorController extends Controller
         }
         $user = User::find($id);
         $user->update($input);
-        
+
         return redirect()->route('profile.inspector')->with('message', 'Tu informacion ha sido actualizada con exito');
 
     }

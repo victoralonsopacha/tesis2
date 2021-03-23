@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Hash;
 class ProfesorController extends Controller
 {
     //
+    //middleware Auth
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function perfil()
     {
         return view('perfiles.profesor');

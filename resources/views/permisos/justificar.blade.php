@@ -48,10 +48,7 @@
                     </div>
                     <div class="form-group">
                         <strong>Seleccionar:</strong>
-                        <select name="estado">
-                            <option {{old('estado',$permiso->estado)=="1"? 'selected':''}} value="1">Aprobado</option>
-                            <option {{old('estado',$permiso->estado)=="2"? 'selected':''}} value="2">Reprobado</option>
-                        </select>
+                        {!! Form::select('estado[]',$estado, null,['class' => 'form-control']); !!}
                     </div>
                     <div class="form-group">
                         <strong>Observación:</strong>

@@ -13,47 +13,59 @@
             <a class="btn btn-primary" href="{{ route('permiso_profesors.shows')}}">Regresar</a>
         </div>
         <br><br>
-        @if(Session::has('message'))
-            <div class="alert alert-warning alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                {{Session::get('message')}}
-            </div>
-        @endif
+        @include('partials.validationMessage')
         {!! Form::model($permiso_profesor, ['method' => 'PATCH','route' => ['permiso_profesors.update', $permiso_profesor]]) !!}
-
         <div class="col-xs-6 col-sm-6 col-md-6">
-        <div class="form-group">
-            <strong>Fecha de Inicio:</strong>
-            {!! Form::date('fecha_inicio',null,['class' => 'form-control','readonly']) !!}
+            <div class="form-group">
+                <strong>Fecha de Inicio:</strong>
+                {!! Form::date('fecha_inicio',null,['class' => 'form-control','readonly']) !!}
+            </div>
+            <div class="form-group">
+                <strong>Hora Inicio:</strong>
+                {!! Form::time('hora_inicio', \Carbon\Carbon::now(), array('class' => 'form-control','readonly')) !!}
+            </div>
+            <div class="form-group">
+                <strong>Fecha Fin:</strong>
+                {!! Form::date('fecha_fin', null, array('class' => 'form-control','readonly')) !!}
+            </div>
+
+            <div class="form-group">
+                <strong>Hora Fin:</strong>
+                {!! Form::time('hora_fin', null, array('class' => 'form-control','readonly')) !!}
+            </div>
+            <div class="form-group">
+                <strong>Tipo Permiso:</strong>
+                {!! Form::text('tipo_permiso', null, array('class' => 'form-control','readonly')) !!}
+            </div>
         </div>
-        <div class="form-group">
-            <strong>Fecha Fin:</strong>
-            {!! Form::date('fecha_fin', null, array('class' => 'form-control','readonly')) !!}
-        </div>
-        <div class="form-group">
-            <strong>Hora Inicio:</strong>
-            {!! Form::time('hora_inicio', \Carbon\Carbon::now(), array('class' => 'form-control','readonly')) !!}
-        </div>
-        <div class="form-group">
-            <strong>Hora Fin:</strong>
-            {!! Form::time('hora_fin', null, array('class' => 'form-control','readonly')) !!}
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-6">
-        <div class="form-group">
-            <strong>Tipo Permiso:</strong>
-            {!! Form::text('tipo_permiso', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <strong>Justificación:</strong>
+                {!! Form::text('descripcion', null, array('class' => 'form-control','readonly')) !!}
+            </div>
+            @if($permiso_profesor->estado == 1)
+                <div class="form-group">
+                    <strong>Estado:</strong>
+                    {!! Form::text('Aprobado', null, array('placeholder' => 'Aprobado','class' => 'form-control','readonly')) !!}
+                </div>
+            @endif
+
+            @if($permiso_profesor->estado == 2)
+                    <div class="form-group">
+                        <strong>Estado:</strong>
+                        {!! Form::text('Aprobado', null, array('placeholder' => 'Reprobado','class' => 'form-control','readonly')) !!}
+                    </div>
+                    <div class="form-group">
+                        <strong>Observación:</strong>
+                        {!! Form::text('desaprobacion', null, array('class' => 'form-control','readonly')) !!}
+                    </div>
+            @endif
+            <div class="form-group">
+                <strong>Archivo Justificación:</strong><br>
+                <img src="{{asset("$permiso_profesor->file")}}" alt="" style="width:50%;height:50%;">
+            </div>
 
         </div>
-        <div class="form-group">
-            <strong>Descripcion:</strong>
-            {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
-        </div>
-        <div class="form-group">
-            <strong>Observacion de la desaprobacion:</strong>
-            {!! Form::text('desaprobacion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
-        </div>
-    </div>
     {!! Form::close() !!}
 
 

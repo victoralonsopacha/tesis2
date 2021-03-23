@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class AtrasoController extends Controller
 {
-    //
+    //middleware Auth
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $cedula = auth()->user()->cedula;

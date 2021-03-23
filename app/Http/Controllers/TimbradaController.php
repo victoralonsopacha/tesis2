@@ -10,6 +10,12 @@ use App\Imports\TimbradaImport;
 
 class TimbradaController extends Controller
 {
+    //middleware Auth
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function importForm(){
         return view('import-form');
     }

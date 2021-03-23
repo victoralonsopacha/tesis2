@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//HOME
+
+
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 //REDIRECT INDEX
 Route::get('/', function () {
@@ -79,8 +80,7 @@ Route::group(['middleware' => ['role:Inspector']], function () {
     Route::post('/permisos', 'PermisoController@store')->name('permisos.store');
     //MOSTRAR
     Route::get('/permisos/{permiso}','PermisoController@show')->name('permisos.show');
-    Route::post('/permisos/find','PermisoController@find')->name('permisos.find');
-    Route::post('/permisos/findRequest','PermisoController@findRequest')->name('permisos.findRequest');
+    Route::post('/permisos/find','PermisoController@findRequest')->name('permisos.find');
     //JUSTIFICAR
     Route::get('/permisos/{permiso}/justificar','PermisoController@justificar')->name('permisos.justificar');
 
@@ -129,9 +129,9 @@ Route::get('/jornada/index','JornadaController@index')->name('jornada.index');
 Route::post('/jornada/buscar','JornadaController@buscar')->name('jornada.buscar');
 
 //RUTAS PARA VER TIMBRADAS
-ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
-ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
-Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2')->middleware('auth');
+ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index');
+ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular');
+Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2');
 
 
 
@@ -141,26 +141,26 @@ Route::get('/atrasos/index','AtrasoController@index')->name('atrasos.index');
 Route::post('/atrasos/buscar','AtrasoController@buscar')->name('atrasos.buscar');
 
 //RUTAS PARA CREAR HORARIOS
-Route::get('/horarios/index', 'HorarioController@index')->name('horarios.index')->middleware('auth');
-Route::get('/horarios/{user}/crear', 'HorarioController@create')->name('horarios.create')->middleware('auth');
-Route::get('/horarios/{user}/editar', 'HorarioController@edit')->name('horarios.edit')->middleware('auth');
-Route::get('/horarios/{user}','HorarioController@show')->name('horarios.show')->middleware('auth');
-Route::post('/horarios', 'HorarioController@store')->name('horarios.store')->middleware('auth');
-Route::patch('/horarios/{user}','HorarioController@update')->name('horarios.update')->middleware('auth');
+Route::get('/horarios/index', 'HorarioController@index')->name('horarios.index');
+Route::get('/horarios/{user}/crear', 'HorarioController@create')->name('horarios.create');
+Route::get('/horarios/{user}/editar', 'HorarioController@edit')->name('horarios.edit');
+Route::get('/horarios/{user}','HorarioController@show')->name('horarios.show');
+Route::post('/horarios', 'HorarioController@store')->name('horarios.store');
+Route::patch('/horarios/{user}','HorarioController@update')->name('horarios.update');
 
 //RUTAS PARA CALCULAR TIEMPOS Y CONTAR PERMISOS
-Route::get('/calculo_tiempos/index','ControlTiempoController@index')->name('calculo_tiempos.index')->middleware('auth');
-Route::get('/calculo_tiempos/{user}/calcular','ControlTiempoController@show')->name('calculo_tiempos.calcular')->middleware('auth');
-Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@suma_total_tiempo')->name('calculo_tiempos.total')->middleware('auth');
-Route::post('/calculo_tiempos/{user}/total2','ControlTiempoController@suma_total_tiempo')->name('calculo_tiempos.total2')->middleware('auth');
-Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_permisos')->name('calculo_tiempos.permisos')->middleware('auth');
+Route::get('/calculo_tiempos/index','ControlTiempoController@index')->name('calculo_tiempos.index');
+Route::get('/calculo_tiempos/{user}/calcular','ControlTiempoController@show')->name('calculo_tiempos.calcular');
+Route::get('/calculo_tiempos/{user}/total','ControlTiempoController@suma_total_tiempo')->name('calculo_tiempos.total');
+Route::post('/calculo_tiempos/{user}/total2','ControlTiempoController@suma_total_tiempo')->name('calculo_tiempos.total2');
+Route::get('/calculo_tiempos/{user}/permisos','ControlTiempoController@suma_permisos')->name('calculo_tiempos.permisos');
 
-Route::post('/calculo_tiempos/exportar','ControlTiempoController@exportPdf')->name('calculo_tiempos.exportPdf')->middleware('auth');
+Route::post('/calculo_tiempos/exportar','ControlTiempoController@exportPdf')->name('calculo_tiempos.exportPdf');
 
 
 
 //RUTA PARA BUSCADOR EN PERMISOS
-Route::post('/calculo_tiempos/index','BuscadorController@index')->name('calculo_tiempos.index')->middleware('auth');
+Route::post('/calculo_tiempos/index','BuscadorController@index')->name('calculo_tiempos.index');
 
 
 //RUTAS PARA CREAR Y ALMACENAR EL TIEMPO A REPONER
@@ -179,15 +179,15 @@ ROUTE::patch('/tiempo_reposicions/{reposicion}/desactive', 'TiempoReposicionCont
 
 
 //RUTAS PARA VER TIMBRADAS BIOMETRICO
-ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index')->middleware('auth');
-ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular')->middleware('auth');
-Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2')->middleware('auth');
+ROUTE::get('/consolidado_individual/index', 'ConsolidadoIndividualController@index')->name('consolidado_individual.index');
+ROUTE::get('/consolidado_individual/{user}/calcular', 'ConsolidadoIndividualController@show')->name('consolidado_individual.calcular');
+Route::post('/consolidado_individual/{user}/total2','ConsolidadoIndividualController@exportPdf')->name('consolidado_individual.total2');
 
 //RUTAS PARA VER TIMBRADAS PERMISOS
 //RUTAS PARA VER TIMBRADAS
-ROUTE::get('/consolidado_permisos/index', 'ConsolidadoPermisoController@index')->name('consolidado_permisos.index')->middleware('auth');
-ROUTE::get('/consolidado_permisos/{user}/calcular', 'ConsolidadoPermisoController@show')->name('consolidado_permisos.calcular')->middleware('auth');
-Route::post('/consolidado_permisos/{user}/total2','ConsolidadoPermisoController@exportPdf2')->name('consolidado_permisos.total2')->middleware('auth');
+ROUTE::get('/consolidado_permisos/index', 'ConsolidadoPermisoController@index')->name('consolidado_permisos.index');
+ROUTE::get('/consolidado_permisos/{user}/calcular', 'ConsolidadoPermisoController@show')->name('consolidado_permisos.calcular');
+Route::post('/consolidado_permisos/{user}/total2','ConsolidadoPermisoController@exportPdf2')->name('consolidado_permisos.total2');
 
 
 //DASHBOARD ADMIN
@@ -197,3 +197,6 @@ Route::get('/dashboard/admin','AdminController@dashboard')->name('dashboard.admi
 Route::get('/consolidado_individual/exportPdf', 'ConsolidadoIndividualController@exportExcel')->name('consolidado_individual.exportPdf');
 Route::get('/consolidado_permisos/exportPdf2', 'ConsolidadoIndividualController@exportPdf2')->name('consolidado_permisos.exportPdf2');
 
+//EXPORTAR IMG
+Route::get('/image', 'ImageController@index');
+Route::post('dropzone/store', 'ImageController@dropzoneStore')->name('dropzone.store');

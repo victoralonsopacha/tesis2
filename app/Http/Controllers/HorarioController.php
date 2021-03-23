@@ -18,13 +18,11 @@ class HorarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //middleware Auth
     function __construct()
     {
         $this->middleware('auth');
     }
-
-
-
 
     public function index(User $user)
     {
@@ -85,7 +83,7 @@ class HorarioController extends Controller
     public function edit(User $user)
 
     {
-        $ced_usuario = $user->cedula; 
+        $ced_usuario = $user->cedula;
         //$consulta = array();
        $consulta= DB::select('SELECT cedula,name,last_name,cargo,hora_entrada,hora_salida,tipo FROM horarios, users Where cedula ='.$ced_usuario.' AND id_usuario = '.$ced_usuario.'');
         return view('horarios.edit', $consulta);

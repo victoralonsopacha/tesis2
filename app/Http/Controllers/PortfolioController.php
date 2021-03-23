@@ -11,13 +11,19 @@ class PortfolioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //middleware Auth
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $portfolio = [
             ['title' => 'Proyecto 1'],
             ['title' => 'Proyecto 2'],
             ['title' => 'Proyecto 3'],
-            ['title' => 'Proyecto 4'], 
+            ['title' => 'Proyecto 4'],
         ];
         return view('portfolio', compact('portfolio'));
     }

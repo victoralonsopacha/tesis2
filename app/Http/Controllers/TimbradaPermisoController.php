@@ -19,10 +19,12 @@ class TimbradaPermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //middleware Auth
     function __construct()
     {
         $this->middleware('auth');
     }
+
     public function index(Request $request)
     {
         if($request){
@@ -62,7 +64,6 @@ class TimbradaPermisoController extends Controller
                     ->orderBy('id','asc')
                     ->get();
             }
-
             return view('timbrada_permisos.index',
                 ['usersl'=>$usersl, 'roles'=>$roles, 'rolesl'=>$rolesl]);
         }
@@ -113,8 +114,6 @@ class TimbradaPermisoController extends Controller
             ->where('fecha','=',$fecha)
             ->where('tipo_permiso','=',$tipo_permiso)
             ->count();
-        Log::info('Controlador Timbrada');
-        Log::info($validate_timbrada);
 
         if($validate_timbrada == 0){
             TimbradaPermiso::create($permiso);
@@ -123,12 +122,6 @@ class TimbradaPermisoController extends Controller
         else{
             return redirect()->route('timbrada_permisos.index')->with('error', 'Usted NO ha timbrado con exito');
         }
-
-
-
-
-
-
     }
 
     /**

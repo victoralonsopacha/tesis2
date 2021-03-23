@@ -16,6 +16,12 @@ class ConsolidadoPermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //middleware Auth
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         if($request){

@@ -8,8 +8,14 @@ use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
+    //middleware Auth
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(){
-        
+
         $message = request()->validate([
             'name' => 'required',
             'email' => 'required|email',

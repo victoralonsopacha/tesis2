@@ -74,7 +74,13 @@
             <li><a href="{{ route('profile.profesor') }}"><i class='fa fa-user'></i> <span>Perfil</span></a></li>
             <li><a href="{{ route('jornada.index') }}"><i class='fa fa-clock-o'></i> <span>Jornada</span></a></li>
             <li><a href="{{ route('atrasos.index') }}"><i class='fa fa-cogs'></i> <span>Atrasos</span></a></li>
-            <li><a href="{{ route('tiempo_reposicions.create') }}"><i class='fa fa-clock-o'></i> <span>Reponer Horas</span></a></li>
+            <li class="treeview">
+                <a href="#"><span><i class='fa fa-clock-o'></i></span> Reponer Horas</a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('tiempo_reposicions.create') }}"><span>Crear Reposición</span></a></li>
+                    <li><a href="{{ route('permiso_profesors.shows') }}">Ver Permisos</a></li>
+                </ul>
+            </li>
             <li class="treeview">
                 <a href="#"><span><i class='fa fa-file-o'></i> <span> Permisos</span></span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

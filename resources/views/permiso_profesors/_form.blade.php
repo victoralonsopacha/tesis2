@@ -1,6 +1,5 @@
 <div class="col-xs-6 col-sm-6 col-md-6">
     @foreach($usuario as $itemUsuario)
-
         <div class="form-group">
             <strong>Cedula :</strong>
             <input type="text" class="form-control" name="cedula" value="{{ old('cedula', $itemUsuario->cedula) }}" readonly>
@@ -42,8 +41,10 @@
         <strong>Descripcion:</strong>
         {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control')) !!}
     </div>
-    <!--<div class="form-group">
+
+    <div class="form-group">
         <strong>Adjuntar Justificacion:</strong>
-        {!! Form::file('file', null, array('class' => 'form-control'))!!}
-    </div>-->
+        <input type="file" class="form-control" name="file" id="file" >
+    </div>
+
 </div>
