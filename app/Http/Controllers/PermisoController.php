@@ -10,6 +10,7 @@ use App\Models\PermisoProfesor;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\SavePermisoRequet;
+use Illuminate\Support\Facades\Storage;
 
 class PermisoController extends Controller
 {
@@ -109,6 +110,8 @@ class PermisoController extends Controller
             //'user' => User::findOrFail($id)
         ]);
     }
+
+
     public function edit(PermisoProfesor $permiso)
     {
         return view('permisos.edit',
@@ -121,8 +124,14 @@ class PermisoController extends Controller
             "1" => "Aprobado",
             "2" => "Reprobado",
         );
+
         return view('permisos.justificar',
-            ['permiso' => $permiso,'estado'=>$estado]);
+          ['permiso' => $permiso,'estado'=>$estado]);
+    }
+
+    public function downloadFile(){
+
+
     }
 
     /**

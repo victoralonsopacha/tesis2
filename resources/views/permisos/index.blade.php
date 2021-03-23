@@ -68,7 +68,7 @@
                     @else($permisoItem->estado == '0')
                         <td><span class="label label-danger">Pendiente</span></td>
                         <td>
-                            <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </td>
                     @endif
                 </tr>
