@@ -1,5 +1,5 @@
     <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
+        <label for="staticEmail" class="col-sm-2 col-form-label">Cédula del usuario</label>
         <div class="col-sm-6">
             <input type="text" class="form-control" name="cedula" value="{{ old('cedula', $permiso->cedula) }}">
         </div>

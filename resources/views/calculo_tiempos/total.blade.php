@@ -2,7 +2,7 @@
 
 @section('htmlheader_title')
     {{ trans('adminlte_lang::message.home') }}
-    <h1>HORAS TOTALES</h1>
+    <h1>Horas Totales</h1>
 @endsection
 
 
@@ -13,17 +13,17 @@
     </div>
     <br><br>
     @if(empty($consulta2))
-        <div class="alert alert-success alert-dismissible text-center" role="alert">
-            <p>No existe informacion para timbrada diarias</p>
+        <div class="alert alert-warning alert-dismissible text-center" role="alert">
+            <p>No existe información para timbradas diarias, verificar la carga del archivo desde el biométrico</p>
         </div>
     @endif
 
     <div class="row">
     <div class="col-sm-6">
-        <h1>HORAS TOTALES</h1>
+        <h1>Horas Totales</h1>
         @foreach ($consulta2 as $itemconsulta2)
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">Cedula</label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Cédula</label>
                 <div class="col-sm-6">
                     <input id="cedula" type="hidden" class="form-control" name="date" value="{{$itemconsulta2->cedula }}">
                     <label for="staticEmail" class="col-sm-5 col-form-label">{{ $itemconsulta2->cedula }}</label>
@@ -49,7 +49,7 @@
 
         @foreach ($consulta as $itemconsulta2)
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">HORAS TOTALES TRABAJADAS</label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Horas Totales Trabajadas</label>
                 <div class="col-sm-6">
                     <input id="horas_total_trabajados" type="input" class="form-control" name="date" value="{{$itemconsulta2->tiempo_trabajado}}" readonly>
                 </div>
@@ -59,7 +59,7 @@
 
         @foreach ($consulta4 as $itemconsulta4)
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">DIAS TOTALES TRABAJADOS</label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Días Totales Trabajados</label>
                 <div class="col-sm-6">
                     <input id="dias_total_trabajados" type="input" class="form-control" name="date" value="{{$itemconsulta4->num_dias}} DIAS" readonly>
                 </div>
@@ -69,7 +69,7 @@
 
         @foreach ($consulta3 as $itemconsulta3)
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">ATRASOS</label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Atrasos</label>
                 <div class="col-sm-6">
                     <input id="atrasos" type="input" class="form-control" name="date" value="{{$itemconsulta3->retraso_trabajado}}" readonly>
                 </div>
@@ -79,9 +79,9 @@
     </div><!--col-sm-6-->
 
     <div class="col-sm-6">
-          <h1>PERMISOS TOTALES</h1>
+          <h1>Permisos Totales</h1>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-5 col-form-label">HORAS TOTALES DE PERMISOS</label>
+            <label for="staticEmail" class="col-sm-5 col-form-label">Horas Totales de Permisos</label>
             <div class="col-sm-6">
                 @foreach ($consulta7 as $itemconsulta7)
                     <input id="total_permisos" type="input" class="form-control" name="date" value="{{$itemconsulta7->tiempo_permiso}}" readonly>
@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-5 col-form-label">CANTIDAD DE PERMISOS SOLICITADOS</label>
+            <label for="staticEmail" class="col-sm-5 col-form-label">Cantidad de Permisos Solicitados</label>
             <div class="col-sm-6">
                 @foreach ($consulta8 as $itemconsulta8)
                     <input id="permisos_solicitados" type="input" class="form-control" name="date" value="{{$itemconsulta8->cantidad_permisos}}" readonly>
@@ -97,7 +97,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS APROBADOS</label>
+            <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Aprobados</label>
             <div class="col-sm-6">
                 @if($consulta5)
                     @foreach ($consulta5 as $itemconsulta5)
@@ -109,7 +109,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS DESAPROBADOS</label>
+            <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Rechazados</label>
             <div class="col-sm-6">
                 @if($consulta6)
                     @foreach ($consulta6 as $itemconsulta6)
@@ -122,7 +122,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-5 col-form-label">PERMISOS PENDIENTES</label>
+            <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Pendientes</label>
             <div class="col-sm-6">
                 @if($consulta9)
                     @foreach ($consulta9 as $itemconsulta9)
@@ -134,7 +134,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-5 col-form-label">TIEMPO DE REPOSICION</label>
+            <label for="staticEmail" class="col-sm-5 col-form-label">Tiempo de Reposición</label>
             <div class="col-sm-6">
                 @if($reposicion)
                     @foreach ($reposicion as $itemreposicion)
@@ -163,7 +163,7 @@
             <input id="pdfpendientes" type="hidden" class="form-control" name="pdfpendientes" value="" >
             <input id="pdfreposicion" type="hidden" class="form-control" name="pdfreposicion" value="" >
 
-            <button class="btn btn-danger" type="submit">DESCARGAR
+            <button class="btn btn-danger" type="submit">Descargar
                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
             </button>
         </form>

@@ -7,7 +7,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h4>En este módulo puede observar los dias que el profesor a escogido para reponer sus atrasos</h4>
+    <h4>En este módulo puede observar los días que el profesor a escogido para reponer sus atrasos</h4>
     <br>
         <div class="pull-right">
             <form class="form-inline my-2 my-lg-0 float-right">
@@ -35,9 +35,9 @@
                         <tr>
                             <th>Nr.</th>
                             <th>Nombres y Apellidos</th>
-                            <th>Cedula</th>
+                            <th>Cédula</th>
                             <th>Cargo</th>
-                            <th>Accion</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>

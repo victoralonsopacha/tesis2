@@ -8,7 +8,7 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading text-center"><b>TIMBRADAS PERMISOS</b></div>
+            <div class="panel-heading text-center"><b>Timbradas de Permisos</b></div>
         </div>
         <div class="pull-left">
             <a class="btn btn-primary" href="{{ route('consolidado_permisos.index') }}">Regresar</a>
@@ -16,23 +16,23 @@
         <br><br><br>
         @include('partials.validationError')
         <div class="text-center">
-            <h3><b>USUARIO</b></h3>
+            <h3><b>Usuario</b></h3>
             <h4>
-                <p>Nombres y Apellidos:{{ ' '.$user->name.' '.$user->last_name }}</p>
-                <p>Cedula:{{ ' '.$user->cedula }}</p>
+                <p>Nombre y Apellido:{{ ' '.$user->name.' '.$user->last_name }}</p>
+                <p>Cédula:{{ ' '.$user->cedula }}</p>
             </h4>
         </div>
         <br>
         <form  method="POST"  id="formulariofecha" action="{{ route('consolidado_permisos.total2', $user) }}" class="form-inline text-center">
             @csrf
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">INICIO</label>
+                <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Inicio:</label>
                 <div class="col-sm-9">
                     <input type="date" class="form-control" id='fecha_inicio' name="fecha_inicio" value="'fecha_inicio'">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">FIN</label>
+                <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Fin:</label>
                 <div class="col-sm-9">
                     <input type="date" class="form-control" id='fecha_fin' name="fecha_fin" value="'fecha_fin'">
                     <input type="hidden" class="form-control" id='formato' name="formato" value=""  >

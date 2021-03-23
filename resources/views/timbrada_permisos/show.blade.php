@@ -27,11 +27,11 @@
                     <thead>
                     <tr>
                         <th>Nr.</th>
-                        <th>Cedula</th>
+                        <th>Cédula</th>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Tipo Permiso</th>
-                        <th>Descripcion</th>
+                        <th>Descripción</th>
                     </tr>
                     </thead>
                     <tbody>

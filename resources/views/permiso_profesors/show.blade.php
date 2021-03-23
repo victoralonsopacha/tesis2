@@ -38,6 +38,7 @@
                 {!! Form::text('tipo_permiso', null, array('class' => 'form-control','readonly')) !!}
             </div>
         </div>
+
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>Justificación:</strong>
@@ -64,6 +65,14 @@
                 <strong>Archivo Justificación:</strong><br>
                 <img src="{{asset("$permiso_profesor->file")}}" alt="" style="width:50%;height:50%;">
             </div>
+
+        <div class="form-group">
+            <strong>Descripción:</strong>
+            {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
+        </div>
+        <div class="form-group">
+            <strong>Observación de la desaprobación:</strong>
+            {!! Form::text('desaprobacion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
 
         </div>
     {!! Form::close() !!}

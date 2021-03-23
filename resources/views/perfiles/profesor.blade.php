@@ -7,7 +7,7 @@
 @section('main-content')
     <div class="container-fluid">
     <div class="panel panel-primary">
-        <div class="panel-heading text-center">Mi Informacion</div>
+        <div class="panel-heading text-center">Mi Información</div>
     </div>
         @include('partials.validationMessage')
         {!! Form::model($user, ['method' => 'POST','route' => ['profesor.edit', $user->id]]) !!}
@@ -23,11 +23,11 @@
                     <td><label class="col-md-6">{!! auth()->user()->email !!}</label></td>
                 </tr>
                 <tr>
-                    <td><label class="col-md-6">Cedula:</label></td>
+                    <td><label class="col-md-6">Cédula:</label></td>
                     <td><label class="col-md-6">{!! auth()->user()->cedula !!}</label></td>
                 </tr>
                 <tr>
-                    <td><label class="col-md-6">Relacion Laboral:</label></td>
+                    <td><label class="col-md-6">Relación Laboral:</label></td>
                     <td><label class="col-md-6">{!! auth()->user()->tipo_relacion_laboral !!}</label></td>
                 </tr>
                 <tr>

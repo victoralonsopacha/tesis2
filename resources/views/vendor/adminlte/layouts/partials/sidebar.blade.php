@@ -18,20 +18,11 @@
             </div>
         @endif
 
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-        </form>
-        <!-- /.search form -->
+        
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
+            
             <!-- Optionally, you can add icons to the links -->
             @hasrole('Admin')
             <li><a href="{{ route('home') }}"><i class=''></i> <span>Inicio</span></a></li>
@@ -42,8 +33,8 @@
                     <li><a href="{{ route('users.activos') }}">Ver Usuarios</a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('import-form') }}"><i class='fa fa-upload'></i> <span>Importar datos biometrico</span></a></li>
-            <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Biometrico</span></a></li>
+            <li><a href="{{ route('import-form') }}"><i class='fa fa-upload'></i> <span>Importar datos biométrico</span></a></li>
+            <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Biométrico</span></a></li>
             <li><a href="{{route('consolidado_permisos.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Permisos</span></a></li>
             <!--
             <li class="treeview">
@@ -59,14 +50,14 @@
             <li><a href="{{ route('profile.inspector') }}"><i class='fa fa-user-circle'></i> <span>Perfil</span></a></li>
             <li><a href="{{ route('calculo_tiempos.index') }}"><i class='fa fa-users'></i> <span>Calcular horas y permisos</span></a></li>
             <li class="treeview">
-                <a href="#"><span><i class="fa fa-list-alt" aria-hidden="true"></i> Permisos</span></a>
+                <a href="#"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Permisos</span></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('permisos.index') }}">Todos</a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('timbrada_permisos.index') }}"><i class='fa fa-bell-o'></i> <span>Timbrar Permisos</span></a></li>
-            <li><a href="{{ route('tiempo_reposicions.index_inspector') }}"><span><i class='fa fa-clock-o'> Dias Reposicion</i></span></a></li>
-            <li><a href="{{route('consolidado_individual.index')}}"><i class="fa fa-download" aria-hidden="true"></i><span>Timbradas Biometrico</span></a></li>
+            <li><a href="{{ route('timbrada_permisos.index') }}"><i class='fa fa-bell-o'></i><span>Timbrar Permisos</span></a></li>
+            <li><a href="{{ route('tiempo_reposicions.index_inspector') }}"><i class='fa fa-clock-o'></i><span>Días Reposición</span></a></li>
+            <li><a href="{{route('consolidado_individual.index')}}"><i class="fa fa-download" aria-hidden="true"></i><span>Timbradas Biométrico</span></a></li>
             <li><a href="{{route('consolidado_permisos.index')}}"><i class="fa fa-download" aria-hidden="true"></i><span>Timbradas Permisos</span></a></li>
 
             @endhasrole

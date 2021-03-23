@@ -8,7 +8,7 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading text-center"><b>DIAS DE REPOSICION</b></div>
+            <div class="panel-heading text-center"><b>Dias de Reposicion</b></div>
         </div>
         <div class="row">
             <div class="col-lg-12 margin-tb">
