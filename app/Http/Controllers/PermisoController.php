@@ -34,8 +34,9 @@ class PermisoController extends Controller
             "2" => "Reprobado",
         );
         $permisosl=PermisoProfesor::orderBy('id','desc')->paginate(10);
-
-        return view('permisos.index', ['permisosl'=>$permisosl,'estado'=>$estado]);
+        $users=User::get();
+        return view('permisos.index',
+            ['permisosl'=>$permisosl,'users'=>$users,'estado'=>$estado]);
     }
 
     //METODO FIND
@@ -47,6 +48,8 @@ class PermisoController extends Controller
             "1" => "Aprobado",
             "2" => "Reprobado",
         );
+        $users=User::get();
+
         $cedula=trim($request->input('buscador'));
         $state=implode($request->input('estado'));
         if($cedula != ''){
@@ -63,7 +66,7 @@ class PermisoController extends Controller
         if($cedula == '' && $state == ''){
             $permisosl=PermisoProfesor::orderBy('id','desc')->paginate(10);
         }
-        return view('permisos.index', ['permisosl'=>$permisosl,'estado'=>$estado]);
+        return view('permisos.index', ['permisosl'=>$permisosl,'users'=>$users,'estado'=>$estado]);
     }
 
 
@@ -124,9 +127,11 @@ class PermisoController extends Controller
             "1" => "Aprobado",
             "2" => "Reprobado",
         );
+        $cedula=$permiso->cedula;
+        $usuario=User::where('cedula','=',$cedula)->get();
 
         return view('permisos.justificar',
-          ['permiso' => $permiso,'estado'=>$estado]);
+            compact('estado','usuario','permiso'));
     }
 
     public function downloadFile(){

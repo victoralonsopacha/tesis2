@@ -10,46 +10,47 @@
         <div class="panel-heading text-center">Solicitar Reposición de Atraso</div>
     </div>
         @include('partials.validationMessage')
-    @include('partials.validation-errors')
-    <form method="POST" action="{{ route('tiempo_reposicions.store') }}">
-        @csrf
+        @include('partials.validation-errors')
+        <form method="POST" action="{{ route('tiempo_reposicions.store') }}">
+            @csrf
 
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Cédula del usuario</label>
-            <div class="col-sm-2">
-                <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}" readonly>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Cédula del usuario</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}" readonly>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre del usuario</label>
-            <div class="col-sm-2">
-                <input type="text" class="form-control" name="nombre" value="{{$cedula=auth()->user()->name}}" readonly>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Nombre del usuario</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="nombre" value="{{$cedula=auth()->user()->name}}" readonly>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Apellido del usuario</label>
-            <div class="col-sm-2">
-                <input type="text" class="form-control" name="apellido" value="{{$cedula=auth()->user()->last_name}}" readonly>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Apellido del usuario</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="apellido" value="{{$cedula=auth()->user()->last_name}}" readonly>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad de Tiempo</label>
-            <div class="col-sm-2">
-                <input type="time" class="form-control" name="horas" value="{{old('horas', $tiempo_reposicions->horas)}}">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad de Tiempo</label>
+                <div class="col-sm-2">
+                    <input type="time" class="form-control" name="horas" value="{{old('horas', $tiempo_reposicions->horas)}}">
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Día que desea reponer</label>
-            <div class="col-sm-2">
-                <input type="date" class="form-control" name="fecha" value="{{old('fecha', $tiempo_reposicions->fecha)}}">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Día que desea reponer</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="fecha" value="{{old('fecha', $tiempo_reposicions->fecha)}}">
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <button type="submit" class="btn btn-success">Solicitar</button>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-success">Solicitar</button>
+                </div>
             </div>
-        </div>
-    </form>
-    </div><!--div container-fluid-->
+        </form>
+
+    </div><!--/.container-fluid-->
 
 @endsection

@@ -50,28 +50,32 @@
                 $i=1;
             @endphp
             @foreach($permisosl as $permisoItem)
-                <tr>
-                    <td>{!! $i++ !!}</td>
-                    <td>{!! $permisoItem->name.' '.$permisoItem->last_name!!}</td>
-                    <td>{!! $permisoItem->cedula !!}</td>
-                    <td>{!! $permisoItem->fecha_inicio!!}</td>
-                    <td>{!! $permisoItem->hora_inicio !!}</td>
-                    <td>{!! $permisoItem->fecha_fin!!}</td>
-                    <td>{!! $permisoItem->hora_fin !!}</td>
-                    @if($permisoItem->estado == 1)
-                        <td><span class="label label-success">Aprobado</span></td>
-                    @elseif($permisoItem->estado == 2)
-                        <td><span class="label label-warning">Reprobado</span></td>
-                        <td>
-                            <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        </td>
-                    @else($permisoItem->estado == '0')
-                        <td><span class="label label-danger">Pendiente</span></td>
-                        <td>
-                            <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        </td>
+                @foreach($users as $user)
+                    @if($permisoItem->cedula == $user->cedula)
+                    <tr>
+                        <td>{!! $i++ !!}</td>
+                        <td>{!! $user->name.' '.$user->last_name !!}</td>
+                        <td>{!! $permisoItem->cedula !!}</td>
+                        <td>{!! $permisoItem->fecha_inicio!!}</td>
+                        <td>{!! $permisoItem->hora_inicio !!}</td>
+                        <td>{!! $permisoItem->fecha_fin!!}</td>
+                        <td>{!! $permisoItem->hora_fin !!}</td>
+                        @if($permisoItem->estado == 1)
+                            <td><span class="label label-success">Aprobado</span></td>
+                        @elseif($permisoItem->estado == 2)
+                            <td><span class="label label-warning">Reprobado</span></td>
+                            <td>
+                                <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            </td>
+                        @else($permisoItem->estado == '0')
+                            <td><span class="label label-danger">Pendiente</span></td>
+                            <td>
+                                <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            </td>
+                        @endif
+                    </tr>
                     @endif
-                </tr>
+                @endforeach
             @endforeach
             </tbody><!--/.table-->
         </table><!--/.table-->

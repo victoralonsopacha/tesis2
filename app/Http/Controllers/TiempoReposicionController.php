@@ -41,6 +41,16 @@ class TiempoReposicionController extends Controller
         return view('tiempo_reposicions.index', ['tiempos'=>$tiempos]);
     }
 
+    //Perfil Profesor Show
+    public function shows(Request $request)
+    {
+        $cedula = auth()->user()->cedula;
+        $tiempos = TiempoReposicion::where('cedula', '=',$cedula)
+            ->orderBy('id','desc')->paginate(10);
+
+        return view('tiempo_reposicions.shows', ['tiempos'=>$tiempos]);
+    }
+
     public function index_inspector(Request $request)
     {
         if($request){
@@ -88,7 +98,9 @@ class TiempoReposicionController extends Controller
     public function ver_dias(User $user, TiempoReposicion $tiempo_reposicion){
 
         $ced_usuario=$user->cedula;
-        $consulta = DB::select('SELECT * FROM tiempo_reposicions t WHERE t.cedula LIKE  "'.$ced_usuario.'"');
+        $consulta = TiempoReposicion::where('cedula','=',$ced_usuario)
+            ->orderBy('id','desc')
+            ->paginate(10);
         //$consulta2 = DB::select('SELECT * FROM usuers s WHERE s.cedula LIKE  "'.$ced_usuario.'"');
 
         return (view('tiempo_reposicions.ver_dias', ['consulta' => $consulta,'user'=>$user]));
@@ -116,8 +128,12 @@ class TiempoReposicionController extends Controller
      */
     public function store(TiempoReposicion $tiempo_reposicion,Request $request)
     {
+        $this->validate($request, [
+            'horas' => 'required',
+            'fecha' => 'required',
+        ]);
         $tiempo=$request->all();
-        $tiempo['estado']='1';
+        $tiempo['estado']='0';
         TiempoReposicion::create($tiempo);
         return redirect()->route('tiempo_reposicions.create',$tiempo)
             ->with('message','Su solicitud ha sido procesada con exito');

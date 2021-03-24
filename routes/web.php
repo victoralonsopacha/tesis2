@@ -111,7 +111,7 @@ Route::group(['middleware' => ['role:Profesor']], function () {
     Route::get('/permiso_profesors/crear','PermisoProfesorController@create')->name('permiso_profesors.create');
     Route::get('/permiso_profesors/{permiso_profesor}/editar','PermisoProfesorController@edit')->name('permiso_profesors.edit');
     Route::get('/permiso_profesors/{permiso_profesor}/eliminar','PermisoProfesorController@destroy')->name('permiso_profesors.destroy');
-    Route::patch('/permiso_profesors/{permiso_profesor}','PermisoProfesorController@update')->name('permiso_profesors.update');
+    Route::patch('/permiso_profesors/{permiso_profesor}/update','PermisoProfesorController@update')->name('permiso_profesors.update');
     //GUARDAR
     Route::post('/permiso_profesors', 'PermisoProfesorController@store')->name('permiso_profesors.store');
     //MOSTRAR
@@ -168,6 +168,7 @@ Route::post('/calculo_tiempos/index','BuscadorController@index')->name('calculo_
 Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector');
 Route::get('/tiempo_reposicions/create', 'TiempoReposicionController@create')->name('tiempo_reposicions.create');
 Route::post('/tiempo_reposicions', 'TiempoReposicionController@store')->name('tiempo_reposicions.store');
+Route::get('/tiempo_reposicions/shows', 'TiempoReposicionController@shows')->name('tiempo_reposicions.shows');
 
 Route::get('/tiempo_reposicions/index', 'TiempoReposicionController@index')->name('tiempo_reposicions.index');
 Route::get('/tiempo_reposicions/index_inspector', 'TiempoReposicionController@index_inspector')->name('tiempo_reposicions.index_inspector');

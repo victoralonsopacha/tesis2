@@ -37,13 +37,6 @@
                 <strong>Tipo Permiso:</strong>
                 {!! Form::text('tipo_permiso', null, array('class' => 'form-control','readonly')) !!}
             </div>
-        </div>
-
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="form-group">
-                <strong>Justificación:</strong>
-                {!! Form::text('descripcion', null, array('class' => 'form-control','readonly')) !!}
-            </div>
             @if($permiso_profesor->estado == 1)
                 <div class="form-group">
                     <strong>Estado:</strong>
@@ -52,29 +45,27 @@
             @endif
 
             @if($permiso_profesor->estado == 2)
-                    <div class="form-group">
-                        <strong>Estado:</strong>
-                        {!! Form::text('Aprobado', null, array('placeholder' => 'Reprobado','class' => 'form-control','readonly')) !!}
-                    </div>
-                    <div class="form-group">
-                        <strong>Observación:</strong>
-                        {!! Form::text('desaprobacion', null, array('class' => 'form-control','readonly')) !!}
-                    </div>
+                <div class="form-group">
+                    <strong>Estado:</strong>
+                    {!! Form::text('Aprobado', null, array('placeholder' => 'Reprobado','class' => 'form-control','readonly')) !!}
+                </div>
+                <div class="form-group">
+                    <strong>Observación:</strong>
+                    {!! Form::text('desaprobacion', null, array('class' => 'form-control','readonly')) !!}
+                </div>
             @endif
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <strong>Justificación:</strong>
+                {!! Form::text('descripcion', null, array('class' => 'form-control','readonly')) !!}
+            </div>
             <div class="form-group">
                 <strong>Archivo Justificación:</strong><br>
-                <img src="{{asset("$permiso_profesor->file")}}" alt="" style="width:50%;height:50%;">
+                <img src="{{asset("$permiso_profesor->file")}}" alt="" style="width:250px;height:250px;">
             </div>
 
-        <div class="form-group">
-            <strong>Descripción:</strong>
-            {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
-        </div>
-        <div class="form-group">
-            <strong>Observación de la desaprobación:</strong>
-            {!! Form::text('desaprobacion', null, array('placeholder' => 'Descripcion','class' => 'form-control','readonly')) !!}
-
-        </div>
     {!! Form::close() !!}
 
 

@@ -74,7 +74,7 @@
                     @if($permiso->estado == '0')
                     <td><span class="label label-danger">Pendiente</span></td>
                         <td>
-                            <a href="{{ route('permiso_profesors.edit', $permiso) }}" class="btn btn-xs btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a href="{{ route('permiso_profesors.edit', $permiso->id) }}" class="btn btn-xs btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </td>
                     @elseif($permiso->estado == '1')
                         <td><span class="label label-success">Aprobado</span></td>
@@ -82,7 +82,7 @@
                             <a href="{{ route('permiso_profesors.show', $permiso) }}" class="btn btn-xs btn-success"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </td>
                     @elseif($permiso->estado == '2')
-                        <td><span class="label label-info">Rechazado</span></td>
+                        <td><span class="label label-info">Reprobado</span></td>
                         <td>
                             <a href="{{ route('permiso_profesors.show', $permiso) }}" class="btn btn-xs btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </td>

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\SavePermisoProfesorRequest;
 use App\Http\Requests\CreatePermisoProfesorRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Events\PermisoEvent;
 use App\Notifications\PermisosNotification;
@@ -83,11 +84,9 @@ class PermisoProfesorController extends Controller
      */
     public function store(CreatePermisoProfesorRequest $request)
     {
-        $request->validated();
+        //$request->validated();
         $permiso=$request->all();
         $permiso['cedula']=auth()->user()->cedula;
-        $permiso['name'];
-        $permiso['last_name'];
         $permiso['tipo_permiso']=implode($request['tipo_permiso']);
         $permiso['estado']='0';
 
@@ -99,7 +98,6 @@ class PermisoProfesorController extends Controller
             $path=$destination.$name;
             $permiso['file']=$path;
         }
-
         PermisoProfesor::create($permiso);
         return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
     }
@@ -188,8 +186,11 @@ class PermisoProfesorController extends Controller
             "Calamidad Domestrica" => "Calamidad Domestrica",
             "Otro" => "Otro",
         );
+        $cedula=auth()->user()->cedula;
+        $usuario=DB::select('SELECT u.cedula, u.name, u.last_name FROM users u WHERE u.cedula = "'.$cedula.'"');
+
         return view('permiso_profesors.edit',
-            ['permiso_profesor' => $permiso_profesor,'tipo_permiso'=>$tipo_permiso]);
+            ['permiso_profesor' => $permiso_profesor,'tipo_permiso'=>$tipo_permiso, 'usuario'=>$usuario]);
     }
 
     /**
@@ -199,22 +200,31 @@ class PermisoProfesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PermisoProfesor $permiso_profesor, SavePermisoProfesorRequest $request)
+    public function update(PermisoProfesor $permiso_profesor, Request $request)
     {
-        $request->validated();
+        //$request->validated();
         $entrada=$request->all();
-        $entrada['tipo_permiso']=implode($request['tipo_permiso']);
-        if($archivo=$request->file('file')){
-            $nombre_imagen=$archivo->getClientOriginalName();
-            $archivo->move('public',$nombre_imagen);
-            $entrada['file']=$nombre_imagen;
+        $entrada['tipo_permiso']=implode($request->tipo_permiso);
+        Log::info($request->all());
+
+        if($request->hasFile('file')){
+            $file=$request->file('file');
+            $name=time().'-'.$file->getClientOriginalName();
+            $destination='storage/permissions/';
+            $url=$request->file('file')->move($destination,$name);
+            $path=$destination.$name;
+            $entrada['file']=$path;
+            Log::info('si archivo');
+
+        }else{
+            $entrada['file']=$permiso_profesor->file;
+            Log::info('no archivo');
+
         }
-        //VALIDACION PENDIENTE DEBIDO A QUE ES NECESARIO GUARDAR LA IMAGEN
         $permiso_profesor->update($entrada);
 
+        return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue actualizado con exito');
 
-        return view('permiso_profesors.show',
-            ['permiso_profesor' => $permiso_profesor]);
 
     }
 

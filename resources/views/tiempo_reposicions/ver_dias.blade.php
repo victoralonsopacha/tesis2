@@ -68,12 +68,11 @@
                         @endif
 
                 </tbody>
-
-
-
             @endforeach
-
         </table>
+            <nav aria-label="..." class="text-center">
+                {{$consulta->links()}}
+            </nav>
         </div><!--/.panel-default-->
     </div><!--/.container-fluid-->
 
