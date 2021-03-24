@@ -52,18 +52,22 @@
                     </div>
                 </div><!--/.col-xs-6-->
                 <div class="col-md-6 col-sm-6 col-6">
+
                     <div class="form-group">
                         <strong>Seleccionar:</strong>
                         {!! Form::select('estado[]',$estado, null,['class' => 'form-control']); !!}
                     </div>
+                    
                     <div class="form-group">
                         <strong>Observación:</strong>
                         <input type="text" class="form-control" name="desaprobacion" value="{{old('desaprobacion', $permiso->desaprobacion)}}" >
                     </div>
-                    <div class="form-group">
-                        <strong>Archivo Justificación:</strong><br>
-                        <img src="{{asset("$permiso->file")}}" alt="" style="width:250px;height:250px;">
-                    </div>
+                    @if($permiso->file != '')
+                        <div class="form-group">
+                            <strong>Archivo Justificación:</strong><br>
+                            <img src="{{asset("$permiso->file")}}" alt="" style="width:250px;height:250px;">
+                        </div>
+                    @endif
                 </div><!--/.col-xs-6-->
             </div><!--/.row-->
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -23,67 +23,68 @@
     </form>
     <br><br>
     @include('partials.validationMessage')
-    @if($permisosl->isempty())
-            <div class="alert alert-danger text-center" role="alert">No existen registros actualmente</div>
-    @else
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Permisos</div>
-        <!-- Table -->
-        <table class="table table-responsive-md text-center">
-            <tbody>
-                <thead class="thead-tomate">
-                <tr>
-                    <th>Nr.</th>
-                    <th>Nombres y Apellidos</th>
-                    <th>Cédula</th>
-                    <th>Fecha Inicio</th>
-                    <th>Hora Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th>Hora Fin</th>
-                    <th>Estado</th>
-                    <th>Justificar</th>
-                </tr>
-                </thead>
-            </tbody>
-            @php
-                $i=1;
-            @endphp
-            @foreach($permisosl as $permisoItem)
-                @foreach($users as $user)
-                    @if($permisoItem->cedula == $user->cedula)
+        @include('partials.validationError')
+        @if($permisosl->isempty())
+            @include('partials.validationAlertempty')
+        @else
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Permisos</div>
+            <!-- Table -->
+            <table class="table table-responsive-md text-center">
+                <tbody>
+                    <thead class="thead-tomate">
                     <tr>
-                        <td>{!! $i++ !!}</td>
-                        <td>{!! $user->name.' '.$user->last_name !!}</td>
-                        <td>{!! $permisoItem->cedula !!}</td>
-                        <td>{!! $permisoItem->fecha_inicio!!}</td>
-                        <td>{!! $permisoItem->hora_inicio !!}</td>
-                        <td>{!! $permisoItem->fecha_fin!!}</td>
-                        <td>{!! $permisoItem->hora_fin !!}</td>
-                        @if($permisoItem->estado == 1)
-                            <td><span class="label label-success">Aprobado</span></td>
-                        @elseif($permisoItem->estado == 2)
-                            <td><span class="label label-warning">Reprobado</span></td>
-                            <td>
-                                <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            </td>
-                        @else($permisoItem->estado == '0')
-                            <td><span class="label label-danger">Pendiente</span></td>
-                            <td>
-                                <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            </td>
-                        @endif
+                        <th>Nr.</th>
+                        <th>Nombres y Apellidos</th>
+                        <th>Cédula</th>
+                        <th>Fecha Inicio</th>
+                        <th>Hora Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Hora Fin</th>
+                        <th>Estado</th>
+                        <th>Justificar</th>
                     </tr>
-                    @endif
+                    </thead>
+                </tbody>
+                @php
+                    $i=1;
+                @endphp
+                @foreach($permisosl as $permisoItem)
+                    @foreach($users as $user)
+                        @if($permisoItem->cedula == $user->cedula)
+                        <tr>
+                            <td>{!! $i++ !!}</td>
+                            <td>{!! $user->name.' '.$user->last_name !!}</td>
+                            <td>{!! $permisoItem->cedula !!}</td>
+                            <td>{!! $permisoItem->fecha_inicio!!}</td>
+                            <td>{!! $permisoItem->hora_inicio !!}</td>
+                            <td>{!! $permisoItem->fecha_fin!!}</td>
+                            <td>{!! $permisoItem->hora_fin !!}</td>
+                            @if($permisoItem->estado == 1)
+                                <td><span class="label label-success">Aprobado</span></td>
+                            @elseif($permisoItem->estado == 2)
+                                <td><span class="label label-warning">Reprobado</span></td>
+                                <td>
+                                    <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                </td>
+                            @else($permisoItem->estado == '0')
+                                <td><span class="label label-danger">Pendiente</span></td>
+                                <td>
+                                    <a class="btn btn-danger btn-xs" href="{{ route('permisos.justificar', $permisoItem->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                </td>
+                            @endif
+                        </tr>
+                        @endif
+                    @endforeach
                 @endforeach
-            @endforeach
-            </tbody><!--/.table-->
-        </table><!--/.table-->
-        <nav aria-label="..." class="text-center">
-            {{$permisosl->links()}}
-        </nav>
-    </div><!--/.panel-->
-    @endif
+                </tbody><!--/.table-->
+            </table><!--/.table-->
+            <nav aria-label="..." class="text-center">
+                {{$permisosl->links()}}
+            </nav>
+        </div><!--/.panel-->
+        @endif
     </div><!--/.container-fluid-->
 
 @endsection

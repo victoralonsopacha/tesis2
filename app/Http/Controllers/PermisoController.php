@@ -156,17 +156,17 @@ class PermisoController extends Controller
      */
     public function update(PermisoProfesor $permiso, Request $request)
     {
-        $permiso->fecha_inicio=$request->fecha_inicio;
-        $permiso->hora_inicio=$request->hora_inicio;
-        $permiso->fecha_fin=$request->fecha_fin;
-        $permiso->hora_fin=$request->hora_fin;
-        $permiso->tipo_permiso=$request->tipo_permiso;
-        $permiso->fecha_fin=$request->fecha_fin;
-        $permiso->file=$request->file;
-        $permiso->estado=implode($request->input('estado'));
-        $permiso->desaprobacion=$request->desaprobacion;
-        $permiso->save();
-        return redirect()->route('permisos.index', $permiso)->with('message', 'El permiso ha sido actualizado con exito');
+        $entrada=$request->all();
+        $entrada['estado']=implode($request->input('estado'));
+        $entrada['desaprobacion']=$request->desaprobacion;
+        $entrada['file']=$permiso->file;
+        $permiso->update($entrada);
+        if($entrada['estado'] == 1){
+            return redirect()->route('permisos.index', $permiso)->with('message', 'El permiso ha sido reprobado');
+        }
+        if($entrada['estado'] == 2){
+            return redirect()->route('permisos.index', $permiso)->with('error', 'El permiso ha sido reprobado');
+        }
     }
     /**
      * Remove the specified resource from storage.

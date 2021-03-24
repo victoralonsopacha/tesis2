@@ -41,7 +41,7 @@
         <br>
 
         @if($permisos->isEmpty())
-            <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
+            @include('partials.validationAlertempty')
         @else<br>
             @include('permiso_profesors.form')
         @endif
