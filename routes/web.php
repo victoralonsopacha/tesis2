@@ -49,11 +49,14 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::patch('/users/{user}/desactivar', 'UsersController@desactivar')->name('users.deactive');
 
     //RUTAS PARA CARGAR EXCEL
-    Route::get('import-form', 'TimbradaController@importForm')->name('import-form');
-    Route::post('import-form', 'TimbradaController@import')->name('import');
 
 
 });
+Route::get('import-form', 'TimbradaController@importForm')->name('import-form');
+Route::post('import-form', 'TimbradaController@import')->name('import');
+
+
+
 //RUTAS PARA REGISTRAR TIMBRADAS DE PERMISOS
 Route::get('/timbrada_permisos/index', 'TimbradaPermisoController@index')->name('timbrada_permisos.index');
 Route::patch('/timbrada_permisos/{timbrada}/crear', 'TimbradaPermisoController@create')->name('timbrada_permisos.create');

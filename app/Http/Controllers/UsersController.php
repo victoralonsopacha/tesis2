@@ -142,7 +142,7 @@ class UsersController extends Controller
         $input['estado']='1';
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-        //return $input['estado'];
+
         return redirect()->route('users.activos')->with('message','El usuario ha sido creado con exito');
     }
 

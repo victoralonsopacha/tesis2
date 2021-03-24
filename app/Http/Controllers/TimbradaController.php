@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Timbrada;
 use Excel;
 use App\Imports\TimbradaImport;
+use Illuminate\Support\Facades\Log;
 
 class TimbradaController extends Controller
 {
@@ -20,13 +21,12 @@ class TimbradaController extends Controller
         return view('import-form');
     }
 
-    public function import(ImportTimbradaRequest $request){
-
+    public function import(Request $request){
         if($request->file){
             Excel::import(new TimbradaImport, $request->file);
-            //return view('import-succes');
+            return view('import-succes');
         }else{
-            //return view('import-form');
+            return view('import-form');
         }
 
     }
