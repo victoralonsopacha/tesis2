@@ -143,7 +143,7 @@ class UsersController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.activos')->with('message','El usuario ha sido creado con exito');
+        return redirect()->route('users.activos')->with('message','El usuario ha sido creado con éxito');
     }
 
     public function activar($id)
@@ -213,7 +213,7 @@ class UsersController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
         $user->assignRole($request->input('roles'));
-        return redirect()->route('users.activos')->with('message', 'El usuario ha sido actualizado con exito');
+        return redirect()->route('users.activos')->with('message', 'El usuario ha sido actualizado con éxito');
     }
 
     public function actualizar(Request $request)
@@ -222,7 +222,7 @@ class UsersController extends Controller
         $user=$request->all();
         $user['password']=Hash::make($request['password']);
         $user->update();
-        return redirect()->route('perfiles.profesor')->with('message', 'La informacion ha sido actualizada con exito');
+        return redirect()->route('perfiles.profesor')->with('message', 'La información ha sido actualizada con éxito');
     }
 
     /**

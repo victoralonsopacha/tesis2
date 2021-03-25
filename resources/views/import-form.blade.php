@@ -41,7 +41,7 @@
             var filePath = fileInput.value;
             var allowedExtensions = /(.xlsx)$/i;
             if(!allowedExtensions.exec(filePath)){
-                alert('Please upload file having extensions .xlsx');
+                alert('Por favor seleccione un archivo con extensión .xlsx');
                 fileInput.value = '';
                 return false;
             }else{

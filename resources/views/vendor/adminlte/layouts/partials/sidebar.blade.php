@@ -33,7 +33,7 @@
                     <li><a href="{{ route('users.activos') }}">Ver Usuarios</a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('import-form') }}"><i class='fa fa-upload'></i> <span>Importar datos biométrico</span></a></li>
+            <li><a href="{{ route('import-form') }}"><i class='fa fa-upload'></i> <span>Importar datos del biométrico</span></a></li>
             <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Biométrico</span></a></li>
             <li><a href="{{route('consolidado_permisos.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Permisos</span></a></li>
             <!--

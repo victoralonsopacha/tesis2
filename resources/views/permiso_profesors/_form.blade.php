@@ -31,6 +31,9 @@
 
     <div class="form-group">
         <strong>Adjuntar Justificacion:</strong>
+        <div class="alert alert-danger" role="alert">
+            <strong>No olvide seleccionar un archivo adjunto si es necesario!!</strong>
+        </div>
         <input type="file" class="form-control" name="file" id="file" >
     </div>
 
