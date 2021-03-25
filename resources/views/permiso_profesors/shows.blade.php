@@ -14,7 +14,7 @@
         <a href="{{ route('permiso_profesors.index', ['permiso_profesor' => $permiso_profesor=auth()->user()->cedula]) }}"
            class="btn btn-success">Permisos Aprobados</a>
         <a href="{{ route('permiso_profesors.index1', ['permiso_profesor' => $permiso_profesor=auth()->user()->cedula]) }}"
-           class="btn btn-info">Permisos Reprobados</a>
+           class="btn btn-info">Permisos Reachazados</a>
     </div>
     <div class="pull-right">
         <a class="btn btn-warning" href="{{ route('permiso_profesors.create')}}">Crear Nuevo Permiso</a>

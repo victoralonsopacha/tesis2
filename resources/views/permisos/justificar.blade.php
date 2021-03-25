@@ -8,7 +8,7 @@
 @section('main-content')
     <div class="container-fluid">
     <div class="panel panel-primary">
-        <div class="panel-heading text-center"><b>JUSTIFICAR PERMISOS</b></div>
+        <div class="panel-heading text-center"><b>Justificar Permisos</b></div>
     </div><!--/.panel-primary-->
 
         <div class="pull-left">

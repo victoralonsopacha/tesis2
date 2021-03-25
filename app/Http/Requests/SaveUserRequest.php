@@ -45,10 +45,10 @@ class SaveUserRequest extends FormRequest
 
     public function messages(){
         return [
-            'email.required' => 'Debe ingresar un correo electronico',
+            'email.required' => 'Debe ingresar un correo electrónico',
             'email.unique'=> 'Este correo se encuentra ya registrado',
             'email.regex'=>'El formato del correo es incorrecto. (ejemplo@ejemplo.com)',
-            'cedula.unique'=> 'Esta cedula se encuentra ya registrado',
+            'cedula.unique'=> 'Esta cédula se encuentra ya registrado',
             'fecha_ingreso.before' => 'La fecha de ingreso no debe ser una fecha posterior a la de hoy',
         ];
     }

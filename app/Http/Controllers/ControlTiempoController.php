@@ -208,7 +208,7 @@ class ControlTiempoController extends Controller
         $consulta8 = DB::select('SELECT COUNT(p.cedula) AS cantidad_permisos FROM permiso_profesors p WHERE p.cedula LIKE "'.$ced_usuario.'" AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
         //CONSULTA PARA MOSTRAR TIEMPOS DE REPOSICION
-        $reposicion=DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas))) AS tiempo_reposicions FROM tiempo_reposicions WHERE cedula = "'.$ced_usuario.'" AND estado = "2"');
+        $reposicion=DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas))) AS tiempo_reposicions FROM tiempo_reposicions WHERE cedula = "'.$ced_usuario.'" AND estado = "1"');
         //Log::info('aqui');
         //Log::info($reposicion);
 

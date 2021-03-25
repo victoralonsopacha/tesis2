@@ -29,7 +29,7 @@ class ImportTimbradaRequest extends FormRequest
     }
     public function messages(){
         return [
-            'file.mimes'=> 'Debe ingresar un correo electronico',
+            'file.mimes'=> 'Debe ingresar un correo electrónico',
         ];
     }
 }

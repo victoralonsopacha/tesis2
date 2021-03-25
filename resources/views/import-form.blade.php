@@ -17,7 +17,7 @@
                         <form id="formularioExcel" method="POST" enctype="multipart/form-data" action="{{route('import')}}">
                             @csrf
                             <div class="form-group">
-                                <label for="file">Escoja xlsx</label>
+                                <label for="file">Escoja un archivo con extensión .xlsx</label>
                                 <input id="file" type="file" name="file" class="form-control">
                             </div>
                             <br>

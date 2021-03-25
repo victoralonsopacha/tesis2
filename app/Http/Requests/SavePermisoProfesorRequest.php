@@ -34,7 +34,7 @@ class SavePermisoProfesorRequest extends FormRequest
 
     public function messages(){
         return [
-            'cedula.required' => 'Debe ingresar una cedula'
+            'cedula.required' => 'Debe ingresar una cédula'
         ];
     }
 }

@@ -8,7 +8,7 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading text-center">Permisos Reprobados</div>
+            <div class="panel-heading text-center">Permisos Rechazados</div>
         </div>
     <div class="pull-left">
         <a href="{{ route('permiso_profesors.shows') }}"

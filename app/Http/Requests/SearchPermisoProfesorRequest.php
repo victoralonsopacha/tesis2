@@ -30,10 +30,10 @@ class SearchPermisoProfesorRequest extends FormRequest
     }
     public function messages(){
         return [
-            'fecha_fin.required' => 'La fecha de finalizacion es requerida',
-            'fecha_fin.before' => 'El sistema no tiene informacion para fechas posteriores a la actual',
+            'fecha_fin.required' => 'La fecha de finalización es requerida',
+            'fecha_fin.before' => 'El sistema no tiene información para fechas posteriores a la actual',
             'fecha_inicio.required' => 'La fecha de inicio es requerida',
-            'fecha_inicio.before' => 'La fecha de inicio debe ser una fecha anterior a la fecha de finalizacion',
+            'fecha_inicio.before' => 'La fecha de inicio debe ser una fecha anterior a la fecha de finalización',
 
         ];
     }
