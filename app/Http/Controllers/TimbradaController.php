@@ -23,6 +23,7 @@ class TimbradaController extends Controller
 
     public function import(Request $request){
         if($request->file){
+
             Excel::import(new TimbradaImport, $request->file);
             return view('import-succes');
         }else{

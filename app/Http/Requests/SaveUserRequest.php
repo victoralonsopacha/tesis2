@@ -28,8 +28,8 @@ class SaveUserRequest extends FormRequest
         $rules = [
             'name' =>'required|string|max:100',
             'last_name' =>'required|string|max:100',
-            'password' => 'nullable|min:5|required_with:password_confirmation|string|confirmed',
-            'cedula' =>'required|numeric|min:10|unique:users,cedula',
+            'password' => 'required|nullable|min:5|required_with:password_confirmation|string|confirmed',
+            'cedula' =>'size:10|unique:users,cedula',
             'fecha_ingreso' => 'required|before:tomorrow'
         ];
 
@@ -48,7 +48,8 @@ class SaveUserRequest extends FormRequest
             'email.required' => 'Debe ingresar un correo electronico',
             'email.unique'=> 'Este correo se encuentra ya registrado',
             'email.regex'=>'El formato del correo es incorrecto. (ejemplo@ejemplo.com)',
-            'cedula.unique'=> 'Esta cedula se encuentra ya registrado',
+            'cedula.size'=> 'La cédula debe tener 10 digitos',
+            'cedula.unique'=> 'Esta cédula se encuentra ya registrada',
             'fecha_ingreso.before' => 'La fecha de ingreso no debe ser una fecha posterior a la de hoy',
         ];
     }
