@@ -14,12 +14,12 @@
             {!! Form::text('cedula', null, array('placeholder' => 'Cédula','class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-            <strong>Password:</strong>
+            <strong>Contraseña:</strong>
             {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
         </div>
 
         <div class="form-group">
-            <strong>Confirm Password:</strong>
+            <strong>Confirmar Contraseña Password:</strong>
             {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
         </div>
     </div>

@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Aprobads</label>
+                    <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Aprobados</label>
                     <div class="col-sm-6">
                         <input type="input" class="form-control" name="date" value="{{$itemconsulta5->permisos}}">
 
@@ -51,7 +51,7 @@
                     @foreach ($consulta6 as $itemconsulta6)
 
                     @endforeach
-                    <label for="staticEmail" class="col-sm-5 col-form-label">Permisos sin Aprobar</label>
+                    <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Rechazados</label>
                     <div class="col-sm-6">
                         <input type="input" class="form-control" name="date" value="{{$itemconsulta6->permisos}}">
                     </div>

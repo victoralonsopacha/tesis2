@@ -8,7 +8,7 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading text-center">Calculo de Horas</div>
+            <div class="panel-heading text-center">Cálculo de Horas</div>
         </div>
         <div class="pull-left">
             <a class="btn btn-primary" href="{{ route('calculo_tiempos.index') }}">Regresar</a>

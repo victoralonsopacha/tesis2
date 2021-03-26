@@ -17,7 +17,7 @@
                         <form id="formularioExcel" method="POST" enctype="multipart/form-data" action="{{route('import')}}">
                             @csrf
                             <div class="form-group">
-                                <label for="file">Escoja xlsx</label>
+                                <label for="file">Escoja un archivo con extensión .xlsx</label>
                                 <input id="file" type="file" name="file" class="form-control">
                             </div>
                             <br>
@@ -41,7 +41,7 @@
             var filePath = fileInput.value;
             var allowedExtensions = /(.xlsx)$/i;
             if(!allowedExtensions.exec(filePath)){
-                alert('Please upload file having extensions .xlsx');
+                alert('Por favor seleccione un archivo con extensión .xlsx');
                 fileInput.value = '';
                 return false;
             }else{

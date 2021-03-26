@@ -6,8 +6,8 @@
             <th>Nr.</th>
             <th>Fecha Inicio</th>
             <th>Hora Inicio</th>
-            <th>Fecha Finalizacion</th>
-            <th>Fecha Finalizacion</th>
+            <th>Fecha Finalización</th>
+            <th>Fecha Finalización</th>
             <th>Acciones</th>
         </tr>
         </thead>

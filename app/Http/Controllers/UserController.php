@@ -45,7 +45,7 @@ class UserController extends Controller
         }
         $user = User::find($id);
         $user->update($input);
-        return redirect()->route('profile.profesor')->with('message', 'Tu informacion ha sido actualizada con exito');
+        return redirect()->route('profile.profesor')->with('message', 'Tu información ha sido actualizada con exito');
     }
 
 

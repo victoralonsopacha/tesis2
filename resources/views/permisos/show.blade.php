@@ -6,10 +6,10 @@
 
 
 @section('main-content')
-    <h1>PERMISO </h1>
+    <h1>Permiso</h1>
     <td>{!! $estado!!}</td>
     <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
+        <label for="staticEmail" class="col-sm-2 col-form-label">Cédula del usuario</label>
         <div class="col-sm-6">
         </div>
     </div>
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Descripcion</label>
+        <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
         <div class="col-sm-6">
         </div>
     </div>

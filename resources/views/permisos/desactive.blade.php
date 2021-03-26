@@ -7,7 +7,7 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading text-center"><b>PERMISOS REPROBADOS</b></div>
+            <div class="panel-heading text-center"><b>Permisos Rechazados</b></div>
         </div>
 
     </div><!--/.container-fluid-->

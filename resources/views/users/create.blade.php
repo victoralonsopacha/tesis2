@@ -6,7 +6,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-        <h2>Crear Nuevo Usuario</h2>
+        <h2>Creación de un Nuevo Usuario</h2>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -78,7 +78,7 @@
     </div><!--/..container-fluid-->
 
     <script>
-        
+
     </script>
 @endsection
 
