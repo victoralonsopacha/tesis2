@@ -35,13 +35,13 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad de Tiempo</label>
                 <div class="col-sm-2">
-                    <input type="time" class="form-control" name="horas" value="{{old('horas', $tiempo_reposicions->horas)}}">
+                    <input type="time" min="00:00" max="08:00" class="form-control" name="horas" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Día que desea reponer</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="fecha" value="{{old('fecha', $tiempo_reposicions->fecha)}}">
+                    <input type="date" class="form-control" name="fecha" required>
                 </div>
             </div>
             <div class="form-group row">

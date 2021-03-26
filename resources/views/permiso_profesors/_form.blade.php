@@ -2,21 +2,21 @@
 <div class="col-xs-6 col-sm-6 col-md-6">
     <div class="form-group">
         <strong>Fecha de Inicio:</strong>
-        {!! Form::date('fecha_inicio',null,['class' => 'form-control']) !!}
+        <input type="date" class="form-control" name="fecha_inicio" required>
     </div>
     <div class="form-group">
         <strong>Hora Inicio:</strong>
-        {!! Form::time('hora_inicio', null, array('class' => 'form-control')) !!}
+        <input type="time" min="07:00" max="18:30" class="form-control" name="hora_inicio" required>
     </div>
-        <div class="form-group">
-            <strong>Fecha Fin:</strong>
-            {!! Form::date('fecha_fin', null, array('class' => 'form-control')) !!}
-        </div>
+    <div class="form-group">
+        <strong>Fecha Fin:</strong>
+        {!! Form::date('fecha_fin', null, array('class' => 'form-control')) !!}
+    </div>
+    <div class="form-group">
+        <strong>Hora Fin:</strong>
+        <input type="time" min="07:00" max="18:30" class="form-control" name="hora_fin" required>
 
-        <div class="form-group">
-            <strong>Hora Fin:</strong>
-            {!! Form::time('hora_fin', null, array('class' => 'form-control')) !!}
-        </div>
+    </div>
 
 </div>
 <div class="col-xs-6 col-sm-6 col-md-6">
