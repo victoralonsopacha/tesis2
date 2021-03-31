@@ -34,8 +34,8 @@
                 </ul>
             </li>
             <li><a href="{{ route('import-form') }}"><i class='fa fa-upload'></i> <span>Importar datos del biométrico</span></a></li>
-            <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Biométrico</span></a></li>
-            <li><a href="{{route('consolidado_permisos.index')}}"><i class='fa fa-file-excel-o'></i> <span>Exportar Timbradas Permisos</span></a></li>
+            <li><a href="{{route('consolidado_individual.index')}}"><i class='fa fa-file-excel-o'></i> <span>Reporte Timbradas Biométrico</span></a></li>
+            <li><a href="{{route('consolidado_permisos.index')}}"><i class='fa fa-file-excel-o'></i> <span>Reporte Timbradas Permisos</span></a></li>
             <!--
             <li class="treeview">
                 <a href="#"><span><i class='fa fa-bell-o'></i> <span>Permisos Timbrados</span></span><i class="fa fa-angle-left pull-right"></i></a>
@@ -57,8 +57,8 @@
             </li>
             <li><a href="{{ route('timbrada_permisos.index') }}"><i class='fa fa-bell-o'></i><span>Timbrar Permisos</span></a></li>
             <li><a href="{{ route('tiempo_reposicions.index_inspector') }}"><i class='fa fa-clock-o'></i><span>Días Reposición</span></a></li>
-            <li><a href="{{route('consolidado_individual.index')}}"><i class="fa fa-download" aria-hidden="true"></i><span>Timbradas Biométrico</span></a></li>
-            <li><a href="{{route('consolidado_permisos.index')}}"><i class="fa fa-download" aria-hidden="true"></i><span>Timbradas Permisos</span></a></li>
+            <li><a href="{{route('consolidado_individual.index')}}"><i class="fa fa-download" aria-hidden="true"></i><span>Reporte Timbradas Biométrico</span></a></li>
+            <li><a href="{{route('consolidado_permisos.index')}}"><i class="fa fa-download" aria-hidden="true"></i><span>Reporte Timbradas Permisos</span></a></li>
 
             @endhasrole
             @hasrole('Profesor')

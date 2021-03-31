@@ -47,13 +47,13 @@ class UsersController extends Controller
             ->select('role_id', 'model_id')
             ->get();
         $rolesl=DB::table('roles')
-            ->select('id', 'name')
-            ->get();
+            ->select('id', 'name')->get();
 
         $usersl= User::where('estado','=','1')->get();
 
+
         return view('users.activos', ['usersl'=>$usersl,
-            'roles'=>$roles,'rolesl'=>$rolesl]);
+         'roles'=>$roles,'rolesl'=>$rolesl]);
 
     }
 
@@ -98,7 +98,7 @@ class UsersController extends Controller
     }
 
     //Vista Usuarios Inactivos
-    public function inactivos()
+    public function inactivos( Request $request)
     {
         $roles=DB::table('model_has_roles')
             ->select('role_id', 'model_id')
@@ -106,7 +106,34 @@ class UsersController extends Controller
         $rolesl=DB::table('roles')
             ->select('id', 'name')
             ->get();
-        $usersl= User::where('estado','=','0')->get();
+
+        $cedula=trim($request->input('cedula'));
+        $nombre=trim($request->input('nombre'));
+
+        if($cedula != ''){
+            Log::info('cedula');
+            $usersl= User::where('estado','=','0')
+                ->where('cedula', 'LIKE','%'.$cedula.'%')
+                ->get();
+        }
+        if($nombre != ''){
+            Log::info('nombre');
+            $usersl= User::where('estado','=','0')
+                ->where('name', 'LIKE', '%'.$nombre.'%')
+                ->orderBy('id','asc')
+                ->get();
+        }
+        if($cedula != '' && $nombre != ''){
+            $usersl= User::where('estado','=','0')
+                ->where('name', 'LIKE', '%'.$nombre.'%')
+                ->where('cedula', 'LIKE', '%'.$cedula.'%')
+                ->get();
+        }
+        if($cedula == '' && $nombre == ''){
+            Log::info('cedula y nombre');
+            $usersl= User::where('estado','=','0')->get();
+        }
+
         return view('users.inactivos', compact('usersl','roles','rolesl'));
     }
 
@@ -153,6 +180,7 @@ class UsersController extends Controller
         $user->update($input);
         return redirect()->route('users.activos')->with('message','El usuario ha sido activado');
     }
+
     public function desactivar($id)
     {
         $user=User::find($id);

@@ -2,19 +2,19 @@
 <div class="col-xs-6 col-sm-6 col-md-6">
     <div class="form-group">
         <strong>Fecha de Inicio:</strong>
-        <input type="date" class="form-control" name="fecha_inicio" required>
+        {!! Form::date('fecha_inicio', null, array('class' => 'form-control','required')) !!}
     </div>
     <div class="form-group">
         <strong>Hora Inicio:</strong>
-        <input type="time" min="07:00" max="18:30" class="form-control" name="hora_inicio" required>
+        <input type="time" min="07:00" max="18:30" class="form-control" name="hora_inicio" value="{{$permiso_profesor->hora_inicio}}" required>
     </div>
     <div class="form-group">
         <strong>Fecha Fin:</strong>
-        {!! Form::date('fecha_fin', null, array('class' => 'form-control')) !!}
+        {!! Form::date('fecha_fin', null, array('class' => 'form-control','required')) !!}
     </div>
     <div class="form-group">
         <strong>Hora Fin:</strong>
-        <input type="time" min="07:00" max="18:30" class="form-control" name="hora_fin" required>
+        <input type="time" min="07:00" max="18:30" class="form-control" name="hora_fin" value="{{$permiso_profesor->hora_fin}}" required>
 
     </div>
 
@@ -22,11 +22,11 @@
 <div class="col-xs-6 col-sm-6 col-md-6">
     <div class="form-group">
         <strong>Tipo Permiso:</strong>
-        {!! Form::select('tipo_permiso[]',$tipo_permiso, null,['class' => 'form-control']); !!}
+        {!! Form::select('tipo_permiso[]',$tipo_permiso, null,['class' => 'form-control','required']); !!}
     </div>
     <div class="form-group">
         <strong>Descripción:</strong>
-        {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control')) !!}
+        {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control','required')) !!}
     </div>
 
     <div class="form-group">

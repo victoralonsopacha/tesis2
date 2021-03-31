@@ -18,7 +18,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="file">Escoja un archivo con extensión .xlsx</label>
-                                <input id="file" type="file" name="file" class="form-control">
+                                <input id="file" type="file" name="file" class="form-control" accept="*/xlsx">
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Cargar</button>

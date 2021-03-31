@@ -90,6 +90,9 @@ Route::group(['middleware' => ['role:Inspector']], function () {
 
 
 });
+//Route::get('/downloadPublic','PermisoController@downloadFile');
+Route::get('get/{filename}', 'PermisoController@downloadFiles')->name('getfile');
+
 
 //PERMISOS APROBADOS
 

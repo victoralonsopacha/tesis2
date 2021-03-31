@@ -57,7 +57,7 @@
                         <strong>Seleccionar:</strong>
                         {!! Form::select('estado[]',$estado, null,['class' => 'form-control']); !!}
                     </div>
-                    
+
                     <div class="form-group">
                         <strong>Observación:</strong>
                         <input type="text" class="form-control" name="desaprobacion" value="{{old('desaprobacion', $permiso->desaprobacion)}}" >
@@ -66,6 +66,7 @@
                         <div class="form-group">
                             <strong>Archivo Justificación:</strong><br>
                             <img src="{{asset("$permiso->file")}}" alt="" style="width:250px;height:250px;">
+                            <img src="{{route('getfile', $permiso->file)}}" />
                         </div>
                     @endif
                 </div><!--/.col-xs-6-->

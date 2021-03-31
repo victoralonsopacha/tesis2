@@ -43,6 +43,7 @@
     <div class="form-group row">
         <div class="col-sm-6">
             <input type="hidden" class="form-control" name="file" value="{{old('file', $permiso->file)}}">
+
         </div>
     </div>
 

@@ -134,10 +134,18 @@ class PermisoController extends Controller
             compact('estado','usuario','permiso'));
     }
 
-    public function downloadFile(){
-
-
+    //FUNCION DESCARGAR ARCHIVO
+    public function downloadFile(Request $request){
+        $path=public_path("storage/permissions/1616530669-1_5039673075612778658.pdf");
+        return response()->download($path);
     }
+    public function downloadFiles($filename){
+        $file = Storage::disk('public')->get($filename);
+
+        return (new Response($file, 200))
+            ->header('Content-Type', 'image/jpeg');
+    }
+
 
     /**
      * Show the form for editing the specified resource.

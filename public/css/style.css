@@ -1,0 +1,8 @@
+.image-bg {
+    background-image: url("../img/fondo.jpg");
+    background-size: cover;
+}
+.cabecera{
+    height: 550px;
+    width: 100%;
+}
