@@ -41,7 +41,7 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Día que desea reponer</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="fecha" required>
+                    <input type="date" class="form-control" id="fecha" name="fecha" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -50,7 +50,8 @@
                 </div>
             </div>
         </form>
-
     </div><!--/.container-fluid-->
+
+
 
 @endsection

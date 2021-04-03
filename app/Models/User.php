@@ -32,7 +32,6 @@ class User extends Authenticatable
         'fecha_inicio',
         'fecha_fin',
          'estado'
-
     ];
 
     //DESAHABILITAR ASIGNACION MASIVA
