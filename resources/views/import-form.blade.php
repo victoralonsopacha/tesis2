@@ -12,6 +12,12 @@
                 <div class="card">
                     <div class="card-header">
                         Importar Excel
+
+                        @if ( $errors->any() )
+                            <div class="alert alert-danger">
+                                @foreach( $errors->all() as $error )<li>{{ $error }}</li>@endforeach
+                            </div>
+                        @endif
                     </div>
                     <div class="card-body">
                         <form id="formularioExcel" method="POST" enctype="multipart/form-data" action="{{route('import')}}">
