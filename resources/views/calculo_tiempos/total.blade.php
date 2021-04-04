@@ -1,10 +1,8 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-    {{ trans('adminlte_lang::message.home') }}
-    <h1>Horas Totales</h1>
+    Calcular Horas y Permisos
 @endsection
-
 
 @section('main-content')
 <div class="container-fluid">
@@ -99,38 +97,20 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Aprobados</label>
             <div class="col-sm-6">
-                @if($consulta5)
-                    @foreach ($consulta5 as $itemconsulta5)
-                        <input id="permisos_aprobados" type="input" class="form-control" name="date" value="{{$itemconsulta5->permisos1}}" readonly>
-                    @endforeach
-                @else
-                    <input id="permisos_aprobados" type="input" class="form-control" name="date" value="0" readonly>
-                @endif
+
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Rechazados</label>
             <div class="col-sm-6">
-                @if($consulta6)
-                    @foreach ($consulta6 as $itemconsulta6)
-                        <input id="permisos_desaprobados" type="input" class="form-control" name="date" value="{{$itemconsulta6->permisos2}}" readonly>
-                    @endforeach
-                @else
-                    <input id="permisos_desaprobados" type="input" class="form-control" name="date" value="0" readonly>
-                @endif
+
 
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-5 col-form-label">Permisos Pendientes</label>
             <div class="col-sm-6">
-                @if($consulta9)
-                    @foreach ($consulta9 as $itemconsulta9)
-                        <input id="permisos_pendientes" type="input"  class="form-control" name="date" value="{{$itemconsulta9->permisos3}}" readonly>
-                    @endforeach
-                @else
-                    <input id="permisos_pendientes" type="input" class="form-control" name="date" value="0" readonly>
-                @endif
+
             </div>
         </div>
         <div class="form-group row">

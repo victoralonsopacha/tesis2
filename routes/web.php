@@ -15,7 +15,7 @@
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 //REDIRECT INDEX
 Route::get('/', function () {
-    return redirect(route('login'));
+    return view('index');
 });
 //RUTAS AUTENTICACION
 //Route::auth();

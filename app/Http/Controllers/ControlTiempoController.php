@@ -180,59 +180,53 @@ class ControlTiempoController extends Controller
 
 
         //CONSULTAS PARA SUMAR LOS TIEMPOS TOTALES DE LAS ASISTENCIAS
-        /*$consulta = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_trabajado FROM reporte_asistencia r
-        WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');*/
+        $consulta = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_trabajado FROM reporte_asistencia r
+        WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
 
 
-        /*$consulta2 = DB::select('SELECT  r.cedula,r.nombre,r.apellido  FROM reporte_asistencia r
+        $consulta2 = DB::select('SELECT  r.cedula,r.nombre,r.apellido  FROM reporte_asistencia r
         WHERE
         r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"
-        AND r.cedula LIKE "'.$ced_usuario.'" LIMIT 1');*/
+        AND r.cedula LIKE "'.$ced_usuario.'" LIMIT 1');
 
 
         //CONSULTA PARA CONTAR LOS DIAS SOLICITADOS
-        //$consulta4 = DB::select('SELECT COUNT(r.dia) AS num_dias FROM reporte_asistencia r WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
+        $consulta4 = DB::select('SELECT COUNT(r.dia) AS num_dias FROM reporte_asistencia r WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
 
         //CONSULTA PARA SUMAR LOS ATRASOS TOTALES
-        /*$consulta3 = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(retraso_jornada))) AS retraso_trabajado FROM reporte_asistencia r
-        WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');*/
+        $consulta3 = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(retraso_jornada))) AS retraso_trabajado FROM reporte_asistencia r
+        WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
 
 
         //CONSULTAS PARA CONTAR LOS PERMISOS APROBADOS, NO APROBADOS Y PENDIENTES DE UN SOLO PROFESOR
-        $consulta5= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos1 FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_aprobado.' AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY u.name, u.last_name');
+        //$consulta5= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos1 FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_aprobado.' AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY u.name, u.last_name');
         //$consulta6= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos2 FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_desaprobado.' AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY u.name, u.last_name');
         //$consulta9= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos3 FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_pendiente.' AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY u.name, u.last_name');
 
-        Log::info($consulta5);
 
         //CONSULTA PARA SUMAR LOS TIEMPOS DE LOS PERMISOS
-        /*$consulta7 = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_permiso FROM reporte_permiso r
-        WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');*/
+        $consulta7 = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo_total))) AS tiempo_permiso FROM reporte_permiso r
+        WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
 
         //CONSULTA PARA CONTAR LOS PERMISOS SOLICITADOS
-        //$consulta8 = DB::select('SELECT COUNT(p.cedula) AS cantidad_permisos FROM permiso_profesors p WHERE p.cedula LIKE "'.$ced_usuario.'" AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
+        $consulta8 = DB::select('SELECT COUNT(p.cedula) AS cantidad_permisos FROM permiso_profesors p WHERE p.cedula LIKE "'.$ced_usuario.'" AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
         //CONSULTA PARA MOSTRAR TIEMPOS DE REPOSICION
-        //$reposicion=DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas))) AS tiempo_reposicions FROM tiempo_reposicions WHERE cedula = "'.$ced_usuario.'" AND estado = "1"');
+        $reposicion=DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas))) AS tiempo_reposicions FROM tiempo_reposicions WHERE cedula = "'.$ced_usuario.'" AND estado = "1"');
 
 
 
 
 
-        /*return view('calculo_tiempos.total',
+        return view('calculo_tiempos.total',
         [   'consulta' => $consulta,
             'consulta2'=>$consulta2,
             'consulta3'=> $consulta3,
             'consulta4'=> $consulta4,
-            'consulta5'=> $consulta5,
-            'consulta6'=> $consulta6,
             'consulta7'=> $consulta7,
             'consulta8'=> $consulta8,
-            'consulta9'=> $consulta9,
             'reposicion'=> $reposicion
-
-
-    );]*/
+    ]);
 
 
     }
