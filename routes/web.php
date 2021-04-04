@@ -48,10 +48,12 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::patch('/users/{user}/activar', 'UsersController@activar')->name('users.active');
     Route::patch('/users/{user}/desactivar', 'UsersController@desactivar')->name('users.deactive');
 
-    //RUTAS PARA CARGAR EXCEL
+    
 
 
 });
+
+//RUTAS PARA CARGAR EXCEL
 Route::get('import-form', 'TimbradaController@importForm')->name('import-form');
 Route::post('import-form', 'TimbradaController@import')->name('import');
 

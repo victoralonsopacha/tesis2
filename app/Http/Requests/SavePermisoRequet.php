@@ -37,7 +37,7 @@ class SavePermisoRequet extends FormRequest
 
     public function messages(){
         return [
-            'cedula.required' => 'Debe ingresar un nombre'
+            'cedula.required' => 'Debe ingresar una cédula'
         ];
     }
 }
