@@ -22,6 +22,7 @@
     <br><br>
     @include('partials.validationMessage')
         @include('partials.validationError')
+
         @if($permisosl->isempty())
             @include('partials.validationAlertempty')
         @else

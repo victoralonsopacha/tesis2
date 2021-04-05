@@ -87,6 +87,8 @@ class PermisoProfesorController extends Controller
         //$request->validated();
         $permiso=$request->all();
         $permiso['cedula']=auth()->user()->cedula;
+        $permiso['name']=auth()->user()->name;
+        $permiso['last_name']=auth()->user()->last_name;
         $permiso['tipo_permiso']=implode($request['tipo_permiso']);
         $permiso['estado']='0';
 

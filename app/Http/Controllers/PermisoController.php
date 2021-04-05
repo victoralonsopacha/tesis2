@@ -170,7 +170,7 @@ class PermisoController extends Controller
         $entrada['file']=$permiso->file;
         $permiso->update($entrada);
         if($entrada['estado'] == 1){
-            return redirect()->route('permisos.index', $permiso)->with('message', 'El permiso ha sido reprobado');
+            return redirect()->route('permisos.index', $permiso)->with('message', 'El permiso ha sido aprobado');
         }
         if($entrada['estado'] == 2){
             return redirect()->route('permisos.index', $permiso)->with('error', 'El permiso ha sido reprobado');

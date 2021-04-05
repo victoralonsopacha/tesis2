@@ -41,7 +41,7 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="btn btn-singin" href="#">Iniciar Sesión</a>
+                <a class="btn btn-singin" href="{{route('login')}}">Iniciar Sesión</a>
               </li>
             </ul>
           </div>

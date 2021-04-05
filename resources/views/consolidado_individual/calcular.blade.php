@@ -41,8 +41,7 @@
             <button id="pdf" type="submit" class="btn btn-danger"><a class="nav-link"  onclick="pfd()">
                     Descargar<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
             </button>
-            <button id="excel" type="submit" class="btn btn-success"><a class="nav-link"  onclick="excel()">
-                    Descargar<i class="fa fa-file-excel-o" aria-hidden="true"></i></a></button>
+
         </form>
 
 
@@ -97,10 +96,7 @@
               var inputFormato = document.getElementById("formato");
               inputFormato.value = "PDF";
           }
-          function excel() {
-              var inputFormato = document.getElementById("formato");
-              inputFormato.value = "EXCEL";
-          }
+
 
     </script>
 

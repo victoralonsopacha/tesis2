@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Horario;
 use App\Models\PermisoProfesor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -148,10 +149,14 @@ class UsersController extends Controller
             "Contrato" => "Contrato",
             "Temporal" => "Temporal",
         );
+        $jornada= array(
+            "Matutino" => "Matutino",
+            "Vespertino" => "Vespertino",
+        );
         $roles = Role::orderBy('name','asc')
             ->where('id','<','3')
             ->pluck('name','name')->all();
-        return view('users.create',compact('roles','tipo_relacion_laboral'));
+        return view('users.create',compact('roles','tipo_relacion_laboral','jornada'));
     }
 
     /**
@@ -162,10 +167,28 @@ class UsersController extends Controller
      */
     public function store(SaveUserRequest $request)
     {
-        $request->validated();
+        //$request->validated();
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $input['tipo_relacion_laboral']=implode($request['tipo_relacion_laboral']);
+        $jornada=implode($request['jornada']);
+
+
+        if($jornada == 'Matutino'){
+            $horario['id_usuario']=$request['cedula'];
+            $horario['hora_entrada']='07:00:00';
+            $horario['hora_salida']='13:30:00';
+            $horario['tipo']= $jornada;
+            Horario::create($horario);
+        }
+        else{
+            $horario['id_usuario']=$request['cedula'];
+            $horario['hora_entrada']='12:00:00';
+            $horario['hora_salida']='18:30:00';
+            $horario['tipo']= $jornada;
+            Horario::create($horario);
+        }
+
         $input['estado']='1';
         $user = User::create($input);
         $user->assignRole($request->input('roles'));

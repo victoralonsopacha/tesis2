@@ -33,6 +33,10 @@
             {!! Form::select('tipo_relacion_laboral[]', $tipo_relacion_laboral, null,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
+            <strong>Jornada:</strong>
+            {!! Form::select('jornada[]', $jornada, null,array('class' => 'form-control')) !!}
+        </div>
+        <div class="form-group">
             <strong>Rol:</strong>
             {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
         </div>
