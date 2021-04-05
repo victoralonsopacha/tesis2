@@ -199,9 +199,10 @@ class ControlTiempoController extends Controller
 
 
         //CONSULTAS PARA CONTAR LOS PERMISOS APROBADOS, NO APROBADOS Y PENDIENTES DE UN SOLO PROFESOR
-        $consulta5= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos1 FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_aprobado.' AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY u.name, u.last_name');
-        $consulta6= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos2 FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_desaprobado.' AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY u.name, u.last_name');
-        $consulta9= DB::select('SELECT u.name,u.last_name,p.cedula,COUNT(p.cedula) as permisos3 FROM permiso_profesors p, users u WHERE p.cedula='.$ced_usuario.' AND u.cedula ='.$ced_usuario.' AND p.estado ='.$estado_pendiente.' AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY u.name, u.last_name');
+        $consulta5= DB::select('SELECT COUNT(p.cedula) as permisos1 FROM permiso_profesors p WHERE p.cedula='.$ced_usuario.' AND p.estado ='.$estado_aprobado.' AND p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY p.cedula');
+        $consulta6= DB::select('SELECT COUNT(p.cedula) as permisos1 FROM permiso_profesors p WHERE p.cedula='.$ced_usuario.' AND p.estado ='.$estado_desaprobado.' AND p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY p.cedula');
+        $consulta9= DB::select('SELECT COUNT(p.cedula) as permisos1 FROM permiso_profesors p WHERE p.cedula='.$ced_usuario.' AND p.estado ='.$estado_pendiente.' AND p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY p.cedula');
+
 
 
         //CONSULTA PARA SUMAR LOS TIEMPOS DE LOS PERMISOS
@@ -209,7 +210,7 @@ class ControlTiempoController extends Controller
         WHERE r.fecha BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" AND r.cedula LIKE "'.$ced_usuario.'"');
 
         //CONSULTA PARA CONTAR LOS PERMISOS SOLICITADOS
-        $consulta8 = DB::select('SELECT COUNT(p.cedula) AS cantidad_permisos FROM permiso_profesors p WHERE p.cedula LIKE "'.$ced_usuario.'" AND  p.created_at BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
+        $consulta8 = DB::select('SELECT COUNT(p.cedula) AS cantidad_permisos FROM permiso_profesors p WHERE p.cedula LIKE "'.$ced_usuario.'" AND  p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'"');
 
         //CONSULTA PARA MOSTRAR TIEMPOS DE REPOSICION
         $reposicion=DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas))) AS tiempo_reposicions FROM tiempo_reposicions WHERE cedula = "'.$ced_usuario.'" AND estado = "1"');
@@ -227,7 +228,7 @@ class ControlTiempoController extends Controller
             'consulta7'=> $consulta7,
             'consulta8'=> $consulta8,
             'reposicion'=> $reposicion
-    ]);
+        ]);
 
 
     }
