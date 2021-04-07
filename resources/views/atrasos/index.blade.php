@@ -33,7 +33,7 @@
         </div>
         <br>
         @if($atrasos->isempty())
-            <div class="alert alert-danger" role="alert">No existen registros actualmente</div>
+            @include('partials.validationAlertEmpty')
         @else
         <div class="panel panel-default">
             <table class="table table-responsive-md">
