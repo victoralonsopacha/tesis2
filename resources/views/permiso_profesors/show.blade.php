@@ -50,7 +50,7 @@
                     {!! Form::text('Aprobado', null, array('placeholder' => 'Reprobado','class' => 'form-control','readonly')) !!}
                 </div>
                 <div class="form-group">
-                    <strong>Observación:</strong>
+                    <strong>Observación del Inspector:</strong>
                     {!! Form::text('desaprobacion', null, array('class' => 'form-control','readonly')) !!}
                 </div>
             @endif
@@ -58,7 +58,7 @@
 
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
-                <strong>Justificación:</strong>
+                <strong>Mi Observación:</strong>
                 {!! Form::text('descripcion', null, array('class' => 'form-control','readonly')) !!}
             </div>
             <div class="form-group">
