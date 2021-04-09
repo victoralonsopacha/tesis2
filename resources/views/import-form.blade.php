@@ -10,20 +10,17 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card">
-                    <div class="card-header">
-                        Importar Excel
-
-                        @if ( $errors->any() )
+                    <h4><b>Importar Excel</b></h4>
+                    @if ( $errors->any() )
                             <div class="alert alert-danger">
                                 @foreach( $errors->all() as $error )<li>{{ $error }}</li>@endforeach
                             </div>
                         @endif
-                    </div>
-                    <div class="card-body">
+                    <div>
                         <form id="formularioExcel" method="POST" enctype="multipart/form-data" action="{{route('import')}}">
                             @csrf
                             <div class="form-group">
-                                <label for="file">Escoja un archivo con extensión .xlsx</label>
+                                <h5 for="file">Escoja un archivo Excel con la extensión (.xlx)</h5>
                                 <input id="file" type="file" name="file" class="form-control" accept="*/xlsx">
                             </div>
                             <br>
