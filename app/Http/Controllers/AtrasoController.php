@@ -18,15 +18,17 @@ class AtrasoController extends Controller
     {
         $cedula = auth()->user()->cedula;
         $atrasos=DB::table('reporte_asistencia')
-            ->select('fecha', 'hora_entrada','hora_salida','retraso_jornada')
+            ->select('fecha', 'hora_entrada','hora_salida','retraso_jornada','hora_entrada_horario')
             ->where('cedula', $cedula)
             ->where('retraso_jornada','!=','00:00:00')
             ->orderBy('fecha','desc')
             ->get();
-
+        
         return view('atrasos.index',compact('atrasos'));
 
     }
+
+
     public function buscar(SearchTimeRequest $request)
     {
         $request->validated();
