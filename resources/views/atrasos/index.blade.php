@@ -9,6 +9,8 @@
         <div class="panel panel-primary">
             <div class="panel-heading text-center">Atrasos</div>
         </div>
+        <h4>Este módulo te permite visualizar tus atrasos</h4>
+    <br>
         <!--Seccion Validacion Fechas-->
         @include('partials.validation-errors')
         <div class="row">

@@ -26,11 +26,11 @@
     </div>
     <div class="form-group">
         <strong>Descripción:</strong>
-        {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control','required')) !!}
+        {!! Form::text('descripcion', null, array('placeholder' => 'Descripción','class' => 'form-control','required')) !!}
     </div>
 
     <div class="form-group">
-        <strong>Adjuntar Justificacion:</strong>
+        <strong>Adjuntar Justificación:</strong>
         <div class="alert alert-danger" role="alert">
             <strong>No olvide seleccionar un archivo adjunto si es necesario!!</strong>
         </div>

@@ -9,6 +9,8 @@
     <div class="panel panel-primary">
         <div class="panel-heading text-center">Solicitar Reposición de Atraso</div>
     </div>
+    <h4>Este módulo te permite proponer un día y la cantidad de tiempo a reponer por tus atrasos</h4>
+    <br>
         @include('partials.validationMessage')
         @include('partials.validation-errors')
         <form method="POST" action="{{ route('tiempo_reposicions.store') }}">
