@@ -7,8 +7,10 @@
 @section('main-content')
     <div class="container-fluid">
         <div class="panel panel-primary">
-            <div class="panel-heading text-center">Reposición de Atraso</div>
+            <div class="panel-heading text-center">Propuestas de Reposiciones de Atrasos</div>
         </div>
+
+        
 
         <div class="panel panel-default">
             <div class="panel-heading text-center">

@@ -115,7 +115,7 @@ class PermisoProfesorController extends Controller
     {
         $tipo_permiso = array(
             "Medico" => "Medico",
-            "Calamidad Domestrica" => "Calamidad Domestrica",
+            "Calamidad Domestica" => "Calamidad Domestica",
             "Otro" => "Otro",
         );
         return view('permiso_profesors.show',

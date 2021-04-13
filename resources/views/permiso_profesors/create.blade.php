@@ -10,6 +10,8 @@
         <div class="panel panel-primary">
             <div class="panel-heading text-center">Crear Permisos</div>
         </div>
+        <h4>Este módulo te permite crear un permiso</h4>
+        <br>
         <div class="pull-left">
             <a class="btn btn-primary" href="{{ route('permiso_profesors.shows') }}">Regresar</a>
         </div>

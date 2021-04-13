@@ -10,6 +10,10 @@
         <div class="panel-heading" style="text-align: center">Jornada</div>
     </div>
 
+    <h4>Este módulo te permite visualizar tus timbradas registradas en el biométrico</h4>
+    <br>
+    
+
     <!--Seccion Validacion Fechas-->
         @include('partials.validation-errors')
         <div class="row">
