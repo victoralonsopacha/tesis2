@@ -22,6 +22,7 @@
       <link href="{{ asset('css/nivo-lightbox.css') }}" rel="stylesheet">
       <link href="{{ asset('css/main.css') }}" rel="stylesheet">
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+      <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
   </head>
 
   <body>
@@ -52,16 +53,14 @@
           <div class="col-lg-6 col-md-12 col-xs-12">
             <div class="contents">
               <h2 class="head-title">Sistema de Control de Asistencia - U.E José María Velasco Ibarra</h2>
-              <p>Please, Purchase full version of Slick to get all pages, features and permission to use in commercial projects</p>
+              <p>Sistema Web para la gestión de actividades académicas en la Unidad Educativa José Maria Velasco Ibarra</p>
               <div class="header-button">
-                <a href="https://rebrand.ly/slick-ud" rel="nofollow" target="_blank" class="btn btn-border-filled">Purchase Now</a>
-                <a href="https://rebrand.ly/slick-ud" rel="nofollow" target="_blank" class="btn btn-border page-scroll">Learn More</a>
-              </div>
+             </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-12 col-xs-12 p-0">
             <div class="intro-img">
-              <img src="img/finger.jpg" alt="">
+              <img src="{{ asset('img/finger.jpg') }}" alt="">
             </div>
           </div>
         </div>
@@ -78,21 +77,21 @@
           <!-- Start Col -->
           <div class="col-lg-6 col-md-12 pl-0 pt-70 pr-5">
             <div class="business-item-img">
-              <img src="img/business/business-img.png" class="img-fluid" alt="">
+              <img src="{{ asset('img/home.jpg') }}" class="img-fluid" alt="">
             </div>
           </div>
           <!-- End Col -->
           <!-- Start Col -->
           <div class="col-lg-6 col-md-12 pl-4">
             <div class="business-item-info">
-              <h3>Crafted For Business, Startup and Agency Websites</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do <br> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br> veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea <br> commodo consequat. Duis aute irure dolor in reprehenderit in voluptate <br> velit esse cillum dolore eu fugiat nulla pariatur.</p>
-
-              <a class="btn btn-common" href="#">download</a>
+              <h3>Repositorio</h3>
+              <p>El sistema web cuenta con un sistema de autenticación y módulos para cada perfil garantizando de 
+              esta manera la disponibilidad, confiabilidad y privacidad de los datos. Este proyecto fue desarrollado en el 
+              framework Laravel.</p>
+              <a class="btn btn-common" href="https://github.com/victoralonsopacha/tesis2.git">download</a>
             </div>
           </div>
           <!-- End Col -->
-
         </div>
       </div>
     </section>
@@ -110,7 +109,7 @@
               <div>
                 <h2 class="section-title">Nuestros Servicios</h2>
                 <div class="desc-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do <br> eiusmod tempor incididunt ut labore et dolore.</p>
+                  <p>A continuación se detallan los principales módulos de este sistema web.</p>
                 </div>
               </div>
             </div>
@@ -201,8 +200,7 @@
               <div>
                 <h2 class="section-title">Nuestros Miembros</h2>
                 <div class="desc-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-                  <p>eiusmod tempor incididunt ut labore et dolore.</p>
+                  <p>El equipo de desarrollo encargado de crear este sistema web es:</p>              
                 </div>
               </div>
             </div>
@@ -259,7 +257,7 @@
                 </div>
                 <div class="team-inner text-center">
                   <h5 class="team-title">Victor Pacha</h5>
-                  <p>Content Writer</p>
+                  <p>Back-end Developer</p>
                 </div>
               </div>
             </div>

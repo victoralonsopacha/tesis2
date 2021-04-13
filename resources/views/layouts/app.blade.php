@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="image-bg">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -71,18 +71,9 @@
             </div>
         </nav>
 
-        <main class="image-bg cabecera py-4">
+        <main class="py-4">
             @yield('content')
         </main>
     </div>
 </body>
-<!-- Main Footer -->
-<footer class="main-footer text-center">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-        <strong>Creado por Victor Pacha y Jazmin Villamarin </strong>
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2020 </strong>
-</footer>
 </html>
