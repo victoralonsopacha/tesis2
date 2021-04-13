@@ -10,7 +10,19 @@
         <h1>TIMBRADAS REGISTRADAS</h1>
         
     @if(empty($consulta))
-        @include('partials.validationAlertempty')
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="alert alert-warning" role="alert">
+                                No existen registros!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @else
 
     <div class="panel panel-default">

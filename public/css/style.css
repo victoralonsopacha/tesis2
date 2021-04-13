@@ -1,12 +1,10 @@
 .image-bg {
-    background: #5533ff;
-    background: linear-gradient(95deg, #5533ff 40%, #25ddf5 100%);
+    background-image: url("../img/fondo.png");
+    background-size: cover;
 }
-
-.cabecera {
+.cabecera{
+    height: 550px;
+    width: 100%;
+    vertical-align: middle;
     text-align: center;
-}
-
-.navbar-blue {
-    background-color: #27d6f6;
 }
