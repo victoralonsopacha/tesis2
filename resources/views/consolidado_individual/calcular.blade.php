@@ -38,8 +38,8 @@
                     <input type="hidden" class="form-control" id='formato' name="formato" value=""  >
                 </div>
             </div>
-            <button id="pdf" type="submit" class="btn btn-danger"><a class="nav-link"  onclick="pfd()">
-                    Descargar<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+            <button id="pdf" type="submit" class="btn btn-danger"><a class="link-descargar"  onclick="pfd()">
+                    Descargar <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
             </button>
 
         </form>
