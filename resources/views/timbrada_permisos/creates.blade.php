@@ -59,7 +59,7 @@
                 </div><!--/.col-md-6-->
             </div><!--/.row-->
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-success">Timbrar Permiso</button>
+                    <button type="submit" class="btn btn-success">Timbrar</button>
                 </div>
         </form><!--/.form-->
     </div><!--/.container-fluid-->

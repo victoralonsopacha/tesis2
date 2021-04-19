@@ -43,20 +43,19 @@
                 <tr>
                     <th>Fecha</th>
                     <th>Horario de Entrada</th>
-                    <th>Hora de Timbrada</th>
-                    <th>Retraso de Jornada</th>
+                    <th>Hora de Timbrada</th>                    
                     <th>Hora de Salida</th>
+                    <th>Retraso de Jornada</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($atrasos as $atraso)
                     <tr>
-                        
                         <td>{!! $atraso->fecha!!}</td>
                         <td>{!! $atraso->hora_entrada_horario !!}</td>
                         <td>{!! $atraso->hora_entrada!!}</td>
-                        <td>{!! $atraso->retraso_jornada!!}</td>
                         <td>{!! $atraso->hora_salida!!}</td>
+                        <td>{!! $atraso->retraso_jornada!!}</td>                    
                     </tr>
                 @endforeach
                 </tbody>

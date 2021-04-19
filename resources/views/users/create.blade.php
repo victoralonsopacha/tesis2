@@ -21,15 +21,15 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>Nombres:</strong>
-                <input type="text" name="name" id="name" placeholder="Nombres" class="form-control" required>
+                {!! Form::text('name', null, array('placeholder' => 'Nombres','class' => 'form-control','required')) !!}
             </div>
             <div class="form-group">
                 <strong>Apellidos:</strong>
-                <input type="text" name="last_name" id="last_name" placeholder="Apellidos" class="form-control" required>
+                {!! Form::text('last_name', null, array('placeholder' => 'Apellidos','class' => 'form-control','required')) !!}
             </div>
             <div class="form-group">
                 <strong>Cédula:</strong>
-                <input type="number" name="cedula" placeholder="Cédula" class="form-control" required>
+                {!! Form::text('cedula', null, array('placeholder' => 'Cedula','class' => 'form-control','required')) !!}
             </div>
             <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                 <strong>Contraseña:</strong>

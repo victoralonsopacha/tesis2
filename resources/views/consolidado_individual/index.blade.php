@@ -12,7 +12,7 @@
                 <b>Timbradas del Biométrico</b>
             </div>
         </div>
-        <h4>Aquí puede ver las timbradas de los usuarios registradas en el biométrico</h4>
+        <h4>Este módulo permite ver las timbradas registradas en el biométrico de los usuarios registrados</h4>
         <div class="pull-right">
             <form class="form-inline my-2 my-lg-0 float-right">
                 <label>Buscar Por:</label>

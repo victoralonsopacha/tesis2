@@ -6,7 +6,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h4>En este módulo puedes observar las propuestas de los profesores para reponer sus atrasos</h4>
+    <h4>Este módulo permite observar las propuestas de los profesores para reponer sus atrasos</h4>
     <br>
         <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 ">

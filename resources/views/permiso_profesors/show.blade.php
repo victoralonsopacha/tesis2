@@ -65,10 +65,7 @@
                 <strong>Archivo Justificación:</strong><br>
                 <img src="{{asset("$permiso_profesor->file")}}" alt="" style="width:250px;height:250px;">
             </div>
-
     {!! Form::close() !!}
-
-
 </div>
 @endsection
 

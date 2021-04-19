@@ -63,7 +63,7 @@
                             @if($permisoItem->estado == 1)
                                 <td><span class="label label-success">Aprobado</span></td>
                             @elseif($permisoItem->estado == 2)
-                                <td><span class="label label-warning">Reprobado</span></td>
+                                <td><span class="label label-warning">Rechazado</span></td>
                                 <td>
                                     <a class="btn btn-primary btn-xs" href="{{ route('permisos.justificar', $permisoItem->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 </td>

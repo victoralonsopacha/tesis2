@@ -243,7 +243,11 @@ class UsersController extends Controller
             "Contrato" => "Contrato",
             "Temporal" => "Temporal",
         );
-        return view('users.edit',compact('user','roles','userRole','tipo_relacion_laboral'));
+        $jornada= array(
+            "Matutino" => "Matutino",
+            "Vespertino" => "Vespertino",
+        );
+        return view('users.edit',compact('user','roles','userRole','tipo_relacion_laboral','jornada'));
 
     }
 

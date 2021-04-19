@@ -65,14 +65,13 @@
                     @if($permiso->file != '')
                         <div class="form-group">
                             <strong>Archivo Justificación:</strong><br>
-                            <img src="{{asset("$permiso->file")}}" alt="" style="width:250px;height:250px;">
-                            <img src="{{route('getfile', $permiso->file)}}" />
+                            <img src="{{asset("$permiso->file")}}" alt="" style="width:250px;height:250px;">            
                         </div>
                     @endif
                 </div><!--/.col-xs-6-->
             </div><!--/.row-->
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-success">Justificar Permiso</button>
+                <button type="submit" class="btn btn-success">Aceptar</button>
             </div><!--/.button-->
         </form>
     </div><!--/.container-fluid-->

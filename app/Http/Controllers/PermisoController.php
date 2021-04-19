@@ -31,7 +31,7 @@ class PermisoController extends Controller
             "" => "Estado:",
             "0" => "Pendiente",
             "1" => "Aprobado",
-            "2" => "Reprobado",
+            "2" => "Rechazado",
         );
         $permisosl=PermisoProfesor::orderBy('id','desc')->paginate(10);
         $users=User::get();
@@ -46,7 +46,7 @@ class PermisoController extends Controller
             "" => "Estado:",
             "0" => "Pendiente",
             "1" => "Aprobado",
-            "2" => "Reprobado",
+            "2" => "Rechazado",
         );
         $users=User::get();
 
@@ -125,7 +125,7 @@ class PermisoController extends Controller
     {
         $estado = array(
             "1" => "Aprobado",
-            "2" => "Reprobado",
+            "2" => "Rechazado",
         );
         $cedula=$permiso->cedula;
         $usuario=User::where('cedula','=',$cedula)->get();

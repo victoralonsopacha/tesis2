@@ -7,7 +7,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h4>Este módulo permite calcular la cantidad de horas, días, y atrasos en el periodo de tiempo que usted necesite</h4>
+    <h4>Este módulo permite calcular la cantidad de horas, días, y atrasos en un período de tiempo</h4>
     <br>
     <div class="pull-right">
         <form class="form-inline my-2 my-lg-0 float-right">

@@ -37,7 +37,7 @@
                         @if($tiempo->estado == 1)
                             <td><span class="label label-success">Aprobado</span></td>
                         @elseif($tiempo->estado == 2)
-                            <td><span class="label label-info">Reprobado</span></td>
+                            <td><span class="label label-info">Rechazado</span></td>
                         @elseif($tiempo->estado == 0)
                             <td><span class="label label-danger">Pendiente</span></td>
 
