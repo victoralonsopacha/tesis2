@@ -6,7 +6,9 @@
 
 @section('main-content')
     <div class="container-fluid">
-    <h1>GESTION USUARIOS</h1>
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">Gestión de Usuarios</div>
+        </div>
         <div class="pull-left">
             <a class="btn btn-primary" href="{{ route('users.inactivos') }}">Ver usuarios inactivos</a>
         </div>
