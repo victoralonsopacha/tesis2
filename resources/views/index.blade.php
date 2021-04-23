@@ -84,7 +84,7 @@
           <!-- Start Col -->
           <div class="col-lg-6 col-md-12 pl-4">
             <div class="business-item-info">
-              <h3>Perfiles del sistema:</h3>
+              <h3>Objetivo</h3>
               <p>El sistema web cuenta con un sistema de autenticación y módulos para cada perfil garantizando de 
               esta manera la disponibilidad, confiabilidad y privacidad de los datos. Este proyecto fue desarrollado en el 
               framework Laravel.</p>

@@ -55,9 +55,18 @@
                         <td>{!! $atraso->hora_entrada_horario !!}</td>
                         <td>{!! $atraso->hora_entrada!!}</td>
                         <td>{!! $atraso->hora_salida!!}</td>
-                        <td>{!! $atraso->retraso_jornada!!}</td>                    
-                    </tr>
+                        <td>{!! $atraso->retraso_jornada!!}</td>                                         
+                             
                 @endforeach
+                        
+                    </tr>
+                    <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{!! $totalHoras!!}</td> 
+                    </tr>   
                 </tbody>
             </table>
         </div><!--div panel-->

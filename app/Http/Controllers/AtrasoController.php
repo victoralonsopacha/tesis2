@@ -23,10 +23,25 @@ class AtrasoController extends Controller
             ->where('retraso_jornada','!=','00:00:00')
             ->orderBy('fecha','desc')
             ->get();
+            if($atrasos->isEmpty()) {
+                $totalHoras = 1;
+            }else {
+                $total = 0;
+    
+                foreach ($atrasos as $atraso) {
+                    $horas[] = $atraso->retraso_jornada;
+                }
+                foreach ($horas as $h) {
+                    $parts = explode(":", $h);
+                    $total += $parts[2] + $parts[1] * 60 + $parts[0] * 3600;
+                }
+                $totalHoras = gmdate("H:i:s", $total);
+            }     
         
-        return view('atrasos.index',compact('atrasos'));
+        return view('atrasos.index',compact('atrasos','totalHoras'));
 
     }
+    
 
 
     public function buscar(SearchTimeRequest $request)

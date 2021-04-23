@@ -61,7 +61,7 @@ class LoginController extends Controller
     //Redirigir segun ROL al dashboard correspondiente
     public function authenticated($request , $user){
         if($user->hasRole('Admin')){
-            return redirect()->route('home') ;
+            return redirect()->route('users.activos') ;
         }
         if($user->hasRole('Inspector')){
             return redirect()->route('profile.inspector') ;
