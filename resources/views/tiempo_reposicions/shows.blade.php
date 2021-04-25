@@ -9,8 +9,27 @@
         <div class="panel panel-primary">
             <div class="panel-heading text-center">Propuestas de Reposiciones de Atrasos</div>
         </div>
+        <div class="row">
+            <div class="col-md-3">
+            <label for="">Atrasos Total: </label>
+                {!! $totalHoras !!}
+            </div>
+            <div class="col-md-3">
+            <label for="">Reposiciones Total: </label>
+                {!!$totalReposicion!!}                
+            </div>
+            <div class="col-md-3">
+            <label for="">Reposiciones Total: </label>
+                @php
+                $horaInicio = new DateTime($totalHoras);
+                $horaTermino = new DateTime($totalReposicion);
 
-        
+                $interval = $horaInicio->diff($horaTermino);
+                echo $interval->format('%H:%i:%s');
+                @endphp 
+            </div>
+        </div>
+                  
 
         <div class="panel panel-default">
             <div class="panel-heading text-center">
@@ -40,10 +59,9 @@
                             <td><span class="label label-info">Rechazado</span></td>
                         @elseif($tiempo->estado == 0)
                             <td><span class="label label-danger">Pendiente</span></td>
-
                         @endif
                     </tr>
-                    @endforeach
+                    @endforeach                    
                 </tbody><!--/.tbody-->
             </table><!--/.table-->
             <nav aria-label="..." class="text-center">

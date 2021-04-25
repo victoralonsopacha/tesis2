@@ -45,10 +45,51 @@ class TiempoReposicionController extends Controller
     public function shows(Request $request)
     {
         $cedula = auth()->user()->cedula;
+        $fecha_inicio = auth()->user()->fecha_ingreso;
+        $fecha_fin=Carbon::now();
+        $atrasos=DB::table('reporte_asistencia')
+            ->where('cedula', $cedula)
+            ->where('retraso_jornada','!=','00:00:00')
+            ->whereBetween('fecha', [$fecha_inicio, $fecha_fin])
+            ->get();
+
         $tiempos = TiempoReposicion::where('cedula', '=',$cedula)
             ->orderBy('id','desc')->paginate(10);
 
-        return view('tiempo_reposicions.shows', ['tiempos'=>$tiempos]);
+        $estado_aprobado=1;
+
+        $totalreposicion = DB::select('SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas))) AS total_reposicion 
+        FROM tiempo_reposicions r where r.cedula ='.$cedula.' AND r.estado ='.$estado_aprobado.'');
+        foreach($totalreposicion as $repo){
+            $totalReposicion = $repo->total_reposicion;
+        }        
+
+        if($atrasos->isEmpty()) {
+                $totalHoras = 0;
+            }else {
+                $total = 0;
+    
+                foreach ($atrasos as $atraso) {
+                    $horas[] = $atraso->retraso_jornada;
+                }
+                foreach ($horas as $h) {
+                    $parts = explode(":", $h);
+                    $total += $parts[2] + $parts[1] * 60 + $parts[0] * 3600;
+                }
+                $totalHoras = gmdate("H:i:s", $total);
+            }      
+
+            $start_time = strtotime($totalHoras);
+            $end_time = strtotime($totalReposicion);
+            $diff = $end_time - $start_time;
+            $total=date("H:i:s", $diff);
+
+            
+
+        return view('tiempo_reposicions.shows', ['tiempos'=>$tiempos,
+        'totalHoras'=>$totalHoras,
+        'totalReposicion'=>$totalReposicion,
+        'total'=>$total,]);
     }
 
     public function index_inspector(Request $request)

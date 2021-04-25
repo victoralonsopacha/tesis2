@@ -84,11 +84,9 @@
           <!-- Start Col -->
           <div class="col-lg-6 col-md-12 pl-4">
             <div class="business-item-info">
-              <h3>Objetivo</h3>
-              <p>El sistema web cuenta con un sistema de autenticación y módulos para cada perfil garantizando de 
-              esta manera la disponibilidad, confiabilidad y privacidad de los datos. Este proyecto fue desarrollado en el 
-              framework Laravel.</p>
-              <a class="btn btn-common" href="https://github.com/victoralonsopacha/tesis2.git">download</a>
+              <h3>Gestión Integral</h3>
+              <p>Desde este entorno, como profesor podrás manejar tus jornadas de trabajo, atrasos y permisos; como 
+              inspector podrás generar reportes de jornadas de trabajo de los profesor, así como de permisos.</p>          
             </div>
           </div>
           <!-- End Col -->
@@ -128,7 +126,10 @@
                </div>
                <div class="feature-info float-left">
                  <h4>Control de Usuarios por Roles</h4>
-                 <p>Producing long lasting organic SEO results for <br> brand of different kinds for more than a decade,<br> we understand that’s your.</p>
+                 <p>Se asignan derechos de acceso a los usuarios<br>
+                 del Sistema Web en función de roles. Se garantiza <br>
+                 así que los usuarios puedan acceder a los niveles<br>
+                 que pertenecen.</p>
                </div>
             </div>
             <!-- End Fetatures -->
@@ -144,7 +145,8 @@
                </div>
                <div class="feature-info float-left">
                  <h4>Manejo de Permisos</h4>
-                 <p>Producing long lasting organic SEO results for <br> brand of different kinds for more than a decade,<br> we understand that’s your.</p>
+                 <p>Se ha asignado el módulo de permisos con el<br> objetivo de gestionar los
+                 permisos de profesores<br>para ausentarse del establecimiento</p>
                </div>
             </div>
             <!-- End Fetatures -->
@@ -160,7 +162,9 @@
                </div>
                <div class="feature-info float-left">
                  <h4>Gestión de Atrasos</h4>
-                 <p>Producing long lasting organic SEO results for <br> brand of different kinds for more than a decade,<br> we understand that’s your.</p>
+                 <p>Se accede desde el biometrico por medio del<br>sistema
+                 a las timbradas realizadas por parte de<br>los usuarios
+                 con el fin de manejar sus atrasos.</p>
                </div>
             </div>
             <!-- End Fetatures -->
@@ -176,7 +180,9 @@
                </div>
                <div class="feature-info float-left">
                  <h4>Generación de Reportes</h4>
-                 <p>Producing long lasting organic SEO results for <br> brand of different kinds for more than a decade,<br> we understand that’s your.</p>
+                 <p>La parte más importante del sistema es generar<br>
+                 reportes con el fin de resumir la información<br>
+                 procesada dentro del sistema.</p>
                </div>
             </div>
             <!-- End Fetatures -->

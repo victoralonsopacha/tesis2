@@ -42,9 +42,8 @@
                 <thead class="thead-tomate">
                 <tr>
                     <th>Fecha</th>
-                    <th>Horario de Entrada</th>
-                    <th>Hora de Timbrada</th>                    
-                    <th>Hora de Salida</th>
+                    <th>Entrada Timbrada</th>                    
+                    <th>Salida Timbrada</th>
                     <th>Retraso de Jornada</th>
                 </tr>
                 </thead>
@@ -52,7 +51,6 @@
                 @foreach($atrasos as $atraso)
                     <tr>
                         <td>{!! $atraso->fecha!!}</td>
-                        <td>{!! $atraso->hora_entrada_horario !!}</td>
                         <td>{!! $atraso->hora_entrada!!}</td>
                         <td>{!! $atraso->hora_salida!!}</td>
                         <td>{!! $atraso->retraso_jornada!!}</td>                                         
@@ -63,8 +61,7 @@
                     <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><b>Total Retrasos</b></td>
                     <td>{!! $totalHoras!!}</td> 
                     </tr>   
                 </tbody>

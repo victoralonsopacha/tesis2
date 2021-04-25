@@ -36,7 +36,7 @@ class AtrasoController extends Controller
                     $total += $parts[2] + $parts[1] * 60 + $parts[0] * 3600;
                 }
                 $totalHoras = gmdate("H:i:s", $total);
-            }     
+            }   
         
         return view('atrasos.index',compact('atrasos','totalHoras'));
 
