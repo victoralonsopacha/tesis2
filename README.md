@@ -26,14 +26,5 @@ Los autores de este proyecto son:
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/victoralonsopacha/tesis2/graphs/contributors) quienes han participado en este proyecto. 
 
 
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
-
-
-
 ---
 ⌨️ con ❤️ por Victor y Jazmin. 😊
