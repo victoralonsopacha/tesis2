@@ -65,6 +65,9 @@
               var transfor_fechafin =new Date(array_fechafin[0],array_fechafin[1],array_fechafin[2]);
               var transfor_fechamanana =new Date(anio,mes,dia);
 
+              console.log(transfor_fechafin);
+              console.log(transfor_fechamanana);
+
 
               if(fecha_inicio.length == 0){
                   alert("Debe ingresar una fecha de inicio");
