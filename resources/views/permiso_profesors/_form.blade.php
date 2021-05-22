@@ -1,51 +1,39 @@
-    <div class="form-group row">
+<div class="col-xs-6 col-sm-6 col-md-6">
+    <div class="form-group">
+        <strong>Fecha de Inicio:</strong>
+        <input type="date" class="form-control" name="fecha_inicio" required>
+    </div>
+    <div class="form-group">
+        <strong>Hora Inicio:</strong>
+        <input type="time" min="07:00" max="18:30" class="form-control" name="hora_inicio" required>
+    </div>
+    <div class="form-group">
+        <strong>Fecha Fin:</strong>
+        {!! Form::date('fecha_fin', null, array('class' => 'form-control')) !!}
+    </div>
+    <div class="form-group">
+        <strong>Hora Fin:</strong>
+        <input type="time" min="07:00" max="18:30" class="form-control" name="hora_fin" required>
 
-        <label for="staticEmail" class="col-sm-2 col-form-label">Cedula del usuario</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="cedula" value="{{$cedula=auth()->user()->cedula}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de inicio</label>
-        <div class="col-sm-6">
-            <input type="date" class="form-control" name="fecha_inicio" value="{{old('fecha_inicio', $permiso_profesor->fecha_inicio)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Fin</label>
-        <div class="col-sm-6">
-            <input type="date" class="form-control" name="fecha_fin" value="{{old('fecha_fin', $permiso_profesor->fecha_fin)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Inicio</label>
-        <div class="col-sm-6">
-            <input type="time" class="form-control" name="hora_inicio" value="{{old('hora_inicio', $permiso_profesor->hora_inicio)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Hora Fin</label>
-        <div class="col-sm-6">
-            <input type="time" class="form-control" name="hora_fin" value="{{old('hora_fin', $permiso_profesor->hora_fin)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="descripcion" value="{{old('descripcion', $permiso_profesor->descripcion)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Permiso</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="tipo_permiso" value="{{old('tipo_permiso', $permiso_profesor->tipo_permiso)}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Archivo Adjunto</label>
-        <div class="col-sm-6">
-            <input type="file" class="form-control" name="file" value="{{old('file', $permiso_profesor->file)}}">
-        </div>
     </div>
 
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6">
+    <div class="form-group">
+        <strong>Tipo Permiso:</strong>
+        {!! Form::select('tipo_permiso[]',$tipo_permiso, null,['class' => 'form-control']); !!}
+    </div>
+    <div class="form-group">
+        <strong>Descripción:</strong>
+        {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control')) !!}
+    </div>
 
+    <div class="form-group">
+        <strong>Adjuntar Justificacion:</strong>
+        <div class="alert alert-danger" role="alert">
+            <strong>No olvide seleccionar un archivo adjunto si es necesario!!</strong>
+        </div>
+        <input type="file" class="form-control" name="file" id="file" >
+    </div>
+
+</div>
