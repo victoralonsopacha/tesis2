@@ -49,10 +49,7 @@ class UsersController extends Controller
             ->get();
         $rolesl=DB::table('roles')
             ->select('id', 'name')->get();
-
         $usersl= User::where('estado','=','1')->get();
-
-
         return view('users.activos', ['usersl'=>$usersl,
          'roles'=>$roles,'rolesl'=>$rolesl]);
 
@@ -67,7 +64,6 @@ class UsersController extends Controller
         $rolesl=DB::table('roles')
             ->select('id', 'name')
             ->get();
-
         $cedula=trim($request->input('cedula'));
         $nombre=trim($request->input('nombre'));
 
@@ -156,6 +152,7 @@ class UsersController extends Controller
         $roles = Role::orderBy('name','asc')
             ->where('id','<','3')
             ->pluck('name','name')->all();
+
         return view('users.create',compact('roles','tipo_relacion_laboral','jornada'));
     }
 
@@ -172,8 +169,6 @@ class UsersController extends Controller
         $input['password'] = Hash::make($input['password']);
         $input['tipo_relacion_laboral']=implode($request['tipo_relacion_laboral']);
         $jornada=implode($request['jornada']);
-
-
         if($jornada == 'Matutino'){
             $horario['id_usuario']=$request['cedula'];
             $horario['hora_entrada']='07:00:00';
@@ -190,6 +185,13 @@ class UsersController extends Controller
         }
 
         $input['estado']='1';
+        //Insercción de avatar segun Rol
+        if($request->input('roles') == 'Inspector'){
+            $input['avatar']='storage/avatar/inspector.png';
+        }
+        else{
+            $input['avatar']='storage/avatar/profesor.png';
+        }
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 

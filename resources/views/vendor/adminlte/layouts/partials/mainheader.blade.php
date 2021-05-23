@@ -6,7 +6,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>LT</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Escuela</b>Velasco Ibarra</span>
+        <span class="logo-lg"><b>U.E</b>Jose Maria Velasco Ibarra</span>
     </a>
 
     <!-- Header Navbar -->
@@ -29,14 +29,14 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="max-width: 280px;white-space: nowrap;overflow: hidden;overflow-text: ellipsis">
                             <!-- The user image in the navbar-->
-                            <img src="{{ Gravatar::get($user->email) }}" class="user-image" alt="User Image"/>
+                            <img src="{{asset(Auth::user()->avatar)}}" class="user-image" alt="User Image"/>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs" data-toggle="tooltip" title="{{ Auth::user()->name }}">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="{{ Gravatar::get($user->email) }}" class="img-circle" alt="User Image" />
+                                <img src="{{asset(Auth::user()->avatar)}}" class="img-circle" alt="User Image" />
                                 <p>
                                     <span data-toggle="tooltip" title="{{ Auth::user()->name }}">{{ Auth::user()->name }}</span>
                                     <small>{{ Auth::user()->email }}</small>
