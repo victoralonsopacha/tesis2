@@ -36,7 +36,10 @@
     <tbody>
             <tr>
                 <td>Cédula: <label for="">{{{ $informe['cedula'] }}}</label></td>
-                <td><p>Nombre: <label for="">{{{ $informe['nombre'] }}}</label></p></td>
+                <td>
+                    <p>Nombre: <label for="">{{{ $informe['nombre'] }}}</label></p>
+                    <p>Apellido: <label for="">{{{ $informe['apellido'] }}}</label></p>    
+                </td>
             </tr>
     </tbody>
 </table>

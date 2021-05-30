@@ -195,7 +195,7 @@ class TiempoReposicionController extends Controller
         $input['inspector_cedula']=$cedula;
         $input['estado']='1';
         $tiempo->update($input);
-        return redirect()->back()->with('message','El atraso ha sido aprobado');
+        return redirect()->back()->with('message','El tiempo de reposición ha sido aprobado');
     }
     public function desactive($id)
     {
@@ -204,7 +204,7 @@ class TiempoReposicionController extends Controller
         $input['inspector_cedula']=$cedula;
         $input['estado']='2';
         $tiempo->update($input);
-        return redirect()->back()->with('error','El atraso ha sido rechazado');
+        return redirect()->back()->with('error','El tiempo de reposición ha sido rechazado');
     }
     public function show(TiempoReposicion $reposicion)
     {

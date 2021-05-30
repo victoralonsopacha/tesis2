@@ -62,8 +62,13 @@
                 {!! Form::text('descripcion', null, array('class' => 'form-control','readonly')) !!}
             </div>
             <div class="form-group">
+                @if($permiso_profesor->file == '')
+                
+                
+                @else
                 <strong>Archivo Justificación:</strong><br>
                 <img src="{{asset("$permiso_profesor->file")}}" alt="" style="width:250px;height:250px;">
+                @endif
             </div>
     {!! Form::close() !!}
 </div>

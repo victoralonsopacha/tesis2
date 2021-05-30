@@ -82,7 +82,7 @@
                 return;
             }
             
-            //this.submit();
+            this.submit();
           }
     </script>
 

@@ -171,8 +171,7 @@ class ControlTiempoController extends Controller
         $request->validated();
         $ced_usuario = $user->cedula;
         $fecha_inicio = $request->fecha_inicio;
-        $fecha_fin = Carbon::now();
-        $fecha_fin = $fecha_fin->toDateTimeString();
+        $fecha_fin = $request->fecha_fin;
         $estado_pendiente=0;
         $estado_aprobado=1;
         $estado_desaprobado=2;
@@ -200,8 +199,8 @@ class ControlTiempoController extends Controller
 
         //CONSULTAS PARA CONTAR LOS PERMISOS APROBADOS, NO APROBADOS Y PENDIENTES DE UN SOLO PROFESOR
         $consulta5= DB::select('SELECT COUNT(p.cedula) as permisos1 FROM permiso_profesors p WHERE p.cedula='.$ced_usuario.' AND p.estado ='.$estado_aprobado.' AND p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY p.cedula');
-        $consulta6= DB::select('SELECT COUNT(p.cedula) as permisos1 FROM permiso_profesors p WHERE p.cedula='.$ced_usuario.' AND p.estado ='.$estado_desaprobado.' AND p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY p.cedula');
-        $consulta9= DB::select('SELECT COUNT(p.cedula) as permisos1 FROM permiso_profesors p WHERE p.cedula='.$ced_usuario.' AND p.estado ='.$estado_pendiente.' AND p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY p.cedula');
+        $consulta6= DB::select('SELECT COUNT(p.cedula) as permisos2 FROM permiso_profesors p WHERE p.cedula='.$ced_usuario.' AND p.estado ='.$estado_desaprobado.' AND p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY p.cedula');
+        $consulta9= DB::select('SELECT COUNT(p.cedula) as permisos3 FROM permiso_profesors p WHERE p.cedula='.$ced_usuario.' AND p.estado ='.$estado_pendiente.' AND p.fecha_inicio BETWEEN "'.$fecha_inicio.'" AND "'.$fecha_fin.'" GROUP BY p.cedula');
 
 
 

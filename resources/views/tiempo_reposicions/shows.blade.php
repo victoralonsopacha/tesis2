@@ -10,24 +10,16 @@
             <div class="panel-heading text-center">Propuestas de Reposiciones de Atrasos</div>
         </div>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6 text-center">
             <label for="">Atrasos Total: </label>
                 {!! $totalHoras !!}
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 text-center">
             <label for="">Reposiciones Total: </label>
                 {!!$totalReposicion!!}                
             </div>
-            <div class="col-md-3">
-            <label for="">Reposiciones Total: </label>
-                @php
-                $horaInicio = new DateTime($totalHoras);
-                $horaTermino = new DateTime($totalReposicion);
 
-                $interval = $horaInicio->diff($horaTermino);
-                echo $interval->format('%H:%i:%s');
-                @endphp 
-            </div>
+            
         </div>
                   
 
