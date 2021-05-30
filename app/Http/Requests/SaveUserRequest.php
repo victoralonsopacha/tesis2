@@ -26,9 +26,9 @@ class SaveUserRequest extends FormRequest
         //SOLO LOS CAMPOS VALIDADOS SERAN LOS QUE SE VAN A GUARDAR
         //SI SE QUIERE PONER OTRO CAMPO EN EL FORMULARIO DEBE IR DENTRO DE ESTA VARIABLE
         $rules = [
-            'name' =>'required|alpha|max:100',
-            'last_name' =>'required|alpha|max:100',
-            'password' => 'required|nullable|min:5|required_with:password_confirmation|string|confirmed',
+            'name' =>'required|string|max:50',
+            'last_name' =>'required|string|max:50',
+            'password' => 'required|nullable|min:6|required_with:password_confirmation|string|confirmed',
             'cedula' =>'size:10|unique:users,cedula',
             'fecha_ingreso' => 'required|before:tomorrow'
         ];

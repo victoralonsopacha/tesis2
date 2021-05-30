@@ -23,11 +23,25 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' =>'required|string|max:100',
-            'last_name' =>'required|string|max:100',
-            'password' => 'nullable|min:5|required_with:password_confirmation|string|confirmed',
+        $rules = [
+            'name' =>'required|string|max:50',
+            'last_name' =>'required|string|max:50',
+            'cedula' =>'size:10',
             'fecha_ingreso' => 'required|before:tomorrow'
+        ];
+        // Si es diferente a Post
+        if($this->method() !== 'PUT')
+        {
+            $rules ['email' ] = 'required|string|email|max:255|regex:/(.*)@(.*)\.(.*)$/i' . $this->id;
+        }
+        return $rules;
+    
+    }
+    public function messages(){
+        return [
+            'email.regex'=>'El formato del correo es incorrecto. (ejemplo@ejemplo.com)',
+            'cedula.size'=> 'La cédula debe tener 10 dígitos',
+            'fecha_ingreso.before' => 'La fecha de ingreso no debe ser una fecha posterior a la de hoy',
         ];
     }
 }

@@ -164,7 +164,7 @@ class UsersController extends Controller
      */
     public function store(SaveUserRequest $request)
     {
-        //$request->validated();
+        $request->validated();
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $input['tipo_relacion_laboral']=implode($request['tipo_relacion_laboral']);
@@ -185,7 +185,7 @@ class UsersController extends Controller
         }
 
         $input['estado']='1';
-        //Insercción de avatar segun Rol
+        //Insercion de avatar según Rol
         if($request->input('roles') == 'Inspector'){
             $input['avatar']='storage/avatar/inspector.png';
         }
@@ -196,6 +196,20 @@ class UsersController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.activos')->with('message','El usuario ha sido creado con éxito');
+    }
+
+    public function update(UpdateUserRequest $request,$id)
+    {
+        $request->validated();
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+        $input['tipo_relacion_laboral']=implode($request['tipo_relacion_laboral']);
+        $user = User::find($id);
+        $user->update($input);
+
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        $user->assignRole($request->input('roles'));
+        return redirect()->route('users.activos')->with('message', 'El usuario ha sido actualizado con éxito');
     }
 
     public function activar($id)
@@ -240,6 +254,7 @@ class UsersController extends Controller
         $roles = Role::orderBy('name','asc')
             ->where('id','<','3')
             ->pluck('name','name')->all();
+
         $userRole = $user->roles->pluck('name','name')->all();
         $tipo_relacion_laboral = array(
             "Contrato" => "Contrato",
@@ -260,18 +275,8 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
-    {
-        //$request->validated();
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-        $input['tipo_relacion_laboral']=implode($request['tipo_relacion_laboral']);
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-        $user->assignRole($request->input('roles'));
-        return redirect()->route('users.activos')->with('message', 'El usuario ha sido actualizado con éxito');
-    }
+    
+    //Actualizar Usuario
 
     public function actualizar(Request $request)
     {

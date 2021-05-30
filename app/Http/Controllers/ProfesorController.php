@@ -51,9 +51,9 @@ class ProfesorController extends Controller
 
     }
 
-    public function update($id, Request $request)
+    public function update($id, UpdateUserRequest $request)
     {
-
+        $request->validated();
         $input = $request->all();
         $input['tipo_relacion_laboral']=implode($request['tipo_relacion']);
         if($input['password'] == ''){

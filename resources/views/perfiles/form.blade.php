@@ -2,11 +2,11 @@
     <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
             <strong>Nombres:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+            {!! Form::text('name', null, array('onkeypress'=>'return soloLetras(event)','class' => 'form-control','required')) !!}
         </div>
         <div class="form-group">
             <strong>Apellidos:</strong>
-            {!! Form::text('last_name', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+            {!! Form::text('last_name', null, array('onkeypress'=>'return soloLetras(event)','class' => 'form-control','required')) !!}
         </div>
         <div class="form-group">
             <strong>Cedula:</strong>
