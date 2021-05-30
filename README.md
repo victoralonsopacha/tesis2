@@ -15,7 +15,8 @@ Este sistema web ha sido desarrollado con las siguientes herramientas:
 
 ## Documentación 📌
 
-
+La documentación oficial de este proyecto se encuentra en el siguiente enlace:
+* [Documentación](https://github.com/victoralonsopacha/tesis2/tree/documentacion/documentacion)
 ## Autores ✒️
 
 Los autores de este proyecto son:
