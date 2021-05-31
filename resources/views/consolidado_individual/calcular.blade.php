@@ -81,7 +81,7 @@
                   return;
               }
               if(inicio > fin){
-                  alert("La fecha fin no puede ser menor");
+                  alert("La fecha fin no puede ser menor a la inicial");
                   return;
               }
               if(transfor_fechamanana <= transfor_fechafin){

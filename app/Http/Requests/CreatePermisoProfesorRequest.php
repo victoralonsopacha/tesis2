@@ -36,7 +36,6 @@ class CreatePermisoProfesorRequest extends FormRequest
         return [
             'fecha_inicio.after' => 'La fecha de inicio no puede ser anterior a la del dia de hoy',
             'fecha_fin.after' => 'La fecha de finalización no debe ser anterior a la de la fecha de inicio'
-
         ];
     }
 
