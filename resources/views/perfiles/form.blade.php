@@ -14,7 +14,7 @@
         </div>
         <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
             <strong>Contraseña:</strong>
-            {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control')) !!}
+            {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control','minlength'=>'6')) !!}
             @if ($errors->has('password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>

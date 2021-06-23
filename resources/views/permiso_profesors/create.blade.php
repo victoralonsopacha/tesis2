@@ -103,7 +103,6 @@
                   alert("La fecha fin no puede ser menor a la inicial");
                   return;
               }
-              
 
               this.submit();
           }
