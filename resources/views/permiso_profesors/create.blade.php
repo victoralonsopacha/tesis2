@@ -19,53 +19,50 @@
         
         @include('partials.validation-errors')
         <div class="row">
-        <form id="formulariofecha" action="{{route('permiso_profesors.store')}}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
-        @csrf
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="form-group">
-                <strong>Fecha de Inicio:</strong>
-                
-                {!! Form::date('fecha_inicio', null, array('class' => 'form-control','id'=>'fecha_inicio')) !!}
-            </div>
-            <div class="form-group">
-                <strong>Hora Inicio:</strong>
-                {!! Form::time('hora_inicio', null, array('class' => 'form-control','required','min'=>'07:00','max'=>'18:30')) !!}
-            </div>
-            <div class="form-group">
-                <strong>Fecha Fin:</strong>
-                {!! Form::date('fecha_fin', null, array('class' => 'form-control','id'=>'fecha_fin')) !!}
-            </div>
-            <div class="form-group">
-                <strong>Hora Fin:</strong>
-                {!! Form::time('hora_fin', null, array('class' => 'form-control','required','min'=>'07:00','max'=>'18:30')) !!}
-            </div>
-        </div>
-            
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    <strong>Tipo Permiso:</strong>
-                    {!! Form::select('tipo_permiso[]',$tipo_permiso, null,['class' => 'form-control']); !!}
-                </div>
-                <div class="form-group">
-                    <strong>Descripción:</strong>
-                    {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control')) !!}
-                </div>
-
-                <div class="form-group">
-                    <strong>Adjuntar Justificacion:</strong>
-                    <div class="alert alert-danger" role="alert">
-                        <strong>No olvide seleccionar un archivo adjunto si es necesario!!</strong>
+            <form id="formulariofecha" action="{{route('permiso_profesors.store')}}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+                @csrf
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <strong>Fecha de Inicio:</strong>
+                        
+                        {!! Form::date('fecha_inicio', null, array('class' => 'form-control','id'=>'fecha_inicio')) !!}
                     </div>
-                    <input type="file" class="form-control" name="file" id="file" >
+                    <div class="form-group">
+                        <strong>Hora Inicio:</strong>
+                        {!! Form::time('hora_inicio', null, array('class' => 'form-control','required','min'=>'07:00','max'=>'18:30')) !!}
+                    </div>
+                    <div class="form-group">
+                        <strong>Fecha Fin:</strong>
+                        {!! Form::date('fecha_fin', null, array('class' => 'form-control','id'=>'fecha_fin')) !!}
+                    </div>
+                    <div class="form-group">
+                        <strong>Hora Fin:</strong>
+                        {!! Form::time('hora_fin', null, array('class' => 'form-control','required','min'=>'07:00','max'=>'18:30')) !!}
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-success">Crear Permiso</button>
-            </div>
-        </div>
-        </form>
-        </div>
-    </div>
+                    
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <strong>Tipo Permiso:</strong>
+                        {!! Form::select('tipo_permiso[]',$tipo_permiso, null,['class' => 'form-control']); !!}
+                    </div>
+                    <div class="form-group">
+                        <strong>Descripción:</strong>
+                        {!! Form::text('descripcion', null, array('placeholder' => 'Descripcion','class' => 'form-control')) !!}
+                    </div>
+
+                    <div class="form-group">
+                        <strong>Adjuntar Justificacion:</strong>
+                        <div class="help-block" style="color:red;">!No olvide seleccionar un archivo adjunto si es necesario!</div>                    
+                        <input type="file" class="form-control" name="file" id="file" accept="image/*" enctype="multipart/form-data">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-success">Crear Permiso</button>
+                </div>
+            </form>
+        </div><!--/.row-->
+    </div><!--/.container fluid-->
 
     <script>
           document.addEventListener("DOMContentLoaded", function() {
@@ -103,8 +100,9 @@
                   alert("La fecha fin no puede ser menor a la inicial");
                   return;
               }
-
               this.submit();
           }
+
     </script>
 @endsection
+
