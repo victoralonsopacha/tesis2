@@ -211,20 +211,18 @@ class PermisoProfesorController extends Controller
         //$request->validated();
         $entrada=$request->all();
         $entrada['tipo_permiso']=implode($request->tipo_permiso);
-    
 
         if($request->hasFile('file')){
-            $file=$request->file('file');
-            $name=time().'-'.$file->getClientOriginalName();
-            $destination='storage/permissions/';
-            $url=$request->file('file')->move($destination,$name);
-            $path=$destination.$name;
-            $entrada['file']=$path;
-            Log::info('si archivo');
-
+            $image = $request->file('file')->getClientOriginalName();
+            $request->file('file')
+                ->storeAs('permisos/', $image);
+            if($permiso_profesor->file != '')
+            {
+                unlink(storage_path('app/public/permisos/' . $permiso_profesor->file));
+            }
+            $entrada['file']=$image;            
         }else{
             $entrada['file']=$permiso_profesor->file;
-            Log::info('no archivo');
         }
         $permiso_profesor->update($entrada);
         return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue actualizado con exito');
