@@ -13,7 +13,8 @@
         <div class="pull-left">
             <a class="btn btn-primary" href="{{ route('permiso_profesors.shows') }}">Regresar</a>
         </div>
-        <br><br>
+        <br><br><br>
+        @include('partials.validation-errors')
 
         {!! Form::model($permiso_profesor, ['method' => 'PATCH','accept-charset'=>'UTF-8', 'enctype'=>'multipart/form-data','route' => ['permiso_profesors.update', $permiso_profesor]]) !!}
         {!! Form::token() !!}

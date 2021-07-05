@@ -42,17 +42,17 @@
                         <strong>Hora Fin:</strong>
                         <input type="time" class="form-control" name="hora_fin" value="{{old('hora_fin', $permiso->hora_fin)}}" readonly>
                     </div>
-                    <div class="form-group">
-                         <strong>Tipo Permiso:</strong>
-                         <input type="text" class="form-control" name="tipo_permiso" value="{{$permiso->tipo_permiso}}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <strong>Justificación del Usuario:</strong>
-                        <input type="text" class="form-control" name="descripcion" value="{{old('descripcion', $permiso->descripcion)}}" readonly>
-                    </div>
+                   
                 </div><!--/.col-xs-6-->
                 <div class="col-md-6 col-sm-6 col-6">
-
+                    <div class="form-group">
+                        <strong>Tipo Permiso:</strong>
+                        <input type="text" class="form-control" name="tipo_permiso" value="{{$permiso->tipo_permiso}}" readonly>
+                   </div>
+                   <div class="form-group">
+                       <strong>Justificación del Usuario:</strong>
+                       <input type="text" class="form-control" name="descripcion" value="{{old('descripcion', $permiso->descripcion)}}" readonly>
+                   </div>
                     <div class="form-group">
                         <strong>Seleccionar:</strong>
                         {!! Form::select('estado[]',$estado, null,['class' => 'form-control']); !!}
@@ -65,7 +65,8 @@
                     @if($permiso->file != '')
                         <div class="form-group">
                             <strong>Archivo Justificación:</strong><br>
-                            <img src="{{asset("$permiso->file")}}" alt="" style="width:250px;height:250px;">            
+                            <a href="{{route('permisos.download',$permiso->uuid)}}" class="btn btn-primary">
+                                <i class="fa fa-download" aria-hidden="true"></i> Descargar</a>
                         </div>
                     @endif
                 </div><!--/.col-xs-6-->

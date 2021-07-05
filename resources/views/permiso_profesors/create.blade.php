@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <strong>Adjuntar Justificacion:</strong>
                         <div class="help-block" style="color:red;">!No olvide seleccionar un archivo adjunto si es necesario!</div>                    
-                        <input type="file" class="form-control" name="file" id="file" accept="image/*" enctype="multipart/form-data">
+                        <input type="file" class="form-control" name="file" id="file" accept="image/*,application/pdf" enctype="multipart/form-data">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

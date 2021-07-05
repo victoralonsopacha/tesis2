@@ -54,9 +54,10 @@ class LoginController extends Controller
 
         if(Auth::attempt( $credentials,false ))
         {
-            return back()->withErrors([$this->email()=>'Este usuario no concuerdan con nuestros registros']);
+            return back()->withErrors([$this->email()=>'Estas credenciales no concuerdan con nuestros registros']);
         }
     }
+    
 
     //Redirigir segun ROL al dashboard correspondiente
     public function authenticated($request , $user){

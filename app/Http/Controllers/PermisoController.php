@@ -135,16 +135,13 @@ class PermisoController extends Controller
     }
 
     //FUNCION DESCARGAR ARCHIVO
-    public function downloadFile(Request $request){
-        $path=public_path("storage/permissions/1616530669-1_5039673075612778658.pdf");
-        return response()->download($path);
+    public function downloadFile($uuid)    {
+        $permiso = PermisoProfesor::where('uuid', $uuid)->firstOrFail();
+        $pathToFile = storage_path("app/public/permisos/". $permiso->file);
+        return response()->download($pathToFile);
+        //return response()->file($pathToFile);
     }
-    public function downloadFiles($filename){
-        $file = Storage::disk('public')->get($filename);
-
-        return (new Response($file, 200))
-            ->header('Content-Type', 'image/jpeg');
-    }
+    
 
 
     /**

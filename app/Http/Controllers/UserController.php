@@ -35,7 +35,6 @@ class UserController extends Controller
 
     public function update($id, Request $request)
     {
-
         $input = $request->all();
         $input['tipo_relacion_laboral']=implode($request['tipo_relacion']);
         if($input['password'] == ''){

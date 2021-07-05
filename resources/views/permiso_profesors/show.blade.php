@@ -33,9 +33,16 @@
                 <strong>Hora Fin:</strong>
                 {!! Form::time('hora_fin', null, array('class' => 'form-control','readonly')) !!}
             </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>Tipo Permiso:</strong>
                 {!! Form::text('tipo_permiso', null, array('class' => 'form-control','readonly')) !!}
+            </div>
+            <div class="form-group">
+                <strong>Mi Observación:</strong>
+                {!! Form::text('descripcion', null, array('class' => 'form-control','readonly')) !!}
             </div>
             @if($permiso_profesor->estado == 1)
                 <div class="form-group">
@@ -54,20 +61,12 @@
                     {!! Form::text('desaprobacion', null, array('class' => 'form-control','readonly')) !!}
                 </div>
             @endif
-        </div>
-
-        <div class="col-xs-6 col-sm-6 col-md-6">
+            
             <div class="form-group">
-                <strong>Mi Observación:</strong>
-                {!! Form::text('descripcion', null, array('class' => 'form-control','readonly')) !!}
-            </div>
-            <div class="form-group">
-                @if($permiso_profesor->file == '')
-                
-                
+                @if($permiso_profesor->file == '')                
                 @else
-                <strong>Archivo Justificación:</strong><br>
-                <img src="{{asset("$permiso_profesor->file")}}" alt="" style="width:250px;height:250px;">
+                <a href="{{route('permisos.download',$permiso_profesor->uuid)}}" class="btn btn-primary">
+                    <i class="fa fa-download" aria-hidden="true"></i> Descargar</a>
                 @endif
             </div>
     {!! Form::close() !!}
