@@ -14,7 +14,7 @@
         </div>
         <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
             <strong>Contraseña:</strong>
-            {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control')) !!}
+            {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control','minlength'=>'6')) !!}
             @if ($errors->has('password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>
@@ -41,4 +41,23 @@
             {!! Form::date('fecha_ingreso', null,['class' => 'form-control','readonly']) !!}
         </div>
     </div>
+    <script>
+        function soloLetras(e){
+            key=e.keyCode || e.which;
+            teclado=String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+            especiales="8-37-38-46-164";      
+            teclado_especial=false;
+            for (var i in especiales){
+                if(key==especiales[i]){
+                    teclado_especial=true;break;
+                }
+            }
+            if(letras.indexOf(teclado)==-1 && !teclado_especial){
+                return false;
+            }
+        }
+        </script>
 </div>
+
+

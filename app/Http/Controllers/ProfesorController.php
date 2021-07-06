@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateUserRequest;
 
 class ProfesorController extends Controller
 {
@@ -51,7 +52,7 @@ class ProfesorController extends Controller
 
     }
 
-    public function update($id, UpdateUserRequest $request)
+    public function update(UpdateUserRequest $request,$id)
     {
         $request->validated();
         $input = $request->all();

@@ -29,14 +29,16 @@ class CreatePermisoProfesorRequest extends FormRequest
             'hora_inicio' => 'nullable|required',
             'hora_fin' => 'nullable|required',
             'tipo_permiso'=>'nullable|required',
+            "file" => "mimes:jpeg,png,jpg,pdf|max:15000",
         ];
     }
 
     public function messages(){
         return [
             'fecha_inicio.after' => 'La fecha de inicio no puede ser anterior a la del dia de hoy',
-            'fecha_fin.after' => 'La fecha de finalización no debe ser anterior a la de la fecha de inicio'
-
+            'fecha_fin.after' => 'La fecha de finalización no debe ser anterior a la de la fecha de inicio',
+            'file.mimes'=>'El archivo adjunto debe ser un archivo con formato: jpeg, png, jpg o pdf',
+            'file.max'=>'El archivo adjunto no debe pesar más de 25mb'
         ];
     }
 

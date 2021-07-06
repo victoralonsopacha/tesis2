@@ -85,16 +85,14 @@ Route::group(['middleware' => ['role:Inspector']], function () {
     Route::post('/permisos', 'PermisoController@store')->name('permisos.store');
     //MOSTRAR
     Route::get('/permisos/{permiso}','PermisoController@show')->name('permisos.show');
-    Route::get('/permisos/downloadFile', 'PermisoController@downloadFile')->name('permisos.download');
     Route::post('/permisos/find','PermisoController@findRequest')->name('permisos.find');
+    
     //JUSTIFICAR
     Route::get('/permisos/{permiso}/justificar','PermisoController@justificar')->name('permisos.justificar');
 
 
 });
-//Route::get('/downloadPublic','PermisoController@downloadFile');
-Route::get('get/{filename}', 'PermisoController@downloadFiles')->name('getfile');
-
+Route::get('/permisos/downloadFile/{uuid}', 'PermisoController@downloadFile')->name('permisos.download');
 
 //PERMISOS APROBADOS
 

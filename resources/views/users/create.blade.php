@@ -23,28 +23,28 @@
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <strong>Nombres:</strong>
-                    {!! Form::text('name', null, array('placeholder' => 'Nombres','class' => 'form-control','required')) !!}
+                    {!! Form::text('name', null, array('placeholder' => 'Nombres','onkeypress'=>'return soloLetras(event)','class' => 'form-control','required')) !!}
                 </div>
                 <div class="form-group">
                     <strong>Apellidos:</strong>
-                    {!! Form::text('last_name', null, array('placeholder' => 'Apellidos','class' => 'form-control','required')) !!}
+                    {!! Form::text('last_name', null, array('placeholder' => 'Apellidos','onkeypress'=>'return soloLetras(event)','class' => 'form-control','required')) !!}
                 </div>
                 <div class="form-group">
                     <strong>Cédula:</strong>
-                    {!! Form::text('cedula', null, array('placeholder' => 'Cedula','class' => 'form-control','required')) !!}
+                    {!! Form::text('cedula', null, array('placeholder' => 'Cedula','onkeypress'=>'return soloNumeros(event)', 'class' => 'form-control','required', 'maxlength'=>'10')) !!}
                 </div>
                 <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                     <strong>Contraseña:</strong>
-                    {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control', 'required')) !!}
+                    {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control', 'required', 'minlength'=>'6')) !!}
+                    <div class="help-block">Mínimo de 6 caracteres</div>
                     @if ($errors->has('password'))
-                        <span class="help-block">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
                     @endif
                 </div>
                 <div class="form-group">
                     <strong>Confirmar contraseña:</strong>
-                    {!! Form::password('password_confirmation', array('placeholder' => 'Confirmar contraseña','class' => 'form-control','required')) !!}
+                    {!! Form::password('password_confirmation', array('placeholder' => 'Confirmar contraseña','class' => 'form-control','required', 'minlength'=>'6')) !!}
                 </div>
 
             </div>
@@ -68,6 +68,7 @@
                 <div class="form-group" {{ $errors->has('fecha_ingreso') ? ' has-error' : '' }}>
                     <strong>Fecha de Ingreso:</strong>
                     {!! Form::date('fecha_ingreso', null,['class' => 'form-control','required']) !!}
+                    <div class="help-block"></div>
                     @if ($errors->has('fecha_ingreso'))
                         <span class="help-block">
                             <strong>{{ $errors->first('fecha_ingreso') }}</strong>
@@ -84,7 +85,36 @@
     </div><!--/..container-fluid-->
 
     <script>
-
+        function soloLetras(e){
+            key=e.keyCode || e.which;
+            teclado=String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+            especiales="8-37-38-46-164";      
+            teclado_especial=false;
+            for (var i in especiales){
+                if(key==especiales[i]){
+                    teclado_especial=true;break;
+                }
+            }
+            if(letras.indexOf(teclado)==-1 && !teclado_especial){
+                return false;
+            }
+        }
+        function soloNumeros(e){
+            key=e.keyCode || e.which;
+            teclado=String.fromCharCode(key).toLowerCase();
+            letras = "0123456789",
+            especiales="8-37-38-46-164";      
+            teclado_especial=false;
+            for (var i in especiales){
+                if(key==especiales[i]){
+                    teclado_especial=true;break;
+                }
+            }
+            if(letras.indexOf(teclado)==-1 && !teclado_especial){
+                return false;
+            }
+        }
     </script>
 @endsection
 

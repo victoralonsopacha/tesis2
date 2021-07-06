@@ -21,6 +21,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 
+
 class PermisoProfesorController extends Controller
 {
 
@@ -91,14 +92,17 @@ class PermisoProfesorController extends Controller
         $permiso['last_name']=auth()->user()->last_name;
         $permiso['tipo_permiso']=implode($request['tipo_permiso']);
         $permiso['estado']='0';
-
+        $permiso['uuid'] = (string) Str::orderedUuid();
         if($request->hasFile('file')){
-            $file=$request->file('file');
+            /*$file=$request->file('file');
             $name=time().'-'.$file->getClientOriginalName();
             $destination='storage/permissions/';
             $url=$request->file('file')->move($destination,$name);
             $path=$destination.$name;
-            $permiso['file']=$path;
+            $permiso['file']=$path;*/
+            $image = $request->file('file')->getClientOriginalName();
+            $request->file('file')->storeAs('permisos/', $image);
+            $permiso['file']=$image;
         }
         PermisoProfesor::create($permiso);
         return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue creado con exito');
@@ -202,32 +206,30 @@ class PermisoProfesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PermisoProfesor $permiso_profesor, Request $request)
+    public function update(PermisoProfesor $permiso_profesor, CreatePermisoProfesorRequest $request)
     {
         //$request->validated();
         $entrada=$request->all();
         $entrada['tipo_permiso']=implode($request->tipo_permiso);
-        Log::info($request->all());
 
         if($request->hasFile('file')){
-            $file=$request->file('file');
-            $name=time().'-'.$file->getClientOriginalName();
-            $destination='storage/permissions/';
-            $url=$request->file('file')->move($destination,$name);
-            $path=$destination.$name;
-            $entrada['file']=$path;
-            Log::info('si archivo');
-
+            $image = $request->file('file')->getClientOriginalName();
+            $request->file('file')
+                ->storeAs('permisos/', $image);
+            if($permiso_profesor->file != '')
+            {
+                unlink(storage_path('app/public/permisos/' . $permiso_profesor->file));
+            }
+            $entrada['file']=$image;            
         }else{
             $entrada['file']=$permiso_profesor->file;
-            Log::info('no archivo');
-
         }
         $permiso_profesor->update($entrada);
-
         return redirect()->route('permiso_profesors.shows',$request->cedula)->with('message', 'El permiso fue actualizado con exito');
+    }
 
-
+    public function download(){
+        
     }
 
     /**

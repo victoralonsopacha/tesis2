@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ 'Sistema de Control de Asistencia Escuela Velasco Ibarra' }}</title>
+    <link rel="shortcut icon" type="image/png" sizes="192x192" href="{{ asset('/img/icon.png') }}">
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
