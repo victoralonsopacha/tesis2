@@ -30,6 +30,7 @@
 <h1><p class="text-center text-normal">Unidad Educativa Velasco Ibarra</p></h1>
 <h1><p class="text-center text-normal">Parroquia de Guangopolo</p></h1>
 <h1><p class="text-center text-normal">Reporte de timbradas diarias del usuario</p></h1>
+<h1><p class="text-center text-normal">NOTA: Las marcaciones están organizas primero de Entrada y luego de Salida consecutivamente</p></h1>
     <table class="table">
         <tbody>
         @foreach($usuario as $urs)
@@ -37,6 +38,7 @@
                 <td>Cédula: {{ $urs->cedula }}</td>
                 <td>Nombre: {{ $urs->name }}</td>
                 <td>Apellido: {{ $urs->last_name }}</td>
+                
             </tr>
         @endforeach
         </tbody>
